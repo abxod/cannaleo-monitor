@@ -5,6 +5,7 @@ from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
 import os
+import glob
 # import requests (requests might still be needed for API calls to download images/files/json)
 
 url = 'https://www.cannabisdarmstadt.de'
@@ -27,6 +28,14 @@ def store_page_html(page_html: str, folder: str = 'stored_html') -> str:
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(page_html)
 
+def get_latest_snapshot(folder: str = 'stored_html') -> str:
+    files = glob.glob(os.path.join(folder, '*.html'))
+    if not files:
+        raise FileNotFoundError(f'No HTML files found in {folder}')
+
+    latest_file = max(files, key=os.path.getmtime)
+    return latest_file
+
 def parse_html_file(path: str) -> BeautifulSoup:
     with open(path, encoding='utf-8') as f:
         return BeautifulSoup(f.read(), 'html.parser')
@@ -41,9 +50,10 @@ if __name__ == '__main__':
             filepath = store_page_html(html)
             print(f"Saved HTML to {filepath}")
         finally:
-            try:
-                driver.quit()
-            except NameError:
-                pass
+            driver.quit()
+    else:
+        filepath = get_latest_snapshot()
+        print('Reading latest saved HTML: {filepath}')
 
-    soup = parse_html_file('stored_html/snapshot_2025-12-01_21-22.html')
+    soup = parse_html_file('filepath')
+    print(soup.title)
