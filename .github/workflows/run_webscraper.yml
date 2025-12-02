@@ -1,0 +1,26 @@
+name: Fetch current inventory
+
+on:
+  schedule:
+  # At minute 10 past every hour from 7 through 19 on every day-of-week from Monday through Saturday.
+     # - cron: "10 7-19 * * 1-6"
+     - cron: "0 0 31 2 *"
+
+jobs:
+  setup-repository:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v6.1.0
+      with:
+        python-version: "3.12.6"
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run script
+      run: python your_script.py
