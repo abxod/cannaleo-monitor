@@ -1,6 +1,8 @@
 import datetime
 import time
 from bs4 import BeautifulSoup
+# Selenium might not be needed at all if we don't have to simulate clicks to scrape the products.
+# We can just use requests.get(), grab the number of products, and requests.get() the page displaying all the products.
 from selenium import webdriver
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
@@ -9,8 +11,11 @@ import os
 import glob
 from typing import Any
 
+# This URL could be generalized to all pharmacies using Cannaleo.
+# Landing page of below URL is product page.
 url = 'https://www.cannabisdarmstadt.de'
 
+# Three below functions can be extracted into a separate source file with error handling and edge cases (pharmacies with different landing pages)
 def create_driver() -> webdriver.Edge:
     options = Options()
     options.add_argument('--headless') # runs the browser in the background
