@@ -23,14 +23,14 @@ def fetch_page_html(driver: webdriver.Edge, url: str) -> str:
     return driver.page_source
 
 # When the task is to fetch all the products, you're gonna have to navigate a bit with Webdriver and then save the results somehow
-def store_page_html(page_html: str, folder: str = 'stored_html') -> str:
+def store_page_html(page_html: str, folder: str = 'scraped_pages') -> str:
     os.makedirs(folder, exist_ok=True)
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M')
     filepath = f'{folder}/snapshot_{timestamp}.html'
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(page_html)
 
-def get_latest_snapshot(folder: str = 'stored_html') -> str:
+def get_latest_snapshot(folder: str = 'scraped_pages') -> str:
     files = glob.glob(os.path.join(folder, '*.html'))
     if not files:
         raise FileNotFoundError(f'No HTML files found in {folder}')
@@ -50,6 +50,8 @@ def scrape_num_products(soup: BeautifulSoup) -> str:
     num_products_parent = produkte_gefunden_string.parent
     num_products_parent_content = num_products_parent.get_text()
     extracted_integer = num_products_parent_content[0:2]
+
+    # This needs to be stored somewhere in GitHub Actions cron
     return extracted_integer
 
 if __name__ == '__main__':
@@ -79,7 +81,7 @@ if __name__ == '__main__':
         num_products = scrape_num_products(soup)
         print(f'Number of products: {num_products}')
 
-        # driver.get('file://C:/Users/abdul/PycharmProjects/CannabisWebScraper/stored_html/snapshot_2025-12-01_21-22.html')
+        # driver.get('file://C:/Users/abdul/PycharmProjects/CannabisWebScraper/scraped_pages/snapshot_2025-12-01_21-22.html')
         # print(driver.find_elements(By.CLASS_NAME, 'MuiTypography-root.MuiTypography-body1.mui-9mqwrs'))
 
 

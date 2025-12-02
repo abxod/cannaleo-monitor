@@ -1,0 +1,3 @@
+.venv/
+scraped_pages/
+*.html
