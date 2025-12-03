@@ -23,4 +23,6 @@
 #       run: pip install -r requirements.txt
 
 #     - name: Run script
+#       env:
+#           NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
 #       run: python scripts/main.py
