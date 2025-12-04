@@ -1,0 +1,2774 @@
+[
+  {
+    "id": "1153",
+    "column": "APONEO Apotheke, Berlin\n[asavita.de](https://asavita.de)",
+    "color": "Asavita",
+    "img": {
+      "data": {
+        "id": "2454",
+        "attributes": {
+          "alternativeText": "Screenshot APONEO Apotheke, Berlin",
+          "width": 2182,
+          "height": 1290,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/e012ea4f4641352e9c882acbec7f2fd2.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/8b7cada53b8ed85f9476c7fd6608ef65.png",
+              "hash": "8b7cada53b8ed85f9476c7fd6608ef65",
+              "mime": "image/png",
+              "name": "small_Bildschirmfoto 2024-07-06 um 07.49.11.png",
+              "path": null,
+              "size": 57.12,
+              "width": 400,
+              "height": 236,
+              "sizeInBytes": 57120
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/0fce5ad68f353b18a2ccb509e2255528.png",
+              "hash": "0fce5ad68f353b18a2ccb509e2255528",
+              "mime": "image/png",
+              "name": "thumbnail_Bildschirmfoto 2024-07-06 um 07.49.11.png",
+              "path": null,
+              "size": 26.08,
+              "width": 245,
+              "height": 145,
+              "sizeInBytes": 26079
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "452",
+    "column": "Hohenzollern Apotheke, M\u00fcnster\n[cannabis.hohenzollern-apotheke.de](https://cannabis.hohenzollern-apotheke.de)\n",
+    "color": "Hohenzollern",
+    "img": {
+      "data": {
+        "id": "1872",
+        "attributes": {
+          "alternativeText": "Screenshot Hohenzollern Apotheke, M\u00fcnster",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/ecacc1fe9331b3834df3cda8057b1d16.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/73f6b8af695c7c5fdb7082d9b71f836d.png",
+              "hash": "73f6b8af695c7c5fdb7082d9b71f836d",
+              "mime": "image/png",
+              "name": "small_Cannaleo Referenz (2).png",
+              "path": null,
+              "size": 107.81,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 107808
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/5adc6e156e40ec1433985d1dbc7d11cf.png",
+              "hash": "5adc6e156e40ec1433985d1dbc7d11cf",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo Referenz (2).png",
+              "path": null,
+              "size": 46.65,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 46654
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "450",
+    "column": "Weber Apotheken, Hamburg\n[thcundco.de](https://thcundco.de/)",
+    "color": "thcundco.de",
+    "img": {
+      "data": {
+        "id": "1868",
+        "attributes": {
+          "alternativeText": "Screenshot thcundco.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/5e25ffd72046ad1da9c0adee2cd304c2.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/098853dd8f8e35983a3bf5c21e80e2f6.png",
+              "hash": "098853dd8f8e35983a3bf5c21e80e2f6",
+              "mime": "image/png",
+              "name": "small_Cannaleo Referenz (3).png",
+              "path": null,
+              "size": 62.21,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 62208
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/31097c37aac3c3b496bc0fdd55dbc19b.png",
+              "hash": "31097c37aac3c3b496bc0fdd55dbc19b",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo Referenz (3).png",
+              "path": null,
+              "size": 28.54,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 28544
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1139",
+    "column": "ABC Apotheke, Wuppertal\n[abc-cannabis.de](https://abc-cannabis.de/)",
+    "color": "ABC Apotheke",
+    "img": {
+      "data": {
+        "id": "2455",
+        "attributes": {
+          "alternativeText": "Screenshot ABC-Cannabis Apotheke",
+          "width": 2080,
+          "height": 1168,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/2e8b8ca49868060ad7d17de54de85a5b.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/c654d5f4663aeb7fc63a2ae1fd013b92.png",
+              "hash": "c654d5f4663aeb7fc63a2ae1fd013b92",
+              "mime": "image/png",
+              "name": "small_Bildschirmfoto 2024-07-06 um 07.58.59.png",
+              "path": null,
+              "size": 84.51,
+              "width": 400,
+              "height": 225,
+              "sizeInBytes": 84510
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/d7e63aa5100a0f834572a4863b629075.png",
+              "hash": "d7e63aa5100a0f834572a4863b629075",
+              "mime": "image/png",
+              "name": "thumbnail_Bildschirmfoto 2024-07-06 um 07.58.59.png",
+              "path": null,
+              "size": 37.65,
+              "width": 245,
+              "height": 138,
+              "sizeInBytes": 37647
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "2139",
+    "column": "Internationale Apotheke, M\u00fcnchen\n[hanfbahnhof.de](https://hanfbahnhof.de)",
+    "color": "hanfbahnhof.de",
+    "img": {
+      "data": {
+        "id": "10223",
+        "attributes": {
+          "alternativeText": "Screenshot hanfbahnhof.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/5dba9629e30e8c0140406fc19966b8c8.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/cf8c310dfbec993f80c4e5d155a81b87.png",
+              "hash": "cf8c310dfbec993f80c4e5d155a81b87",
+              "mime": "image/png",
+              "name": "small_Hanfbahnhof.png",
+              "path": null,
+              "size": 52.37,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 52368
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/08d0784deec0ef17e0aa3a617b427566.png",
+              "hash": "08d0784deec0ef17e0aa3a617b427566",
+              "mime": "image/png",
+              "name": "thumbnail_Hanfbahnhof.png",
+              "path": null,
+              "size": 25.12,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 25124
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "451",
+    "column": "Florians Vitalapotheke, Esslingen\n[cannabis-taxi.com](https://cannabis-taxi.com/)",
+    "color": "cannabis-taxi.com",
+    "img": {
+      "data": {
+        "id": "1870",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-taxi.com",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/739d57b2fa9c73308cc78be927cb86d0.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/a4cc5660814912f99eba24d6669a9e17.png",
+              "hash": "a4cc5660814912f99eba24d6669a9e17",
+              "mime": "image/png",
+              "name": "small_Cannaleo Referenz (4).png",
+              "path": null,
+              "size": 80.34,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 80344
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/65f31ec30e46b24d090aa59754f6ef23.png",
+              "hash": "65f31ec30e46b24d090aa59754f6ef23",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo Referenz (4).png",
+              "path": null,
+              "size": 35.69,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 35692
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "2138",
+    "column": "OPTYMED Apotheke, Stephanskirchen\n[optyweed.de](https://optyweed.de/)",
+    "color": "optyweed.de",
+    "img": {
+      "data": {
+        "id": "10226",
+        "attributes": {
+          "alternativeText": "Screenshot optyweed.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/d7fcd9856794f26521ee548ac819db85.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/2eda262f2d3a76780445693a03d77558.png",
+              "hash": "2eda262f2d3a76780445693a03d77558",
+              "mime": "image/png",
+              "name": "small_Optyweed.png",
+              "path": null,
+              "size": 35.69,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 35691
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/745688ac044d501cbb96ee95e58377ac.png",
+              "hash": "745688ac044d501cbb96ee95e58377ac",
+              "mime": "image/png",
+              "name": "thumbnail_Optyweed.png",
+              "path": null,
+              "size": 17.66,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 17662
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": "https://optyweed.de"
+  },
+  {
+    "id": "2219",
+    "column": "Oberl\u00e4nder Apotheke, M\u00fcnchen\n[fox20.de](https://fox20.de/)",
+    "color": "fox20.de",
+    "img": {
+      "data": {
+        "id": "4995",
+        "attributes": {
+          "alternativeText": "Screenshot fox20.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/2348cb073949743df6dd47978c36e4ea.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/9679691246faf4951321682d9ec6b5f1.png",
+              "hash": "9679691246faf4951321682d9ec6b5f1",
+              "mime": "image/png",
+              "name": "small_15.png",
+              "path": null,
+              "size": 55.15,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 55145
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/72b6555bed7d9001902e159ef02ef79b.png",
+              "hash": "72b6555bed7d9001902e159ef02ef79b",
+              "mime": "image/png",
+              "name": "thumbnail_15.png",
+              "path": null,
+              "size": 25.1,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 25096
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1253",
+    "column": "Stachus-Apotheke, M\u00fcnchen\n[cannabisamstachus.de](https://cannabisamstachus.de/)",
+    "color": "Stachus-Apotheke",
+    "img": {
+      "data": {
+        "id": "3205",
+        "attributes": {
+          "alternativeText": "Screenshot cannabisamstachus.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/f9faabadd9cfe799e0156576cb89b4f7.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/e32ca884e2a61b273b9901a3770c9119.png",
+              "hash": "e32ca884e2a61b273b9901a3770c9119",
+              "mime": "image/png",
+              "name": "small_18.png",
+              "path": null,
+              "size": 43.66,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 43656
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/8afd07289c4d9370c1217e79364a4692.png",
+              "hash": "8afd07289c4d9370c1217e79364a4692",
+              "mime": "image/png",
+              "name": "thumbnail_18.png",
+              "path": null,
+              "size": 21.49,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 21485
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "2140",
+    "column": "Weinbrenner-Apotheke, Karlsruhe\n[cannabis-karlsruhe.de](https://cannabis-karlsruhe.de/)",
+    "color": "cannabis-karlsruhe.de",
+    "img": {
+      "data": {
+        "id": "4817",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-karlsruhe.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/22a64fcb65d7013bdfe88287b8edebdf.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/8d7a4cb8ef0eb3f7fdb0107affe995f5.png",
+              "hash": "8d7a4cb8ef0eb3f7fdb0107affe995f5",
+              "mime": "image/png",
+              "name": "small_Cannaleo Referenz (2).png",
+              "path": null,
+              "size": 64.12,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 64121
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/85eb1232827cc04058df59d4654bdb9b.png",
+              "hash": "85eb1232827cc04058df59d4654bdb9b",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo Referenz (2).png",
+              "path": null,
+              "size": 28.94,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 28939
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1140",
+    "column": "Kissel Apotheke, Frankfurt\n[cannabis-apotheke-frankfurt](https://cannabis-apotheke-frankfurt.de/)",
+    "color": "Kissel Apotheke",
+    "img": {
+      "data": {
+        "id": "2451",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-apotheke-frankfurt.de",
+          "width": 2184,
+          "height": 1180,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/890008a9f91e01e2a0138b65df7bb032.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/6361d92a92e095830121617892d0e31a.png",
+              "hash": "6361d92a92e095830121617892d0e31a",
+              "mime": "image/png",
+              "name": "small_Bildschirmfoto 2024-07-06 um 07.50.47.png",
+              "path": null,
+              "size": 45.33,
+              "width": 400,
+              "height": 216,
+              "sizeInBytes": 45329
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/8240468d147a9ca6225124e011e2f168.png",
+              "hash": "8240468d147a9ca6225124e011e2f168",
+              "mime": "image/png",
+              "name": "thumbnail_Bildschirmfoto 2024-07-06 um 07.50.47.png",
+              "path": null,
+              "size": 22.32,
+              "width": 245,
+              "height": 132,
+              "sizeInBytes": 22318
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "494",
+    "column": "easyApotheke, Salzgitter\n[easycannabis.de](https://easycannabis.de/)\n",
+    "color": "easyApotheke",
+    "img": {
+      "data": {
+        "id": "1962",
+        "attributes": {
+          "alternativeText": "Screenshot easycannabis.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/c6632aa5eb4b1b1da8696a8c32bd16ef.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/f5e3f8f05296105000b8d515b9383dc6.png",
+              "hash": "f5e3f8f05296105000b8d515b9383dc6",
+              "mime": "image/png",
+              "name": "small_4.png",
+              "path": null,
+              "size": 153.39,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 153385
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/793b30f47e012d4b79ac40150526f2ac.png",
+              "hash": "793b30f47e012d4b79ac40150526f2ac",
+              "mime": "image/png",
+              "name": "thumbnail_4.png",
+              "path": null,
+              "size": 65.58,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 65578
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3188",
+    "column": "Karl-Apotheke, Karlsruhe\n[karlchengras.de](https://karlchengras.de/)",
+    "color": "Karl-Apotheke",
+    "img": {
+      "data": {
+        "id": "7228",
+        "attributes": {
+          "alternativeText": "Screenshot karlchengras.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/359b89b130ec5059cba8b32d099e36f3.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/3e69c0df67110f3ff16ee4c4904f4daf.png",
+              "hash": "3e69c0df67110f3ff16ee4c4904f4daf",
+              "mime": "image/png",
+              "name": "small_31.png",
+              "path": null,
+              "size": 161.13,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 161125
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/c7912313c6a6030427ea3fa336450797.png",
+              "hash": "c7912313c6a6030427ea3fa336450797",
+              "mime": "image/png",
+              "name": "thumbnail_31.png",
+              "path": null,
+              "size": 67.78,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 67784
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1158",
+    "column": "Central Apotheke, Waiblingen\n[cannabis-champion.de](https://cannabis-champion.de)\n",
+    "color": "cannabis-champion.de",
+    "img": {
+      "data": {
+        "id": "2452",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-champion.de",
+          "width": 2186,
+          "height": 1274,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/0c3892dd8d104873309b1f641df1eee9.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/12c35ef6f30c92937b7765224a1cbdf2.png",
+              "hash": "12c35ef6f30c92937b7765224a1cbdf2",
+              "mime": "image/png",
+              "name": "small_Bildschirmfoto 2024-07-06 um 07.49.40.png",
+              "path": null,
+              "size": 60.35,
+              "width": 400,
+              "height": 233,
+              "sizeInBytes": 60346
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/9271f2b120358abb843252a0a51eb289.png",
+              "hash": "9271f2b120358abb843252a0a51eb289",
+              "mime": "image/png",
+              "name": "thumbnail_Bildschirmfoto 2024-07-06 um 07.49.40.png",
+              "path": null,
+              "size": 28.22,
+              "width": 245,
+              "height": 143,
+              "sizeInBytes": 28219
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3192",
+    "column": "Burger Apotheke, Berlin\n[mymediweed.de](https://mymediweed.de/)",
+    "color": "mymediweed.de",
+    "img": {
+      "data": {
+        "id": "7232",
+        "attributes": {
+          "alternativeText": "Screenshot mymediweed.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/3cf361cc87b0c11cafa71d3e1bdd76b8.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/cce8f3f4adf9b3c15eaf3080e0f8369d.png",
+              "hash": "cce8f3f4adf9b3c15eaf3080e0f8369d",
+              "mime": "image/png",
+              "name": "small_35.png",
+              "path": null,
+              "size": 92.09,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 92086
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/5292b300a71c559f19081148957adbfc.png",
+              "hash": "5292b300a71c559f19081148957adbfc",
+              "mime": "image/png",
+              "name": "thumbnail_35.png",
+              "path": null,
+              "size": 40.62,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 40622
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1155",
+    "column": "Herzog Apotheke, Geldern\n[dragonweed.de](https://dragonweed.de/)",
+    "color": "dragonweed.de",
+    "img": {
+      "data": {
+        "id": "2460",
+        "attributes": {
+          "alternativeText": "Screenshot dragonweed.de",
+          "width": 2184,
+          "height": 1288,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/5f772a288828127ebc3d5bcdecb03b92.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/5505e5d68d95477dff3223d31153713c.png",
+              "hash": "5505e5d68d95477dff3223d31153713c",
+              "mime": "image/png",
+              "name": "small_Bildschirmfoto 2024-07-06 um 07.47.03.png",
+              "path": null,
+              "size": 88.92,
+              "width": 400,
+              "height": 236,
+              "sizeInBytes": 88923
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/1ded78fce6c8a5510c0d246487b9542d.png",
+              "hash": "1ded78fce6c8a5510c0d246487b9542d",
+              "mime": "image/png",
+              "name": "thumbnail_Bildschirmfoto 2024-07-06 um 07.47.03.png",
+              "path": null,
+              "size": 38.12,
+              "width": 245,
+              "height": 144,
+              "sizeInBytes": 38119
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "2223",
+    "column": "Burg-Apotheke, Kempten/Allg\u00e4u\n[allgaeu-cannabis.de](https://allgaeu-cannabis.de/)",
+    "color": "allgaeu-cannabis.de",
+    "img": {
+      "data": {
+        "id": "4999",
+        "attributes": {
+          "alternativeText": "Screenshot allgaeu-cannabis.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/90259044456473db3a9955f3d3c0f19e.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/9da9759b39b88b922cf1b6dc3d8d4cf2.png",
+              "hash": "9da9759b39b88b922cf1b6dc3d8d4cf2",
+              "mime": "image/png",
+              "name": "small_14.png",
+              "path": null,
+              "size": 101.96,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 101955
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/4ee89710fc91115f1249efc7c9304b5f.png",
+              "hash": "4ee89710fc91115f1249efc7c9304b5f",
+              "mime": "image/png",
+              "name": "thumbnail_14.png",
+              "path": null,
+              "size": 43.94,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 43937
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1156",
+    "column": "Spindel Apotheke, Bielefeld\n[cannvita.de](https://cannvita.de/)",
+    "color": "cannvita.de",
+    "img": {
+      "data": {
+        "id": "2459",
+        "attributes": {
+          "alternativeText": "Screenshot cannvita.de",
+          "width": 2180,
+          "height": 1168,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/2958cb975500a9765d1a7ef81f0dcd4e.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/72024e471a14a8cf9312274a3a061983.png",
+              "hash": "72024e471a14a8cf9312274a3a061983",
+              "mime": "image/png",
+              "name": "small_Bildschirmfoto 2024-07-06 um 07.48.41.png",
+              "path": null,
+              "size": 95.76,
+              "width": 400,
+              "height": 214,
+              "sizeInBytes": 95761
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/0e16e0a0d81e97ef9313035fcabe90d2.png",
+              "hash": "0e16e0a0d81e97ef9313035fcabe90d2",
+              "mime": "image/png",
+              "name": "thumbnail_Bildschirmfoto 2024-07-06 um 07.48.41.png",
+              "path": null,
+              "size": 40.66,
+              "width": 245,
+              "height": 131,
+              "sizeInBytes": 40658
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1157",
+    "column": "Apotheke zur alten Post, Bonn\n[cannacompany.de](https://cannacompany.de/)",
+    "color": "cannacompany.de",
+    "img": {
+      "data": {
+        "id": "10227",
+        "attributes": {
+          "alternativeText": "Screenshot cannacompany.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/07aca60e8607203d02832c5f2f51209f.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/702ecfccd8bea53623f92bfef39791e9.png",
+              "hash": "702ecfccd8bea53623f92bfef39791e9",
+              "mime": "image/png",
+              "name": "small_Cannacompany.png",
+              "path": null,
+              "size": 132.94,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 132942
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/b6d285c4a419e421fa851d61da7e4df4.png",
+              "hash": "b6d285c4a419e421fa851d61da7e4df4",
+              "mime": "image/png",
+              "name": "thumbnail_Cannacompany.png",
+              "path": null,
+              "size": 58.51,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 58508
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3529",
+    "column": "Apotheke Friesentor Hohenzollern 52, K\u00f6ln\n[cannacolonia.de](https://cannacolonia.de/)",
+    "color": "cannacolonia.de",
+    "img": {
+      "data": {
+        "id": "7978",
+        "attributes": {
+          "alternativeText": "Screenshot cannacolonia.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/e3a6baa94ac0b24216ff62587080926e.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/0aa71e36d9877b589c10ce9347709819.png",
+              "hash": "0aa71e36d9877b589c10ce9347709819",
+              "mime": "image/png",
+              "name": "small_46.png",
+              "path": null,
+              "size": 141.08,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 141078
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/a7b9ee8ac2068e993a2a24a566771e1c.png",
+              "hash": "a7b9ee8ac2068e993a2a24a566771e1c",
+              "mime": "image/png",
+              "name": "thumbnail_46.png",
+              "path": null,
+              "size": 57.57,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 57570
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1252",
+    "column": "Bahnhof Apotheke, Bonn\n[cannibo.de](https://cannibo.de/)",
+    "color": "cannibo.de",
+    "img": {
+      "data": {
+        "id": "10228",
+        "attributes": {
+          "alternativeText": "Screenshot cannibo.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/4f30cf692112bbac18d81d48b4f238fd.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/c25d2bdab964321842648cb9aab2f857.png",
+              "hash": "c25d2bdab964321842648cb9aab2f857",
+              "mime": "image/png",
+              "name": "small_Cannibo.png",
+              "path": null,
+              "size": 81.49,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 81492
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/5904bb4bf39f19f54cb97a717abc1fdc.png",
+              "hash": "5904bb4bf39f19f54cb97a717abc1fdc",
+              "mime": "image/png",
+              "name": "thumbnail_Cannibo.png",
+              "path": null,
+              "size": 37.04,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 37040
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3532",
+    "column": "Engel Apotheke, Niederkr\u00fcchten\n[angelweed.de](https://angelweed.de/)",
+    "color": "angelweed.de",
+    "img": {
+      "data": {
+        "id": "7982",
+        "attributes": {
+          "alternativeText": "Screenshot angelweed.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/979b8f7de8eac5f674ee4bb16eed226d.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/9b10461f643661ce097157597816985c.png",
+              "hash": "9b10461f643661ce097157597816985c",
+              "mime": "image/png",
+              "name": "small_42.png",
+              "path": null,
+              "size": 181.14,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 181136
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/c7c95208dd91b327c6464d30660e7d22.png",
+              "hash": "c7c95208dd91b327c6464d30660e7d22",
+              "mime": "image/png",
+              "name": "thumbnail_42.png",
+              "path": null,
+              "size": 71.02,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 71019
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "2818",
+    "column": "Jesuiten-Apotheke, Bad Neuenahr-Ahrweiler\n[cannabis-apotheke-ahrtal.de](https://cannabis-apotheke-ahrtal.de/)",
+    "color": "cannabis-apotheke-ahrtal.de",
+    "img": {
+      "data": {
+        "id": "6546",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-apotheke-ahrtal.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/31141f4ff3d09046f57746ea25bfaa25.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/d504c00e57b4b97c8f2a156d3b82991c.png",
+              "hash": "d504c00e57b4b97c8f2a156d3b82991c",
+              "mime": "image/png",
+              "name": "small_Cannaleo-Shops-CAA.png",
+              "path": null,
+              "size": 74.49,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 74485
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/0a0a3d5aba36015360351050c364b40f.png",
+              "hash": "0a0a3d5aba36015360351050c364b40f",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo-Shops-CAA.png",
+              "path": null,
+              "size": 33.94,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 33940
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1255",
+    "column": "SALUS Apotheke, Landshut\n[cannabis-landshut.de](https://cannabis-landshut.de)",
+    "color": "SALUS Apotheke, Landshut",
+    "img": {
+      "data": {
+        "id": "3207",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-landshut.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/671f35caadbb96c552b5ca61aeca7793.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/16637cfe9452865d42b6bc511315aa25.png",
+              "hash": "16637cfe9452865d42b6bc511315aa25",
+              "mime": "image/png",
+              "name": "small_19.png",
+              "path": null,
+              "size": 101.88,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 101878
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/28cb50937f7e2197edf6c908fbc54013.png",
+              "hash": "28cb50937f7e2197edf6c908fbc54013",
+              "mime": "image/png",
+              "name": "thumbnail_19.png",
+              "path": null,
+              "size": 44.97,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 44969
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1256",
+    "column": "Apotheke im Forum, F\u00fcrth\n[cannafino.de](https://cannafino.de/)",
+    "color": "cannafino.de",
+    "img": {
+      "data": {
+        "id": "3208",
+        "attributes": {
+          "alternativeText": "Screenshot cannafino.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/b816e14daab64dd800388b772ef8299b.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/933958ed927e137a8c81e6f1a5e675f8.png",
+              "hash": "933958ed927e137a8c81e6f1a5e675f8",
+              "mime": "image/png",
+              "name": "small_20.png",
+              "path": null,
+              "size": 147.25,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 147246
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/dd8fd6e2f9622208c499e37985c36b9e.png",
+              "hash": "dd8fd6e2f9622208c499e37985c36b9e",
+              "mime": "image/png",
+              "name": "thumbnail_20.png",
+              "path": null,
+              "size": 61.49,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 61491
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "453",
+    "column": "Apotheke am Nordostbahnhof, N\u00fcrnberg\n[cannabis-nordost.de](https://cannabis-nordost.de)",
+    "color": "Apotheke am Nordostbahnhof",
+    "img": {
+      "data": {
+        "id": "1871",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-nordost.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/547ecd9066038c22efc274d472b6b49d.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/e63ef18c8a88728309276dbf508786e2.png",
+              "hash": "e63ef18c8a88728309276dbf508786e2",
+              "mime": "image/png",
+              "name": "small_cannabis-nordost-de-medicon-apotheke-nordost-nuernberg",
+              "path": null,
+              "size": 150.53,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 150531
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/2f41952b54e4d22a7a6aca679db2d677.png",
+              "hash": "2f41952b54e4d22a7a6aca679db2d677",
+              "mime": "image/png",
+              "name": "thumbnail_cannabis-nordost-de-medicon-apotheke-nordost-nuernberg",
+              "path": null,
+              "size": 63.6,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 63595
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "2220",
+    "column": "Linden Apotheke, Neukirchen-Vluyn\n[cannadolor.de](https://cannadolor.de/)",
+    "color": "cannadolor.de",
+    "img": {
+      "data": {
+        "id": "4996",
+        "attributes": {
+          "alternativeText": "Screenshot cannadolor.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/caf1a2584f36ef41042b5f98547ffa2b.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/1d7cf1bfbc9d4884bd3b11e0149b1564.png",
+              "hash": "1d7cf1bfbc9d4884bd3b11e0149b1564",
+              "mime": "image/png",
+              "name": "small_18.png",
+              "path": null,
+              "size": 57.71,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 57705
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/de6fa848cb254ebe83e848cf8a0a7307.png",
+              "hash": "de6fa848cb254ebe83e848cf8a0a7307",
+              "mime": "image/png",
+              "name": "thumbnail_18.png",
+              "path": null,
+              "size": 27.12,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 27119
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "455",
+    "column": "Kronen Apotheke, Sankt Augustin\n[kronen-cannabis.de](https://kronen-cannabis.de)",
+    "color": "Kronen Apotheke",
+    "img": {
+      "data": {
+        "id": "1869",
+        "attributes": {
+          "alternativeText": "Screenshot kronen-cannabis.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/dbf0ce4c0172fbe96cf4f01f2ff38a04.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/1c04b345b3d906733da3ca1999543c15.png",
+              "hash": "1c04b345b3d906733da3ca1999543c15",
+              "mime": "image/png",
+              "name": "small_kronen-cannabis-de-kronen-apotheke-sankt-augustin",
+              "path": null,
+              "size": 137.2,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 137204
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/35254eb4b63d3c315ff8e58439a12e60.png",
+              "hash": "35254eb4b63d3c315ff8e58439a12e60",
+              "mime": "image/png",
+              "name": "thumbnail_kronen-cannabis-de-kronen-apotheke-sankt-augustin",
+              "path": null,
+              "size": 59.08,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 59081
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3190",
+    "column": "Apotheke am Hermannplatz, Berlin\n[hermannsgreen.de](https://hermannsgreen.de/)",
+    "color": "hermannsgreen.de",
+    "img": {
+      "data": {
+        "id": "7230",
+        "attributes": {
+          "alternativeText": "Screenshot hermannsgreen.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/f7b601142114f0aa0fe84c0e8b2aeeeb.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/9fda30916a6b7fccd1a98c23f53c4a7d.png",
+              "hash": "9fda30916a6b7fccd1a98c23f53c4a7d",
+              "mime": "image/png",
+              "name": "small_33.png",
+              "path": null,
+              "size": 90.27,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 90273
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/9c8c921ff31e78de185e31201b02be7c.png",
+              "hash": "9c8c921ff31e78de185e31201b02be7c",
+              "mime": "image/png",
+              "name": "thumbnail_33.png",
+              "path": null,
+              "size": 39.52,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 39523
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "495",
+    "column": "Eichwald Apotheke, W\u00f6rishofen\n[cannabis.eichwald-apotheke.com](https://cannabis.eichwald-apotheke.com)\n",
+    "color": "Eichwald Apotheke",
+    "img": {
+      "data": {
+        "id": "1963",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis.eichwald-apotheke.com",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/24703ff39a56343c3b2b7798ddc2aa69.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/dff9e2eada67748e9413b1a2e0f8f963.png",
+              "hash": "dff9e2eada67748e9413b1a2e0f8f963",
+              "mime": "image/png",
+              "name": "small_2.png",
+              "path": null,
+              "size": 102.92,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 102917
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/a643c765cab202236120c61a966a7bd1.png",
+              "hash": "a643c765cab202236120c61a966a7bd1",
+              "mime": "image/png",
+              "name": "thumbnail_2.png",
+              "path": null,
+              "size": 44.89,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 44885
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "612",
+    "column": "Vitahris Apotheke, Bad Neuenahr\n[rheinland-apo.de](https://rheinland-apo.de/)",
+    "color": "Vitahris Apotheke",
+    "img": {
+      "data": {
+        "id": "3846",
+        "attributes": {
+          "alternativeText": "Screenshot rheinland-apo.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/a108fe17e406ef87c3a20133673340fc.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/62069493196451d11f651148410814da.png",
+              "hash": "62069493196451d11f651148410814da",
+              "mime": "image/png",
+              "name": "small_Cannaleo-Shop-CAR.png",
+              "path": null,
+              "size": 120.22,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 120216
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/4c82836106fcb74fea233f98f3725268.png",
+              "hash": "4c82836106fcb74fea233f98f3725268",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo-Shop-CAR.png",
+              "path": null,
+              "size": 52.09,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 52093
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "454",
+    "column": "Wehling von Buttlar Apotheke, Rodgau\n[cannabis-apo-hessen.de](https://cannabis-apo-hessen.de/)",
+    "color": "Wehling von Buttlar",
+    "img": {
+      "data": {
+        "id": "1873",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-apo-hessen.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/4d643cb611c0376b0700748bb26a6982.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/12f786c725eba16de575c94787337f1a.png",
+              "hash": "12f786c725eba16de575c94787337f1a",
+              "mime": "image/png",
+              "name": "small_Cannaleo Referenz (1).png",
+              "path": null,
+              "size": 149.3,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 149301
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/4ba5e450822980174fd9e14f2daeeee0.png",
+              "hash": "4ba5e450822980174fd9e14f2daeeee0",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo Referenz (1).png",
+              "path": null,
+              "size": 62.17,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 62172
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "2222",
+    "column": "Hubertus-Apotheke, Hamburg\n[aador.de](https://aador.de/)\n",
+    "color": "aador.de",
+    "img": {
+      "data": {
+        "id": "4998",
+        "attributes": {
+          "alternativeText": "Screenshot aador.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/8b8471355ecb7f25cc8c41a0377feba0.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/74ed9a4bc8f417dc697932be1c62c096.png",
+              "hash": "74ed9a4bc8f417dc697932be1c62c096",
+              "mime": "image/png",
+              "name": "small_13.png",
+              "path": null,
+              "size": 111.56,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 111556
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/b3e7a5ced8bb1c801b21e9d21f2a943a.png",
+              "hash": "b3e7a5ced8bb1c801b21e9d21f2a943a",
+              "mime": "image/png",
+              "name": "thumbnail_13.png",
+              "path": null,
+              "size": 49.79,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 49793
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "583",
+    "column": "Stadt Apotheke Freystadt\n[goldenebluete.de](https://goldenebluete.de)",
+    "color": "goldenebluete.de",
+    "img": {
+      "data": {
+        "id": "1993",
+        "attributes": {
+          "alternativeText": "Screenshot goldenebluete.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/367aec214558d4bc1eb0dbfc0c61c3ea.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/24170e0aeda5e4decf85158323cd103a.png",
+              "hash": "24170e0aeda5e4decf85158323cd103a",
+              "mime": "image/png",
+              "name": "small_Cannaleo Referenz (8).png",
+              "path": null,
+              "size": 53.11,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 53109
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/58636173ef85b25494970bf2f1911462.png",
+              "hash": "58636173ef85b25494970bf2f1911462",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo Referenz (8).png",
+              "path": null,
+              "size": 24.55,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 24551
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1651",
+    "column": "Blaue Apotheke, Passau\n[blaueblueten.de](https://blaueblueten.de/)",
+    "color": "Blaue Apotheke",
+    "img": {
+      "data": {
+        "id": "3929",
+        "attributes": {
+          "alternativeText": "Screenshot blaueblueten.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/2bbfd6495c9f881b815ced4027dc83e4.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/59b12ea8417927c427bcea5e0db4b19a.png",
+              "hash": "59b12ea8417927c427bcea5e0db4b19a",
+              "mime": "image/png",
+              "name": "small_Cannaleo-Shops-BB.png",
+              "path": null,
+              "size": 107.72,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 107724
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/f67da7708ced53aba3279b240942e943.png",
+              "hash": "f67da7708ced53aba3279b240942e943",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo-Shops-BB.png",
+              "path": null,
+              "size": 46.01,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 46005
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1623",
+    "column": "Buchen-Apotheke, Hanau-Mittelbuchen\n[hanauer-cannabis-apotheke.de](https://hanauer-cannabis-apotheke.de/)",
+    "color": "hanauer-cannabis-apotheke.de",
+    "img": {
+      "data": {
+        "id": "3834",
+        "attributes": {
+          "alternativeText": "Screenshot hanauer-cannabis-apotheke.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/eba13a3e18fde2f0d19e0adeb079114b.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/ad491fe58cb7f047ccba4f049da23e71.png",
+              "hash": "ad491fe58cb7f047ccba4f049da23e71",
+              "mime": "image/png",
+              "name": "small_Cannaleo-Shop-HCA.png",
+              "path": null,
+              "size": 159.2,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 159196
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/a275b7f63f4df9c434f95fa4ac10e47e.png",
+              "hash": "a275b7f63f4df9c434f95fa4ac10e47e",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo-Shop-HCA.png",
+              "path": null,
+              "size": 65.29,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 65288
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3183",
+    "column": "St. Martins-Apotheke, Ampfing\n[mariumed.de](https://mariumed.de/)",
+    "color": "mariumed.de",
+    "img": {
+      "data": {
+        "id": "7222",
+        "attributes": {
+          "alternativeText": "Screenshot mariumed.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/f4493af3defaa3f0c55f56ec032958a9.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/d0aa57e1eae5193949b34aac640d6692.png",
+              "hash": "d0aa57e1eae5193949b34aac640d6692",
+              "mime": "image/png",
+              "name": "small_26.png",
+              "path": null,
+              "size": 125.39,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 125385
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/cfb041a5b50e40befaff36c849123075.png",
+              "hash": "cfb041a5b50e40befaff36c849123075",
+              "mime": "image/png",
+              "name": "thumbnail_26.png",
+              "path": null,
+              "size": 53.79,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 53785
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3184",
+    "column": "Falken-Apotheke, St. Augustin\n[falkengras.de](https://falkengras.de/)",
+    "color": "Falken-Apotheke",
+    "img": {
+      "data": {
+        "id": "7223",
+        "attributes": {
+          "alternativeText": "Screenshot falkengras.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/e350ac87567b168d90ff5b91c99b3d0d.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/1b61350187f725cb141a6d27a3b8343c.png",
+              "hash": "1b61350187f725cb141a6d27a3b8343c",
+              "mime": "image/png",
+              "name": "small_27.png",
+              "path": null,
+              "size": 110.24,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 110243
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/43b340e6ad151ce4336205d5c8136a78.png",
+              "hash": "43b340e6ad151ce4336205d5c8136a78",
+              "mime": "image/png",
+              "name": "thumbnail_27.png",
+              "path": null,
+              "size": 48.7,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 48699
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "496",
+    "column": "Dr. Beckers Central Apotheke, M\u00fcnchen\n[central-cannabis.de](https://central-cannabis.de)",
+    "color": " Central Apotheke",
+    "img": {
+      "data": {
+        "id": "8213",
+        "attributes": {
+          "alternativeText": "Screenshot central-cannabis.de",
+          "width": 2400,
+          "height": 1380,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/a059df99f353597a61b40f54dffe23a7.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/4d560d5e29aaff5a44a466b210460e68.png",
+              "hash": "4d560d5e29aaff5a44a466b210460e68",
+              "mime": "image/png",
+              "name": "small_Cannaleo-Shops.png",
+              "path": null,
+              "size": 95.64,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 95638
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/90f051dc9fb0e9eb9778ef771ccb55ac.png",
+              "hash": "90f051dc9fb0e9eb9778ef771ccb55ac",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo-Shops.png",
+              "path": null,
+              "size": 42.25,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 42250
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3185",
+    "column": "L\u00f6wen Apotheke, Langenfeld\n[lionsherb.de](https://lionsherb.de/)",
+    "color": "lionsherb.de",
+    "img": {
+      "data": {
+        "id": "7224",
+        "attributes": {
+          "alternativeText": "Screenshot lionsherb.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/1be55534eeea258c34949ea5cfdaf11d.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/4200753e0dc7b7de6d0cf20f405722c1.png",
+              "hash": "4200753e0dc7b7de6d0cf20f405722c1",
+              "mime": "image/png",
+              "name": "small_28.png",
+              "path": null,
+              "size": 128.41,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 128411
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/5c4bede2b8a25ce6a2a6f17d5500f9e3.png",
+              "hash": "5c4bede2b8a25ce6a2a6f17d5500f9e3",
+              "mime": "image/png",
+              "name": "thumbnail_28.png",
+              "path": null,
+              "size": 53.61,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 53613
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "2221",
+    "column": "Haag Apotheke, H\u00fcckelhoven\n[cannabisloft.de](https://cannabisloft.de/)",
+    "color": "cannabisloft.de",
+    "img": {
+      "data": {
+        "id": "4997",
+        "attributes": {
+          "alternativeText": "Screenshot cannabisloft.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/457ccbd1d433e1ab6ea9c4e926e01c47.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/19e4ef7c6fc0862e055458176151ca5c.png",
+              "hash": "19e4ef7c6fc0862e055458176151ca5c",
+              "mime": "image/png",
+              "name": "small_20.png",
+              "path": null,
+              "size": 81.25,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 81245
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/633370739efe8b6cf6b411d45ec7fccd.png",
+              "hash": "633370739efe8b6cf6b411d45ec7fccd",
+              "mime": "image/png",
+              "name": "thumbnail_20.png",
+              "path": null,
+              "size": 36.3,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 36302
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3186",
+    "column": "Rosen-Apotheke im Center, Hattersheim\n[cannabisvitalapotheke.de](https://cannabisvitalapotheke.de/)",
+    "color": "cannabisvitalapotheke.de",
+    "img": {
+      "data": {
+        "id": "7225",
+        "attributes": {
+          "alternativeText": "Screenshot cannabisvitalapotheke.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/fbb7d3b0686aeb25775ae9e34cc22641.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/1cb05f62ac91d4f58905503cbd1ae654.png",
+              "hash": "1cb05f62ac91d4f58905503cbd1ae654",
+              "mime": "image/png",
+              "name": "small_29.png",
+              "path": null,
+              "size": 81.43,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 81433
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/ba9e0f80df3998e2eed128a6ef554737.png",
+              "hash": "ba9e0f80df3998e2eed128a6ef554737",
+              "mime": "image/png",
+              "name": "thumbnail_29.png",
+              "path": null,
+              "size": 37.63,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 37626
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3189",
+    "column": "Apotheke im \u00e4rzteZentrum, Bernau am Chiemsee\n[chiemseebl\u00fcten.de](https://chiemseeblueten.de/)",
+    "color": "chiemseebl\u00fcten.de",
+    "img": {
+      "data": {
+        "id": "7229",
+        "attributes": {
+          "alternativeText": "Screenshot chiemseeblueten.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/d024859c9fdb93d0c6cb3df54f01ee9b.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/dce38e21fb7234ac7e2c7e29a6fa66a8.png",
+              "hash": "dce38e21fb7234ac7e2c7e29a6fa66a8",
+              "mime": "image/png",
+              "name": "small_32.png",
+              "path": null,
+              "size": 107.68,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 107684
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/c722a842e8736c5039550b36f443da1d.png",
+              "hash": "c722a842e8736c5039550b36f443da1d",
+              "mime": "image/png",
+              "name": "thumbnail_32.png",
+              "path": null,
+              "size": 47.84,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 47841
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3191",
+    "column": "Schwanen Apotheke, Gr\u00fcnstadt\n[greencitycannabis.de](https://greencitycannabis.de/)",
+    "color": "greencitycannabis.de",
+    "img": {
+      "data": {
+        "id": "7231",
+        "attributes": {
+          "alternativeText": "Screenshot greencitycannabis.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/6d81e620f1e84ab5ea3bf901bdf95f6b.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/f7aa1b1168ed119ad3403a1542c017d4.png",
+              "hash": "f7aa1b1168ed119ad3403a1542c017d4",
+              "mime": "image/png",
+              "name": "small_34.png",
+              "path": null,
+              "size": 147.99,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 147988
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/738abb95543c9c2b193a7a87fe33e664.png",
+              "hash": "738abb95543c9c2b193a7a87fe33e664",
+              "mime": "image/png",
+              "name": "thumbnail_34.png",
+              "path": null,
+              "size": 61.46,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 61459
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3193",
+    "column": "Taunus Apotheke Nord, Bad Homburg\n[taunus-cannabis.de](https://taunus-cannabis.de/)",
+    "color": "taunus-cannabis.de",
+    "img": {
+      "data": {
+        "id": "7233",
+        "attributes": {
+          "alternativeText": "Screenshot taunus-cannabis.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/4c195634ca29d4c314665667f4789c5f.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/a0ea7ac7a3b5ce5de30cd6d4f5cde44e.png",
+              "hash": "a0ea7ac7a3b5ce5de30cd6d4f5cde44e",
+              "mime": "image/png",
+              "name": "small_36.png",
+              "path": null,
+              "size": 137.01,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 137012
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/27d0fbb7e1ae0e64bc51678deaf52ea8.png",
+              "hash": "27d0fbb7e1ae0e64bc51678deaf52ea8",
+              "mime": "image/png",
+              "name": "thumbnail_36.png",
+              "path": null,
+              "size": 60.69,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 60692
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3194",
+    "column": "Medicon-Apotheke Stein, Stein\n[cannabis-apo-deutschland.de](https://cannabis-apo-deutschland.de/)",
+    "color": "Medicon-Apotheke Stein",
+    "img": {
+      "data": {
+        "id": "7234",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-apo-deutschland.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/fb3dd8ad032134e731f87c28b4c0e280.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/ba424e8b4260b23f07cacfe33acab173.png",
+              "hash": "ba424e8b4260b23f07cacfe33acab173",
+              "mime": "image/png",
+              "name": "small_37.png",
+              "path": null,
+              "size": 152.3,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 152302
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/1f4205457a79cfb113fe22a82d4e4506.png",
+              "hash": "1f4205457a79cfb113fe22a82d4e4506",
+              "mime": "image/png",
+              "name": "thumbnail_37.png",
+              "path": null,
+              "size": 65.1,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 65098
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3195",
+    "column": "Martinus Apotheke, Olpe\n[cannabis.martinus-apotheke.de](https://cannabis.martinus-apotheke.de/)",
+    "color": "Martinus Apotheke",
+    "img": {
+      "data": {
+        "id": "7235",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis.martinus-apotheke.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/35cefd93d2e9fe353a54aaae803f5aae.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/317a873c8d014830c1881b934891b859.png",
+              "hash": "317a873c8d014830c1881b934891b859",
+              "mime": "image/png",
+              "name": "small_38.png",
+              "path": null,
+              "size": 138.45,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 138445
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/d21014c9fc37fabf782b4a0dee6cf623.png",
+              "hash": "d21014c9fc37fabf782b4a0dee6cf623",
+              "mime": "image/png",
+              "name": "thumbnail_38.png",
+              "path": null,
+              "size": 58.38,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 58378
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3187",
+    "column": "Widder-Apotheke, Wuppertal\n[cannabis4wuppertal.de](https://cannabis4wuppertal.de/)",
+    "color": "Widder-Apotheke",
+    "img": {
+      "data": {
+        "id": "7226",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis4wuppertal.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/8e2e2c7c7863eea7252b76ddfcc59e94.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/0dd28344a31b171a7bf345045ace0678.png",
+              "hash": "0dd28344a31b171a7bf345045ace0678",
+              "mime": "image/png",
+              "name": "small_30.png",
+              "path": null,
+              "size": 101.93,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 101925
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/1bff6257d3db872a44c5fac6c082ab58.png",
+              "hash": "1bff6257d3db872a44c5fac6c082ab58",
+              "mime": "image/png",
+              "name": "thumbnail_30.png",
+              "path": null,
+              "size": 45.49,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 45488
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3196",
+    "column": "Friesen-Apotheke, Karlsruhe\n[friesen-gras.de](https://friesen-gras.de/)",
+    "color": "Friesen-Apotheke",
+    "img": {
+      "data": {
+        "id": "7236",
+        "attributes": {
+          "alternativeText": "Screenshot friesen-gras.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/c0fc2793cd7b4bd5818c36e08dd92127.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/18d2a5c06cfbf03f60183714e11dbe60.png",
+              "hash": "18d2a5c06cfbf03f60183714e11dbe60",
+              "mime": "image/png",
+              "name": "small_39.png",
+              "path": null,
+              "size": 131.29,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 131287
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/14317052a0cb7dd02ec822c6c5503e9d.png",
+              "hash": "14317052a0cb7dd02ec822c6c5503e9d",
+              "mime": "image/png",
+              "name": "thumbnail_39.png",
+              "path": null,
+              "size": 55.43,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 55431
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3527",
+    "column": "Vital Apotheke, Marburg\n[cannabismarburg.de](https://cannabismarburg.de/)",
+    "color": "cannabismarburg.de",
+    "img": {
+      "data": {
+        "id": "7976",
+        "attributes": {
+          "alternativeText": "Screenshot cannabismarburg.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/27ad201105057ff753c832b59da2e769.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/1af9e69c9bb3117417b2c2d7c004f43e.png",
+              "hash": "1af9e69c9bb3117417b2c2d7c004f43e",
+              "mime": "image/png",
+              "name": "small_48.png",
+              "path": null,
+              "size": 74,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 74002
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/e4d73b7274b9f028c594844705736555.png",
+              "hash": "e4d73b7274b9f028c594844705736555",
+              "mime": "image/png",
+              "name": "thumbnail_48.png",
+              "path": null,
+              "size": 31.21,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 31211
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3528",
+    "column": "Staufen Apotheke, Waiblingen\n[cann-ebbes.de](https://cann-ebbes.de/)",
+    "color": "cann-ebbes.de",
+    "img": {
+      "data": {
+        "id": "7977",
+        "attributes": {
+          "alternativeText": "Screenshot cann-ebbes.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/3091bbf094285714e0a540860b3424a5.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/f85111a3000ddae1a8de60c42d3f7293.png",
+              "hash": "f85111a3000ddae1a8de60c42d3f7293",
+              "mime": "image/png",
+              "name": "small_47.png",
+              "path": null,
+              "size": 48.2,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 48201
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/75f01d4d639c1459898246a38c30be22.png",
+              "hash": "75f01d4d639c1459898246a38c30be22",
+              "mime": "image/png",
+              "name": "thumbnail_47.png",
+              "path": null,
+              "size": 23.81,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 23806
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3530",
+    "column": "Dahlien-Apotheke, Bad Neuenahr\n[cannabis4me.de](https://cannabis4me.de/)",
+    "color": "cannabis4me.de",
+    "img": {
+      "data": {
+        "id": "7979",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis4me.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/490d333ed4edef7e76a3b720e2bf96be.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/8954ceeffa723b0f5ff8ac6d6a25b7d1.png",
+              "hash": "8954ceeffa723b0f5ff8ac6d6a25b7d1",
+              "mime": "image/png",
+              "name": "small_45.png",
+              "path": null,
+              "size": 57.82,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 57819
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/4f6d2c063ed6ed5ea378065eaf4fa77f.png",
+              "hash": "4f6d2c063ed6ed5ea378065eaf4fa77f",
+              "mime": "image/png",
+              "name": "thumbnail_45.png",
+              "path": null,
+              "size": 25.73,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 25726
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3531",
+    "column": "Alte Apotheke Untert\u00fcrkheim, Untert\u00fcrkheim\n[stuttgart-cannabis.com](https://stuttgart-cannabis.com/)",
+    "color": "stuttgart-cannabis.com",
+    "img": {
+      "data": {
+        "id": "7981",
+        "attributes": {
+          "alternativeText": "Screenshot stuttgart-cannabis.com",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/737ad60ff41d9396593c764c2bd1ffe6.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/b036e2e1136ac75b8d8c8726e5fa0b14.png",
+              "hash": "b036e2e1136ac75b8d8c8726e5fa0b14",
+              "mime": "image/png",
+              "name": "small_43.png",
+              "path": null,
+              "size": 35.55,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 35547
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/67e78859f14b9af41eeec98fc5b0703b.png",
+              "hash": "67e78859f14b9af41eeec98fc5b0703b",
+              "mime": "image/png",
+              "name": "thumbnail_43.png",
+              "path": null,
+              "size": 16.6,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 16597
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3533",
+    "column": "Rosen-Apotheke, Forst (Lausitz)\n[rosenapotheke-cannabis.de](https://rosenapotheke-cannabis.de/)",
+    "color": "rosenapotheke-cannabis.de",
+    "img": {
+      "data": {
+        "id": "7983",
+        "attributes": {
+          "alternativeText": "Screenshot rosenapotheke-cannabis.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/94697c6a8861b35309191b814a0bd32f.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/30862ad4801117093c86f5bdd9ebd857.png",
+              "hash": "30862ad4801117093c86f5bdd9ebd857",
+              "mime": "image/png",
+              "name": "small_41.png",
+              "path": null,
+              "size": 83.59,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 83591
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/aaada402175114d75221529baf468545.png",
+              "hash": "aaada402175114d75221529baf468545",
+              "mime": "image/png",
+              "name": "thumbnail_41.png",
+              "path": null,
+              "size": 36.44,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 36443
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3750",
+    "column": "Amts-Apotheke, Usingen\n[taunus-blueten.de](https://taunus-blueten.de/)",
+    "color": "taunus-blueten.de",
+    "img": {
+      "data": {
+        "id": "10229",
+        "attributes": {
+          "alternativeText": "Screenshot taunus-blueten.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/2e94ae1ef617ed66c9ef05ed7a7fef17.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/02293d4ba7581707fe4cc294f2e8df48.png",
+              "hash": "02293d4ba7581707fe4cc294f2e8df48",
+              "mime": "image/png",
+              "name": "small_Taunus Bl\u00fcten.png",
+              "path": null,
+              "size": 108.66,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 108656
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/9276a71d5a86080fb8b614ee5cc214e3.png",
+              "hash": "9276a71d5a86080fb8b614ee5cc214e3",
+              "mime": "image/png",
+              "name": "thumbnail_Taunus Bl\u00fcten.png",
+              "path": null,
+              "size": 47.47,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 47467
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3751",
+    "column": "Br\u00fccken Apotheke, Bamberg\n[bamberg-cannabis.de](https://bamberg-cannabis.de/)",
+    "color": "bamberg-cannabis.de",
+    "img": {
+      "data": {
+        "id": "8457",
+        "attributes": {
+          "alternativeText": "Screenshot bamberg-cannabis.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/69358dabe2eaf82ec369be12dbe882d8.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/e5f1a0b35a651f151965ace1c60a5caf.png",
+              "hash": "e5f1a0b35a651f151965ace1c60a5caf",
+              "mime": "image/png",
+              "name": "small_51.png",
+              "path": null,
+              "size": 148.88,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 148879
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/2e3ccf9cd496fca54935c392def0abc3.png",
+              "hash": "2e3ccf9cd496fca54935c392def0abc3",
+              "mime": "image/png",
+              "name": "thumbnail_51.png",
+              "path": null,
+              "size": 62.99,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 62989
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3752",
+    "column": "L\u00f6wenapotheke Zweigniederlassung der Barbara - Apotheke, Altdorf\n[cannabisversandapotheke.de](https://cannabisversandapotheke.de/)",
+    "color": "cannabisversandapotheke.de",
+    "img": {
+      "data": {
+        "id": "8458",
+        "attributes": {
+          "alternativeText": "Screenshot cannabisversandapotheke.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/69ae4c6a04d066fa0b0fac9c786c0528.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/999862b6a7cf92f6abe39cbc32fb154b.png",
+              "hash": "999862b6a7cf92f6abe39cbc32fb154b",
+              "mime": "image/png",
+              "name": "small_52.png",
+              "path": null,
+              "size": 117.47,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 117468
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/94f7c7f3a78f6b7f9f42a5f6120d04a0.png",
+              "hash": "94f7c7f3a78f6b7f9f42a5f6120d04a0",
+              "mime": "image/png",
+              "name": "thumbnail_52.png",
+              "path": null,
+              "size": 50.83,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 50826
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3753",
+    "column": "Flora-Apotheke, Kastellaun\n[castellacanna.de](https://castellacanna.de/)",
+    "color": "castellacanna.de",
+    "img": {
+      "data": {
+        "id": "8459",
+        "attributes": {
+          "alternativeText": "Screenshot castellacanna.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/6347e758fe5bca7820d961df8e3f7fb9.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/9ee28504ab9f31de9735266d1add24ed.png",
+              "hash": "9ee28504ab9f31de9735266d1add24ed",
+              "mime": "image/png",
+              "name": "small_53.png",
+              "path": null,
+              "size": 102.71,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 102708
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/562d67584d02cb433ac98b36a9f77d26.png",
+              "hash": "562d67584d02cb433ac98b36a9f77d26",
+              "mime": "image/png",
+              "name": "thumbnail_53.png",
+              "path": null,
+              "size": 42.11,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 42110
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3754",
+    "column": "Prinzen Apotheke, Frankfurt am Main\n[cannabis.prinzenapotheke.com](https://cannabis.prinzenapotheke.com/)",
+    "color": "cannabis.prinzenapotheke.com",
+    "img": {
+      "data": {
+        "id": "8460",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis.prinzenapotheke.com",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/7737e8d1006ca7fec410c86ff48b9f01.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/7b1a18f0fc0273549542b1a3e2ffda12.png",
+              "hash": "7b1a18f0fc0273549542b1a3e2ffda12",
+              "mime": "image/png",
+              "name": "small_54.png",
+              "path": null,
+              "size": 55.72,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 55722
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/a4eb6560cc9a7408a49df2c22bdc1445.png",
+              "hash": "a4eb6560cc9a7408a49df2c22bdc1445",
+              "mime": "image/png",
+              "name": "thumbnail_54.png",
+              "path": null,
+              "size": 24.21,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 24209
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3755",
+    "column": "Apotheke am Klinikum, Wolfsburg\n[aurum-herbs.de](https://wolfsburg.aurum-herbs.de/)",
+    "color": "aurum-herbs.de",
+    "img": {
+      "data": {
+        "id": "8461",
+        "attributes": {
+          "alternativeText": "Screenshot wolfsburg.aurum-herbs.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/ddfbe22a48cfe5f54f241ace0eca9fe6.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/cd40b56a1b565997165348b08412918e.png",
+              "hash": "cd40b56a1b565997165348b08412918e",
+              "mime": "image/png",
+              "name": "small_55.png",
+              "path": null,
+              "size": 75.63,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 75630
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/abd9310f740509ea1e2f9c99296af1a6.png",
+              "hash": "abd9310f740509ea1e2f9c99296af1a6",
+              "mime": "image/png",
+              "name": "thumbnail_55.png",
+              "path": null,
+              "size": 33.13,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 33126
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "1624",
+    "column": "Charly-Apotheke, Gronau\n[cannabis-apotheke-gronau.de](https://cannabis-apotheke-gronau.de/)",
+    "color": "cannabis-apotheke-gronau.de",
+    "img": {
+      "data": {
+        "id": "3835",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-apotheke-gronau.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/f261cf7e0f7f88c4a030aa199b27b627.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/284cc0f583e1c47e643f0870d5ba3505.png",
+              "hash": "284cc0f583e1c47e643f0870d5ba3505",
+              "mime": "image/png",
+              "name": "small_Cannaleo-Shop-CAG.png",
+              "path": null,
+              "size": 60.15,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 60150
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/281df85636e4b78c0252c068b06a66f0.png",
+              "hash": "281df85636e4b78c0252c068b06a66f0",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo-Shop-CAG.png",
+              "path": null,
+              "size": 27.78,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 27778
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3756",
+    "column": "Neckar-Apotheke, Mannheim\n[cannama2.de](https://cannama2.de/)",
+    "color": "cannama2.de",
+    "img": {
+      "data": {
+        "id": "8462",
+        "attributes": {
+          "alternativeText": "Screenshot cannama2.de",
+          "width": 2560,
+          "height": 1472,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/225c7b762cdc30cc0a9f67fda123e192.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/ed5fb40f9b90d06a1deda77c9ba52a78.png",
+              "hash": "ed5fb40f9b90d06a1deda77c9ba52a78",
+              "mime": "image/png",
+              "name": "small_56.png",
+              "path": null,
+              "size": 35.11,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 35107
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/fecfed36c2cdd14b1a146913e6ecc64a.png",
+              "hash": "fecfed36c2cdd14b1a146913e6ecc64a",
+              "mime": "image/png",
+              "name": "thumbnail_56.png",
+              "path": null,
+              "size": 17.44,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 17438
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  },
+  {
+    "id": "3758",
+    "column": "apo-rot Bacchus Apotheke, Neustadt\n[cannabis-weinstrasse.de](https://cannabis-weinstrasse.de/)",
+    "color": "cannabis-weinstrasse.de",
+    "img": {
+      "data": {
+        "id": "8467",
+        "attributes": {
+          "alternativeText": "Screenshot cannabis-weinstrasse.de",
+          "width": 1280,
+          "height": 736,
+          "mime": "image/png",
+          "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/6483e303dc672970f06c87c17297c180.png",
+          "formats": {
+            "small": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/b517e279ff1853a19d6b9192eac8a877.png",
+              "hash": "b517e279ff1853a19d6b9192eac8a877",
+              "mime": "image/png",
+              "name": "small_Cannaleo-Shops (1).png",
+              "path": null,
+              "size": 123.53,
+              "width": 400,
+              "height": 230,
+              "sizeInBytes": 123529
+            },
+            "thumbnail": {
+              "ext": ".png",
+              "url": "https://cannaleo.fra1.digitaloceanspaces.com/cannaleo_apo/a11e4f285ccac76d8e5b8cb686f45f54.png",
+              "hash": "a11e4f285ccac76d8e5b8cb686f45f54",
+              "mime": "image/png",
+              "name": "thumbnail_Cannaleo-Shops (1).png",
+              "path": null,
+              "size": 51.31,
+              "width": 245,
+              "height": 141,
+              "sizeInBytes": 51312
+            }
+          }
+        }
+      }
+    },
+    "imgUrl": null
+  }
+]
