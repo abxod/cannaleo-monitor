@@ -1,36 +1,46 @@
 import datetime
 import time
-from bs4 import BeautifulSoup
-from selenium import webdriver
-from selenium.webdriver.edge.service import Service
-from selenium.webdriver.edge.options import Options
-from selenium.webdriver.common.by import By
-import os
+# Selenium might not be needed at all if we don't have to simulate clicks to scrape the products.
+# We can just use requests.get(), grab the number of products, and requests.get() the page displaying all the products.
+import requests
+import os # To run inside Linux container
 import glob
 from typing import Any
+import sys
 
+# This URL could be generalized to all pharmacies using Cannaleo.
+# Landing page of below URL is product page.
+# This is a secret
 url = 'https://www.cannabisdarmstadt.de'
+CONST_PAGINATION_LIMIT = 50 # Only tested for pharmacy in Frankfurt
 
-def create_driver() -> webdriver.Edge:
-    options = Options()
-    options.add_argument('--headless') # runs the browser in the background
-    driver = webdriver.Edge(options=options)
-    return driver
-
-def fetch_page_html(driver: webdriver.Edge, url: str) -> str:
-    driver.get(url)
-    time.sleep(3) # wait for dynamic content to load
-    return driver.page_source
+# Three below functions can be extracted into a separate source file with error handling and edge cases (pharmacies with different landing pages)
+# def create_driver() -> webdriver.Edge:
+#     options = Options()
+#     options.add_argument('--headless') # runs the browser in the background
+#     driver = webdriver.Edge(options=options)
+#     return driver
+#
+# def fetch_page_html(driver: webdriver.Edge, url: str) -> str:
+#     driver.get(url)
+#     time.sleep(3) # wait for dynamic content to load
+#
+#     response = requests.get(url) # Extend with params=payload when pharmacy landing page not product page
+#
+#     return driver.page_source
 
 # When the task is to fetch all the products, you're gonna have to navigate a bit with Webdriver and then save the results somehow
-def store_page_html(page_html: str, folder: str = 'scraped_pages') -> str:
+def store_page_html(page_html: str, folder: str = '../scraped_data') -> str:
     os.makedirs(folder, exist_ok=True)
     timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M')
     filepath = f'{folder}/snapshot_{timestamp}.html'
+
     with open(filepath, 'w', encoding='utf-8') as f:
         f.write(page_html)
 
-def get_latest_snapshot(folder: str = 'scraped_pages') -> str:
+    return filepath
+
+def get_latest_snapshot(folder: str = '../scraped_data') -> str:
     files = glob.glob(os.path.join(folder, '*.html'))
     if not files:
         raise FileNotFoundError(f'No HTML files found in {folder}')
@@ -54,36 +64,37 @@ def scrape_num_products(soup: BeautifulSoup) -> str:
     # This needs to be stored somewhere in GitHub Actions cron
     return extracted_integer
 
-if __name__ == '__main__':
-    fetch_new_page = False
-
-    if fetch_new_page:
-        driver = create_driver()
-        try:
-            html = fetch_page_html(driver, url)
-            filepath = store_page_html(html)
-            print(f'Saved HTML to {filepath}')
-
-            # Use By.XPATH
-            # When scraping products: use webdriver to load in next page
-        finally:
-            driver.quit()
-    else:
-        filepath = get_latest_snapshot()
-        print(f'Reading latest saved HTML: {filepath}')
-
-        soup = parse_html_file(filepath)
-
-        # test = soup.find_all('p')
-        # for tag in test[8]:
-        #     print(f'Name: {tag.name}, Content: {tag.get_text()}')
-
-        num_products = scrape_num_products(soup)
-        print(f'Number of products: {num_products}')
-
-        # driver.get('file://C:/Users/abdul/PycharmProjects/CannabisWebScraper/scraped_pages/snapshot_2025-12-01_21-22.html')
-        # print(driver.find_elements(By.CLASS_NAME, 'MuiTypography-root.MuiTypography-body1.mui-9mqwrs'))
-
-
-    # soup = parse_html_file('filepath')
-    # print(soup.title)
+# if __name__ == '__main__':
+#     # url = sys.argv[1]
+#     fetch_new_page = True
+#
+#     if fetch_new_page:
+#         driver = create_driver()
+#         try:
+#             html = fetch_page_html(driver, url)
+#             filepath = store_page_html(html)
+#             print(f'Saved HTML to {filepath}')
+#
+#             # Use By.XPATH
+#             # When scraping products: use webdriver to load in next page
+#         finally:
+#             driver.quit()
+#     else:
+#         filepath = get_latest_snapshot()
+#         print(f'Reading latest saved HTML: {filepath}')
+#
+#         soup = parse_html_file(filepath)
+#
+#         # test = soup.find_all('p')
+#         # for tag in test[8]:
+#         #     print(f'Name: {tag.name}, Content: {tag.get_text()}')
+#
+#         num_products = scrape_num_products(soup)
+#         print(f'Number of products: {num_products}')
+#
+#         # driver.get('file://C:/Users/abdul/PycharmProjects/CannabisWebScraper/scraped_data/snapshot_2025-12-01_21-22.html')
+#         # print(driver.find_elements(By.CLASS_NAME, 'MuiTypography-root.MuiTypography-body1.mui-9mqwrs'))
+#
+#
+#     # soup = parse_html_file('filepath')
+#     # print(soup.title)
