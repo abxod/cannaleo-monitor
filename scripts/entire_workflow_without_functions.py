@@ -40,7 +40,7 @@ print("Number of products fetched:", len(all_products_json))
 products_id_and_name = [{'id': int(p['id']), 'name': p['name']} for p in all_products_json]
 
 new_product_ids_set = {int(product['id']) for product in all_products_json}
-with open('../scraped_data/latest_inventory_id_name/darmstadt.json', 'r') as f:
+with open('scraped_data/latest_inventory_id_name/darmstadt.json', 'r') as f:
     old_product_ids_names_json = json.load(f)
 old_product_ids_set = {int(product_id_name['id']) for product_id_name in old_product_ids_names_json}
 
@@ -60,7 +60,7 @@ else:
     requests.post(f'https://ntfy.sh/{topic}', data='No inventory changes observed.')
 
 # Save the extracted products and IDs (with timestamps)
-with open('../scraped_data/latest_inventory_id_name/darmstadt.json', 'w') as f:
+with open('scraped_data/latest_inventory_id_name/darmstadt.json', 'w') as f:
     json.dump(products_id_and_name, f, indent=2)
     print(f'Saved product IDs and names to darmstadt.json')
 
