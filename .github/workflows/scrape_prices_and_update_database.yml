@@ -4,6 +4,7 @@
 #   workflow_dispatch:
 #   schedule:
 #   # At minute 10 past every hour from 7 through 19 on every day-of-week from Monday through Saturday.
+#   # Update this: The script itself takes ~20 minutes to execute. GitHub itself delays execution by 10-30 minutes at least.
 #      - cron: "10 7-18 * * 1-6"
 
 # jobs:
