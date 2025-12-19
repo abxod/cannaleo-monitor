@@ -12,7 +12,7 @@ def with_retry(
             return func()
         except Exception:
             logging.error(
-                f'Failed to fetch content on attempt {attempt}.'
+                f'Failed to fetch content for {func} on attempt {attempt}.'
             )
             if attempt == attempts - 1:
                 raise

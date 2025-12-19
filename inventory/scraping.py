@@ -3,33 +3,25 @@ from typing import Any
 import logging
 import json
 import requests
-from models import Vendor, ProductOffer, VendorInfo
+
 from constants import *
+from inventory.vendor_types import Vendor, VendorInfo, ProductOffer
 
-
-def scrape_filtered_vendor_inventory(
+def get_vendor_inventory(
     vendor_id: str,
     vendor_domain: str,
-    attributes: set[str] = None,
-    availability: set[str] = None, ) -> dict[str, dict[str | Any, Any]] | None:
-    if attributes is None:
-        attributes = CONST_ALL_ATTRIBUTES
+    availability: set[str] = None,
+    with_price: bool = True, ) -> dict[str, dict[str | Any, Any]] | None:
     if availability is None:
         availability = CONST_AVAILABILITY_OPTIONS
 
-    if vendor_id not in CONST_ALL_VENDOR_IDS:
-        raise ValueError(
-            f'Vendor with vendor ID {vendor_id} does not exist.'
-        )
+    # TODO: This is not sustainable.
+    # if vendor_id not in CONST_ALL_VENDOR_IDS:
+    #     raise ValueError(
+    #         f'Vendor with vendor ID {vendor_id} does not exist.'
+    #     )
 
-    invalid_attributes = attributes - CONST_ALL_ATTRIBUTES
-    valid_attributes = attributes - invalid_attributes
-    if invalid_attributes:
-        print(
-            f'Non-existent attributes: {list(dict.fromkeys(invalid_attributes))}\nProceeding with {valid_attributes}'
-        )
-
-    if 'price' in valid_attributes:
+    if with_price:
         use_session = True
     else:
         use_session = False
@@ -98,12 +90,37 @@ def scrape_filtered_vendor_inventory(
 
         page += 1
 
+    return pid_to_prod_info
+
+
+# TODO: I think this needs retry logic if we're decreasing the waiting time
+# TODO: The condition-dependent return type is ugly.
+# This function needs a better name
+def filter_vendor_inventory(
+    vendor_id: str,
+    pid_to_prod_info: dict,
+    vendor_info: dict,
+    with_prod_info: bool,
+    attributes: set[str] = None,
+    availability: set[str] = None, ) -> tuple[Vendor, dict[str, dict[str | Any, Any]] | None] | Vendor:
+    if attributes is None:
+        attributes = CONST_ALL_ATTRIBUTES
+
+    if availability is None:
+        availability = CONST_NEW_AVAILABILITY_OPTIONS
+
+    invalid_attributes = attributes - CONST_ALL_ATTRIBUTES
+    valid_attributes = attributes - invalid_attributes
+    if invalid_attributes:
+        print(
+            f'Non-existent attributes: {list(dict.fromkeys(invalid_attributes))}\nProceeding with {valid_attributes}'
+        )
+
     filtered_inventory = {}
     for pid, prod_info in pid_to_prod_info.items():
         # TODO: Update this
-        if prod_info.get(
-            'availibility'
-        ) not in availability:
+        prod_availability = CONST_AVAILABILITY_DB_MAP[prod_info.get('availibility')]
+        if prod_availability not in availability:
             continue
 
         prod_info_normalized = {}
@@ -117,31 +134,21 @@ def scrape_filtered_vendor_inventory(
                 prod_info_normalized[k] = prod_info[k]
 
         filtered_inventory[pid] = prod_info_normalized
-    return filtered_inventory
-
-
-# TODO: I think this needs retry logic if we're decreasing the waiting time
-# TODO: THIS USES NOMINATIM. UNDO THAT.
-def scrape_vendor_inventory_price_availability(
-    vendor_id: str,
-    vendor_info: dict,
-    availability: set[str] = None, ) -> Vendor:
-    try:
-        filtered_dict = scrape_filtered_vendor_inventory(
-            vendor_id, vendor_info['domain'], attributes={'price', 'availibility'}, availability=availability
-        )
-    except Exception as e:
-        raise
 
     inventory = {}
-    for pid, info in filtered_dict.items():
+    for pid, info in filtered_inventory.items():
         inventory[pid] = ProductOffer(
             price=info['price'], availability=info['availability']
         )
 
-    return Vendor(
+    vendor = Vendor(
         vendor_id=vendor_id, info=VendorInfo.from_json(vendor_info), inventory=inventory
     )
+
+    if with_prod_info:
+        return vendor, pid_to_prod_info
+    else:
+        return vendor
 
 
 # TODO: Do you wanna define another class?
@@ -152,7 +159,7 @@ def get_vendors_information() -> dict:
     )
 
     raw_vendors_information = response.json()
-    vendor_id_to_vendor_info = {vendor['vendor_id']: {k: v for k, v in vendor.items() if k != 'vendor_id'} for vendor in
+    vendor_id_to_vendor_info = {str(vendor['vendor_id']): {k: v for k, v in vendor.items() if k != 'vendor_id'} for vendor in
                                 raw_vendors_information['data']['pharmacies']}
 
     return vendor_id_to_vendor_info

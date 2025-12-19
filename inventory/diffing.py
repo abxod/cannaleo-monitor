@@ -102,7 +102,7 @@ def build_vendor_change_logs(
             vendor_id
         )
 
-        old_filtered = {k: v for k, v in (old or {}).itmes() if k not in ('latitude', 'longitude')}
+        old_filtered = {k: v for k, v in (old or {}).items() if k not in ('latitude', 'longitude')}
         new_filtered = {k: v for k, v in (new or {}).items() if k not in ('latitude', 'longitude')}
 
         if old_filtered == new_filtered:
@@ -140,30 +140,32 @@ def build_vendor_change_logs(
                 log
             )
 
-        assert old is not None and new is not None
+        if old is None or new is None:
+            continue
 
         # Shipping addition/removal
+        # TODO: These only contain bools
         old_shipping_options = {
             'standard': old.get(
-                'shipping'
+                'shipping_cost_standard'
             ),
             'express': old.get(
-                'express'
+                'express_cost_standard'
             ),
             'local': old.get(
-                'local_courier'
+                'local_coure_cost_standard'
             ),
         }
 
         new_shipping_options = {
             'standard': new.get(
-                'shipping'
+                'shipping_cost_standard'
             ),
             'express': new.get(
-                'express'
+                'express_cost_standard'
             ),
             'local': new.get(
-                'local_courier'
+                'local_coure_cost_standard'
             ),
         }
 
@@ -220,7 +222,7 @@ def build_vendor_change_logs(
                 event_type = 'SHIPPING_PRICE_CHANGED'
                 try:
                     log = log_vendor(
-                        vendor_id, event_type, shipping_option.upper(), old_price=old['price'], new_price=new['price']
+                        vendor_id, event_type, shipping_option.upper(), old_price=old_shipping_options[shipping_option], new_price=new_shipping_options[shipping_option]
                     )
                 except ValueError:
                     logging.error(

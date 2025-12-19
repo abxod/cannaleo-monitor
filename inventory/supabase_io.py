@@ -27,7 +27,7 @@ def insert_logs_into_db(
     response = client.table(table_name).insert(events_logs).execute()
 
     if response.error:
-        raise RuntimeError(f'Supabase insert failed: {response.error.message}')
+        raise RuntimeError(f'Supabase insert failed: {response.error.message}.')
 
     return response.data
 
