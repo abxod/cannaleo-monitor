@@ -2,7 +2,7 @@ name: Fetch current inventory
 
 on:
   workflow_dispatch:
-  schedule:https://github.com/copilot
+  schedule:
      - cron: '0 */6 * * *'
 
 jobs:
