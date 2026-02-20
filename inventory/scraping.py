@@ -1,13 +1,16 @@
-import sys
+import os
 import time
 from typing import Any
 import logging
 import json
 import requests
 
-from inventory.constants import CONST_AVAILABILITY_OPTIONS, CONST_EMAIL, CONST_PASSWORD, CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, CONST_FLOWZZ_PRODUCT_URL
-from inventory.vendor_types import Vendor, VendorInfo, ProductOffer
+from constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, CONST_FLOWZZ_PRODUCT_URL
+from vendor_types import ProductOffer
 from common.retry import with_retry
+
+EMAIL = os.environ['EMAIL_ADDRESS']
+PASSWORD = os.environ['PASSWORD']
 
 def get_vendor_inventory(
     vendor_id: str,
@@ -39,8 +42,8 @@ def get_vendor_inventory(
 
         session.post(
             login_url, data={
-                'email': CONST_EMAIL,
-                'password': CONST_PASSWORD,
+                'email': EMAIL,
+                'password': PASSWORD,
                 'csrfToken': csrf_token
             }
         )

@@ -1,3 +1,4 @@
+import os
 import sys
 import logging
 import time
@@ -6,9 +7,9 @@ from supabase_io import load_vendors_information, insert_logs_into_db, upload_to
 from scraping import get_vendors_information, scrape_vendor_inventory_and_products
 from common.retry import with_retry
 from models import VendorDirectory
-from vendor_types import Vendor, VendorInfo, ShippingOptions, ProductOffer
-from diffing import build_inventory_change_logs, build_vendor_change_logs
-from constants import CONST_SUPABASE_URL, CONST_SUPABASE_KEY, CONST_EXCLUDED_VENDOR_IDS
+from vendor_types import Vendor, VendorInfo
+from diffing import build_vendor_change_logs
+from constants import CONST_EXCLUDED_VENDOR_IDS
 from service import process_vendor, merge_all_products, get_coordinates_of_affected_vendors
 
 """
@@ -25,6 +26,9 @@ from service import process_vendor, merge_all_products, get_coordinates_of_affec
 # TODO: The source files are getting really coupled
 # TODO: Use 'type' instead of the convoluted 'dict[str, Any]' syntax
 
+SUPABASE_URL = os.environ['SUPABASE_URL']
+SUPABASE_KEY = os.environ['SUPABASE_KEY']
+
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # TODO: Figure out logging
@@ -34,7 +38,7 @@ if __name__ == '__main__':
     logging.info('Starting program')
 
     client = supabase.create_client(
-        CONST_SUPABASE_URL, CONST_SUPABASE_KEY
+        SUPABASE_URL, SUPABASE_KEY
     )
 
     logging.info('Starting fetch of vendor information from Supabase.')

@@ -1,6 +1,4 @@
-from geopy.geocoders import Nominatim
 import time
-import json  # delete after
 from common.geo import Coordinate
 from geopy.exc import GeocoderTimedOut
 

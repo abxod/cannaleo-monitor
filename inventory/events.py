@@ -1,5 +1,5 @@
 from datetime import datetime, timezone
-from inventory.constants import CONST_PRODUCT_EVENT_TYPES, CONST_VENDOR_EVENT_TYPES
+from constants import CONST_PRODUCT_EVENT_TYPES, CONST_VENDOR_EVENT_TYPES
 
 def log_product(vendor_id, pid, event_type, old_price=None, new_price=None, old_avail=None, new_avail=None):
     if event_type not in CONST_PRODUCT_EVENT_TYPES:

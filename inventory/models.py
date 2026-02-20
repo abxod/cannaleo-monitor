@@ -1,15 +1,9 @@
 import sys
-import time
-from dataclasses import dataclass, field
-from typing import TypedDict, Tuple, Optional, Any
+from dataclasses import dataclass
 import logging
-from inventory.supabase_io import load_vendor_inventories, load_vendors_information
+from supabase_io import load_vendor_inventories, load_vendors_information
 from common.retry import with_retry
-from inventory.constants import CONST_AVAILABILITY_OPTIONS
-import inventory.events
-from common.geo import Coordinate
-from inventory.scraping import get_vendor_inventory, filter_vendor_inventory
-from inventory.vendor_types import Vendor, ProductOffer, VendorInfo
+from vendor_types import Vendor, ProductOffer, VendorInfo
 
 
 @dataclass

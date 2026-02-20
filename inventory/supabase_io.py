@@ -1,7 +1,7 @@
 import supabase
 import json
 import logging
-from inventory.constants import CONST_SUPABASE_VENDORS_FILE_PATH, CONST_SUPABASE_VENDOR_INVENTORIES_FILE_PATH, \
+from constants import CONST_SUPABASE_VENDORS_FILE_PATH, CONST_SUPABASE_VENDOR_INVENTORIES_FILE_PATH, \
     CONST_DB_TABLES
 from common.retry import with_retry
 
