@@ -1,0 +1,32 @@
+name: Fetch current inventory
+
+on:
+  workflow_dispatch:
+  schedule:
+     - cron: '0 */6 * * *'
+
+jobs:
+  setup-repository:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v6.1.0
+      with:
+        python-version: "3.12.6"
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run script
+      env:
+          # NTFY_TOPIC: ${{ secrets.NTFY_TOPIC }}
+          EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS}}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          SUPABASE_URL: ${{ secrets.SUPABASE_URL}}
+          SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+
+      run: python inventory/main.py
