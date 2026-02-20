@@ -2,10 +2,10 @@ import time
 import logging
 from geopy.geocoders import Nominatim
 
-from inventory.models import ProductOffer
+from models import ProductOffer
 from common.geo import Coordinate
 from diffing import build_inventory_change_logs
-from inventory.constants import CONST_VENDOR_EVENT_TYPES_FOR_UPDATES, CONST_EXCLUDED_VENDOR_IDS
+from constants import CONST_VENDOR_EVENT_TYPES_FOR_UPDATES, CONST_EXCLUDED_VENDOR_IDS
 from common.address_to_coordinates_map import map_address_to_coordinates
 
 
