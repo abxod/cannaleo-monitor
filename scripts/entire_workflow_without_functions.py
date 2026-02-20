@@ -1,9 +1,9 @@
 import requests
 import json
 import os
-import datetime
+from inventory.constants import CONST_NTFY_TOPIC
 
-os.environ['NTFY_TOPIC'] = 'cqDge025U6rTAogEqvVR'
+os.environ['NTFY_TOPIC'] = CONST_NTFY_TOPIC
 topic = os.environ['NTFY_TOPIC']
 
 page = 1
@@ -15,9 +15,14 @@ base_api_request_url = 'https://www.cannaleo.de/api/products'
 all_products_json = []
 while True:
     # Add sort and availability parameters
-    payload = {'pagination[page]': page, 'pagination[pageSize]': CONST_PAGE_SIZE_LIMIT, 'vend': vendor_id}
+    payload = {
+        'pagination[page]': page,
+        'pagination[pageSize]': CONST_PAGE_SIZE_LIMIT,
+        'vend': vendor_id,
+        'avail': 0
+    }
     response = requests.get(base_api_request_url, params=payload)
-    response_url = response.url
+    print(response.url)
     if response.status_code != 200:
         raise Exception(f'Request failed with {response.status_code}')
 
@@ -37,20 +42,23 @@ while True:
 print("Number of products fetched:", len(all_products_json))
 
 # Extract the ID and the name of each strain from the JSON object into a new JSON object
-products_id_and_name = [{'id': int(p['id']), 'name': p['name']} for p in all_products_json]
+products_id_and_name = [{
+                            'id': int(p['id']),
+                            'name': p['name']
+                        } for p in all_products_json]
 
 new_product_ids_set = {int(product['id']) for product in all_products_json}
-with open('scraped_data/latest_inventory_id_name/darmstadt.json', 'r') as f:
+with open('scraped_data_OLD/latest_inventory_id_name/darmstadt.json', 'r') as f:
     old_product_ids_names_json = json.load(f)
 old_product_ids_set = {int(product_id_name['id']) for product_id_name in old_product_ids_names_json}
 
 added = new_product_ids_set - old_product_ids_set
 removed = old_product_ids_set - new_product_ids_set
 
-new_product_ids_set.add(2163)
 print('New product IDs:', new_product_ids_set)
 
 # If set not empty
+# This is being triggered even when the product is already in stock
 if added:
     if 2163 in new_product_ids_set:
         requests.post(f'https://ntfy.sh/{topic}', data='Drapalin Full Gas is back in stock 🌿'.encode(encoding='utf-8'))
@@ -60,13 +68,13 @@ else:
     requests.post(f'https://ntfy.sh/{topic}', data='No inventory changes observed.')
 
 # Save the extracted products and IDs (with timestamps)
-with open('scraped_data/latest_inventory_id_name/darmstadt.json', 'w') as f:
+with open('scraped_data_OLD/latest_inventory_id_name/darmstadt.json', 'w') as f:
     json.dump(products_id_and_name, f, indent=2)
     print(f'Saved product IDs and names to darmstadt.json')
 
 # # store_inventory
 # pharmacy = 'darmstadt'
-# folder = '../scraped_data/pharmacy_current_inventories'
+# folder = '../scraped_data_OLD/pharmacy_current_inventories'
 #
 # os.makedirs(folder, exist_ok=True)
 # timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H_%M')
