@@ -28,11 +28,10 @@ jobs:
           PASSWORD: ${{ secrets.PASSWORD }}
           SUPABASE_URL: ${{ secrets.SUPABASE_URL}}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
+      run: python inventory/main.py
 
     - name: Upload execution logs
       uses: actions/upload-artifact@v4
       with:
         name: execution_logs
         path: inventory/execution_logs.log
-
-      run: python inventory/main.py
