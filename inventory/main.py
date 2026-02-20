@@ -29,7 +29,7 @@ from service import process_vendor, merge_all_products, get_coordinates_of_affec
 SUPABASE_URL = os.environ['SUPABASE_URL']
 SUPABASE_KEY = os.environ['SUPABASE_KEY']
 
-logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(filename='execution_logs.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # TODO: Figure out logging
 # TODO: This is a mish-mash of procedural and object-oriented programming
