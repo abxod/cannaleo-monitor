@@ -1,26 +1,43 @@
 import supabase
 import json
-from inventory.constants import CONST_SUPABASE_VENDORS_FILE_PATH, CONST_SUPABASE_VENDOR_INVENTORIES_FILE_PATH, CONST_DB_TABLES
+import logging
+from inventory.constants import CONST_SUPABASE_VENDORS_FILE_PATH, CONST_SUPABASE_VENDOR_INVENTORIES_FILE_PATH, \
+    CONST_DB_TABLES
+from common.retry import with_retry
 
-def load_vendors_information(client: supabase.Client, file_path: str = CONST_SUPABASE_VENDORS_FILE_PATH) -> dict:
-    response = client.storage.from_(
-        'vendors_info_bucket'
-    ).download(file_path)
+
+def load_vendors_information(
+    client: supabase.Client,
+    file_path: str = CONST_SUPABASE_VENDORS_FILE_PATH, ) -> dict:
+    try:
+        response = with_retry(
+            lambda: client.storage.from_(
+                'vendors_info_bucket'
+            ).download(file_path)
+            )
+    except Exception:
+        logging.error('Failed to fetch vendor information from DB.')
+        raise
 
     json_str = response.decode('utf-8')
-    return json.loads(json_str) if json_str else {}
+    return json.loads(json_str)
 
-def load_vendor_inventories(client: supabase.Client, file_path: str = CONST_SUPABASE_VENDOR_INVENTORIES_FILE_PATH) -> dict:
+
+def load_vendor_inventories(
+    client: supabase.Client,
+    file_path: str = CONST_SUPABASE_VENDOR_INVENTORIES_FILE_PATH, ) -> dict:
     response = client.storage.from_(
         'inventories_bucket'
     ).download(file_path)
 
     json_str = response.decode('utf-8')
-    return json.loads(json_str) if json_str else {}
+    return json.loads(json_str)
+
 
 def insert_logs_into_db(
-    client: supabase.Client, table_name: str, events_logs: list[dict]
-):
+    client: supabase.Client,
+    table_name: str,
+    events_logs: list[dict], ):
     if table_name not in CONST_DB_TABLES:
         raise ValueError(f'Database table \'{table_name}\' does not exist.')
 
@@ -31,13 +48,20 @@ def insert_logs_into_db(
 
     return response.data
 
-def upload_to_bucket(conn: supabase.Client, bucket_name: str, file_path: str, json_dict: dict):
+
+def upload_to_bucket(
+    conn: supabase.Client,
+    bucket_name: str,
+    file_path: str,
+    json_dict: dict, ):
     json_bytes = json.dumps(json_dict).encode('utf-8')
 
     try:
-        response = conn.storage.from_(bucket_name).upload(file_path, json_bytes, {
-            'upsert': 'true'
-        })
+        response = conn.storage.from_(bucket_name).upload(
+            file_path, json_bytes, {
+                'upsert': 'true'
+            }
+            )
 
         return {
             'success': True,

@@ -1,11 +1,13 @@
+import sys
 import time
 from typing import Any
 import logging
 import json
 import requests
 
-from constants import *
+from inventory.constants import CONST_AVAILABILITY_OPTIONS, CONST_EMAIL, CONST_PASSWORD, CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, CONST_FLOWZZ_PRODUCT_URL
 from inventory.vendor_types import Vendor, VendorInfo, ProductOffer
+from common.retry import with_retry
 
 def get_vendor_inventory(
     vendor_id: str,
@@ -13,13 +15,7 @@ def get_vendor_inventory(
     availability: set[str] = None,
     with_price: bool = True, ) -> dict[str, dict[str | Any, Any]] | None:
     if availability is None:
-        availability = CONST_AVAILABILITY_OPTIONS
-
-    # TODO: This is not sustainable.
-    # if vendor_id not in CONST_ALL_VENDOR_IDS:
-    #     raise ValueError(
-    #         f'Vendor with vendor ID {vendor_id} does not exist.'
-    #     )
+        availability = CONST_NEW_AVAILABILITY_OPTIONS
 
     if with_price:
         use_session = True
@@ -33,9 +29,13 @@ def get_vendor_inventory(
         csrf_url = f'https://{vendor_domain}/api/auth/csrf'
         login_url = f'https://{vendor_domain}/api/auth/callback/credentials'
 
-        csrf_token = session.get(
-            csrf_url
-        ).json()['csrfToken']
+        try:
+            csrf_token = with_retry(lambda: session.get(
+                csrf_url
+            ).json()['csrfToken'])
+        except Exception:
+            logging.error(f'Failed to get CSRF token for {vendor_id}.')
+            raise
 
         session.post(
             login_url, data={
@@ -54,7 +54,7 @@ def get_vendor_inventory(
     pid_to_prod_info = {}
     while True:
         time.sleep(
-            0.5
+            1.5
         )  # Don't disrupt service
 
         payload = {
@@ -68,12 +68,12 @@ def get_vendor_inventory(
             response = request_fn(
                 base_url, params=payload
             )
-        except Exception as e:
+        except Exception:
             raise
 
         if response.status_code != 200:
             raise Exception(
-                f'Request failed with {response.status_code}'
+                f'Request failed  with {response.status_code}'
             )
 
         json_obj = response.json()
@@ -90,19 +90,21 @@ def get_vendor_inventory(
 
         page += 1
 
+    logging.info(f'Fetched inventory from vendor ID {vendor_id}')
     return pid_to_prod_info
 
 
 # TODO: I think this needs retry logic if we're decreasing the waiting time
 # TODO: The condition-dependent return type is ugly.
-# This function needs a better name
+# TODO: This function needs a better name
+# TODO: Does this function belong here?
+# TODO: This function should not return a Vendor object. It should return an inventory with specific look-ups filtered out
 def filter_vendor_inventory(
     vendor_id: str,
     pid_to_prod_info: dict,
     vendor_info: dict,
-    with_prod_info: bool,
     attributes: set[str] = None,
-    availability: set[str] = None, ) -> tuple[Vendor, dict[str, dict[str | Any, Any]] | None] | Vendor:
+    availability: set[str] = None, ) -> dict[str, Any]:
     if attributes is None:
         attributes = CONST_ALL_ATTRIBUTES
 
@@ -135,21 +137,19 @@ def filter_vendor_inventory(
 
         filtered_inventory[pid] = prod_info_normalized
 
-    inventory = {}
-    for pid, info in filtered_inventory.items():
-        inventory[pid] = ProductOffer(
-            price=info['price'], availability=info['availability']
-        )
+    return filtered_inventory
 
-    vendor = Vendor(
-        vendor_id=vendor_id, info=VendorInfo.from_json(vendor_info), inventory=inventory
-    )
 
-    if with_prod_info:
-        return vendor, pid_to_prod_info
-    else:
-        return vendor
+def extract_price_availability(pid_to_prod_info: dict) -> dict[str, ProductOffer]:
+    filtered_inventory = {}
+    for pid, prod_info in pid_to_prod_info.items():
+        product_offer: ProductOffer = {
+            'price': prod_info['price'],
+            'availability': CONST_AVAILABILITY_DB_MAP[prod_info['availibility']]
+        }
+        filtered_inventory[str(pid)] = product_offer
 
+    return filtered_inventory
 
 # TODO: Do you wanna define another class?
 # TODO: This returns every attribute for each vendor. I think we have to change the structure to match that of the existing. No? Supabase also stores every attribute. It comes down to the diffing functions.
@@ -163,3 +163,70 @@ def get_vendors_information() -> dict:
                                 raw_vendors_information['data']['pharmacies']}
 
     return vendor_id_to_vendor_info
+
+def scrape_vendor_inventory_and_products(
+    vendor_id: str,
+    vendor_info: dict,
+) -> tuple[dict, dict]:
+    try:
+        pid_to_prod_info = get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True)
+    except Exception as e:
+        raise
+    filtered_inventory = extract_price_availability(pid_to_prod_info)
+    return filtered_inventory, pid_to_prod_info
+
+def fetch_comments_from_strains():
+    with open('../scraped_data/inventories/all_products.json', 'r') as f:
+        pid_to_prod_info = json.load(f)
+
+    with open('../scraped_data/all_reviews_test_2.json', 'r') as f:
+        products_with_fetched_reviews = json.load(f)
+
+    with open('../scripts/temp.txt', 'r') as f:
+        malformed_pids = json.loads(f.read())
+
+    pid_to_reviews = products_with_fetched_reviews.copy()
+
+    for pid, prod_info in pid_to_prod_info.items():
+        if pid != '2':
+            continue
+
+        prod_reviews = []
+        start = 0
+        while True:
+            url_tail = f'{pid}?t=1&id={pid}&start={start}'
+            full_url = CONST_FLOWZZ_PRODUCT_URL + url_tail
+
+            try:
+                response = with_retry(lambda: requests.get(full_url))
+            except Exception:
+                print(f'Failed to fetch comments of strain {pid} at {full_url}')
+                break
+
+            if response.status_code != 200:
+                print(f'Request failed against {full_url} with {response.status_code}.')
+                break
+
+            reviews_page = response.json()['message']['data']['ratings']
+
+            if len(reviews_page) == 0:
+                break
+
+            prod_reviews.extend(reviews_page)
+
+            if len(reviews_page) < 10:
+                break
+
+            start += 10
+            time.sleep(2)
+
+        pid_to_reviews[pid] = prod_reviews
+        if len(prod_reviews) != 0:
+            print(f'Fetched reviews for {pid}.')
+
+        time.sleep(2)
+
+    with open('../scraped_data/all_reviews_test_2.json', 'w') as f:
+        json.dump(pid_to_reviews, f, indent=2)
+
+    print('Successfully fetched and stored all reviews.')

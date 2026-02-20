@@ -42,11 +42,11 @@ def map_address_to_coordinates(
         return None
 
 # if __name__ == '__main__':
-#     with open('../scraped_data/vendors/cannaleo_test_updated.json', 'r') as f:
+#     with open('../scraped_data_OLD/vendors/cannaleo_test_updated.json', 'r') as f:
 #         vendor_id_to_vendor_info = json.load(f)
 #
 #     try:
-#         with open('../scraped_data/vendors/vendor_id_to_coordinates.json', 'r') as f:
+#         with open('../scraped_data_OLD/vendors/vendor_id_to_coordinates.json', 'r') as f:
 #             vendor_id_to_coordinates = json.load(f)
 #     except FileNotFoundError:
 #         vendor_id_to_coordinates = {}
@@ -70,7 +70,7 @@ def map_address_to_coordinates(
 #             coordinates = with_retry(lambda: map_address_to_coordinates(geolocator, street, postalcode, city))
 #         except Exception as e:
 #             print(f"Failed to get coordinates of {vendor_info.get('official_name', vendor_id)}: {e}")
-#             with open('../scraped_data/vendors/vendor_id_to_coordinates.json', 'w') as f:
+#             with open('../scraped_data_OLD/vendors/vendor_id_to_coordinates.json', 'w') as f:
 #                 json.dump(vendor_id_to_coordinates, f, indent=2)
 #             continue
 #
@@ -88,7 +88,7 @@ def map_address_to_coordinates(
 #         )
 #
 #         # Save after each successful geocode to preserve progress
-#         with open('../scraped_data/vendors/vendor_id_to_coordinates.json', 'w') as f:
+#         with open('../scraped_data_OLD/vendors/vendor_id_to_coordinates.json', 'w') as f:
 #             json.dump(
 #                 vendor_id_to_coordinates,
 #                 f,

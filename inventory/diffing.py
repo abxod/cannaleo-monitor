@@ -1,7 +1,7 @@
 import logging
-from events import log_product, log_vendor
-from models import ProductOffer
-from constants import CONST_SHIPPING_OPTIONS_KEYS
+from inventory.events import log_product, log_vendor
+from inventory.models import ProductOffer
+from inventory.constants import CONST_SHIPPING_OPTIONS_KEYS
 
 
 # TODO: These functions can still be refactored (past ADDED/REMOVED)
@@ -19,33 +19,21 @@ def build_inventory_change_logs(
     )
 
     # Added
-    for pid in new_pids - old_pids:
-        event_type = 'ADDED'
-        try:
-            log = log_product(
-                vendor_id, pid, event_type
-            )
-        except ValueError:
-            logging.error(
-                f'Event type {event_type} is not defined. Skipping.'
-            )
-            continue
+    added = new_pids - old_pids
+    for pid in added:
+        log = log_product(
+            vendor_id, pid, 'ADDED'
+        )
         logs.append(
             log
         )
 
     # Removed
-    for pid in old_pids - new_pids:
-        event_type = 'REMOVED'
-        try:
-            log = log_product(
-                vendor_id, pid, event_type
-            )
-        except ValueError:
-            logging.error(
-                f'Event type {event_type} is not defined. Skipping.'
-            )
-            continue
+    removed = old_pids - new_pids
+    for pid in removed:
+        log = log_product(
+            vendor_id, pid, 'REMOVED'
+        )
         logs.append(
             log
         )
@@ -55,31 +43,17 @@ def build_inventory_change_logs(
         new = new_inventory[pid]
 
         if old['availability'] != new['availability']:
-            event_type = 'AVAILABILITY'
-            try:
-                log = log_product(
-                    vendor_id, pid, event_type, old_avail=old['availability'], new_avail=new['availability']
-                )
-            except ValueError:
-                logging.error(
-                    f'Event type {event_type} is not defined. Skipping.'
-                )
-                continue
+            log = log_product(
+                vendor_id, pid, 'AVAILABILITY', old_avail=old['availability'], new_avail=new['availability']
+            )
             logs.append(
                 log
             )
 
         if old['price'] != new['price']:
-            event_type = 'PRICE'
-            try:
-                log = log_product(
-                    vendor_id, pid, event_type, old_price=old['price'], new_price=new['price']
-                )
-            except ValueError:
-                logging.error(
-                    f'Event type {event_type} is not defined. Skipping.'
-                )
-                continue
+            log = log_product(
+                vendor_id, pid, 'PRICE', old_price=old['price'], new_price=new['price']
+            )
             logs.append(
                 log
             )
@@ -92,9 +66,19 @@ def build_vendor_change_logs(
     new_vendors: dict, ) -> list:
     logs = []
 
-    all_vendor_ids = old_vendors.keys() | new_vendors.keys()
+    # Added vendors
+    added_vendor_ids = new_vendors.keys() - old_vendors.keys()
+    for vendor_id in added_vendor_ids:
+        log = log_vendor(vendor_id, 'VENDOR_ADDED')
+        logs.append(log)
 
-    for vendor_id in all_vendor_ids:
+    # Removed vendors
+    removed_vendor_ids = old_vendors.keys() - new_vendors.keys()
+    for vendor_id in removed_vendor_ids:
+        log = log_vendor(vendor_id, 'VENDOR_REMOVED')
+        logs.append(log)
+
+    for vendor_id in old_vendors.keys() & new_vendors.keys():
         old = old_vendors.get(
             vendor_id
         )
@@ -107,38 +91,6 @@ def build_vendor_change_logs(
 
         if old_filtered == new_filtered:
             continue
-
-        # Vendor added
-        if old is None and new is not None:
-            event_type = 'VENDOR_ADDED'
-            try:
-                log = log_vendor(
-                    vendor_id, 'VENDOR_ADDED'
-                )
-            except ValueError:
-                logging.error(
-                    f'Event type {event_type} is not defined. Skipping.'
-                )
-                continue
-            logs.append(
-                log
-            )
-
-        # Vendor removed
-        if old is not None and new is None:
-            event_type = 'VENDOR_REMOVED'
-            try:
-                log = log_vendor(
-                    vendor_id, 'VENDOR_REMOVED'
-                )
-            except ValueError:
-                logging.error(
-                    f'Event type {event_type} is not defined. Skipping.'
-                )
-                continue
-            logs.append(
-                log
-            )
 
         if old is None or new is None:
             continue
@@ -169,69 +121,58 @@ def build_vendor_change_logs(
             ),
         }
 
-        added = {opt for opt in CONST_SHIPPING_OPTIONS_KEYS if old_shipping_options.get(
+        added_shipping_options = {opt for opt in CONST_SHIPPING_OPTIONS_KEYS if old_shipping_options.get(
             opt
         ) is None and new_shipping_options.get(
             opt
         ) is not None}
-        removed = {opt for opt in CONST_SHIPPING_OPTIONS_KEYS if old_shipping_options.get(
+        removed_shipping_options = {opt for opt in CONST_SHIPPING_OPTIONS_KEYS if old_shipping_options.get(
             opt
         ) is not None and new_shipping_options.get(
             opt
         ) is None}
 
         if len(
-            added
+            added_shipping_options
         ) != 0:
-            for shipping_option in added:
-                event_type = 'SHIPPING_OPTION_ADDED'
-                try:
-                    log = log_vendor(
-                        vendor_id, event_type, shipping_option
-                    )
-                except ValueError:
-                    logging.error(
-                        f'Event type {event_type} is not defined. Skipping.'
-                    )
-                    continue
+            for shipping_option in added_shipping_options:
+                log = log_vendor(
+                    vendor_id, 'SHIPPING_OPTION_ADDED', shipping_option
+                )
                 logs.append(
                     log
                 )
 
         if len(
-            removed
+            removed_shipping_options
         ) != 0:
-            for shipping_option in removed:
-                event_type = 'SHIPPING_OPTION_REMOVED'
-                try:
-                    log = log_vendor(
-                        vendor_id, event_type, shipping_option
-                    )
-                except ValueError:
-                    logging.error(
-                        f'Event type {event_type} is not defined. Skipping.'
-                    )
-                    continue
+            for shipping_option in removed_shipping_options:
+                log = log_vendor(
+                    vendor_id, 'SHIPPING_OPTION_REMOVED', shipping_option
+                )
                 logs.append(
                     log
                 )
 
         # Shipping price changes
         for shipping_option in CONST_SHIPPING_OPTIONS_KEYS:
-            if old_shipping_options[shipping_option] != new_shipping_options[shipping_option]:
-                event_type = 'SHIPPING_PRICE_CHANGED'
-                try:
-                    log = log_vendor(
-                        vendor_id, event_type, shipping_option.upper(), old_price=old_shipping_options[shipping_option], new_price=new_shipping_options[shipping_option]
-                    )
-                except ValueError:
-                    logging.error(
-                        f'Event type {event_type} is not defined. Skipping.'
-                    )
-                    continue
-                logs.append(
-                    log
-                )
+            old_price = old_shipping_options[shipping_option]
+            new_price = new_shipping_options[shipping_option]
+
+            # Do not consider added or removed shipping options
+            if old_price is None or new_price is None:
+                continue
+
+            # No pricing changes
+            if old_price == new_price:
+                continue
+
+            log = log_vendor(
+                vendor_id, 'SHIPPING_PRICE_CHANGED', shipping_option.upper(), old_price=old_shipping_options[shipping_option], new_price=new_shipping_options[shipping_option]
+            )
+            logs.append(
+                log
+            )
 
         # Location change
         if old['street'] != new['street']:

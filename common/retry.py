@@ -10,12 +10,14 @@ def with_retry(
     ):
         try:
             return func()
-        except Exception:
+        except Exception as e:
+            # TODO: 'func' has to be replaced with vendor ID or something
             logging.error(
-                f'Failed to fetch content for {func} on attempt {attempt}.'
+                f'{e}: {func} raised an exception on attempt {attempt}.'
             )
             if attempt == attempts - 1:
                 raise
             time.sleep(
                 2 ** attempt
             )
+    return None
