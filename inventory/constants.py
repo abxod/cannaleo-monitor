@@ -43,7 +43,7 @@ CONST_TELEMEDICINE_OFFERS_NORMALIZATION_MAP = {
 }
 CONST_ROW_PATTERN = r"\|\s*(.*?)\s*\|\s*(.*?)\s*\|"
 CONST_PRICE_PATTERN = r"(?P<prefix>ab\s*)?(?P<amount>\d{1,3}(?:,\d{2})?)\s*€"
-CONST_AVAILABILITY_DB_MAP = {
+CONST_AVAILABILITY_DB_MAP: dict[int, str] = {
     1: 'available_immediately',
     2: 'available',
     3: 'limited_stock',

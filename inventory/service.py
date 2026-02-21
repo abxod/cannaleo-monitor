@@ -10,12 +10,12 @@ from common.address_to_coordinates_map import map_address_to_coordinates
 
 
 def process_vendor(
-    vendor_id: str,
+    vendor_id: int,
     old_inventory: dict[str, ProductOffer],
     new_inventory: dict[str, ProductOffer], ) -> list | None:
 
     if old_inventory is None or new_inventory is None:
-        logging.info(f'Vendor ID {vendor_id} is no. No product logs need to be created') # What?
+        logging.info(f'Vendor ID {vendor_id} is no. No product logs need to be created')  # What?
 
     if new_inventory == old_inventory:
         logging.info(f'No inventory changes observed for {vendor_id}.')
@@ -23,7 +23,7 @@ def process_vendor(
 
     logging.info(f'Building inventory change logs for vendor ID {vendor_id}.')
     logs = build_inventory_change_logs(
-        int(vendor_id), new_inventory, old_inventory, )
+        vendor_id, new_inventory, old_inventory, )
 
     return logs
 
@@ -38,6 +38,7 @@ def merge_all_products(
         new_pid_to_info[pid] = prod_info
     return new_pid_to_info
 
+
 # TODO: This can be refactored further
 def get_coordinates_of_affected_vendors(
     vendor_logs: list,
@@ -48,9 +49,10 @@ def get_coordinates_of_affected_vendors(
     vendor_added_or_location_logs = [log for log in vendor_logs if log[
         'event_type'] in CONST_VENDOR_EVENT_TYPES_FOR_UPDATES]  # Vendor IDs whose coordinates need to be fetched
 
-    vendor_ids_added_or_location = {log['vendor_id'] for log in vendor_added_or_location_logs} - CONST_EXCLUDED_VENDOR_IDS
+    vendor_ids_added_or_location = {log['vendor_id'] for log in
+                                    vendor_added_or_location_logs} - CONST_EXCLUDED_VENDOR_IDS
 
-    spatially_unaffected_vendor_ids = new_vendor_id_to_info.keys() - vendor_ids_added_or_location - CONST_EXCLUDED_VENDOR_IDS # Vendor IDs whose coordinates do not need to be fetched
+    spatially_unaffected_vendor_ids = new_vendor_id_to_info.keys() - vendor_ids_added_or_location - CONST_EXCLUDED_VENDOR_IDS  # Vendor IDs whose coordinates do not need to be fetched
 
     for vendor_id in spatially_unaffected_vendor_ids:
         vendor_info = new_vendor_id_to_info[vendor_id].copy()
@@ -64,7 +66,7 @@ def get_coordinates_of_affected_vendors(
         geolocator = Nominatim(
             user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0',
             timeout=10
-            )
+        )
 
         for vendor_id in vendor_ids_added_or_location:
             if vendor_id in CONST_EXCLUDED_VENDOR_IDS:
@@ -78,12 +80,19 @@ def get_coordinates_of_affected_vendors(
                 time.sleep(5)
                 coordinates = map_address_to_coordinates(geolocator, street, postalcode, city)
             except Exception as e:
-                logging.error(f'Failed to get coordinates of {new_vendor_id_to_info[vendor_id].get('official_name', vendor_id)}: {e}')
+                logging.error(
+                    f'Failed to get coordinates of {new_vendor_id_to_info[vendor_id].get('official_name', vendor_id)}: {e}'
+                    )
                 continue
 
             if coordinates is None:
-                logging.warning(f'Malformed address \'{street + ', ' + postalcode + ' ' + city}\' for vendor ID {vendor_id} could not be found.')
-                coordinates: Coordinate = {'latitude': 0, 'longitude': 0}
+                logging.warning(
+                    f'Malformed address \'{street + ', ' + postalcode + ' ' + city}\' for vendor ID {vendor_id} could not be found.'
+                    )
+                coordinates: Coordinate = {
+                    'latitude': 0,
+                    'longitude': 0
+                }
 
             updated_vendor_id_to_info[vendor_id] = {
                 **new_vendor_id_to_info[vendor_id],

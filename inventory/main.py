@@ -28,7 +28,11 @@ from service import process_vendor, merge_all_products, get_coordinates_of_affec
 SUPABASE_URL = os.environ['SUPABASE_URL']
 SUPABASE_KEY = os.environ['SUPABASE_KEY']
 
-logging.basicConfig(filename='execution_logs.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    filename='execution_logs.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+    )
 
 # TODO: Figure out logging
 # TODO: The function is getting ugly. Refactor it again
@@ -91,7 +95,7 @@ if __name__ == '__main__':
     all_pid_to_prod_info = {}
     for vendor_id, vendor_info in new_vendor_id_to_info.items():
         # TODO: I think checking whether old_inventories.vendors.get(vendor_id) for nullability makes more sense and is more explicit here.
-        old_vendor = old_inventories.vendors.get(str(vendor_id))
+        old_vendor = old_inventories.vendors.get(vendor_id)
 
         # TODO: if old_vendor is not None?
         if old_vendor is None:
@@ -100,14 +104,18 @@ if __name__ == '__main__':
 
         try:
             filtered_inventory, new_pid_to_info = scrape_vendor_inventory_and_products(vendor_id, vendor_info)
-            new_vendor = Vendor(vendor_id=vendor_id, info=VendorInfo.from_json(vendor_info), inventory=filtered_inventory)
+            new_vendor = Vendor(
+                vendor_id=vendor_id,
+                info=VendorInfo.from_json(vendor_info),
+                inventory=filtered_inventory
+                )
         except Exception as e:
             # TODO: This should use exponential backoff instead of continuing directly.
             logging.error(f'{e}: Skipping due to failed vendor fetch for vendor ID {vendor_id}.')
             continue
 
         result = process_vendor(
-            str(vendor_id), old_vendor.inventory, new_vendor.inventory
+            int(vendor_id), old_vendor.inventory, new_vendor.inventory
         )
 
         if result is None:
@@ -125,14 +133,17 @@ if __name__ == '__main__':
 
         # Update all_products
         all_pid_to_prod_info = merge_all_products(
-            all_pid_to_prod_info,
-            new_pid_to_info
+            all_pid_to_prod_info, new_pid_to_info
         )
 
         # Be polite
         time.sleep(2)
 
-    updated_vendors_information = get_coordinates_of_affected_vendors(vendor_logs, old_vendor_id_to_info, new_vendor_id_to_info)
+    updated_vendors_information = get_coordinates_of_affected_vendors(
+        vendor_logs,
+        old_vendor_id_to_info,
+        new_vendor_id_to_info
+        )
 
     logging.info('Pushing product logs to Supabase.')
     if product_logs:
@@ -147,51 +158,51 @@ if __name__ == '__main__':
                 f'Failed to insert product event logs: {e}.', exc_info=True
             )
 
-    # logging.info('Pushing vendor logs to Supabase.')
-    # if vendor_logs:
-    #     try:
-    #         with_retry(
-    #             lambda: insert_logs_into_db(client, 'vendor_events', vendor_logs)
-    #         )
-    #     except Exception as e:
-    #         logging.error(
-    #             f'Failed to insert vendor event logs: {e}.', exc_info=True
-    #         )
-    #
-    # logging.info('Updating vendor_inventories.json on Supabase.')
-    # if vendor_inventories:
-    #     try:
-    #         with_retry(
-    #             lambda: upload_to_bucket(
-    #                 client, 'inventories_bucket', 'vendors_inventories.json', vendor_inventories
-    #             )
-    #         )
-    #     except Exception as e:
-    #         logging.error(
-    #             f'Failed to upload vendor inventories: {e}', exc_info=True
-    #         )
-    #
-    # logging.info('Updating all_products.json on Supabase.')
-    # if all_pid_to_prod_info:
-    #     try:
-    #         with_retry(
-    #             lambda: upload_to_bucket(
-    #                 client, 'all_products_bucket', 'all_current_products.json', all_pid_to_prod_info
-    #             )
-    #         )
-    #     except Exception as e:
-    #         logging.error(f'Failed to upload all products: {e}', exc_info=True)
-    #
-    # if updated_vendors_information:
-    #     try:
-    #         with_retry(
-    #             lambda: upload_to_bucket(
-    #                 client, 'vendors_info_bucket', 'vendors_information.json', updated_vendors_information
-    #             )
-    #         )
-    #     except Exception as e:
-    #         logging.error(
-    #             f'Failed to update vendors\' information: {e}', exc_info=True
-    #         )
+    logging.info('Pushing vendor logs to Supabase.')
+    if vendor_logs:
+        try:
+            with_retry(
+                lambda: insert_logs_into_db(client, 'vendor_events', vendor_logs)
+            )
+        except Exception as e:
+            logging.error(
+                f'Failed to insert vendor event logs: {e}.', exc_info=True
+            )
+
+    logging.info('Updating vendor_inventories.json on Supabase.')
+    if vendor_inventories:
+        try:
+            with_retry(
+                lambda: upload_to_bucket(
+                    client, 'inventories_bucket', 'vendors_inventories.json', vendor_inventories
+                )
+            )
+        except Exception as e:
+            logging.error(
+                f'Failed to upload vendor inventories: {e}', exc_info=True
+            )
+
+    logging.info('Updating all_products.json on Supabase.')
+    if all_pid_to_prod_info:
+        try:
+            with_retry(
+                lambda: upload_to_bucket(
+                    client, 'all_products_bucket', 'all_current_products.json', all_pid_to_prod_info
+                )
+            )
+        except Exception as e:
+            logging.error(f'Failed to upload all products: {e}', exc_info=True)
+
+    if updated_vendors_information:
+        try:
+            with_retry(
+                lambda: upload_to_bucket(
+                    client, 'vendors_info_bucket', 'vendors_information.json', updated_vendors_information
+                )
+            )
+        except Exception as e:
+            logging.error(
+                f'Failed to update vendors\' information: {e}', exc_info=True
+            )
 
     logging.info(f'Terminating script')

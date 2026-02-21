@@ -10,7 +10,7 @@ class ProductOffer(
     TypedDict
 ):
     price: float
-    availability: int
+    availability: str
 
 
 class ShippingOptions(
