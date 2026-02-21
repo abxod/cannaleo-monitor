@@ -1480,3 +1480,1420 @@ TypeError: Object of type datetime is not JSON serializable
 2026-02-21 13:28:26,537 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/inventories_bucket/vendor_inventories.json "HTTP/2 400 Bad Request"
 2026-02-21 13:28:26,540 - ERROR - {'statusCode': 404, 'error': not_found, 'message': Object not found}: <function VendorDirectory.from_supabase.<locals>.<lambda> at 0x0000023026B9E840> raised an exception on attempt 2.
 2026-02-21 13:28:26,541 - ERROR - Failed to fetch vendor inventories: {'statusCode': 404, 'error': not_found, 'message': Object not found}
+2026-02-21 13:39:17,237 - INFO - Starting program
+2026-02-21 13:39:17,238 - INFO - Creating Supabase client
+2026-02-21 13:39:17,741 - INFO - Starting fetch of vendor information from Supabase.
+2026-02-21 13:39:18,197 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/vendors_info_bucket/vendors_information.json "HTTP/2 200 OK"
+2026-02-21 13:39:18,221 - INFO - Starting fetch of vendor information from API
+2026-02-21 13:39:18,560 - INFO - Starting build of vendor change logs.
+2026-02-21 13:39:18,563 - INFO - Starting fetch of old vendor inventories from Supabase.
+2026-02-21 13:39:18,966 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/inventories_bucket/vendors_inventories.json "HTTP/2 200 OK"
+2026-02-21 13:39:19,111 - INFO - Old vendor inventories successfully fetched from Supabase
+2026-02-21 13:39:19,112 - INFO - Vendor with vendor ID 8 instantiated.
+2026-02-21 13:39:19,112 - INFO - Vendor with vendor ID 52 instantiated.
+2026-02-21 13:39:19,112 - INFO - Vendor with vendor ID 54 instantiated.
+2026-02-21 13:39:19,113 - INFO - Vendor with vendor ID 57 instantiated.
+2026-02-21 13:39:19,113 - INFO - Vendor with vendor ID 76 instantiated.
+2026-02-21 13:39:19,113 - INFO - Vendor with vendor ID 53 instantiated.
+2026-02-21 13:39:19,113 - INFO - Vendor with vendor ID 56 instantiated.
+2026-02-21 13:39:19,113 - INFO - Vendor with vendor ID 37 instantiated.
+2026-02-21 13:39:19,113 - INFO - Vendor with vendor ID 59 instantiated.
+2026-02-21 13:39:19,114 - INFO - Vendor with vendor ID 60 instantiated.
+2026-02-21 13:39:19,114 - INFO - Vendor with vendor ID 39 instantiated.
+2026-02-21 13:39:19,114 - INFO - Vendor with vendor ID 73 instantiated.
+2026-02-21 13:39:19,114 - INFO - Vendor with vendor ID 68 instantiated.
+2026-02-21 13:39:19,115 - INFO - Vendor with vendor ID 69 instantiated.
+2026-02-21 13:39:19,115 - INFO - Vendor with vendor ID 70 instantiated.
+2026-02-21 13:39:19,115 - INFO - Vendor with vendor ID 78 instantiated.
+2026-02-21 13:39:19,116 - INFO - Vendor with vendor ID 74 instantiated.
+2026-02-21 13:39:19,117 - INFO - Vendor with vendor ID 23 instantiated.
+2026-02-21 13:39:19,117 - INFO - Vendor with vendor ID 80 instantiated.
+2026-02-21 13:39:19,118 - INFO - Vendor with vendor ID 79 instantiated.
+2026-02-21 13:39:19,118 - INFO - Vendor with vendor ID 94 instantiated.
+2026-02-21 13:39:19,118 - INFO - Vendor with vendor ID 85 instantiated.
+2026-02-21 13:39:19,118 - INFO - Vendor with vendor ID 88 instantiated.
+2026-02-21 13:39:19,118 - INFO - Vendor with vendor ID 35 instantiated.
+2026-02-21 13:39:19,119 - INFO - Vendor with vendor ID 33 instantiated.
+2026-02-21 13:39:19,119 - INFO - Vendor with vendor ID 100 instantiated.
+2026-02-21 13:39:19,119 - INFO - Vendor with vendor ID 101 instantiated.
+2026-02-21 13:39:19,119 - INFO - Vendor with vendor ID 102 instantiated.
+2026-02-21 13:39:19,119 - INFO - Vendor with vendor ID 106 instantiated.
+2026-02-21 13:39:19,119 - INFO - Vendor with vendor ID 108 instantiated.
+2026-02-21 13:39:19,120 - INFO - Vendor with vendor ID 110 instantiated.
+2026-02-21 13:39:19,120 - INFO - Vendor with vendor ID 115 instantiated.
+2026-02-21 13:39:19,120 - INFO - Vendor with vendor ID 116 instantiated.
+2026-02-21 13:39:19,120 - INFO - Vendor with vendor ID 119 instantiated.
+2026-02-21 13:39:19,120 - INFO - Vendor with vendor ID 120 instantiated.
+2026-02-21 13:39:19,120 - INFO - Vendor with vendor ID 122 instantiated.
+2026-02-21 13:39:19,120 - INFO - Vendor with vendor ID 129 instantiated.
+2026-02-21 13:39:19,120 - INFO - Vendor with vendor ID 131 instantiated.
+2026-02-21 13:39:19,121 - INFO - Vendor with vendor ID 132 instantiated.
+2026-02-21 13:39:19,121 - INFO - Vendor with vendor ID 133 instantiated.
+2026-02-21 13:39:19,121 - INFO - Vendor with vendor ID 134 instantiated.
+2026-02-21 13:39:19,121 - INFO - Vendor with vendor ID 135 instantiated.
+2026-02-21 13:39:19,122 - INFO - Vendor with vendor ID 139 instantiated.
+2026-02-21 13:39:19,122 - INFO - Vendor with vendor ID 141 instantiated.
+2026-02-21 13:39:19,122 - INFO - Vendor with vendor ID 144 instantiated.
+2026-02-21 13:39:19,122 - INFO - Vendor with vendor ID 145 instantiated.
+2026-02-21 13:39:19,122 - INFO - Vendor with vendor ID 146 instantiated.
+2026-02-21 13:39:19,122 - INFO - Vendor with vendor ID 149 instantiated.
+2026-02-21 13:39:19,122 - INFO - Vendor with vendor ID 151 instantiated.
+2026-02-21 13:39:19,123 - INFO - Vendor with vendor ID 153 instantiated.
+2026-02-21 13:39:19,123 - INFO - Vendor with vendor ID 155 instantiated.
+2026-02-21 13:39:19,123 - INFO - Vendor with vendor ID 156 instantiated.
+2026-02-21 13:39:19,123 - INFO - Vendor with vendor ID 157 instantiated.
+2026-02-21 13:39:19,123 - INFO - Vendor with vendor ID 159 instantiated.
+2026-02-21 13:39:19,124 - INFO - Vendor with vendor ID 160 instantiated.
+2026-02-21 13:39:19,124 - INFO - Vendor with vendor ID 162 instantiated.
+2026-02-21 13:39:19,124 - INFO - Vendor with vendor ID 166 instantiated.
+2026-02-21 13:39:19,149 - INFO - Vendor with vendor ID 169 instantiated.
+2026-02-21 13:39:19,149 - INFO - Vendor with vendor ID 170 instantiated.
+2026-02-21 13:39:19,149 - INFO - Vendor with vendor ID 175 instantiated.
+2026-02-21 13:39:19,150 - INFO - Vendor with vendor ID 177 instantiated.
+2026-02-21 13:39:19,150 - INFO - Vendor with vendor ID 178 instantiated.
+2026-02-21 13:39:19,150 - INFO - Vendor with vendor ID 179 instantiated.
+2026-02-21 13:39:19,150 - INFO - Vendor with vendor ID 180 instantiated.
+2026-02-21 13:39:19,150 - INFO - Vendor with vendor ID 181 instantiated.
+2026-02-21 13:39:19,151 - INFO - Vendor with vendor ID 182 instantiated.
+2026-02-21 13:39:19,151 - INFO - Vendor with vendor ID 183 instantiated.
+2026-02-21 13:39:19,151 - INFO - Vendor with vendor ID 184 instantiated.
+2026-02-21 13:39:19,151 - INFO - Vendor with vendor ID 186 instantiated.
+2026-02-21 13:39:19,152 - INFO - Vendor with vendor ID 187 instantiated.
+2026-02-21 13:39:19,152 - INFO - Vendor with vendor ID 188 instantiated.
+2026-02-21 13:39:19,152 - INFO - Vendor with vendor ID 189 instantiated.
+2026-02-21 13:39:19,152 - INFO - Vendor with vendor ID 191 instantiated.
+2026-02-21 13:39:19,152 - INFO - Vendor with vendor ID 192 instantiated.
+2026-02-21 13:39:19,152 - INFO - Vendor with vendor ID 193 instantiated.
+2026-02-21 13:39:19,153 - INFO - Vendor with vendor ID 194 instantiated.
+2026-02-21 13:39:19,153 - INFO - Vendor with vendor ID 195 instantiated.
+2026-02-21 13:39:19,153 - INFO - Vendor with vendor ID 198 instantiated.
+2026-02-21 13:39:19,153 - INFO - Vendor with vendor ID 202 instantiated.
+2026-02-21 13:39:19,153 - INFO - Vendor with vendor ID 204 instantiated.
+2026-02-21 13:39:19,153 - INFO - Vendor with vendor ID 207 instantiated.
+2026-02-21 13:39:19,153 - INFO - Vendor with vendor ID 211 instantiated.
+2026-02-21 13:39:19,153 - INFO - Vendor with vendor ID 212 instantiated.
+2026-02-21 13:39:19,153 - INFO - Vendor with vendor ID 214 instantiated.
+2026-02-21 13:39:19,155 - INFO - Vendor with vendor ID 215 instantiated.
+2026-02-21 13:39:19,155 - INFO - Vendor with vendor ID 216 instantiated.
+2026-02-21 13:39:19,155 - INFO - Vendor with vendor ID 222 instantiated.
+2026-02-21 13:39:19,155 - INFO - Vendor with vendor ID 224 instantiated.
+2026-02-21 13:39:19,155 - INFO - Vendor with vendor ID 225 instantiated.
+2026-02-21 13:39:19,156 - INFO - Vendor with vendor ID 228 instantiated.
+2026-02-21 13:39:19,156 - INFO - Vendor with vendor ID 229 instantiated.
+2026-02-21 13:39:19,156 - INFO - Vendor with vendor ID 230 instantiated.
+2026-02-21 13:39:19,156 - INFO - Vendor with vendor ID 233 instantiated.
+2026-02-21 13:39:19,156 - INFO - Vendor with vendor ID 234 instantiated.
+2026-02-21 13:39:19,156 - INFO - Vendor with vendor ID 235 instantiated.
+2026-02-21 13:39:19,157 - INFO - Vendor with vendor ID 236 instantiated.
+2026-02-21 13:39:19,157 - INFO - Vendor with vendor ID 237 instantiated.
+2026-02-21 13:39:19,157 - INFO - Vendor with vendor ID 238 instantiated.
+2026-02-21 13:39:19,157 - INFO - Vendor with vendor ID 242 instantiated.
+2026-02-21 13:39:19,158 - INFO - Vendor with vendor ID 243 instantiated.
+2026-02-21 13:39:19,158 - INFO - Vendor with vendor ID 244 instantiated.
+2026-02-21 13:39:19,158 - INFO - Vendor with vendor ID 245 instantiated.
+2026-02-21 13:39:19,158 - INFO - Vendor with vendor ID 248 instantiated.
+2026-02-21 13:39:19,158 - INFO - Vendor with vendor ID 249 instantiated.
+2026-02-21 13:39:19,159 - INFO - Vendor with vendor ID 250 instantiated.
+2026-02-21 13:39:19,159 - INFO - Vendor with vendor ID 251 instantiated.
+2026-02-21 13:39:19,159 - INFO - Vendor with vendor ID 252 instantiated.
+2026-02-21 13:39:19,159 - INFO - Vendor with vendor ID 254 instantiated.
+2026-02-21 13:39:19,159 - INFO - Vendor with vendor ID 255 instantiated.
+2026-02-21 13:39:19,159 - INFO - Vendor with vendor ID 256 instantiated.
+2026-02-21 13:39:19,159 - INFO - Vendor with vendor ID 258 instantiated.
+2026-02-21 13:39:19,160 - INFO - Vendor with vendor ID 268 instantiated.
+2026-02-21 13:39:19,160 - INFO - Vendor with vendor ID 274 instantiated.
+2026-02-21 13:39:19,160 - INFO - Vendor with vendor ID 276 instantiated.
+2026-02-21 13:39:19,160 - INFO - Vendor with vendor ID 277 instantiated.
+2026-02-21 13:39:19,160 - INFO - Vendor with vendor ID 278 instantiated.
+2026-02-21 13:39:19,160 - INFO - Vendor with vendor ID 279 instantiated.
+2026-02-21 13:39:19,161 - INFO - Vendor with vendor ID 280 instantiated.
+2026-02-21 13:39:19,161 - INFO - Vendor with vendor ID 281 instantiated.
+2026-02-21 13:39:19,161 - INFO - Vendor with vendor ID 282 instantiated.
+2026-02-21 13:39:19,161 - INFO - Vendor with vendor ID 283 instantiated.
+2026-02-21 13:39:19,161 - INFO - Vendor with vendor ID 285 instantiated.
+2026-02-21 13:39:19,161 - INFO - Vendor with vendor ID 286 instantiated.
+2026-02-21 13:39:19,161 - INFO - Vendor with vendor ID 290 instantiated.
+2026-02-21 13:39:19,161 - INFO - Vendor with vendor ID 291 instantiated.
+2026-02-21 13:39:19,162 - INFO - Vendor with vendor ID 297 instantiated.
+2026-02-21 13:39:19,162 - INFO - Vendor with vendor ID 298 instantiated.
+2026-02-21 13:39:19,162 - INFO - Vendor with vendor ID 299 instantiated.
+2026-02-21 13:39:19,162 - INFO - Vendor with vendor ID 302 instantiated.
+2026-02-21 13:39:19,162 - INFO - Vendor with vendor ID 303 instantiated.
+2026-02-21 13:39:19,162 - INFO - Vendor with vendor ID 304 instantiated.
+2026-02-21 13:39:19,162 - INFO - Vendor with vendor ID 306 instantiated.
+2026-02-21 13:39:19,162 - INFO - Vendor with vendor ID 311 instantiated.
+2026-02-21 13:39:19,163 - INFO - Vendor with vendor ID 312 instantiated.
+2026-02-21 13:39:19,163 - INFO - Vendor with vendor ID 317 instantiated.
+2026-02-21 13:39:19,163 - INFO - Vendor with vendor ID 318 instantiated.
+2026-02-21 13:39:19,163 - INFO - Vendor with vendor ID 320 instantiated.
+2026-02-21 13:39:19,163 - INFO - Vendor with vendor ID 321 instantiated.
+2026-02-21 13:39:19,163 - INFO - Vendor with vendor ID 323 instantiated.
+2026-02-21 13:39:19,163 - INFO - Vendor with vendor ID 326 instantiated.
+2026-02-21 13:39:19,163 - INFO - Vendor with vendor ID 330 instantiated.
+2026-02-21 13:39:19,163 - INFO - Vendor with vendor ID 331 instantiated.
+2026-02-21 13:39:19,164 - INFO - Vendor with vendor ID 332 instantiated.
+2026-02-21 13:39:19,164 - INFO - Vendor with vendor ID 333 instantiated.
+2026-02-21 13:39:19,164 - INFO - Vendor with vendor ID 336 instantiated.
+2026-02-21 13:39:19,164 - INFO - Vendor with vendor ID 348 instantiated.
+2026-02-21 13:39:19,164 - INFO - Vendor with vendor ID 350 instantiated.
+2026-02-21 13:39:19,164 - INFO - Vendor with vendor ID 354 instantiated.
+2026-02-21 13:39:19,164 - INFO - Vendor with vendor ID 356 instantiated.
+2026-02-21 13:39:19,164 - INFO - Vendor with vendor ID 358 instantiated.
+2026-02-21 13:39:19,165 - INFO - Vendor with vendor ID 360 instantiated.
+2026-02-21 13:39:19,165 - INFO - Vendor with vendor ID 361 instantiated.
+2026-02-21 13:39:19,165 - INFO - Vendor with vendor ID 362 instantiated.
+2026-02-21 13:39:19,165 - INFO - Vendor with vendor ID 363 instantiated.
+2026-02-21 13:39:19,165 - INFO - Vendor with vendor ID 366 instantiated.
+2026-02-21 13:39:19,165 - INFO - Vendor with vendor ID 373 instantiated.
+2026-02-21 13:39:19,165 - INFO - Vendor with vendor ID 374 instantiated.
+2026-02-21 13:39:19,165 - INFO - Vendor with vendor ID 375 instantiated.
+2026-02-21 13:39:19,165 - INFO - Vendor with vendor ID 376 instantiated.
+2026-02-21 13:39:19,166 - INFO - Vendor with vendor ID 383 instantiated.
+2026-02-21 13:39:19,166 - INFO - Vendor with vendor ID 385 instantiated.
+2026-02-21 13:39:19,166 - INFO - Vendor with vendor ID 386 instantiated.
+2026-02-21 13:39:19,166 - INFO - Vendor with vendor ID 387 instantiated.
+2026-02-21 13:39:19,166 - INFO - Vendor with vendor ID 389 instantiated.
+2026-02-21 13:39:19,166 - INFO - Vendor with vendor ID 391 instantiated.
+2026-02-21 13:39:19,166 - INFO - Vendor with vendor ID 393 instantiated.
+2026-02-21 13:39:19,166 - INFO - Vendor with vendor ID 395 instantiated.
+2026-02-21 13:39:19,166 - INFO - Vendor with vendor ID 396 instantiated.
+2026-02-21 13:39:19,167 - INFO - Vendor with vendor ID 400 instantiated.
+2026-02-21 13:39:19,167 - INFO - Vendor with vendor ID 403 instantiated.
+2026-02-21 13:39:19,167 - INFO - Vendor with vendor ID 406 instantiated.
+2026-02-21 13:39:19,167 - INFO - Vendor with vendor ID 407 instantiated.
+2026-02-21 13:39:19,167 - INFO - Vendor with vendor ID 412 instantiated.
+2026-02-21 13:39:19,167 - INFO - Vendor with vendor ID 413 instantiated.
+2026-02-21 13:39:19,167 - INFO - Vendor with vendor ID 414 instantiated.
+2026-02-21 13:39:19,167 - INFO - Vendor with vendor ID 415 instantiated.
+2026-02-21 13:39:19,167 - INFO - Vendor with vendor ID 416 instantiated.
+2026-02-21 13:39:19,168 - INFO - Vendor with vendor ID 417 instantiated.
+2026-02-21 13:39:19,168 - INFO - Vendor with vendor ID 418 instantiated.
+2026-02-21 13:39:19,168 - INFO - Vendor with vendor ID 419 instantiated.
+2026-02-21 13:39:19,168 - INFO - Vendor with vendor ID 420 instantiated.
+2026-02-21 13:39:19,168 - INFO - Vendor with vendor ID 421 instantiated.
+2026-02-21 13:39:19,168 - INFO - Vendor with vendor ID 426 instantiated.
+2026-02-21 13:39:19,168 - INFO - Vendor with vendor ID 427 instantiated.
+2026-02-21 13:39:19,168 - INFO - Vendor with vendor ID 431 instantiated.
+2026-02-21 13:39:19,168 - INFO - Vendor with vendor ID 432 instantiated.
+2026-02-21 13:39:19,169 - INFO - Vendor with vendor ID 433 instantiated.
+2026-02-21 13:39:19,169 - INFO - Vendor with vendor ID 435 instantiated.
+2026-02-21 13:39:19,169 - INFO - Vendor with vendor ID 436 instantiated.
+2026-02-21 13:39:19,169 - INFO - Vendor with vendor ID 440 instantiated.
+2026-02-21 13:39:19,169 - INFO - Vendor with vendor ID 441 instantiated.
+2026-02-21 13:39:19,170 - INFO - Vendor with vendor ID 442 instantiated.
+2026-02-21 13:39:19,170 - INFO - Vendor with vendor ID 443 instantiated.
+2026-02-21 13:39:19,170 - INFO - Vendor with vendor ID 445 instantiated.
+2026-02-21 13:39:19,170 - INFO - Vendor with vendor ID 449 instantiated.
+2026-02-21 13:39:19,170 - INFO - Vendor with vendor ID 450 instantiated.
+2026-02-21 13:39:19,170 - INFO - Vendor with vendor ID 452 instantiated.
+2026-02-21 13:39:19,170 - INFO - Vendor with vendor ID 454 instantiated.
+2026-02-21 13:39:19,171 - INFO - Vendor with vendor ID 464 instantiated.
+2026-02-21 13:39:19,171 - INFO - Vendor with vendor ID 470 instantiated.
+2026-02-21 13:39:19,171 - INFO - Vendor with vendor ID 471 instantiated.
+2026-02-21 13:39:19,171 - INFO - Vendor with vendor ID 473 instantiated.
+2026-02-21 13:39:19,171 - INFO - Vendor with vendor ID 476 instantiated.
+2026-02-21 13:39:19,171 - INFO - Vendor with vendor ID 478 instantiated.
+2026-02-21 13:39:19,171 - INFO - Vendor with vendor ID 479 instantiated.
+2026-02-21 13:39:19,171 - INFO - Vendor with vendor ID 481 instantiated.
+2026-02-21 13:39:19,171 - INFO - Vendor with vendor ID 486 instantiated.
+2026-02-21 13:39:19,172 - INFO - Vendor with vendor ID 492 instantiated.
+2026-02-21 13:40:00,466 - INFO - Fetched inventory from vendor ID 8
+2026-02-21 13:40:00,472 - INFO - Building inventory change logs for vendor ID 8.
+2026-02-21 13:40:06,204 - INFO - Pushing product logs to Supabase.
+2026-02-21 13:40:25,480 - ERROR - Object of type datetime is not JSON serializable: <function <lambda> at 0x000002428F77DC60> raised an exception on attempt 0.
+2026-02-21 13:40:26,493 - ERROR - Object of type datetime is not JSON serializable: <function <lambda> at 0x000002428F77DC60> raised an exception on attempt 1.
+2026-02-21 13:40:28,503 - ERROR - Object of type datetime is not JSON serializable: <function <lambda> at 0x000002428F77DC60> raised an exception on attempt 2.
+2026-02-21 13:40:28,505 - ERROR - Failed to insert product event logs: Object of type datetime is not JSON serializable.
+Traceback (most recent call last):
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\inventory\main.py", line 149, in <module>
+    with_retry(
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\common\retry.py", line 12, in with_retry
+    return func()
+           ^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\inventory\main.py", line 150, in <lambda>
+    lambda: insert_logs_into_db(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\inventory\supabase_io.py", line 43, in insert_logs_into_db
+    response = client.table(table_name).insert(events_logs).execute()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\.venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 47, in execute
+    r = self.request.send()
+        ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\.venv\Lib\site-packages\postgrest\base_request_builder.py", line 81, in send
+    return self.session.request(
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\.venv\Lib\site-packages\httpx\_client.py", line 812, in request
+    request = self.build_request(
+              ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\.venv\Lib\site-packages\httpx\_client.py", line 378, in build_request
+    return Request(
+           ^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\.venv\Lib\site-packages\httpx\_models.py", line 408, in __init__
+    headers, stream = encode_request(
+                      ^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\.venv\Lib\site-packages\httpx\_content.py", line 216, in encode_request
+    return encode_json(json)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\.venv\Lib\site-packages\httpx\_content.py", line 177, in encode_json
+    body = json_dumps(
+           ^^^^^^^^^^^
+  File "C:\Users\abdul\AppData\Local\Programs\Python\Python312\Lib\json\__init__.py", line 238, in dumps
+    **kw).encode(obj)
+          ^^^^^^^^^^^
+  File "C:\Users\abdul\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 200, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 258, in iterencode
+    return _iterencode(o, 0)
+           ^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\AppData\Local\Programs\Python\Python312\Lib\json\encoder.py", line 180, in default
+    raise TypeError(f'Object of type {o.__class__.__name__} '
+TypeError: Object of type datetime is not JSON serializable
+2026-02-21 13:40:28,593 - INFO - Terminating script
+2026-02-21 13:40:41,939 - INFO - Starting program
+2026-02-21 13:40:41,940 - INFO - Creating Supabase client
+2026-02-21 13:40:42,399 - INFO - Starting fetch of vendor information from Supabase.
+2026-02-21 13:40:42,825 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/vendors_info_bucket/vendors_information.json "HTTP/2 200 OK"
+2026-02-21 13:40:42,849 - INFO - Starting fetch of vendor information from API
+2026-02-21 13:40:43,174 - INFO - Starting build of vendor change logs.
+2026-02-21 13:40:43,176 - INFO - Starting fetch of old vendor inventories from Supabase.
+2026-02-21 13:40:43,254 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/inventories_bucket/vendors_inventories.json "HTTP/2 200 OK"
+2026-02-21 13:40:43,375 - INFO - Old vendor inventories successfully fetched from Supabase
+2026-02-21 13:40:43,377 - INFO - Vendor with vendor ID 8 instantiated.
+2026-02-21 13:40:43,378 - INFO - Vendor with vendor ID 52 instantiated.
+2026-02-21 13:40:43,378 - INFO - Vendor with vendor ID 54 instantiated.
+2026-02-21 13:40:43,378 - INFO - Vendor with vendor ID 57 instantiated.
+2026-02-21 13:40:43,379 - INFO - Vendor with vendor ID 76 instantiated.
+2026-02-21 13:40:43,379 - INFO - Vendor with vendor ID 53 instantiated.
+2026-02-21 13:40:43,379 - INFO - Vendor with vendor ID 56 instantiated.
+2026-02-21 13:40:43,380 - INFO - Vendor with vendor ID 37 instantiated.
+2026-02-21 13:40:43,381 - INFO - Vendor with vendor ID 59 instantiated.
+2026-02-21 13:40:43,381 - INFO - Vendor with vendor ID 60 instantiated.
+2026-02-21 13:40:43,381 - INFO - Vendor with vendor ID 39 instantiated.
+2026-02-21 13:40:43,382 - INFO - Vendor with vendor ID 73 instantiated.
+2026-02-21 13:40:43,382 - INFO - Vendor with vendor ID 68 instantiated.
+2026-02-21 13:40:43,382 - INFO - Vendor with vendor ID 69 instantiated.
+2026-02-21 13:40:43,382 - INFO - Vendor with vendor ID 70 instantiated.
+2026-02-21 13:40:43,383 - INFO - Vendor with vendor ID 78 instantiated.
+2026-02-21 13:40:43,384 - INFO - Vendor with vendor ID 74 instantiated.
+2026-02-21 13:40:43,385 - INFO - Vendor with vendor ID 23 instantiated.
+2026-02-21 13:40:43,385 - INFO - Vendor with vendor ID 80 instantiated.
+2026-02-21 13:40:43,386 - INFO - Vendor with vendor ID 79 instantiated.
+2026-02-21 13:40:43,386 - INFO - Vendor with vendor ID 94 instantiated.
+2026-02-21 13:40:43,386 - INFO - Vendor with vendor ID 85 instantiated.
+2026-02-21 13:40:43,386 - INFO - Vendor with vendor ID 88 instantiated.
+2026-02-21 13:40:43,387 - INFO - Vendor with vendor ID 35 instantiated.
+2026-02-21 13:40:43,387 - INFO - Vendor with vendor ID 33 instantiated.
+2026-02-21 13:40:43,387 - INFO - Vendor with vendor ID 100 instantiated.
+2026-02-21 13:40:43,387 - INFO - Vendor with vendor ID 101 instantiated.
+2026-02-21 13:40:43,387 - INFO - Vendor with vendor ID 102 instantiated.
+2026-02-21 13:40:43,387 - INFO - Vendor with vendor ID 106 instantiated.
+2026-02-21 13:40:43,387 - INFO - Vendor with vendor ID 108 instantiated.
+2026-02-21 13:40:43,388 - INFO - Vendor with vendor ID 110 instantiated.
+2026-02-21 13:40:43,388 - INFO - Vendor with vendor ID 115 instantiated.
+2026-02-21 13:40:43,388 - INFO - Vendor with vendor ID 116 instantiated.
+2026-02-21 13:40:43,388 - INFO - Vendor with vendor ID 119 instantiated.
+2026-02-21 13:40:43,388 - INFO - Vendor with vendor ID 120 instantiated.
+2026-02-21 13:40:43,388 - INFO - Vendor with vendor ID 122 instantiated.
+2026-02-21 13:40:43,388 - INFO - Vendor with vendor ID 129 instantiated.
+2026-02-21 13:40:43,388 - INFO - Vendor with vendor ID 131 instantiated.
+2026-02-21 13:40:43,389 - INFO - Vendor with vendor ID 132 instantiated.
+2026-02-21 13:40:43,389 - INFO - Vendor with vendor ID 133 instantiated.
+2026-02-21 13:40:43,389 - INFO - Vendor with vendor ID 134 instantiated.
+2026-02-21 13:40:43,389 - INFO - Vendor with vendor ID 135 instantiated.
+2026-02-21 13:40:43,390 - INFO - Vendor with vendor ID 139 instantiated.
+2026-02-21 13:40:43,390 - INFO - Vendor with vendor ID 141 instantiated.
+2026-02-21 13:40:43,390 - INFO - Vendor with vendor ID 144 instantiated.
+2026-02-21 13:40:43,390 - INFO - Vendor with vendor ID 145 instantiated.
+2026-02-21 13:40:43,390 - INFO - Vendor with vendor ID 146 instantiated.
+2026-02-21 13:40:43,390 - INFO - Vendor with vendor ID 149 instantiated.
+2026-02-21 13:40:43,390 - INFO - Vendor with vendor ID 151 instantiated.
+2026-02-21 13:40:43,391 - INFO - Vendor with vendor ID 153 instantiated.
+2026-02-21 13:40:43,391 - INFO - Vendor with vendor ID 155 instantiated.
+2026-02-21 13:40:43,391 - INFO - Vendor with vendor ID 156 instantiated.
+2026-02-21 13:40:43,391 - INFO - Vendor with vendor ID 157 instantiated.
+2026-02-21 13:40:43,391 - INFO - Vendor with vendor ID 159 instantiated.
+2026-02-21 13:40:43,391 - INFO - Vendor with vendor ID 160 instantiated.
+2026-02-21 13:40:43,392 - INFO - Vendor with vendor ID 162 instantiated.
+2026-02-21 13:40:43,392 - INFO - Vendor with vendor ID 166 instantiated.
+2026-02-21 13:40:43,423 - INFO - Vendor with vendor ID 169 instantiated.
+2026-02-21 13:40:43,423 - INFO - Vendor with vendor ID 170 instantiated.
+2026-02-21 13:40:43,423 - INFO - Vendor with vendor ID 175 instantiated.
+2026-02-21 13:40:43,423 - INFO - Vendor with vendor ID 177 instantiated.
+2026-02-21 13:40:43,424 - INFO - Vendor with vendor ID 178 instantiated.
+2026-02-21 13:40:43,424 - INFO - Vendor with vendor ID 179 instantiated.
+2026-02-21 13:40:43,424 - INFO - Vendor with vendor ID 180 instantiated.
+2026-02-21 13:40:43,425 - INFO - Vendor with vendor ID 181 instantiated.
+2026-02-21 13:40:43,425 - INFO - Vendor with vendor ID 182 instantiated.
+2026-02-21 13:40:43,425 - INFO - Vendor with vendor ID 183 instantiated.
+2026-02-21 13:40:43,425 - INFO - Vendor with vendor ID 184 instantiated.
+2026-02-21 13:40:43,425 - INFO - Vendor with vendor ID 186 instantiated.
+2026-02-21 13:40:43,426 - INFO - Vendor with vendor ID 187 instantiated.
+2026-02-21 13:40:43,426 - INFO - Vendor with vendor ID 188 instantiated.
+2026-02-21 13:40:43,426 - INFO - Vendor with vendor ID 189 instantiated.
+2026-02-21 13:40:43,426 - INFO - Vendor with vendor ID 191 instantiated.
+2026-02-21 13:40:43,427 - INFO - Vendor with vendor ID 192 instantiated.
+2026-02-21 13:40:43,427 - INFO - Vendor with vendor ID 193 instantiated.
+2026-02-21 13:40:43,427 - INFO - Vendor with vendor ID 194 instantiated.
+2026-02-21 13:40:43,427 - INFO - Vendor with vendor ID 195 instantiated.
+2026-02-21 13:40:43,427 - INFO - Vendor with vendor ID 198 instantiated.
+2026-02-21 13:40:43,427 - INFO - Vendor with vendor ID 202 instantiated.
+2026-02-21 13:40:43,427 - INFO - Vendor with vendor ID 204 instantiated.
+2026-02-21 13:40:43,428 - INFO - Vendor with vendor ID 207 instantiated.
+2026-02-21 13:40:43,428 - INFO - Vendor with vendor ID 211 instantiated.
+2026-02-21 13:40:43,428 - INFO - Vendor with vendor ID 212 instantiated.
+2026-02-21 13:40:43,428 - INFO - Vendor with vendor ID 214 instantiated.
+2026-02-21 13:40:43,428 - INFO - Vendor with vendor ID 215 instantiated.
+2026-02-21 13:40:43,429 - INFO - Vendor with vendor ID 216 instantiated.
+2026-02-21 13:40:43,429 - INFO - Vendor with vendor ID 222 instantiated.
+2026-02-21 13:40:43,429 - INFO - Vendor with vendor ID 224 instantiated.
+2026-02-21 13:40:43,429 - INFO - Vendor with vendor ID 225 instantiated.
+2026-02-21 13:40:43,429 - INFO - Vendor with vendor ID 228 instantiated.
+2026-02-21 13:40:43,430 - INFO - Vendor with vendor ID 229 instantiated.
+2026-02-21 13:40:43,430 - INFO - Vendor with vendor ID 230 instantiated.
+2026-02-21 13:40:43,430 - INFO - Vendor with vendor ID 233 instantiated.
+2026-02-21 13:40:43,430 - INFO - Vendor with vendor ID 234 instantiated.
+2026-02-21 13:40:43,430 - INFO - Vendor with vendor ID 235 instantiated.
+2026-02-21 13:40:43,431 - INFO - Vendor with vendor ID 236 instantiated.
+2026-02-21 13:40:43,431 - INFO - Vendor with vendor ID 237 instantiated.
+2026-02-21 13:40:43,431 - INFO - Vendor with vendor ID 238 instantiated.
+2026-02-21 13:40:43,431 - INFO - Vendor with vendor ID 242 instantiated.
+2026-02-21 13:40:43,431 - INFO - Vendor with vendor ID 243 instantiated.
+2026-02-21 13:40:43,432 - INFO - Vendor with vendor ID 244 instantiated.
+2026-02-21 13:40:43,432 - INFO - Vendor with vendor ID 245 instantiated.
+2026-02-21 13:40:43,432 - INFO - Vendor with vendor ID 248 instantiated.
+2026-02-21 13:40:43,432 - INFO - Vendor with vendor ID 249 instantiated.
+2026-02-21 13:40:43,432 - INFO - Vendor with vendor ID 250 instantiated.
+2026-02-21 13:40:43,432 - INFO - Vendor with vendor ID 251 instantiated.
+2026-02-21 13:40:43,433 - INFO - Vendor with vendor ID 252 instantiated.
+2026-02-21 13:40:43,433 - INFO - Vendor with vendor ID 254 instantiated.
+2026-02-21 13:40:43,433 - INFO - Vendor with vendor ID 255 instantiated.
+2026-02-21 13:40:43,433 - INFO - Vendor with vendor ID 256 instantiated.
+2026-02-21 13:40:43,433 - INFO - Vendor with vendor ID 258 instantiated.
+2026-02-21 13:40:43,433 - INFO - Vendor with vendor ID 268 instantiated.
+2026-02-21 13:40:43,433 - INFO - Vendor with vendor ID 274 instantiated.
+2026-02-21 13:40:43,434 - INFO - Vendor with vendor ID 276 instantiated.
+2026-02-21 13:40:43,434 - INFO - Vendor with vendor ID 277 instantiated.
+2026-02-21 13:40:43,434 - INFO - Vendor with vendor ID 278 instantiated.
+2026-02-21 13:40:43,434 - INFO - Vendor with vendor ID 279 instantiated.
+2026-02-21 13:40:43,434 - INFO - Vendor with vendor ID 280 instantiated.
+2026-02-21 13:40:43,434 - INFO - Vendor with vendor ID 281 instantiated.
+2026-02-21 13:40:43,434 - INFO - Vendor with vendor ID 282 instantiated.
+2026-02-21 13:40:43,435 - INFO - Vendor with vendor ID 283 instantiated.
+2026-02-21 13:40:43,435 - INFO - Vendor with vendor ID 285 instantiated.
+2026-02-21 13:40:43,435 - INFO - Vendor with vendor ID 286 instantiated.
+2026-02-21 13:40:43,435 - INFO - Vendor with vendor ID 290 instantiated.
+2026-02-21 13:40:43,435 - INFO - Vendor with vendor ID 291 instantiated.
+2026-02-21 13:40:43,435 - INFO - Vendor with vendor ID 297 instantiated.
+2026-02-21 13:40:43,435 - INFO - Vendor with vendor ID 298 instantiated.
+2026-02-21 13:40:43,435 - INFO - Vendor with vendor ID 299 instantiated.
+2026-02-21 13:40:43,436 - INFO - Vendor with vendor ID 302 instantiated.
+2026-02-21 13:40:43,436 - INFO - Vendor with vendor ID 303 instantiated.
+2026-02-21 13:40:43,436 - INFO - Vendor with vendor ID 304 instantiated.
+2026-02-21 13:40:43,436 - INFO - Vendor with vendor ID 306 instantiated.
+2026-02-21 13:40:43,436 - INFO - Vendor with vendor ID 311 instantiated.
+2026-02-21 13:40:43,436 - INFO - Vendor with vendor ID 312 instantiated.
+2026-02-21 13:40:43,436 - INFO - Vendor with vendor ID 317 instantiated.
+2026-02-21 13:40:43,436 - INFO - Vendor with vendor ID 318 instantiated.
+2026-02-21 13:40:43,437 - INFO - Vendor with vendor ID 320 instantiated.
+2026-02-21 13:40:43,437 - INFO - Vendor with vendor ID 321 instantiated.
+2026-02-21 13:40:43,437 - INFO - Vendor with vendor ID 323 instantiated.
+2026-02-21 13:40:43,437 - INFO - Vendor with vendor ID 326 instantiated.
+2026-02-21 13:40:43,437 - INFO - Vendor with vendor ID 330 instantiated.
+2026-02-21 13:40:43,437 - INFO - Vendor with vendor ID 331 instantiated.
+2026-02-21 13:40:43,437 - INFO - Vendor with vendor ID 332 instantiated.
+2026-02-21 13:40:43,437 - INFO - Vendor with vendor ID 333 instantiated.
+2026-02-21 13:40:43,437 - INFO - Vendor with vendor ID 336 instantiated.
+2026-02-21 13:40:43,438 - INFO - Vendor with vendor ID 348 instantiated.
+2026-02-21 13:40:43,438 - INFO - Vendor with vendor ID 350 instantiated.
+2026-02-21 13:40:43,438 - INFO - Vendor with vendor ID 354 instantiated.
+2026-02-21 13:40:43,438 - INFO - Vendor with vendor ID 356 instantiated.
+2026-02-21 13:40:43,438 - INFO - Vendor with vendor ID 358 instantiated.
+2026-02-21 13:40:43,439 - INFO - Vendor with vendor ID 360 instantiated.
+2026-02-21 13:40:43,439 - INFO - Vendor with vendor ID 361 instantiated.
+2026-02-21 13:40:43,439 - INFO - Vendor with vendor ID 362 instantiated.
+2026-02-21 13:40:43,439 - INFO - Vendor with vendor ID 363 instantiated.
+2026-02-21 13:40:43,439 - INFO - Vendor with vendor ID 366 instantiated.
+2026-02-21 13:40:43,439 - INFO - Vendor with vendor ID 373 instantiated.
+2026-02-21 13:40:43,439 - INFO - Vendor with vendor ID 374 instantiated.
+2026-02-21 13:40:43,439 - INFO - Vendor with vendor ID 375 instantiated.
+2026-02-21 13:40:43,440 - INFO - Vendor with vendor ID 376 instantiated.
+2026-02-21 13:40:43,440 - INFO - Vendor with vendor ID 383 instantiated.
+2026-02-21 13:40:43,440 - INFO - Vendor with vendor ID 385 instantiated.
+2026-02-21 13:40:43,440 - INFO - Vendor with vendor ID 386 instantiated.
+2026-02-21 13:40:43,440 - INFO - Vendor with vendor ID 387 instantiated.
+2026-02-21 13:40:43,440 - INFO - Vendor with vendor ID 389 instantiated.
+2026-02-21 13:40:43,440 - INFO - Vendor with vendor ID 391 instantiated.
+2026-02-21 13:40:43,440 - INFO - Vendor with vendor ID 393 instantiated.
+2026-02-21 13:40:43,441 - INFO - Vendor with vendor ID 395 instantiated.
+2026-02-21 13:40:43,441 - INFO - Vendor with vendor ID 396 instantiated.
+2026-02-21 13:40:43,441 - INFO - Vendor with vendor ID 400 instantiated.
+2026-02-21 13:40:43,441 - INFO - Vendor with vendor ID 403 instantiated.
+2026-02-21 13:40:43,441 - INFO - Vendor with vendor ID 406 instantiated.
+2026-02-21 13:40:43,441 - INFO - Vendor with vendor ID 407 instantiated.
+2026-02-21 13:40:43,441 - INFO - Vendor with vendor ID 412 instantiated.
+2026-02-21 13:40:43,441 - INFO - Vendor with vendor ID 413 instantiated.
+2026-02-21 13:40:43,442 - INFO - Vendor with vendor ID 414 instantiated.
+2026-02-21 13:40:43,442 - INFO - Vendor with vendor ID 415 instantiated.
+2026-02-21 13:40:43,442 - INFO - Vendor with vendor ID 416 instantiated.
+2026-02-21 13:40:43,442 - INFO - Vendor with vendor ID 417 instantiated.
+2026-02-21 13:40:43,442 - INFO - Vendor with vendor ID 418 instantiated.
+2026-02-21 13:40:43,442 - INFO - Vendor with vendor ID 419 instantiated.
+2026-02-21 13:40:43,442 - INFO - Vendor with vendor ID 420 instantiated.
+2026-02-21 13:40:43,442 - INFO - Vendor with vendor ID 421 instantiated.
+2026-02-21 13:40:43,442 - INFO - Vendor with vendor ID 426 instantiated.
+2026-02-21 13:40:43,443 - INFO - Vendor with vendor ID 427 instantiated.
+2026-02-21 13:40:43,443 - INFO - Vendor with vendor ID 431 instantiated.
+2026-02-21 13:40:43,443 - INFO - Vendor with vendor ID 432 instantiated.
+2026-02-21 13:40:43,443 - INFO - Vendor with vendor ID 433 instantiated.
+2026-02-21 13:40:43,443 - INFO - Vendor with vendor ID 435 instantiated.
+2026-02-21 13:40:43,443 - INFO - Vendor with vendor ID 436 instantiated.
+2026-02-21 13:40:43,443 - INFO - Vendor with vendor ID 440 instantiated.
+2026-02-21 13:40:43,444 - INFO - Vendor with vendor ID 441 instantiated.
+2026-02-21 13:40:43,444 - INFO - Vendor with vendor ID 442 instantiated.
+2026-02-21 13:40:43,444 - INFO - Vendor with vendor ID 443 instantiated.
+2026-02-21 13:40:43,444 - INFO - Vendor with vendor ID 445 instantiated.
+2026-02-21 13:40:43,444 - INFO - Vendor with vendor ID 449 instantiated.
+2026-02-21 13:40:43,444 - INFO - Vendor with vendor ID 450 instantiated.
+2026-02-21 13:40:43,444 - INFO - Vendor with vendor ID 452 instantiated.
+2026-02-21 13:40:43,444 - INFO - Vendor with vendor ID 454 instantiated.
+2026-02-21 13:40:43,445 - INFO - Vendor with vendor ID 464 instantiated.
+2026-02-21 13:40:43,445 - INFO - Vendor with vendor ID 470 instantiated.
+2026-02-21 13:40:43,445 - INFO - Vendor with vendor ID 471 instantiated.
+2026-02-21 13:40:43,445 - INFO - Vendor with vendor ID 473 instantiated.
+2026-02-21 13:40:43,445 - INFO - Vendor with vendor ID 476 instantiated.
+2026-02-21 13:40:43,445 - INFO - Vendor with vendor ID 478 instantiated.
+2026-02-21 13:40:43,446 - INFO - Vendor with vendor ID 479 instantiated.
+2026-02-21 13:40:43,446 - INFO - Vendor with vendor ID 481 instantiated.
+2026-02-21 13:40:43,446 - INFO - Vendor with vendor ID 486 instantiated.
+2026-02-21 13:40:43,446 - INFO - Vendor with vendor ID 492 instantiated.
+2026-02-21 13:41:23,751 - INFO - Fetched inventory from vendor ID 8
+2026-02-21 13:41:23,758 - INFO - Building inventory change logs for vendor ID 8.
+2026-02-21 13:42:06,166 - INFO - Starting program
+2026-02-21 13:42:06,167 - INFO - Creating Supabase client
+2026-02-21 13:42:06,645 - INFO - Starting fetch of vendor information from Supabase.
+2026-02-21 13:42:07,094 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/vendors_info_bucket/vendors_information.json "HTTP/2 200 OK"
+2026-02-21 13:42:07,118 - INFO - Starting fetch of vendor information from API
+2026-02-21 13:42:07,480 - INFO - Starting build of vendor change logs.
+2026-02-21 13:42:07,483 - INFO - Starting fetch of old vendor inventories from Supabase.
+2026-02-21 13:42:07,572 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/inventories_bucket/vendors_inventories.json "HTTP/2 200 OK"
+2026-02-21 13:42:07,661 - INFO - Old vendor inventories successfully fetched from Supabase
+2026-02-21 13:42:07,662 - INFO - Vendor with vendor ID 8 instantiated.
+2026-02-21 13:42:07,662 - INFO - Vendor with vendor ID 52 instantiated.
+2026-02-21 13:42:07,662 - INFO - Vendor with vendor ID 54 instantiated.
+2026-02-21 13:42:07,662 - INFO - Vendor with vendor ID 57 instantiated.
+2026-02-21 13:42:07,663 - INFO - Vendor with vendor ID 76 instantiated.
+2026-02-21 13:42:07,663 - INFO - Vendor with vendor ID 53 instantiated.
+2026-02-21 13:42:07,663 - INFO - Vendor with vendor ID 56 instantiated.
+2026-02-21 13:42:07,663 - INFO - Vendor with vendor ID 37 instantiated.
+2026-02-21 13:42:07,663 - INFO - Vendor with vendor ID 59 instantiated.
+2026-02-21 13:42:07,663 - INFO - Vendor with vendor ID 60 instantiated.
+2026-02-21 13:42:07,664 - INFO - Vendor with vendor ID 39 instantiated.
+2026-02-21 13:42:07,664 - INFO - Vendor with vendor ID 73 instantiated.
+2026-02-21 13:42:07,664 - INFO - Vendor with vendor ID 68 instantiated.
+2026-02-21 13:42:07,664 - INFO - Vendor with vendor ID 69 instantiated.
+2026-02-21 13:42:07,665 - INFO - Vendor with vendor ID 70 instantiated.
+2026-02-21 13:42:07,665 - INFO - Vendor with vendor ID 78 instantiated.
+2026-02-21 13:42:07,666 - INFO - Vendor with vendor ID 74 instantiated.
+2026-02-21 13:42:07,667 - INFO - Vendor with vendor ID 23 instantiated.
+2026-02-21 13:42:07,667 - INFO - Vendor with vendor ID 80 instantiated.
+2026-02-21 13:42:07,667 - INFO - Vendor with vendor ID 79 instantiated.
+2026-02-21 13:42:07,667 - INFO - Vendor with vendor ID 94 instantiated.
+2026-02-21 13:42:07,667 - INFO - Vendor with vendor ID 85 instantiated.
+2026-02-21 13:42:07,668 - INFO - Vendor with vendor ID 88 instantiated.
+2026-02-21 13:42:07,668 - INFO - Vendor with vendor ID 35 instantiated.
+2026-02-21 13:42:07,668 - INFO - Vendor with vendor ID 33 instantiated.
+2026-02-21 13:42:07,668 - INFO - Vendor with vendor ID 100 instantiated.
+2026-02-21 13:42:07,668 - INFO - Vendor with vendor ID 101 instantiated.
+2026-02-21 13:42:07,669 - INFO - Vendor with vendor ID 102 instantiated.
+2026-02-21 13:42:07,669 - INFO - Vendor with vendor ID 106 instantiated.
+2026-02-21 13:42:07,669 - INFO - Vendor with vendor ID 108 instantiated.
+2026-02-21 13:42:07,669 - INFO - Vendor with vendor ID 110 instantiated.
+2026-02-21 13:42:07,669 - INFO - Vendor with vendor ID 115 instantiated.
+2026-02-21 13:42:07,669 - INFO - Vendor with vendor ID 116 instantiated.
+2026-02-21 13:42:07,669 - INFO - Vendor with vendor ID 119 instantiated.
+2026-02-21 13:42:07,670 - INFO - Vendor with vendor ID 120 instantiated.
+2026-02-21 13:42:07,670 - INFO - Vendor with vendor ID 122 instantiated.
+2026-02-21 13:42:07,670 - INFO - Vendor with vendor ID 129 instantiated.
+2026-02-21 13:42:07,670 - INFO - Vendor with vendor ID 131 instantiated.
+2026-02-21 13:42:07,670 - INFO - Vendor with vendor ID 132 instantiated.
+2026-02-21 13:42:07,670 - INFO - Vendor with vendor ID 133 instantiated.
+2026-02-21 13:42:07,670 - INFO - Vendor with vendor ID 134 instantiated.
+2026-02-21 13:42:07,671 - INFO - Vendor with vendor ID 135 instantiated.
+2026-02-21 13:42:07,671 - INFO - Vendor with vendor ID 139 instantiated.
+2026-02-21 13:42:07,671 - INFO - Vendor with vendor ID 141 instantiated.
+2026-02-21 13:42:07,671 - INFO - Vendor with vendor ID 144 instantiated.
+2026-02-21 13:42:07,671 - INFO - Vendor with vendor ID 145 instantiated.
+2026-02-21 13:42:07,671 - INFO - Vendor with vendor ID 146 instantiated.
+2026-02-21 13:42:07,671 - INFO - Vendor with vendor ID 149 instantiated.
+2026-02-21 13:42:07,672 - INFO - Vendor with vendor ID 151 instantiated.
+2026-02-21 13:42:07,672 - INFO - Vendor with vendor ID 153 instantiated.
+2026-02-21 13:42:07,672 - INFO - Vendor with vendor ID 155 instantiated.
+2026-02-21 13:42:07,672 - INFO - Vendor with vendor ID 156 instantiated.
+2026-02-21 13:42:07,672 - INFO - Vendor with vendor ID 157 instantiated.
+2026-02-21 13:42:07,673 - INFO - Vendor with vendor ID 159 instantiated.
+2026-02-21 13:42:07,673 - INFO - Vendor with vendor ID 160 instantiated.
+2026-02-21 13:42:07,673 - INFO - Vendor with vendor ID 162 instantiated.
+2026-02-21 13:42:07,673 - INFO - Vendor with vendor ID 166 instantiated.
+2026-02-21 13:42:07,698 - INFO - Vendor with vendor ID 169 instantiated.
+2026-02-21 13:42:07,699 - INFO - Vendor with vendor ID 170 instantiated.
+2026-02-21 13:42:07,699 - INFO - Vendor with vendor ID 175 instantiated.
+2026-02-21 13:42:07,699 - INFO - Vendor with vendor ID 177 instantiated.
+2026-02-21 13:42:07,699 - INFO - Vendor with vendor ID 178 instantiated.
+2026-02-21 13:42:07,699 - INFO - Vendor with vendor ID 179 instantiated.
+2026-02-21 13:42:07,699 - INFO - Vendor with vendor ID 180 instantiated.
+2026-02-21 13:42:07,700 - INFO - Vendor with vendor ID 181 instantiated.
+2026-02-21 13:42:07,700 - INFO - Vendor with vendor ID 182 instantiated.
+2026-02-21 13:42:07,700 - INFO - Vendor with vendor ID 183 instantiated.
+2026-02-21 13:42:07,700 - INFO - Vendor with vendor ID 184 instantiated.
+2026-02-21 13:42:07,701 - INFO - Vendor with vendor ID 186 instantiated.
+2026-02-21 13:42:07,701 - INFO - Vendor with vendor ID 187 instantiated.
+2026-02-21 13:42:07,701 - INFO - Vendor with vendor ID 188 instantiated.
+2026-02-21 13:42:07,701 - INFO - Vendor with vendor ID 189 instantiated.
+2026-02-21 13:42:07,701 - INFO - Vendor with vendor ID 191 instantiated.
+2026-02-21 13:42:07,701 - INFO - Vendor with vendor ID 192 instantiated.
+2026-02-21 13:42:07,701 - INFO - Vendor with vendor ID 193 instantiated.
+2026-02-21 13:42:07,702 - INFO - Vendor with vendor ID 194 instantiated.
+2026-02-21 13:42:07,702 - INFO - Vendor with vendor ID 195 instantiated.
+2026-02-21 13:42:07,702 - INFO - Vendor with vendor ID 198 instantiated.
+2026-02-21 13:42:07,702 - INFO - Vendor with vendor ID 202 instantiated.
+2026-02-21 13:42:07,702 - INFO - Vendor with vendor ID 204 instantiated.
+2026-02-21 13:42:07,702 - INFO - Vendor with vendor ID 207 instantiated.
+2026-02-21 13:42:07,702 - INFO - Vendor with vendor ID 211 instantiated.
+2026-02-21 13:42:07,703 - INFO - Vendor with vendor ID 212 instantiated.
+2026-02-21 13:42:07,703 - INFO - Vendor with vendor ID 214 instantiated.
+2026-02-21 13:42:07,703 - INFO - Vendor with vendor ID 215 instantiated.
+2026-02-21 13:42:07,703 - INFO - Vendor with vendor ID 216 instantiated.
+2026-02-21 13:42:07,703 - INFO - Vendor with vendor ID 222 instantiated.
+2026-02-21 13:42:07,704 - INFO - Vendor with vendor ID 224 instantiated.
+2026-02-21 13:42:07,704 - INFO - Vendor with vendor ID 225 instantiated.
+2026-02-21 13:42:07,704 - INFO - Vendor with vendor ID 228 instantiated.
+2026-02-21 13:42:07,704 - INFO - Vendor with vendor ID 229 instantiated.
+2026-02-21 13:42:07,705 - INFO - Vendor with vendor ID 230 instantiated.
+2026-02-21 13:42:07,705 - INFO - Vendor with vendor ID 233 instantiated.
+2026-02-21 13:42:07,705 - INFO - Vendor with vendor ID 234 instantiated.
+2026-02-21 13:42:07,705 - INFO - Vendor with vendor ID 235 instantiated.
+2026-02-21 13:42:07,706 - INFO - Vendor with vendor ID 236 instantiated.
+2026-02-21 13:42:07,706 - INFO - Vendor with vendor ID 237 instantiated.
+2026-02-21 13:42:07,706 - INFO - Vendor with vendor ID 238 instantiated.
+2026-02-21 13:42:07,706 - INFO - Vendor with vendor ID 242 instantiated.
+2026-02-21 13:42:07,706 - INFO - Vendor with vendor ID 243 instantiated.
+2026-02-21 13:42:07,707 - INFO - Vendor with vendor ID 244 instantiated.
+2026-02-21 13:42:07,707 - INFO - Vendor with vendor ID 245 instantiated.
+2026-02-21 13:42:07,707 - INFO - Vendor with vendor ID 248 instantiated.
+2026-02-21 13:42:07,707 - INFO - Vendor with vendor ID 249 instantiated.
+2026-02-21 13:42:07,707 - INFO - Vendor with vendor ID 250 instantiated.
+2026-02-21 13:42:07,707 - INFO - Vendor with vendor ID 251 instantiated.
+2026-02-21 13:42:07,708 - INFO - Vendor with vendor ID 252 instantiated.
+2026-02-21 13:42:07,708 - INFO - Vendor with vendor ID 254 instantiated.
+2026-02-21 13:42:07,708 - INFO - Vendor with vendor ID 255 instantiated.
+2026-02-21 13:42:07,708 - INFO - Vendor with vendor ID 256 instantiated.
+2026-02-21 13:42:07,708 - INFO - Vendor with vendor ID 258 instantiated.
+2026-02-21 13:42:07,708 - INFO - Vendor with vendor ID 268 instantiated.
+2026-02-21 13:42:07,708 - INFO - Vendor with vendor ID 274 instantiated.
+2026-02-21 13:42:07,709 - INFO - Vendor with vendor ID 276 instantiated.
+2026-02-21 13:42:07,709 - INFO - Vendor with vendor ID 277 instantiated.
+2026-02-21 13:42:07,709 - INFO - Vendor with vendor ID 278 instantiated.
+2026-02-21 13:42:07,709 - INFO - Vendor with vendor ID 279 instantiated.
+2026-02-21 13:42:07,709 - INFO - Vendor with vendor ID 280 instantiated.
+2026-02-21 13:42:07,709 - INFO - Vendor with vendor ID 281 instantiated.
+2026-02-21 13:42:07,709 - INFO - Vendor with vendor ID 282 instantiated.
+2026-02-21 13:42:07,710 - INFO - Vendor with vendor ID 283 instantiated.
+2026-02-21 13:42:07,710 - INFO - Vendor with vendor ID 285 instantiated.
+2026-02-21 13:42:07,710 - INFO - Vendor with vendor ID 286 instantiated.
+2026-02-21 13:42:07,710 - INFO - Vendor with vendor ID 290 instantiated.
+2026-02-21 13:42:07,710 - INFO - Vendor with vendor ID 291 instantiated.
+2026-02-21 13:42:07,710 - INFO - Vendor with vendor ID 297 instantiated.
+2026-02-21 13:42:07,710 - INFO - Vendor with vendor ID 298 instantiated.
+2026-02-21 13:42:07,710 - INFO - Vendor with vendor ID 299 instantiated.
+2026-02-21 13:42:07,711 - INFO - Vendor with vendor ID 302 instantiated.
+2026-02-21 13:42:07,711 - INFO - Vendor with vendor ID 303 instantiated.
+2026-02-21 13:42:07,711 - INFO - Vendor with vendor ID 304 instantiated.
+2026-02-21 13:42:07,711 - INFO - Vendor with vendor ID 306 instantiated.
+2026-02-21 13:42:07,711 - INFO - Vendor with vendor ID 311 instantiated.
+2026-02-21 13:42:07,711 - INFO - Vendor with vendor ID 312 instantiated.
+2026-02-21 13:42:07,711 - INFO - Vendor with vendor ID 317 instantiated.
+2026-02-21 13:42:07,711 - INFO - Vendor with vendor ID 318 instantiated.
+2026-02-21 13:42:07,712 - INFO - Vendor with vendor ID 320 instantiated.
+2026-02-21 13:42:07,712 - INFO - Vendor with vendor ID 321 instantiated.
+2026-02-21 13:42:07,712 - INFO - Vendor with vendor ID 323 instantiated.
+2026-02-21 13:42:07,712 - INFO - Vendor with vendor ID 326 instantiated.
+2026-02-21 13:42:07,712 - INFO - Vendor with vendor ID 330 instantiated.
+2026-02-21 13:42:07,712 - INFO - Vendor with vendor ID 331 instantiated.
+2026-02-21 13:42:07,712 - INFO - Vendor with vendor ID 332 instantiated.
+2026-02-21 13:42:07,712 - INFO - Vendor with vendor ID 333 instantiated.
+2026-02-21 13:42:07,712 - INFO - Vendor with vendor ID 336 instantiated.
+2026-02-21 13:42:07,713 - INFO - Vendor with vendor ID 348 instantiated.
+2026-02-21 13:42:07,713 - INFO - Vendor with vendor ID 350 instantiated.
+2026-02-21 13:42:07,713 - INFO - Vendor with vendor ID 354 instantiated.
+2026-02-21 13:42:07,713 - INFO - Vendor with vendor ID 356 instantiated.
+2026-02-21 13:42:07,713 - INFO - Vendor with vendor ID 358 instantiated.
+2026-02-21 13:42:07,713 - INFO - Vendor with vendor ID 360 instantiated.
+2026-02-21 13:42:07,713 - INFO - Vendor with vendor ID 361 instantiated.
+2026-02-21 13:42:07,713 - INFO - Vendor with vendor ID 362 instantiated.
+2026-02-21 13:42:07,713 - INFO - Vendor with vendor ID 363 instantiated.
+2026-02-21 13:42:07,714 - INFO - Vendor with vendor ID 366 instantiated.
+2026-02-21 13:42:07,714 - INFO - Vendor with vendor ID 373 instantiated.
+2026-02-21 13:42:07,714 - INFO - Vendor with vendor ID 374 instantiated.
+2026-02-21 13:42:07,714 - INFO - Vendor with vendor ID 375 instantiated.
+2026-02-21 13:42:07,714 - INFO - Vendor with vendor ID 376 instantiated.
+2026-02-21 13:42:07,714 - INFO - Vendor with vendor ID 383 instantiated.
+2026-02-21 13:42:07,714 - INFO - Vendor with vendor ID 385 instantiated.
+2026-02-21 13:42:07,714 - INFO - Vendor with vendor ID 386 instantiated.
+2026-02-21 13:42:07,715 - INFO - Vendor with vendor ID 387 instantiated.
+2026-02-21 13:42:07,715 - INFO - Vendor with vendor ID 389 instantiated.
+2026-02-21 13:42:07,715 - INFO - Vendor with vendor ID 391 instantiated.
+2026-02-21 13:42:07,715 - INFO - Vendor with vendor ID 393 instantiated.
+2026-02-21 13:42:07,715 - INFO - Vendor with vendor ID 395 instantiated.
+2026-02-21 13:42:07,715 - INFO - Vendor with vendor ID 396 instantiated.
+2026-02-21 13:42:07,715 - INFO - Vendor with vendor ID 400 instantiated.
+2026-02-21 13:42:07,715 - INFO - Vendor with vendor ID 403 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 406 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 407 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 412 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 413 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 414 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 415 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 416 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 417 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 418 instantiated.
+2026-02-21 13:42:07,716 - INFO - Vendor with vendor ID 419 instantiated.
+2026-02-21 13:42:07,717 - INFO - Vendor with vendor ID 420 instantiated.
+2026-02-21 13:42:07,717 - INFO - Vendor with vendor ID 421 instantiated.
+2026-02-21 13:42:07,717 - INFO - Vendor with vendor ID 426 instantiated.
+2026-02-21 13:42:07,717 - INFO - Vendor with vendor ID 427 instantiated.
+2026-02-21 13:42:07,717 - INFO - Vendor with vendor ID 431 instantiated.
+2026-02-21 13:42:07,717 - INFO - Vendor with vendor ID 432 instantiated.
+2026-02-21 13:42:07,717 - INFO - Vendor with vendor ID 433 instantiated.
+2026-02-21 13:42:07,717 - INFO - Vendor with vendor ID 435 instantiated.
+2026-02-21 13:42:07,717 - INFO - Vendor with vendor ID 436 instantiated.
+2026-02-21 13:42:07,718 - INFO - Vendor with vendor ID 440 instantiated.
+2026-02-21 13:42:07,718 - INFO - Vendor with vendor ID 441 instantiated.
+2026-02-21 13:42:07,718 - INFO - Vendor with vendor ID 442 instantiated.
+2026-02-21 13:42:07,718 - INFO - Vendor with vendor ID 443 instantiated.
+2026-02-21 13:42:07,718 - INFO - Vendor with vendor ID 445 instantiated.
+2026-02-21 13:42:07,718 - INFO - Vendor with vendor ID 449 instantiated.
+2026-02-21 13:42:07,718 - INFO - Vendor with vendor ID 450 instantiated.
+2026-02-21 13:42:07,718 - INFO - Vendor with vendor ID 452 instantiated.
+2026-02-21 13:42:07,719 - INFO - Vendor with vendor ID 454 instantiated.
+2026-02-21 13:42:07,719 - INFO - Vendor with vendor ID 464 instantiated.
+2026-02-21 13:42:07,719 - INFO - Vendor with vendor ID 470 instantiated.
+2026-02-21 13:42:07,719 - INFO - Vendor with vendor ID 471 instantiated.
+2026-02-21 13:42:07,719 - INFO - Vendor with vendor ID 473 instantiated.
+2026-02-21 13:42:07,719 - INFO - Vendor with vendor ID 476 instantiated.
+2026-02-21 13:42:07,719 - INFO - Vendor with vendor ID 478 instantiated.
+2026-02-21 13:42:07,720 - INFO - Vendor with vendor ID 479 instantiated.
+2026-02-21 13:42:07,720 - INFO - Vendor with vendor ID 481 instantiated.
+2026-02-21 13:42:07,720 - INFO - Vendor with vendor ID 486 instantiated.
+2026-02-21 13:42:07,720 - INFO - Vendor with vendor ID 492 instantiated.
+2026-02-21 13:42:47,880 - INFO - Fetched inventory from vendor ID 8
+2026-02-21 13:42:47,886 - INFO - Building inventory change logs for vendor ID 8.
+2026-02-21 13:42:49,889 - INFO - Pushing product logs to Supabase.
+2026-02-21 13:43:08,035 - INFO - HTTP Request: POST https://cjhpqurdralszprormcp.supabase.co/rest/v1/product_events?columns=%22event_type%22%2C%22new_availability%22%2C%22old_availability%22%2C%22new_price%22%2C%22vendor_id%22%2C%22old_price%22%2C%22pid%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+2026-02-21 13:43:08,042 - ERROR - {'message': "Could not find the 'timestamp' column of 'product_events' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}: <function <lambda> at 0x000001B88908E340> raised an exception on attempt 0.
+2026-02-21 13:43:09,176 - INFO - HTTP Request: POST https://cjhpqurdralszprormcp.supabase.co/rest/v1/product_events?columns=%22event_type%22%2C%22new_availability%22%2C%22old_availability%22%2C%22new_price%22%2C%22vendor_id%22%2C%22old_price%22%2C%22pid%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+2026-02-21 13:43:09,183 - ERROR - {'message': "Could not find the 'timestamp' column of 'product_events' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}: <function <lambda> at 0x000001B88908E340> raised an exception on attempt 1.
+2026-02-21 13:43:11,322 - INFO - HTTP Request: POST https://cjhpqurdralszprormcp.supabase.co/rest/v1/product_events?columns=%22event_type%22%2C%22new_availability%22%2C%22old_availability%22%2C%22new_price%22%2C%22vendor_id%22%2C%22old_price%22%2C%22pid%22%2C%22timestamp%22 "HTTP/2 400 Bad Request"
+2026-02-21 13:43:11,330 - ERROR - {'message': "Could not find the 'timestamp' column of 'product_events' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}: <function <lambda> at 0x000001B88908E340> raised an exception on attempt 2.
+2026-02-21 13:43:11,331 - ERROR - Failed to insert product event logs: {'message': "Could not find the 'timestamp' column of 'product_events' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}.
+Traceback (most recent call last):
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\inventory\main.py", line 149, in <module>
+    with_retry(
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\common\retry.py", line 12, in with_retry
+    return func()
+           ^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\inventory\main.py", line 150, in <lambda>
+    lambda: insert_logs_into_db(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\inventory\supabase_io.py", line 43, in insert_logs_into_db
+    response = client.table(table_name).insert(events_logs).execute()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\.venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 53, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': "Could not find the 'timestamp' column of 'product_events' in the schema cache", 'code': 'PGRST204', 'hint': None, 'details': None}
+2026-02-21 13:43:11,336 - INFO - Terminating script
+2026-02-21 13:43:49,762 - INFO - Starting program
+2026-02-21 13:43:49,763 - INFO - Creating Supabase client
+2026-02-21 13:43:50,262 - INFO - Starting fetch of vendor information from Supabase.
+2026-02-21 13:43:50,663 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/vendors_info_bucket/vendors_information.json "HTTP/2 200 OK"
+2026-02-21 13:43:50,685 - INFO - Starting fetch of vendor information from API
+2026-02-21 13:43:51,040 - INFO - Starting build of vendor change logs.
+2026-02-21 13:43:51,044 - INFO - Starting fetch of old vendor inventories from Supabase.
+2026-02-21 13:43:51,120 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/inventories_bucket/vendors_inventories.json "HTTP/2 200 OK"
+2026-02-21 13:43:51,204 - INFO - Old vendor inventories successfully fetched from Supabase
+2026-02-21 13:43:51,205 - INFO - Vendor with vendor ID 8 instantiated.
+2026-02-21 13:43:51,205 - INFO - Vendor with vendor ID 52 instantiated.
+2026-02-21 13:43:51,205 - INFO - Vendor with vendor ID 54 instantiated.
+2026-02-21 13:43:51,206 - INFO - Vendor with vendor ID 57 instantiated.
+2026-02-21 13:43:51,206 - INFO - Vendor with vendor ID 76 instantiated.
+2026-02-21 13:43:51,206 - INFO - Vendor with vendor ID 53 instantiated.
+2026-02-21 13:43:51,206 - INFO - Vendor with vendor ID 56 instantiated.
+2026-02-21 13:43:51,206 - INFO - Vendor with vendor ID 37 instantiated.
+2026-02-21 13:43:51,206 - INFO - Vendor with vendor ID 59 instantiated.
+2026-02-21 13:43:51,206 - INFO - Vendor with vendor ID 60 instantiated.
+2026-02-21 13:43:51,207 - INFO - Vendor with vendor ID 39 instantiated.
+2026-02-21 13:43:51,207 - INFO - Vendor with vendor ID 73 instantiated.
+2026-02-21 13:43:51,207 - INFO - Vendor with vendor ID 68 instantiated.
+2026-02-21 13:43:51,207 - INFO - Vendor with vendor ID 69 instantiated.
+2026-02-21 13:43:51,209 - INFO - Vendor with vendor ID 70 instantiated.
+2026-02-21 13:43:51,209 - INFO - Vendor with vendor ID 78 instantiated.
+2026-02-21 13:43:51,209 - INFO - Vendor with vendor ID 74 instantiated.
+2026-02-21 13:43:51,209 - INFO - Vendor with vendor ID 23 instantiated.
+2026-02-21 13:43:51,211 - INFO - Vendor with vendor ID 80 instantiated.
+2026-02-21 13:43:51,211 - INFO - Vendor with vendor ID 79 instantiated.
+2026-02-21 13:43:51,211 - INFO - Vendor with vendor ID 94 instantiated.
+2026-02-21 13:43:51,211 - INFO - Vendor with vendor ID 85 instantiated.
+2026-02-21 13:43:51,211 - INFO - Vendor with vendor ID 88 instantiated.
+2026-02-21 13:43:51,212 - INFO - Vendor with vendor ID 35 instantiated.
+2026-02-21 13:43:51,212 - INFO - Vendor with vendor ID 33 instantiated.
+2026-02-21 13:43:51,212 - INFO - Vendor with vendor ID 100 instantiated.
+2026-02-21 13:43:51,212 - INFO - Vendor with vendor ID 101 instantiated.
+2026-02-21 13:43:51,212 - INFO - Vendor with vendor ID 102 instantiated.
+2026-02-21 13:43:51,213 - INFO - Vendor with vendor ID 106 instantiated.
+2026-02-21 13:43:51,213 - INFO - Vendor with vendor ID 108 instantiated.
+2026-02-21 13:43:51,213 - INFO - Vendor with vendor ID 110 instantiated.
+2026-02-21 13:43:51,213 - INFO - Vendor with vendor ID 115 instantiated.
+2026-02-21 13:43:51,213 - INFO - Vendor with vendor ID 116 instantiated.
+2026-02-21 13:43:51,213 - INFO - Vendor with vendor ID 119 instantiated.
+2026-02-21 13:43:51,213 - INFO - Vendor with vendor ID 120 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 122 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 129 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 131 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 132 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 133 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 134 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 135 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 139 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 141 instantiated.
+2026-02-21 13:43:51,214 - INFO - Vendor with vendor ID 144 instantiated.
+2026-02-21 13:43:51,215 - INFO - Vendor with vendor ID 145 instantiated.
+2026-02-21 13:43:51,215 - INFO - Vendor with vendor ID 146 instantiated.
+2026-02-21 13:43:51,215 - INFO - Vendor with vendor ID 149 instantiated.
+2026-02-21 13:43:51,215 - INFO - Vendor with vendor ID 151 instantiated.
+2026-02-21 13:43:51,215 - INFO - Vendor with vendor ID 153 instantiated.
+2026-02-21 13:43:51,215 - INFO - Vendor with vendor ID 155 instantiated.
+2026-02-21 13:43:51,215 - INFO - Vendor with vendor ID 156 instantiated.
+2026-02-21 13:43:51,217 - INFO - Vendor with vendor ID 157 instantiated.
+2026-02-21 13:43:51,217 - INFO - Vendor with vendor ID 159 instantiated.
+2026-02-21 13:43:51,217 - INFO - Vendor with vendor ID 160 instantiated.
+2026-02-21 13:43:51,217 - INFO - Vendor with vendor ID 162 instantiated.
+2026-02-21 13:43:51,217 - INFO - Vendor with vendor ID 166 instantiated.
+2026-02-21 13:43:51,218 - INFO - Vendor with vendor ID 169 instantiated.
+2026-02-21 13:43:51,218 - INFO - Vendor with vendor ID 170 instantiated.
+2026-02-21 13:43:51,218 - INFO - Vendor with vendor ID 175 instantiated.
+2026-02-21 13:43:51,218 - INFO - Vendor with vendor ID 177 instantiated.
+2026-02-21 13:43:51,219 - INFO - Vendor with vendor ID 178 instantiated.
+2026-02-21 13:43:51,219 - INFO - Vendor with vendor ID 179 instantiated.
+2026-02-21 13:43:51,248 - INFO - Vendor with vendor ID 180 instantiated.
+2026-02-21 13:43:51,248 - INFO - Vendor with vendor ID 181 instantiated.
+2026-02-21 13:43:51,248 - INFO - Vendor with vendor ID 182 instantiated.
+2026-02-21 13:43:51,248 - INFO - Vendor with vendor ID 183 instantiated.
+2026-02-21 13:43:51,249 - INFO - Vendor with vendor ID 184 instantiated.
+2026-02-21 13:43:51,249 - INFO - Vendor with vendor ID 186 instantiated.
+2026-02-21 13:43:51,249 - INFO - Vendor with vendor ID 187 instantiated.
+2026-02-21 13:43:51,249 - INFO - Vendor with vendor ID 188 instantiated.
+2026-02-21 13:43:51,249 - INFO - Vendor with vendor ID 189 instantiated.
+2026-02-21 13:43:51,249 - INFO - Vendor with vendor ID 191 instantiated.
+2026-02-21 13:43:51,250 - INFO - Vendor with vendor ID 192 instantiated.
+2026-02-21 13:43:51,250 - INFO - Vendor with vendor ID 193 instantiated.
+2026-02-21 13:43:51,250 - INFO - Vendor with vendor ID 194 instantiated.
+2026-02-21 13:43:51,250 - INFO - Vendor with vendor ID 195 instantiated.
+2026-02-21 13:43:51,250 - INFO - Vendor with vendor ID 198 instantiated.
+2026-02-21 13:43:51,250 - INFO - Vendor with vendor ID 202 instantiated.
+2026-02-21 13:43:51,250 - INFO - Vendor with vendor ID 204 instantiated.
+2026-02-21 13:43:51,250 - INFO - Vendor with vendor ID 207 instantiated.
+2026-02-21 13:43:51,251 - INFO - Vendor with vendor ID 211 instantiated.
+2026-02-21 13:43:51,251 - INFO - Vendor with vendor ID 212 instantiated.
+2026-02-21 13:43:51,251 - INFO - Vendor with vendor ID 214 instantiated.
+2026-02-21 13:43:51,251 - INFO - Vendor with vendor ID 215 instantiated.
+2026-02-21 13:43:51,251 - INFO - Vendor with vendor ID 216 instantiated.
+2026-02-21 13:43:51,251 - INFO - Vendor with vendor ID 222 instantiated.
+2026-02-21 13:43:51,252 - INFO - Vendor with vendor ID 224 instantiated.
+2026-02-21 13:43:51,252 - INFO - Vendor with vendor ID 225 instantiated.
+2026-02-21 13:43:51,252 - INFO - Vendor with vendor ID 228 instantiated.
+2026-02-21 13:43:51,252 - INFO - Vendor with vendor ID 229 instantiated.
+2026-02-21 13:43:51,252 - INFO - Vendor with vendor ID 230 instantiated.
+2026-02-21 13:43:51,252 - INFO - Vendor with vendor ID 233 instantiated.
+2026-02-21 13:43:51,253 - INFO - Vendor with vendor ID 234 instantiated.
+2026-02-21 13:43:51,253 - INFO - Vendor with vendor ID 235 instantiated.
+2026-02-21 13:43:51,253 - INFO - Vendor with vendor ID 236 instantiated.
+2026-02-21 13:43:51,253 - INFO - Vendor with vendor ID 237 instantiated.
+2026-02-21 13:43:51,253 - INFO - Vendor with vendor ID 238 instantiated.
+2026-02-21 13:43:51,254 - INFO - Vendor with vendor ID 242 instantiated.
+2026-02-21 13:43:51,254 - INFO - Vendor with vendor ID 243 instantiated.
+2026-02-21 13:43:51,254 - INFO - Vendor with vendor ID 244 instantiated.
+2026-02-21 13:43:51,254 - INFO - Vendor with vendor ID 245 instantiated.
+2026-02-21 13:43:51,254 - INFO - Vendor with vendor ID 248 instantiated.
+2026-02-21 13:43:51,254 - INFO - Vendor with vendor ID 249 instantiated.
+2026-02-21 13:43:51,254 - INFO - Vendor with vendor ID 250 instantiated.
+2026-02-21 13:43:51,255 - INFO - Vendor with vendor ID 251 instantiated.
+2026-02-21 13:43:51,255 - INFO - Vendor with vendor ID 252 instantiated.
+2026-02-21 13:43:51,255 - INFO - Vendor with vendor ID 254 instantiated.
+2026-02-21 13:43:51,257 - INFO - Vendor with vendor ID 255 instantiated.
+2026-02-21 13:43:51,257 - INFO - Vendor with vendor ID 256 instantiated.
+2026-02-21 13:43:51,257 - INFO - Vendor with vendor ID 258 instantiated.
+2026-02-21 13:43:51,257 - INFO - Vendor with vendor ID 268 instantiated.
+2026-02-21 13:43:51,257 - INFO - Vendor with vendor ID 274 instantiated.
+2026-02-21 13:43:51,257 - INFO - Vendor with vendor ID 276 instantiated.
+2026-02-21 13:43:51,257 - INFO - Vendor with vendor ID 277 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 278 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 279 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 280 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 281 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 282 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 283 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 285 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 286 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 290 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 291 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 297 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 298 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 299 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 302 instantiated.
+2026-02-21 13:43:51,258 - INFO - Vendor with vendor ID 303 instantiated.
+2026-02-21 13:43:51,259 - INFO - Vendor with vendor ID 304 instantiated.
+2026-02-21 13:43:51,259 - INFO - Vendor with vendor ID 306 instantiated.
+2026-02-21 13:43:51,259 - INFO - Vendor with vendor ID 311 instantiated.
+2026-02-21 13:43:51,259 - INFO - Vendor with vendor ID 312 instantiated.
+2026-02-21 13:43:51,259 - INFO - Vendor with vendor ID 317 instantiated.
+2026-02-21 13:43:51,259 - INFO - Vendor with vendor ID 318 instantiated.
+2026-02-21 13:43:51,259 - INFO - Vendor with vendor ID 320 instantiated.
+2026-02-21 13:43:51,259 - INFO - Vendor with vendor ID 321 instantiated.
+2026-02-21 13:43:51,260 - INFO - Vendor with vendor ID 323 instantiated.
+2026-02-21 13:43:51,260 - INFO - Vendor with vendor ID 326 instantiated.
+2026-02-21 13:43:51,260 - INFO - Vendor with vendor ID 330 instantiated.
+2026-02-21 13:43:51,260 - INFO - Vendor with vendor ID 331 instantiated.
+2026-02-21 13:43:51,260 - INFO - Vendor with vendor ID 332 instantiated.
+2026-02-21 13:43:51,260 - INFO - Vendor with vendor ID 333 instantiated.
+2026-02-21 13:43:51,260 - INFO - Vendor with vendor ID 336 instantiated.
+2026-02-21 13:43:51,261 - INFO - Vendor with vendor ID 348 instantiated.
+2026-02-21 13:43:51,261 - INFO - Vendor with vendor ID 350 instantiated.
+2026-02-21 13:43:51,261 - INFO - Vendor with vendor ID 354 instantiated.
+2026-02-21 13:43:51,261 - INFO - Vendor with vendor ID 356 instantiated.
+2026-02-21 13:43:51,261 - INFO - Vendor with vendor ID 358 instantiated.
+2026-02-21 13:43:51,261 - INFO - Vendor with vendor ID 360 instantiated.
+2026-02-21 13:43:51,261 - INFO - Vendor with vendor ID 361 instantiated.
+2026-02-21 13:43:51,261 - INFO - Vendor with vendor ID 362 instantiated.
+2026-02-21 13:43:51,262 - INFO - Vendor with vendor ID 363 instantiated.
+2026-02-21 13:43:51,262 - INFO - Vendor with vendor ID 366 instantiated.
+2026-02-21 13:43:51,262 - INFO - Vendor with vendor ID 373 instantiated.
+2026-02-21 13:43:51,262 - INFO - Vendor with vendor ID 374 instantiated.
+2026-02-21 13:43:51,262 - INFO - Vendor with vendor ID 375 instantiated.
+2026-02-21 13:43:51,262 - INFO - Vendor with vendor ID 376 instantiated.
+2026-02-21 13:43:51,262 - INFO - Vendor with vendor ID 383 instantiated.
+2026-02-21 13:43:51,262 - INFO - Vendor with vendor ID 385 instantiated.
+2026-02-21 13:43:51,262 - INFO - Vendor with vendor ID 386 instantiated.
+2026-02-21 13:43:51,263 - INFO - Vendor with vendor ID 387 instantiated.
+2026-02-21 13:43:51,263 - INFO - Vendor with vendor ID 389 instantiated.
+2026-02-21 13:43:51,263 - INFO - Vendor with vendor ID 391 instantiated.
+2026-02-21 13:43:51,263 - INFO - Vendor with vendor ID 393 instantiated.
+2026-02-21 13:43:51,263 - INFO - Vendor with vendor ID 395 instantiated.
+2026-02-21 13:43:51,263 - INFO - Vendor with vendor ID 396 instantiated.
+2026-02-21 13:43:51,263 - INFO - Vendor with vendor ID 400 instantiated.
+2026-02-21 13:43:51,263 - INFO - Vendor with vendor ID 403 instantiated.
+2026-02-21 13:43:51,264 - INFO - Vendor with vendor ID 406 instantiated.
+2026-02-21 13:43:51,264 - INFO - Vendor with vendor ID 407 instantiated.
+2026-02-21 13:43:51,264 - INFO - Vendor with vendor ID 412 instantiated.
+2026-02-21 13:43:51,264 - INFO - Vendor with vendor ID 413 instantiated.
+2026-02-21 13:43:51,264 - INFO - Vendor with vendor ID 414 instantiated.
+2026-02-21 13:43:51,264 - INFO - Vendor with vendor ID 415 instantiated.
+2026-02-21 13:43:51,264 - INFO - Vendor with vendor ID 416 instantiated.
+2026-02-21 13:43:51,264 - INFO - Vendor with vendor ID 417 instantiated.
+2026-02-21 13:43:51,264 - INFO - Vendor with vendor ID 418 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 419 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 420 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 421 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 426 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 427 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 431 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 432 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 433 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 435 instantiated.
+2026-02-21 13:43:51,265 - INFO - Vendor with vendor ID 436 instantiated.
+2026-02-21 13:43:51,266 - INFO - Vendor with vendor ID 440 instantiated.
+2026-02-21 13:43:51,266 - INFO - Vendor with vendor ID 441 instantiated.
+2026-02-21 13:43:51,266 - INFO - Vendor with vendor ID 442 instantiated.
+2026-02-21 13:43:51,266 - INFO - Vendor with vendor ID 443 instantiated.
+2026-02-21 13:43:51,266 - INFO - Vendor with vendor ID 445 instantiated.
+2026-02-21 13:43:51,266 - INFO - Vendor with vendor ID 449 instantiated.
+2026-02-21 13:43:51,266 - INFO - Vendor with vendor ID 450 instantiated.
+2026-02-21 13:43:51,266 - INFO - Vendor with vendor ID 452 instantiated.
+2026-02-21 13:43:51,267 - INFO - Vendor with vendor ID 454 instantiated.
+2026-02-21 13:43:51,267 - INFO - Vendor with vendor ID 464 instantiated.
+2026-02-21 13:43:51,267 - INFO - Vendor with vendor ID 470 instantiated.
+2026-02-21 13:43:51,267 - INFO - Vendor with vendor ID 471 instantiated.
+2026-02-21 13:43:51,267 - INFO - Vendor with vendor ID 473 instantiated.
+2026-02-21 13:43:51,267 - INFO - Vendor with vendor ID 476 instantiated.
+2026-02-21 13:43:51,267 - INFO - Vendor with vendor ID 478 instantiated.
+2026-02-21 13:43:51,267 - INFO - Vendor with vendor ID 479 instantiated.
+2026-02-21 13:43:51,268 - INFO - Vendor with vendor ID 481 instantiated.
+2026-02-21 13:43:51,268 - INFO - Vendor with vendor ID 486 instantiated.
+2026-02-21 13:43:51,268 - INFO - Vendor with vendor ID 492 instantiated.
+2026-02-21 13:44:31,929 - INFO - Fetched inventory from vendor ID 8
+2026-02-21 13:44:31,933 - INFO - Building inventory change logs for vendor ID 8.
+2026-02-21 13:44:33,939 - INFO - Pushing product logs to Supabase.
+2026-02-21 13:44:48,201 - INFO - HTTP Request: POST https://cjhpqurdralszprormcp.supabase.co/rest/v1/product_events?columns=%22old_price%22%2C%22new_availability%22%2C%22new_price%22%2C%22old_availability%22%2C%22created_at%22%2C%22pid%22%2C%22vendor_id%22%2C%22event_type%22 "HTTP/2 400 Bad Request"
+2026-02-21 13:44:48,207 - ERROR - {'message': 'invalid input value for enum product_availability_status: "unavailable"', 'code': '22P02', 'hint': None, 'details': None}: <function <lambda> at 0x0000021AB516E2A0> raised an exception on attempt 0.
+2026-02-21 13:44:49,403 - INFO - HTTP Request: POST https://cjhpqurdralszprormcp.supabase.co/rest/v1/product_events?columns=%22old_price%22%2C%22new_availability%22%2C%22new_price%22%2C%22old_availability%22%2C%22created_at%22%2C%22pid%22%2C%22vendor_id%22%2C%22event_type%22 "HTTP/2 400 Bad Request"
+2026-02-21 13:44:49,410 - ERROR - {'message': 'invalid input value for enum product_availability_status: "unavailable"', 'code': '22P02', 'hint': None, 'details': None}: <function <lambda> at 0x0000021AB516E2A0> raised an exception on attempt 1.
+2026-02-21 13:44:51,558 - INFO - HTTP Request: POST https://cjhpqurdralszprormcp.supabase.co/rest/v1/product_events?columns=%22old_price%22%2C%22new_availability%22%2C%22new_price%22%2C%22old_availability%22%2C%22created_at%22%2C%22pid%22%2C%22vendor_id%22%2C%22event_type%22 "HTTP/2 400 Bad Request"
+2026-02-21 13:44:51,565 - ERROR - {'message': 'invalid input value for enum product_availability_status: "unavailable"', 'code': '22P02', 'hint': None, 'details': None}: <function <lambda> at 0x0000021AB516E2A0> raised an exception on attempt 2.
+2026-02-21 13:44:51,566 - ERROR - Failed to insert product event logs: {'message': 'invalid input value for enum product_availability_status: "unavailable"', 'code': '22P02', 'hint': None, 'details': None}.
+Traceback (most recent call last):
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\inventory\main.py", line 149, in <module>
+    with_retry(
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\common\retry.py", line 12, in with_retry
+    return func()
+           ^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\inventory\main.py", line 150, in <lambda>
+    lambda: insert_logs_into_db(
+            ^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\inventory\supabase_io.py", line 43, in insert_logs_into_db
+    response = client.table(table_name).insert(events_logs).execute()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\abdul\PycharmProjects\CannabisWebScraper\.venv\Lib\site-packages\postgrest\_sync\request_builder.py", line 53, in execute
+    raise APIError(dict(json_obj))
+postgrest.exceptions.APIError: {'message': 'invalid input value for enum product_availability_status: "unavailable"', 'code': '22P02', 'hint': None, 'details': None}
+2026-02-21 13:44:51,571 - INFO - Terminating script
+2026-02-21 13:48:49,603 - INFO - Starting program
+2026-02-21 13:48:49,603 - INFO - Creating Supabase client
+2026-02-21 13:48:50,080 - INFO - Starting fetch of vendor information from Supabase.
+2026-02-21 13:48:50,531 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/vendors_info_bucket/vendors_information.json "HTTP/2 200 OK"
+2026-02-21 13:48:50,549 - INFO - Starting fetch of vendor information from API
+2026-02-21 13:48:50,891 - INFO - Starting build of vendor change logs.
+2026-02-21 13:48:50,895 - INFO - Starting fetch of old vendor inventories from Supabase.
+2026-02-21 13:48:50,977 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/inventories_bucket/vendors_inventories.json "HTTP/2 200 OK"
+2026-02-21 13:48:51,068 - INFO - Old vendor inventories successfully fetched from Supabase
+2026-02-21 13:48:51,068 - INFO - Vendor with vendor ID 8 instantiated.
+2026-02-21 13:48:51,069 - INFO - Vendor with vendor ID 52 instantiated.
+2026-02-21 13:48:51,069 - INFO - Vendor with vendor ID 54 instantiated.
+2026-02-21 13:48:51,069 - INFO - Vendor with vendor ID 57 instantiated.
+2026-02-21 13:48:51,069 - INFO - Vendor with vendor ID 76 instantiated.
+2026-02-21 13:48:51,069 - INFO - Vendor with vendor ID 53 instantiated.
+2026-02-21 13:48:51,070 - INFO - Vendor with vendor ID 56 instantiated.
+2026-02-21 13:48:51,070 - INFO - Vendor with vendor ID 37 instantiated.
+2026-02-21 13:48:51,070 - INFO - Vendor with vendor ID 59 instantiated.
+2026-02-21 13:48:51,070 - INFO - Vendor with vendor ID 60 instantiated.
+2026-02-21 13:48:51,070 - INFO - Vendor with vendor ID 39 instantiated.
+2026-02-21 13:48:51,071 - INFO - Vendor with vendor ID 73 instantiated.
+2026-02-21 13:48:51,071 - INFO - Vendor with vendor ID 68 instantiated.
+2026-02-21 13:48:51,071 - INFO - Vendor with vendor ID 69 instantiated.
+2026-02-21 13:48:51,071 - INFO - Vendor with vendor ID 70 instantiated.
+2026-02-21 13:48:51,071 - INFO - Vendor with vendor ID 78 instantiated.
+2026-02-21 13:48:51,073 - INFO - Vendor with vendor ID 74 instantiated.
+2026-02-21 13:48:51,073 - INFO - Vendor with vendor ID 23 instantiated.
+2026-02-21 13:48:51,073 - INFO - Vendor with vendor ID 80 instantiated.
+2026-02-21 13:48:51,074 - INFO - Vendor with vendor ID 79 instantiated.
+2026-02-21 13:48:51,074 - INFO - Vendor with vendor ID 94 instantiated.
+2026-02-21 13:48:51,074 - INFO - Vendor with vendor ID 85 instantiated.
+2026-02-21 13:48:51,074 - INFO - Vendor with vendor ID 88 instantiated.
+2026-02-21 13:48:51,075 - INFO - Vendor with vendor ID 35 instantiated.
+2026-02-21 13:48:51,075 - INFO - Vendor with vendor ID 33 instantiated.
+2026-02-21 13:48:51,075 - INFO - Vendor with vendor ID 100 instantiated.
+2026-02-21 13:48:51,075 - INFO - Vendor with vendor ID 101 instantiated.
+2026-02-21 13:48:51,075 - INFO - Vendor with vendor ID 102 instantiated.
+2026-02-21 13:48:51,075 - INFO - Vendor with vendor ID 106 instantiated.
+2026-02-21 13:48:51,075 - INFO - Vendor with vendor ID 108 instantiated.
+2026-02-21 13:48:51,076 - INFO - Vendor with vendor ID 110 instantiated.
+2026-02-21 13:48:51,076 - INFO - Vendor with vendor ID 115 instantiated.
+2026-02-21 13:48:51,076 - INFO - Vendor with vendor ID 116 instantiated.
+2026-02-21 13:48:51,076 - INFO - Vendor with vendor ID 119 instantiated.
+2026-02-21 13:48:51,076 - INFO - Vendor with vendor ID 120 instantiated.
+2026-02-21 13:48:51,076 - INFO - Vendor with vendor ID 122 instantiated.
+2026-02-21 13:48:51,076 - INFO - Vendor with vendor ID 129 instantiated.
+2026-02-21 13:48:51,076 - INFO - Vendor with vendor ID 131 instantiated.
+2026-02-21 13:48:51,077 - INFO - Vendor with vendor ID 132 instantiated.
+2026-02-21 13:48:51,077 - INFO - Vendor with vendor ID 133 instantiated.
+2026-02-21 13:48:51,077 - INFO - Vendor with vendor ID 134 instantiated.
+2026-02-21 13:48:51,077 - INFO - Vendor with vendor ID 135 instantiated.
+2026-02-21 13:48:51,078 - INFO - Vendor with vendor ID 139 instantiated.
+2026-02-21 13:48:51,078 - INFO - Vendor with vendor ID 141 instantiated.
+2026-02-21 13:48:51,078 - INFO - Vendor with vendor ID 144 instantiated.
+2026-02-21 13:48:51,078 - INFO - Vendor with vendor ID 145 instantiated.
+2026-02-21 13:48:51,078 - INFO - Vendor with vendor ID 146 instantiated.
+2026-02-21 13:48:51,078 - INFO - Vendor with vendor ID 149 instantiated.
+2026-02-21 13:48:51,078 - INFO - Vendor with vendor ID 151 instantiated.
+2026-02-21 13:48:51,078 - INFO - Vendor with vendor ID 153 instantiated.
+2026-02-21 13:48:51,079 - INFO - Vendor with vendor ID 155 instantiated.
+2026-02-21 13:48:51,079 - INFO - Vendor with vendor ID 156 instantiated.
+2026-02-21 13:48:51,079 - INFO - Vendor with vendor ID 157 instantiated.
+2026-02-21 13:48:51,079 - INFO - Vendor with vendor ID 159 instantiated.
+2026-02-21 13:48:51,079 - INFO - Vendor with vendor ID 160 instantiated.
+2026-02-21 13:48:51,079 - INFO - Vendor with vendor ID 162 instantiated.
+2026-02-21 13:48:51,080 - INFO - Vendor with vendor ID 166 instantiated.
+2026-02-21 13:48:51,108 - INFO - Vendor with vendor ID 169 instantiated.
+2026-02-21 13:48:51,108 - INFO - Vendor with vendor ID 170 instantiated.
+2026-02-21 13:48:51,108 - INFO - Vendor with vendor ID 175 instantiated.
+2026-02-21 13:48:51,108 - INFO - Vendor with vendor ID 177 instantiated.
+2026-02-21 13:48:51,109 - INFO - Vendor with vendor ID 178 instantiated.
+2026-02-21 13:48:51,109 - INFO - Vendor with vendor ID 179 instantiated.
+2026-02-21 13:48:51,109 - INFO - Vendor with vendor ID 180 instantiated.
+2026-02-21 13:48:51,109 - INFO - Vendor with vendor ID 181 instantiated.
+2026-02-21 13:48:51,109 - INFO - Vendor with vendor ID 182 instantiated.
+2026-02-21 13:48:51,110 - INFO - Vendor with vendor ID 183 instantiated.
+2026-02-21 13:48:51,110 - INFO - Vendor with vendor ID 184 instantiated.
+2026-02-21 13:48:51,110 - INFO - Vendor with vendor ID 186 instantiated.
+2026-02-21 13:48:51,111 - INFO - Vendor with vendor ID 187 instantiated.
+2026-02-21 13:48:51,111 - INFO - Vendor with vendor ID 188 instantiated.
+2026-02-21 13:48:51,111 - INFO - Vendor with vendor ID 189 instantiated.
+2026-02-21 13:48:51,111 - INFO - Vendor with vendor ID 191 instantiated.
+2026-02-21 13:48:51,111 - INFO - Vendor with vendor ID 192 instantiated.
+2026-02-21 13:48:51,112 - INFO - Vendor with vendor ID 193 instantiated.
+2026-02-21 13:48:51,112 - INFO - Vendor with vendor ID 194 instantiated.
+2026-02-21 13:48:51,112 - INFO - Vendor with vendor ID 195 instantiated.
+2026-02-21 13:48:51,112 - INFO - Vendor with vendor ID 198 instantiated.
+2026-02-21 13:48:51,112 - INFO - Vendor with vendor ID 202 instantiated.
+2026-02-21 13:48:51,112 - INFO - Vendor with vendor ID 204 instantiated.
+2026-02-21 13:48:51,113 - INFO - Vendor with vendor ID 207 instantiated.
+2026-02-21 13:48:51,113 - INFO - Vendor with vendor ID 211 instantiated.
+2026-02-21 13:48:51,113 - INFO - Vendor with vendor ID 212 instantiated.
+2026-02-21 13:48:51,113 - INFO - Vendor with vendor ID 214 instantiated.
+2026-02-21 13:48:51,113 - INFO - Vendor with vendor ID 215 instantiated.
+2026-02-21 13:48:51,114 - INFO - Vendor with vendor ID 216 instantiated.
+2026-02-21 13:48:51,114 - INFO - Vendor with vendor ID 222 instantiated.
+2026-02-21 13:48:51,114 - INFO - Vendor with vendor ID 224 instantiated.
+2026-02-21 13:48:51,114 - INFO - Vendor with vendor ID 225 instantiated.
+2026-02-21 13:48:51,114 - INFO - Vendor with vendor ID 228 instantiated.
+2026-02-21 13:48:51,114 - INFO - Vendor with vendor ID 229 instantiated.
+2026-02-21 13:48:51,115 - INFO - Vendor with vendor ID 230 instantiated.
+2026-02-21 13:48:51,115 - INFO - Vendor with vendor ID 233 instantiated.
+2026-02-21 13:48:51,115 - INFO - Vendor with vendor ID 234 instantiated.
+2026-02-21 13:48:51,115 - INFO - Vendor with vendor ID 235 instantiated.
+2026-02-21 13:48:51,116 - INFO - Vendor with vendor ID 236 instantiated.
+2026-02-21 13:48:51,116 - INFO - Vendor with vendor ID 237 instantiated.
+2026-02-21 13:48:51,116 - INFO - Vendor with vendor ID 238 instantiated.
+2026-02-21 13:48:51,116 - INFO - Vendor with vendor ID 242 instantiated.
+2026-02-21 13:48:51,117 - INFO - Vendor with vendor ID 243 instantiated.
+2026-02-21 13:48:51,117 - INFO - Vendor with vendor ID 244 instantiated.
+2026-02-21 13:48:51,117 - INFO - Vendor with vendor ID 245 instantiated.
+2026-02-21 13:48:51,117 - INFO - Vendor with vendor ID 248 instantiated.
+2026-02-21 13:48:51,117 - INFO - Vendor with vendor ID 249 instantiated.
+2026-02-21 13:48:51,117 - INFO - Vendor with vendor ID 250 instantiated.
+2026-02-21 13:48:51,118 - INFO - Vendor with vendor ID 251 instantiated.
+2026-02-21 13:48:51,118 - INFO - Vendor with vendor ID 252 instantiated.
+2026-02-21 13:48:51,118 - INFO - Vendor with vendor ID 254 instantiated.
+2026-02-21 13:48:51,118 - INFO - Vendor with vendor ID 255 instantiated.
+2026-02-21 13:48:51,118 - INFO - Vendor with vendor ID 256 instantiated.
+2026-02-21 13:48:51,118 - INFO - Vendor with vendor ID 258 instantiated.
+2026-02-21 13:48:51,118 - INFO - Vendor with vendor ID 268 instantiated.
+2026-02-21 13:48:51,119 - INFO - Vendor with vendor ID 274 instantiated.
+2026-02-21 13:48:51,119 - INFO - Vendor with vendor ID 276 instantiated.
+2026-02-21 13:48:51,119 - INFO - Vendor with vendor ID 277 instantiated.
+2026-02-21 13:48:51,119 - INFO - Vendor with vendor ID 278 instantiated.
+2026-02-21 13:48:51,119 - INFO - Vendor with vendor ID 279 instantiated.
+2026-02-21 13:48:51,119 - INFO - Vendor with vendor ID 280 instantiated.
+2026-02-21 13:48:51,119 - INFO - Vendor with vendor ID 281 instantiated.
+2026-02-21 13:48:51,120 - INFO - Vendor with vendor ID 282 instantiated.
+2026-02-21 13:48:51,120 - INFO - Vendor with vendor ID 283 instantiated.
+2026-02-21 13:48:51,120 - INFO - Vendor with vendor ID 285 instantiated.
+2026-02-21 13:48:51,120 - INFO - Vendor with vendor ID 286 instantiated.
+2026-02-21 13:48:51,120 - INFO - Vendor with vendor ID 290 instantiated.
+2026-02-21 13:48:51,120 - INFO - Vendor with vendor ID 291 instantiated.
+2026-02-21 13:48:51,120 - INFO - Vendor with vendor ID 297 instantiated.
+2026-02-21 13:48:51,120 - INFO - Vendor with vendor ID 298 instantiated.
+2026-02-21 13:48:51,121 - INFO - Vendor with vendor ID 299 instantiated.
+2026-02-21 13:48:51,121 - INFO - Vendor with vendor ID 302 instantiated.
+2026-02-21 13:48:51,121 - INFO - Vendor with vendor ID 303 instantiated.
+2026-02-21 13:48:51,121 - INFO - Vendor with vendor ID 304 instantiated.
+2026-02-21 13:48:51,121 - INFO - Vendor with vendor ID 306 instantiated.
+2026-02-21 13:48:51,121 - INFO - Vendor with vendor ID 311 instantiated.
+2026-02-21 13:48:51,121 - INFO - Vendor with vendor ID 312 instantiated.
+2026-02-21 13:48:51,121 - INFO - Vendor with vendor ID 317 instantiated.
+2026-02-21 13:48:51,121 - INFO - Vendor with vendor ID 318 instantiated.
+2026-02-21 13:48:51,122 - INFO - Vendor with vendor ID 320 instantiated.
+2026-02-21 13:48:51,122 - INFO - Vendor with vendor ID 321 instantiated.
+2026-02-21 13:48:51,122 - INFO - Vendor with vendor ID 323 instantiated.
+2026-02-21 13:48:51,122 - INFO - Vendor with vendor ID 326 instantiated.
+2026-02-21 13:48:51,122 - INFO - Vendor with vendor ID 330 instantiated.
+2026-02-21 13:48:51,122 - INFO - Vendor with vendor ID 331 instantiated.
+2026-02-21 13:48:51,122 - INFO - Vendor with vendor ID 332 instantiated.
+2026-02-21 13:48:51,122 - INFO - Vendor with vendor ID 333 instantiated.
+2026-02-21 13:48:51,123 - INFO - Vendor with vendor ID 336 instantiated.
+2026-02-21 13:48:51,123 - INFO - Vendor with vendor ID 348 instantiated.
+2026-02-21 13:48:51,123 - INFO - Vendor with vendor ID 350 instantiated.
+2026-02-21 13:48:51,123 - INFO - Vendor with vendor ID 354 instantiated.
+2026-02-21 13:48:51,123 - INFO - Vendor with vendor ID 356 instantiated.
+2026-02-21 13:48:51,123 - INFO - Vendor with vendor ID 358 instantiated.
+2026-02-21 13:48:51,123 - INFO - Vendor with vendor ID 360 instantiated.
+2026-02-21 13:48:51,123 - INFO - Vendor with vendor ID 361 instantiated.
+2026-02-21 13:48:51,123 - INFO - Vendor with vendor ID 362 instantiated.
+2026-02-21 13:48:51,124 - INFO - Vendor with vendor ID 363 instantiated.
+2026-02-21 13:48:51,124 - INFO - Vendor with vendor ID 366 instantiated.
+2026-02-21 13:48:51,124 - INFO - Vendor with vendor ID 373 instantiated.
+2026-02-21 13:48:51,124 - INFO - Vendor with vendor ID 374 instantiated.
+2026-02-21 13:48:51,124 - INFO - Vendor with vendor ID 375 instantiated.
+2026-02-21 13:48:51,124 - INFO - Vendor with vendor ID 376 instantiated.
+2026-02-21 13:48:51,124 - INFO - Vendor with vendor ID 383 instantiated.
+2026-02-21 13:48:51,124 - INFO - Vendor with vendor ID 385 instantiated.
+2026-02-21 13:48:51,125 - INFO - Vendor with vendor ID 386 instantiated.
+2026-02-21 13:48:51,125 - INFO - Vendor with vendor ID 387 instantiated.
+2026-02-21 13:48:51,125 - INFO - Vendor with vendor ID 389 instantiated.
+2026-02-21 13:48:51,125 - INFO - Vendor with vendor ID 391 instantiated.
+2026-02-21 13:48:51,125 - INFO - Vendor with vendor ID 393 instantiated.
+2026-02-21 13:48:51,125 - INFO - Vendor with vendor ID 395 instantiated.
+2026-02-21 13:48:51,125 - INFO - Vendor with vendor ID 396 instantiated.
+2026-02-21 13:48:51,125 - INFO - Vendor with vendor ID 400 instantiated.
+2026-02-21 13:48:51,125 - INFO - Vendor with vendor ID 403 instantiated.
+2026-02-21 13:48:51,126 - INFO - Vendor with vendor ID 406 instantiated.
+2026-02-21 13:48:51,126 - INFO - Vendor with vendor ID 407 instantiated.
+2026-02-21 13:48:51,126 - INFO - Vendor with vendor ID 412 instantiated.
+2026-02-21 13:48:51,126 - INFO - Vendor with vendor ID 413 instantiated.
+2026-02-21 13:48:51,126 - INFO - Vendor with vendor ID 414 instantiated.
+2026-02-21 13:48:51,126 - INFO - Vendor with vendor ID 415 instantiated.
+2026-02-21 13:48:51,126 - INFO - Vendor with vendor ID 416 instantiated.
+2026-02-21 13:48:51,126 - INFO - Vendor with vendor ID 417 instantiated.
+2026-02-21 13:48:51,126 - INFO - Vendor with vendor ID 418 instantiated.
+2026-02-21 13:48:51,127 - INFO - Vendor with vendor ID 419 instantiated.
+2026-02-21 13:48:51,127 - INFO - Vendor with vendor ID 420 instantiated.
+2026-02-21 13:48:51,127 - INFO - Vendor with vendor ID 421 instantiated.
+2026-02-21 13:48:51,127 - INFO - Vendor with vendor ID 426 instantiated.
+2026-02-21 13:48:51,127 - INFO - Vendor with vendor ID 427 instantiated.
+2026-02-21 13:48:51,127 - INFO - Vendor with vendor ID 431 instantiated.
+2026-02-21 13:48:51,127 - INFO - Vendor with vendor ID 432 instantiated.
+2026-02-21 13:48:51,127 - INFO - Vendor with vendor ID 433 instantiated.
+2026-02-21 13:48:51,127 - INFO - Vendor with vendor ID 435 instantiated.
+2026-02-21 13:48:51,128 - INFO - Vendor with vendor ID 436 instantiated.
+2026-02-21 13:48:51,128 - INFO - Vendor with vendor ID 440 instantiated.
+2026-02-21 13:48:51,128 - INFO - Vendor with vendor ID 441 instantiated.
+2026-02-21 13:48:51,128 - INFO - Vendor with vendor ID 442 instantiated.
+2026-02-21 13:48:51,128 - INFO - Vendor with vendor ID 443 instantiated.
+2026-02-21 13:48:51,128 - INFO - Vendor with vendor ID 445 instantiated.
+2026-02-21 13:48:51,128 - INFO - Vendor with vendor ID 449 instantiated.
+2026-02-21 13:48:51,128 - INFO - Vendor with vendor ID 450 instantiated.
+2026-02-21 13:48:51,128 - INFO - Vendor with vendor ID 452 instantiated.
+2026-02-21 13:48:51,129 - INFO - Vendor with vendor ID 454 instantiated.
+2026-02-21 13:48:51,129 - INFO - Vendor with vendor ID 464 instantiated.
+2026-02-21 13:48:51,129 - INFO - Vendor with vendor ID 470 instantiated.
+2026-02-21 13:48:51,129 - INFO - Vendor with vendor ID 471 instantiated.
+2026-02-21 13:48:51,129 - INFO - Vendor with vendor ID 473 instantiated.
+2026-02-21 13:48:51,129 - INFO - Vendor with vendor ID 476 instantiated.
+2026-02-21 13:48:51,129 - INFO - Vendor with vendor ID 478 instantiated.
+2026-02-21 13:48:51,130 - INFO - Vendor with vendor ID 479 instantiated.
+2026-02-21 13:48:51,130 - INFO - Vendor with vendor ID 481 instantiated.
+2026-02-21 13:48:51,130 - INFO - Vendor with vendor ID 486 instantiated.
+2026-02-21 13:48:51,130 - INFO - Vendor with vendor ID 492 instantiated.
+2026-02-21 13:49:31,001 - INFO - Fetched inventory from vendor ID 8
+2026-02-21 13:49:31,007 - INFO - Building inventory change logs for vendor ID 8.
+2026-02-21 13:49:33,026 - INFO - Pushing product logs to Supabase.
+2026-02-21 13:51:15,120 - INFO - Starting program
+2026-02-21 13:51:15,120 - INFO - Creating Supabase client
+2026-02-21 13:51:15,619 - INFO - Starting fetch of vendor information from Supabase.
+2026-02-21 13:51:16,067 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/vendors_info_bucket/vendors_information.json "HTTP/2 200 OK"
+2026-02-21 13:51:16,092 - INFO - Starting fetch of vendor information from API
+2026-02-21 13:51:16,421 - INFO - Starting build of vendor change logs.
+2026-02-21 13:51:16,424 - INFO - Starting fetch of old vendor inventories from Supabase.
+2026-02-21 13:51:16,523 - INFO - HTTP Request: GET https://cjhpqurdralszprormcp.supabase.co/storage/v1/object/inventories_bucket/vendors_inventories.json "HTTP/2 200 OK"
+2026-02-21 13:51:16,621 - INFO - Old vendor inventories successfully fetched from Supabase
+2026-02-21 13:51:16,622 - INFO - Vendor with vendor ID 8 instantiated.
+2026-02-21 13:51:16,622 - INFO - Vendor with vendor ID 52 instantiated.
+2026-02-21 13:51:16,623 - INFO - Vendor with vendor ID 54 instantiated.
+2026-02-21 13:51:16,623 - INFO - Vendor with vendor ID 57 instantiated.
+2026-02-21 13:51:16,623 - INFO - Vendor with vendor ID 76 instantiated.
+2026-02-21 13:51:16,623 - INFO - Vendor with vendor ID 53 instantiated.
+2026-02-21 13:51:16,623 - INFO - Vendor with vendor ID 56 instantiated.
+2026-02-21 13:51:16,623 - INFO - Vendor with vendor ID 37 instantiated.
+2026-02-21 13:51:16,623 - INFO - Vendor with vendor ID 59 instantiated.
+2026-02-21 13:51:16,624 - INFO - Vendor with vendor ID 60 instantiated.
+2026-02-21 13:51:16,624 - INFO - Vendor with vendor ID 39 instantiated.
+2026-02-21 13:51:16,624 - INFO - Vendor with vendor ID 73 instantiated.
+2026-02-21 13:51:16,624 - INFO - Vendor with vendor ID 68 instantiated.
+2026-02-21 13:51:16,625 - INFO - Vendor with vendor ID 69 instantiated.
+2026-02-21 13:51:16,625 - INFO - Vendor with vendor ID 70 instantiated.
+2026-02-21 13:51:16,625 - INFO - Vendor with vendor ID 78 instantiated.
+2026-02-21 13:51:16,626 - INFO - Vendor with vendor ID 74 instantiated.
+2026-02-21 13:51:16,627 - INFO - Vendor with vendor ID 23 instantiated.
+2026-02-21 13:51:16,627 - INFO - Vendor with vendor ID 80 instantiated.
+2026-02-21 13:51:16,627 - INFO - Vendor with vendor ID 79 instantiated.
+2026-02-21 13:51:16,628 - INFO - Vendor with vendor ID 94 instantiated.
+2026-02-21 13:51:16,628 - INFO - Vendor with vendor ID 85 instantiated.
+2026-02-21 13:51:16,628 - INFO - Vendor with vendor ID 88 instantiated.
+2026-02-21 13:51:16,628 - INFO - Vendor with vendor ID 35 instantiated.
+2026-02-21 13:51:16,628 - INFO - Vendor with vendor ID 33 instantiated.
+2026-02-21 13:51:16,629 - INFO - Vendor with vendor ID 100 instantiated.
+2026-02-21 13:51:16,629 - INFO - Vendor with vendor ID 101 instantiated.
+2026-02-21 13:51:16,629 - INFO - Vendor with vendor ID 102 instantiated.
+2026-02-21 13:51:16,629 - INFO - Vendor with vendor ID 106 instantiated.
+2026-02-21 13:51:16,629 - INFO - Vendor with vendor ID 108 instantiated.
+2026-02-21 13:51:16,629 - INFO - Vendor with vendor ID 110 instantiated.
+2026-02-21 13:51:16,629 - INFO - Vendor with vendor ID 115 instantiated.
+2026-02-21 13:51:16,629 - INFO - Vendor with vendor ID 116 instantiated.
+2026-02-21 13:51:16,630 - INFO - Vendor with vendor ID 119 instantiated.
+2026-02-21 13:51:16,630 - INFO - Vendor with vendor ID 120 instantiated.
+2026-02-21 13:51:16,630 - INFO - Vendor with vendor ID 122 instantiated.
+2026-02-21 13:51:16,630 - INFO - Vendor with vendor ID 129 instantiated.
+2026-02-21 13:51:16,630 - INFO - Vendor with vendor ID 131 instantiated.
+2026-02-21 13:51:16,630 - INFO - Vendor with vendor ID 132 instantiated.
+2026-02-21 13:51:16,630 - INFO - Vendor with vendor ID 133 instantiated.
+2026-02-21 13:51:16,630 - INFO - Vendor with vendor ID 134 instantiated.
+2026-02-21 13:51:16,631 - INFO - Vendor with vendor ID 135 instantiated.
+2026-02-21 13:51:16,631 - INFO - Vendor with vendor ID 139 instantiated.
+2026-02-21 13:51:16,631 - INFO - Vendor with vendor ID 141 instantiated.
+2026-02-21 13:51:16,631 - INFO - Vendor with vendor ID 144 instantiated.
+2026-02-21 13:51:16,631 - INFO - Vendor with vendor ID 145 instantiated.
+2026-02-21 13:51:16,632 - INFO - Vendor with vendor ID 146 instantiated.
+2026-02-21 13:51:16,632 - INFO - Vendor with vendor ID 149 instantiated.
+2026-02-21 13:51:16,632 - INFO - Vendor with vendor ID 151 instantiated.
+2026-02-21 13:51:16,632 - INFO - Vendor with vendor ID 153 instantiated.
+2026-02-21 13:51:16,632 - INFO - Vendor with vendor ID 155 instantiated.
+2026-02-21 13:51:16,632 - INFO - Vendor with vendor ID 156 instantiated.
+2026-02-21 13:51:16,632 - INFO - Vendor with vendor ID 157 instantiated.
+2026-02-21 13:51:16,633 - INFO - Vendor with vendor ID 159 instantiated.
+2026-02-21 13:51:16,633 - INFO - Vendor with vendor ID 160 instantiated.
+2026-02-21 13:51:16,633 - INFO - Vendor with vendor ID 162 instantiated.
+2026-02-21 13:51:16,633 - INFO - Vendor with vendor ID 166 instantiated.
+2026-02-21 13:51:16,660 - INFO - Vendor with vendor ID 169 instantiated.
+2026-02-21 13:51:16,660 - INFO - Vendor with vendor ID 170 instantiated.
+2026-02-21 13:51:16,661 - INFO - Vendor with vendor ID 175 instantiated.
+2026-02-21 13:51:16,661 - INFO - Vendor with vendor ID 177 instantiated.
+2026-02-21 13:51:16,661 - INFO - Vendor with vendor ID 178 instantiated.
+2026-02-21 13:51:16,661 - INFO - Vendor with vendor ID 179 instantiated.
+2026-02-21 13:51:16,662 - INFO - Vendor with vendor ID 180 instantiated.
+2026-02-21 13:51:16,662 - INFO - Vendor with vendor ID 181 instantiated.
+2026-02-21 13:51:16,662 - INFO - Vendor with vendor ID 182 instantiated.
+2026-02-21 13:51:16,662 - INFO - Vendor with vendor ID 183 instantiated.
+2026-02-21 13:51:16,663 - INFO - Vendor with vendor ID 184 instantiated.
+2026-02-21 13:51:16,663 - INFO - Vendor with vendor ID 186 instantiated.
+2026-02-21 13:51:16,663 - INFO - Vendor with vendor ID 187 instantiated.
+2026-02-21 13:51:16,663 - INFO - Vendor with vendor ID 188 instantiated.
+2026-02-21 13:51:16,663 - INFO - Vendor with vendor ID 189 instantiated.
+2026-02-21 13:51:16,663 - INFO - Vendor with vendor ID 191 instantiated.
+2026-02-21 13:51:16,663 - INFO - Vendor with vendor ID 192 instantiated.
+2026-02-21 13:51:16,664 - INFO - Vendor with vendor ID 193 instantiated.
+2026-02-21 13:51:16,664 - INFO - Vendor with vendor ID 194 instantiated.
+2026-02-21 13:51:16,664 - INFO - Vendor with vendor ID 195 instantiated.
+2026-02-21 13:51:16,664 - INFO - Vendor with vendor ID 198 instantiated.
+2026-02-21 13:51:16,664 - INFO - Vendor with vendor ID 202 instantiated.
+2026-02-21 13:51:16,664 - INFO - Vendor with vendor ID 204 instantiated.
+2026-02-21 13:51:16,665 - INFO - Vendor with vendor ID 207 instantiated.
+2026-02-21 13:51:16,665 - INFO - Vendor with vendor ID 211 instantiated.
+2026-02-21 13:51:16,665 - INFO - Vendor with vendor ID 212 instantiated.
+2026-02-21 13:51:16,665 - INFO - Vendor with vendor ID 214 instantiated.
+2026-02-21 13:51:16,665 - INFO - Vendor with vendor ID 215 instantiated.
+2026-02-21 13:51:16,665 - INFO - Vendor with vendor ID 216 instantiated.
+2026-02-21 13:51:16,666 - INFO - Vendor with vendor ID 222 instantiated.
+2026-02-21 13:51:16,666 - INFO - Vendor with vendor ID 224 instantiated.
+2026-02-21 13:51:16,666 - INFO - Vendor with vendor ID 225 instantiated.
+2026-02-21 13:51:16,666 - INFO - Vendor with vendor ID 228 instantiated.
+2026-02-21 13:51:16,666 - INFO - Vendor with vendor ID 229 instantiated.
+2026-02-21 13:51:16,666 - INFO - Vendor with vendor ID 230 instantiated.
+2026-02-21 13:51:16,667 - INFO - Vendor with vendor ID 233 instantiated.
+2026-02-21 13:51:16,667 - INFO - Vendor with vendor ID 234 instantiated.
+2026-02-21 13:51:16,667 - INFO - Vendor with vendor ID 235 instantiated.
+2026-02-21 13:51:16,667 - INFO - Vendor with vendor ID 236 instantiated.
+2026-02-21 13:51:16,668 - INFO - Vendor with vendor ID 237 instantiated.
+2026-02-21 13:51:16,668 - INFO - Vendor with vendor ID 238 instantiated.
+2026-02-21 13:51:16,668 - INFO - Vendor with vendor ID 242 instantiated.
+2026-02-21 13:51:16,668 - INFO - Vendor with vendor ID 243 instantiated.
+2026-02-21 13:51:16,668 - INFO - Vendor with vendor ID 244 instantiated.
+2026-02-21 13:51:16,668 - INFO - Vendor with vendor ID 245 instantiated.
+2026-02-21 13:51:16,669 - INFO - Vendor with vendor ID 248 instantiated.
+2026-02-21 13:51:16,669 - INFO - Vendor with vendor ID 249 instantiated.
+2026-02-21 13:51:16,669 - INFO - Vendor with vendor ID 250 instantiated.
+2026-02-21 13:51:16,669 - INFO - Vendor with vendor ID 251 instantiated.
+2026-02-21 13:51:16,669 - INFO - Vendor with vendor ID 252 instantiated.
+2026-02-21 13:51:16,670 - INFO - Vendor with vendor ID 254 instantiated.
+2026-02-21 13:51:16,670 - INFO - Vendor with vendor ID 255 instantiated.
+2026-02-21 13:51:16,670 - INFO - Vendor with vendor ID 256 instantiated.
+2026-02-21 13:51:16,670 - INFO - Vendor with vendor ID 258 instantiated.
+2026-02-21 13:51:16,670 - INFO - Vendor with vendor ID 268 instantiated.
+2026-02-21 13:51:16,670 - INFO - Vendor with vendor ID 274 instantiated.
+2026-02-21 13:51:16,670 - INFO - Vendor with vendor ID 276 instantiated.
+2026-02-21 13:51:16,671 - INFO - Vendor with vendor ID 277 instantiated.
+2026-02-21 13:51:16,671 - INFO - Vendor with vendor ID 278 instantiated.
+2026-02-21 13:51:16,671 - INFO - Vendor with vendor ID 279 instantiated.
+2026-02-21 13:51:16,671 - INFO - Vendor with vendor ID 280 instantiated.
+2026-02-21 13:51:16,672 - INFO - Vendor with vendor ID 281 instantiated.
+2026-02-21 13:51:16,672 - INFO - Vendor with vendor ID 282 instantiated.
+2026-02-21 13:51:16,672 - INFO - Vendor with vendor ID 283 instantiated.
+2026-02-21 13:51:16,672 - INFO - Vendor with vendor ID 285 instantiated.
+2026-02-21 13:51:16,672 - INFO - Vendor with vendor ID 286 instantiated.
+2026-02-21 13:51:16,672 - INFO - Vendor with vendor ID 290 instantiated.
+2026-02-21 13:51:16,672 - INFO - Vendor with vendor ID 291 instantiated.
+2026-02-21 13:51:16,673 - INFO - Vendor with vendor ID 297 instantiated.
+2026-02-21 13:51:16,673 - INFO - Vendor with vendor ID 298 instantiated.
+2026-02-21 13:51:16,673 - INFO - Vendor with vendor ID 299 instantiated.
+2026-02-21 13:51:16,673 - INFO - Vendor with vendor ID 302 instantiated.
+2026-02-21 13:51:16,673 - INFO - Vendor with vendor ID 303 instantiated.
+2026-02-21 13:51:16,673 - INFO - Vendor with vendor ID 304 instantiated.
+2026-02-21 13:51:16,673 - INFO - Vendor with vendor ID 306 instantiated.
+2026-02-21 13:51:16,673 - INFO - Vendor with vendor ID 311 instantiated.
+2026-02-21 13:51:16,673 - INFO - Vendor with vendor ID 312 instantiated.
+2026-02-21 13:51:16,674 - INFO - Vendor with vendor ID 317 instantiated.
+2026-02-21 13:51:16,674 - INFO - Vendor with vendor ID 318 instantiated.
+2026-02-21 13:51:16,674 - INFO - Vendor with vendor ID 320 instantiated.
+2026-02-21 13:51:16,674 - INFO - Vendor with vendor ID 321 instantiated.
+2026-02-21 13:51:16,674 - INFO - Vendor with vendor ID 323 instantiated.
+2026-02-21 13:51:16,674 - INFO - Vendor with vendor ID 326 instantiated.
+2026-02-21 13:51:16,675 - INFO - Vendor with vendor ID 330 instantiated.
+2026-02-21 13:51:16,675 - INFO - Vendor with vendor ID 331 instantiated.
+2026-02-21 13:51:16,675 - INFO - Vendor with vendor ID 332 instantiated.
+2026-02-21 13:51:16,675 - INFO - Vendor with vendor ID 333 instantiated.
+2026-02-21 13:51:16,675 - INFO - Vendor with vendor ID 336 instantiated.
+2026-02-21 13:51:16,675 - INFO - Vendor with vendor ID 348 instantiated.
+2026-02-21 13:51:16,675 - INFO - Vendor with vendor ID 350 instantiated.
+2026-02-21 13:51:16,676 - INFO - Vendor with vendor ID 354 instantiated.
+2026-02-21 13:51:16,676 - INFO - Vendor with vendor ID 356 instantiated.
+2026-02-21 13:51:16,676 - INFO - Vendor with vendor ID 358 instantiated.
+2026-02-21 13:51:16,676 - INFO - Vendor with vendor ID 360 instantiated.
+2026-02-21 13:51:16,676 - INFO - Vendor with vendor ID 361 instantiated.
+2026-02-21 13:51:16,676 - INFO - Vendor with vendor ID 362 instantiated.
+2026-02-21 13:51:16,676 - INFO - Vendor with vendor ID 363 instantiated.
+2026-02-21 13:51:16,677 - INFO - Vendor with vendor ID 366 instantiated.
+2026-02-21 13:51:16,677 - INFO - Vendor with vendor ID 373 instantiated.
+2026-02-21 13:51:16,677 - INFO - Vendor with vendor ID 374 instantiated.
+2026-02-21 13:51:16,677 - INFO - Vendor with vendor ID 375 instantiated.
+2026-02-21 13:51:16,677 - INFO - Vendor with vendor ID 376 instantiated.
+2026-02-21 13:51:16,677 - INFO - Vendor with vendor ID 383 instantiated.
+2026-02-21 13:51:16,677 - INFO - Vendor with vendor ID 385 instantiated.
+2026-02-21 13:51:16,677 - INFO - Vendor with vendor ID 386 instantiated.
+2026-02-21 13:51:16,678 - INFO - Vendor with vendor ID 387 instantiated.
+2026-02-21 13:51:16,678 - INFO - Vendor with vendor ID 389 instantiated.
+2026-02-21 13:51:16,678 - INFO - Vendor with vendor ID 391 instantiated.
+2026-02-21 13:51:16,678 - INFO - Vendor with vendor ID 393 instantiated.
+2026-02-21 13:51:16,678 - INFO - Vendor with vendor ID 395 instantiated.
+2026-02-21 13:51:16,678 - INFO - Vendor with vendor ID 396 instantiated.
+2026-02-21 13:51:16,678 - INFO - Vendor with vendor ID 400 instantiated.
+2026-02-21 13:51:16,679 - INFO - Vendor with vendor ID 403 instantiated.
+2026-02-21 13:51:16,679 - INFO - Vendor with vendor ID 406 instantiated.
+2026-02-21 13:51:16,679 - INFO - Vendor with vendor ID 407 instantiated.
+2026-02-21 13:51:16,679 - INFO - Vendor with vendor ID 412 instantiated.
+2026-02-21 13:51:16,679 - INFO - Vendor with vendor ID 413 instantiated.
+2026-02-21 13:51:16,679 - INFO - Vendor with vendor ID 414 instantiated.
+2026-02-21 13:51:16,679 - INFO - Vendor with vendor ID 415 instantiated.
+2026-02-21 13:51:16,679 - INFO - Vendor with vendor ID 416 instantiated.
+2026-02-21 13:51:16,679 - INFO - Vendor with vendor ID 417 instantiated.
+2026-02-21 13:51:16,680 - INFO - Vendor with vendor ID 418 instantiated.
+2026-02-21 13:51:16,680 - INFO - Vendor with vendor ID 419 instantiated.
+2026-02-21 13:51:16,680 - INFO - Vendor with vendor ID 420 instantiated.
+2026-02-21 13:51:16,680 - INFO - Vendor with vendor ID 421 instantiated.
+2026-02-21 13:51:16,680 - INFO - Vendor with vendor ID 426 instantiated.
+2026-02-21 13:51:16,680 - INFO - Vendor with vendor ID 427 instantiated.
+2026-02-21 13:51:16,680 - INFO - Vendor with vendor ID 431 instantiated.
+2026-02-21 13:51:16,680 - INFO - Vendor with vendor ID 432 instantiated.
+2026-02-21 13:51:16,681 - INFO - Vendor with vendor ID 433 instantiated.
+2026-02-21 13:51:16,681 - INFO - Vendor with vendor ID 435 instantiated.
+2026-02-21 13:51:16,681 - INFO - Vendor with vendor ID 436 instantiated.
+2026-02-21 13:51:16,681 - INFO - Vendor with vendor ID 440 instantiated.
+2026-02-21 13:51:16,681 - INFO - Vendor with vendor ID 441 instantiated.
+2026-02-21 13:51:16,681 - INFO - Vendor with vendor ID 442 instantiated.
+2026-02-21 13:51:16,681 - INFO - Vendor with vendor ID 443 instantiated.
+2026-02-21 13:51:16,681 - INFO - Vendor with vendor ID 445 instantiated.
+2026-02-21 13:51:16,682 - INFO - Vendor with vendor ID 449 instantiated.
+2026-02-21 13:51:16,682 - INFO - Vendor with vendor ID 450 instantiated.
+2026-02-21 13:51:16,682 - INFO - Vendor with vendor ID 452 instantiated.
+2026-02-21 13:51:16,682 - INFO - Vendor with vendor ID 454 instantiated.
+2026-02-21 13:51:16,683 - INFO - Vendor with vendor ID 464 instantiated.
+2026-02-21 13:51:16,683 - INFO - Vendor with vendor ID 470 instantiated.
+2026-02-21 13:51:16,683 - INFO - Vendor with vendor ID 471 instantiated.
+2026-02-21 13:51:16,683 - INFO - Vendor with vendor ID 473 instantiated.
+2026-02-21 13:51:16,683 - INFO - Vendor with vendor ID 476 instantiated.
+2026-02-21 13:51:16,683 - INFO - Vendor with vendor ID 478 instantiated.
+2026-02-21 13:51:16,684 - INFO - Vendor with vendor ID 479 instantiated.
+2026-02-21 13:51:16,684 - INFO - Vendor with vendor ID 481 instantiated.
+2026-02-21 13:51:16,684 - INFO - Vendor with vendor ID 486 instantiated.
+2026-02-21 13:51:16,684 - INFO - Vendor with vendor ID 492 instantiated.
+2026-02-21 13:51:58,878 - INFO - Fetched inventory from vendor ID 8
+2026-02-21 13:51:58,884 - INFO - Building inventory change logs for vendor ID 8.
+2026-02-21 13:52:00,899 - INFO - Pushing product logs to Supabase.
+2026-02-21 13:52:22,152 - INFO - HTTP Request: POST https://cjhpqurdralszprormcp.supabase.co/rest/v1/product_events?columns=%22old_availability%22%2C%22pid%22%2C%22old_price%22%2C%22created_at%22%2C%22new_availability%22%2C%22vendor_id%22%2C%22new_price%22%2C%22event_type%22 "HTTP/2 201 Created"
+2026-02-21 13:52:30,719 - INFO - Terminating script
