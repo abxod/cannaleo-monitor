@@ -2,8 +2,10 @@ import os
 import sys
 import logging
 import time
+from pathlib import Path
+
 import supabase
-from supabase_io import load_vendors_information, insert_logs_into_db, upload_to_bucket
+from supabase_io import load_vendors_information, push_results_to_supabase
 from scraping import get_vendors_information, scrape_vendor_inventory_and_products
 from common.retry import with_retry
 from models import VendorDirectory
@@ -28,23 +30,16 @@ from service import process_vendor, merge_all_products, get_coordinates_of_affec
 SUPABASE_URL = os.environ['SUPABASE_URL']
 SUPABASE_KEY = os.environ['SUPABASE_KEY']
 
-logging.basicConfig(
-    filename='execution_logs.log',
-    level=logging.INFO,
-    format='%(asctime)s - %(levelname)s - %(message)s'
-    )
+log_path = Path(__file__).parent / 'execution_logs.log'
+
+logging.basicConfig(filename=log_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+
 
 # TODO: Figure out logging
 # TODO: The function is getting ugly. Refactor it again
-if __name__ == '__main__':
-    logging.info('Starting program')
 
-    # Create Supabase client
-    logging.info('Creating Supabase client')
-    client = supabase.create_client(
-        SUPABASE_URL, SUPABASE_KEY
-    )
-
+def run(
+    client, ):
     # Fetch old vendor information JSON from Supabase
     logging.info('Starting fetch of vendor information from Supabase.')
     try:
@@ -83,9 +78,13 @@ if __name__ == '__main__':
 
     # Diff-check inventories
     logging.info('Starting fetch of old vendor inventories from Supabase.')
-    old_inventories = VendorDirectory.from_supabase(
-        client, old_vendor_id_to_info
-    )
+    try:
+        old_inventories = VendorDirectory.from_supabase(
+            client, old_vendor_id_to_info
+        )
+    except Exception as e:
+        logging.error(f'Old inventories could not be fetched from Supabase: {e}')
+        sys.exit(1)
     # TODO: This is actually really stupid. You should scrape in the for loop and not here.
     # TODO: You don't even need a VendorDirectory but just create it at the end of the for loop anyway.
     # TODO: Create a method in Vendor: from_scraping(vendor_info: dict) that populates the inventory
@@ -105,10 +104,8 @@ if __name__ == '__main__':
         try:
             filtered_inventory, new_pid_to_info = scrape_vendor_inventory_and_products(vendor_id, vendor_info)
             new_vendor = Vendor(
-                vendor_id=vendor_id,
-                info=VendorInfo.from_json(vendor_info),
-                inventory=filtered_inventory
-                )
+                vendor_id=vendor_id, info=VendorInfo.from_json(vendor_info), inventory=filtered_inventory
+            )
         except Exception as e:
             # TODO: This should use exponential backoff instead of continuing directly.
             logging.error(f'{e}: Skipping due to failed vendor fetch for vendor ID {vendor_id}.')
@@ -140,69 +137,18 @@ if __name__ == '__main__':
         time.sleep(2)
 
     updated_vendors_information = get_coordinates_of_affected_vendors(
-        vendor_logs,
-        old_vendor_id_to_info,
-        new_vendor_id_to_info
-        )
+        vendor_logs, old_vendor_id_to_info, new_vendor_id_to_info
+    )
 
-    logging.info('Pushing product logs to Supabase.')
-    if product_logs:
-        try:
-            with_retry(
-                lambda: insert_logs_into_db(
-                    client, 'product_events', product_logs
-                )
-            )
-        except Exception as e:
-            logging.error(
-                f'Failed to insert product event logs: {e}.', exc_info=True
-            )
-
-    logging.info('Pushing vendor logs to Supabase.')
-    if vendor_logs:
-        try:
-            with_retry(
-                lambda: insert_logs_into_db(client, 'vendor_events', vendor_logs)
-            )
-        except Exception as e:
-            logging.error(
-                f'Failed to insert vendor event logs: {e}.', exc_info=True
-            )
-
-    logging.info('Updating vendor_inventories.json on Supabase.')
-    if vendor_inventories:
-        try:
-            with_retry(
-                lambda: upload_to_bucket(
-                    client, 'inventories_bucket', 'vendors_inventories.json', vendor_inventories
-                )
-            )
-        except Exception as e:
-            logging.error(
-                f'Failed to upload vendor inventories: {e}', exc_info=True
-            )
-
-    logging.info('Updating all_products.json on Supabase.')
-    if all_pid_to_prod_info:
-        try:
-            with_retry(
-                lambda: upload_to_bucket(
-                    client, 'all_products_bucket', 'all_current_products.json', all_pid_to_prod_info
-                )
-            )
-        except Exception as e:
-            logging.error(f'Failed to upload all products: {e}', exc_info=True)
-
-    if updated_vendors_information:
-        try:
-            with_retry(
-                lambda: upload_to_bucket(
-                    client, 'vendors_info_bucket', 'vendors_information.json', updated_vendors_information
-                )
-            )
-        except Exception as e:
-            logging.error(
-                f'Failed to update vendors\' information: {e}', exc_info=True
-            )
-
+    push_results_to_supabase(
+        client, product_logs, vendor_logs, vendor_inventories, all_pid_to_prod_info, updated_vendors_information
+    )
     logging.info(f'Terminating script')
+
+
+if __name__ == '__main__':
+    logging.info('Starting script')
+    logging.info('Creating Supabase client')
+    client = supabase.create_client(SUPABASE_URL, SUPABASE_KEY)
+    run(client)
+    logging.info('Terminating script')
