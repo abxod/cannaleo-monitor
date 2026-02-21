@@ -100,28 +100,28 @@ class Vendor:
     # TODO: Can this be a @staticmethod that just returns itself? Why do we need the Vendor object in the caller?
     # TODO: This method should set the look-ups of its object and return itself
     # TODO: Moving this workflow to main may be the best move. You would have access to new_pid_to_info
-    @classmethod
-    def from_scraping(
-        cls,
-        vendor_id: str,
-        vendor_info: dict, ):
-        from scraping import get_vendor_inventory, filter_vendor_inventory
-
-        try:
-            pid_to_prod_info = get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True)
-        except Exception as e:
-            logging.error(f"Failed to scrape {vendor_info['domain']}: {e}")
-            raise
-
-        filtered_inventory = filter_vendor_inventory(
-            vendor_id=vendor_id, pid_to_prod_info=pid_to_prod_info, vendor_info=vendor_info
-        )
-
-        logging.info(f'Inventory of vendor with vendor ID {vendor_id} successfully fetched from API')
-
-        return cls(
-            vendor_id=vendor_id, info=VendorInfo.from_json(vendor_info), inventory=filtered_inventory
-        )
+    # @classmethod
+    # def from_scraping(
+    #     cls,
+    #     vendor_id: str,
+    #     vendor_info: dict, ):
+    #     from scraping import get_vendor_inventory, filter_vendor_inventory
+    #
+    #     try:
+    #         pid_to_prod_info = get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True)
+    #     except Exception as e:
+    #         logging.error(f"Failed to scrape {vendor_info['domain']}: {e}")
+    #         raise
+    #
+    #     filtered_inventory = filter_vendor_inventory(
+    #         vendor_id=vendor_id, pid_to_prod_info=pid_to_prod_info, vendor_info=vendor_info
+    #     )
+    #
+    #     logging.info(f'Inventory of vendor with vendor ID {vendor_id} successfully fetched from API')
+    #
+    #     return cls(
+    #         vendor_id=vendor_id, info=VendorInfo.from_json(vendor_info), inventory=filtered_inventory
+    #     )
 
     def get_inventory_as_dict(
         self, ) -> dict[str, dict[str, Any]]:

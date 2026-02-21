@@ -28,13 +28,8 @@ class VendorDirectory:
                 )
             )
             logging.info('Old vendor inventories successfully fetched from Supabase')
-        except Exception as e:
-            logging.error(
-                f'Failed to fetch vendor inventories: {e}'
-            )
-            sys.exit(
-                1
-            )
+        except Exception:
+            raise
 
         vendors: dict[str, Vendor] = {}
         for vendor_id, inventory_json in vendor_id_to_inventory.items():
