@@ -20,6 +20,7 @@ def build_inventory_change_logs(
 
     # Added
     added = new_pids - old_pids
+    added = [int(x) for x in added]
     for pid in added:
         log = log_product(
             vendor_id, pid, 'ADDED'
@@ -30,6 +31,7 @@ def build_inventory_change_logs(
 
     # Removed
     removed = old_pids - new_pids
+    removed = [int(x) for x in removed]
     for pid in removed:
         log = log_product(
             vendor_id, pid, 'REMOVED'
@@ -38,13 +40,18 @@ def build_inventory_change_logs(
             log
         )
 
-    for pid in new_pids & old_pids:
+    intersection = new_pids & old_pids
+    for pid in intersection:
         old = old_inventory[pid]
         new = new_inventory[pid]
 
         if old['availability'] != new['availability']:
             log = log_product(
-                vendor_id, pid, 'AVAILABILITY', old_avail=old['availability'], new_avail=new['availability']
+                vendor_id,
+                int(pid),
+                'AVAILABILITY',
+                old_avail=old['availability'].upper(),
+                new_avail=new['availability'].upper()
             )
             logs.append(
                 log
@@ -52,7 +59,7 @@ def build_inventory_change_logs(
 
         if old['price'] != new['price']:
             log = log_product(
-                vendor_id, pid, 'PRICE', old_price=old['price'], new_price=new['price']
+                vendor_id, int(pid), 'PRICE', old_price=old['price'], new_price=new['price']
             )
             logs.append(
                 log
@@ -168,7 +175,11 @@ def build_vendor_change_logs(
                 continue
 
             log = log_vendor(
-                vendor_id, 'SHIPPING_PRICE_CHANGED', shipping_option.upper(), old_price=old_shipping_options[shipping_option], new_price=new_shipping_options[shipping_option]
+                vendor_id,
+                'SHIPPING_PRICE_CHANGED',
+                shipping_option.upper(),
+                old_price=old_shipping_options[shipping_option],
+                new_price=new_shipping_options[shipping_option]
             )
             logs.append(
                 log

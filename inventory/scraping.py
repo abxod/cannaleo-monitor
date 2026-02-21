@@ -5,9 +5,12 @@ import logging
 import json
 import requests
 
-from constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, CONST_FLOWZZ_PRODUCT_URL, CONST_EXCLUDED_VENDOR_IDS
+from constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, \
+    CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, CONST_FLOWZZ_PRODUCT_URL, \
+    CONST_EXCLUDED_VENDOR_IDS
 from vendor_types import ProductOffer
 from common.retry import with_retry
+
 
 EMAIL_ADDRESS = os.environ['EMAIL_ADDRESS']
 PASSWORD = os.environ['PASSWORD']
@@ -33,9 +36,11 @@ def get_vendor_inventory(
         login_url = f'https://{vendor_domain}/api/auth/callback/credentials'
 
         try:
-            csrf_token = with_retry(lambda: session.get(
-                csrf_url
-            ).json()['csrfToken'])
+            csrf_token = with_retry(
+                lambda: session.get(
+                    csrf_url
+                ).json()['csrfToken']
+                )
         except Exception:
             logging.error(f'Failed to get CSRF token for {vendor_id}.')
             raise
@@ -143,7 +148,8 @@ def filter_vendor_inventory(
     return filtered_inventory
 
 
-def extract_price_availability(pid_to_prod_info: dict) -> dict[str, ProductOffer]:
+def extract_price_availability(
+    pid_to_prod_info: dict, ) -> dict[str, ProductOffer]:
     filtered_inventory = {}
     for pid, prod_info in pid_to_prod_info.items():
         product_offer: ProductOffer = {
@@ -154,6 +160,7 @@ def extract_price_availability(pid_to_prod_info: dict) -> dict[str, ProductOffer
 
     return filtered_inventory
 
+
 # TODO: Do you wanna define another class?
 # TODO: This returns every attribute for each vendor. I think we have to change the structure to match that of the existing. No? Supabase also stores every attribute. It comes down to the diffing functions.
 def get_vendors_information() -> dict:
@@ -162,20 +169,22 @@ def get_vendors_information() -> dict:
     )
 
     raw_vendors_information = response.json()
-    vendor_id_to_vendor_info = {str(vendor['vendor_id']): {k: v for k, v in vendor.items() if k != 'vendor_id'} for vendor in
-                                raw_vendors_information['data']['pharmacies'] if vendor['vendor_id'] not in CONST_EXCLUDED_VENDOR_IDS}
+    vendor_id_to_vendor_info = {str(vendor['vendor_id']): {k: v for k, v in vendor.items() if k != 'vendor_id'} for
+                                vendor in raw_vendors_information['data']['pharmacies'] if
+                                vendor['vendor_id'] not in CONST_EXCLUDED_VENDOR_IDS}
     return vendor_id_to_vendor_info
+
 
 def scrape_vendor_inventory_and_products(
     vendor_id: str,
-    vendor_info: dict,
-) -> tuple[dict, dict]:
+    vendor_info: dict, ) -> tuple[dict, dict]:
     try:
         pid_to_prod_info = get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True)
     except Exception as e:
         raise
     filtered_inventory = extract_price_availability(pid_to_prod_info)
     return filtered_inventory, pid_to_prod_info
+
 
 def fetch_comments_from_strains():
     with open('../scraped_data/inventories/all_products.json', 'r') as f:
