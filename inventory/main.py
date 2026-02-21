@@ -9,7 +9,6 @@ from common.retry import with_retry
 from models import VendorDirectory
 from vendor_types import Vendor, VendorInfo
 from diffing import build_vendor_change_logs
-from constants import CONST_EXCLUDED_VENDOR_IDS
 from service import process_vendor, merge_all_products, get_coordinates_of_affected_vendors
 
 """
@@ -32,15 +31,17 @@ SUPABASE_KEY = os.environ['SUPABASE_KEY']
 logging.basicConfig(filename='execution_logs.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # TODO: Figure out logging
-# TODO: This is a mish-mash of procedural and object-oriented programming
 # TODO: The function is getting ugly. Refactor it again
 if __name__ == '__main__':
     logging.info('Starting program')
 
+    # Create Supabase client
+    logging.info('Creating Supabase client')
     client = supabase.create_client(
         SUPABASE_URL, SUPABASE_KEY
     )
 
+    # Fetch old vendor information JSON from Supabase
     logging.info('Starting fetch of vendor information from Supabase.')
     try:
         old_vendor_id_to_info = with_retry(
@@ -56,7 +57,7 @@ if __name__ == '__main__':
             1
         )
 
-    # Diff-check vendors
+    # Fetch new vendor information JSON from API
     logging.info('Starting fetch of vendor information from API')
     try:
         new_vendor_id_to_info = with_retry(
@@ -89,9 +90,6 @@ if __name__ == '__main__':
     product_logs = []
     all_pid_to_prod_info = {}
     for vendor_id, vendor_info in new_vendor_id_to_info.items():
-        if vendor_id in CONST_EXCLUDED_VENDOR_IDS:
-            continue
-
         # TODO: I think checking whether old_inventories.vendors.get(vendor_id) for nullability makes more sense and is more explicit here.
         old_vendor = old_inventories.vendors.get(str(vendor_id))
 
@@ -99,34 +97,31 @@ if __name__ == '__main__':
         if old_vendor is None:
             logging.info(f'Vendor is new. Skipping inventory logs to merging new products.')
             continue
-        else:
-            try:
-                # Returns
-                # TODO: filtered_inventory is not a dict of ProductOffers.
-                filtered_inventory, new_pid_to_info = scrape_vendor_inventory_and_products(vendor_id, vendor_info)
-                new_vendor = Vendor(vendor_id=vendor_id, info=VendorInfo.from_json(vendor_info), inventory=filtered_inventory)
-                # new_vendor = Vendor.from_scraping(vendor_id, vendor_info)
-            except Exception as e:
-                # TODO: This should use exponential backoff instead of continuing directly.
-                logging.error(f'{e}: Skipping due to failed vendor fetch for vendor ID {vendor_id}.')
-                continue
 
-            result = process_vendor(
-                str(vendor_id), old_vendor.inventory, new_vendor.inventory
-            )
+        try:
+            filtered_inventory, new_pid_to_info = scrape_vendor_inventory_and_products(vendor_id, vendor_info)
+            new_vendor = Vendor(vendor_id=vendor_id, info=VendorInfo.from_json(vendor_info), inventory=filtered_inventory)
+        except Exception as e:
+            # TODO: This should use exponential backoff instead of continuing directly.
+            logging.error(f'{e}: Skipping due to failed vendor fetch for vendor ID {vendor_id}.')
+            continue
 
-            if result is None:
-                continue
+        result = process_vendor(
+            str(vendor_id), old_vendor.inventory, new_vendor.inventory
+        )
 
-            # Add vendor's logs and inventory to collections
-            # The assignment seems wrong
-            product_logs.extend(
-                result
-            )
+        if result is None:
+            continue
 
-            # TODO: Make sure the dict gets unpacked correctly
-            # TODO: This shouldn't have to be done, anyway
-            vendor_inventories[vendor_id] = new_vendor.get_inventory_as_dict()
+        # Add vendor's logs and inventory to collections
+        # The assignment seems wrong
+        product_logs.extend(
+            result
+        )
+
+        # TODO: Make sure the dict gets unpacked correctly
+        # TODO: This shouldn't have to be done, anyway
+        vendor_inventories[vendor_id] = new_vendor.get_inventory_as_dict()
 
         # Update all_products
         all_pid_to_prod_info = merge_all_products(
@@ -135,7 +130,7 @@ if __name__ == '__main__':
         )
 
         # Be polite
-        time.sleep(1)
+        time.sleep(2)
 
     updated_vendors_information = get_coordinates_of_affected_vendors(vendor_logs, old_vendor_id_to_info, new_vendor_id_to_info)
 
@@ -152,49 +147,51 @@ if __name__ == '__main__':
                 f'Failed to insert product event logs: {e}.', exc_info=True
             )
 
-    logging.info('Pushing vendor logs to Supabase.')
-    if vendor_logs:
-        try:
-            with_retry(
-                lambda: insert_logs_into_db(client, 'vendor_events', vendor_logs)
-            )
-        except Exception as e:
-            logging.error(
-                f'Failed to insert vendor event logs: {e}.', exc_info=True
-            )
+    # logging.info('Pushing vendor logs to Supabase.')
+    # if vendor_logs:
+    #     try:
+    #         with_retry(
+    #             lambda: insert_logs_into_db(client, 'vendor_events', vendor_logs)
+    #         )
+    #     except Exception as e:
+    #         logging.error(
+    #             f'Failed to insert vendor event logs: {e}.', exc_info=True
+    #         )
+    #
+    # logging.info('Updating vendor_inventories.json on Supabase.')
+    # if vendor_inventories:
+    #     try:
+    #         with_retry(
+    #             lambda: upload_to_bucket(
+    #                 client, 'inventories_bucket', 'vendors_inventories.json', vendor_inventories
+    #             )
+    #         )
+    #     except Exception as e:
+    #         logging.error(
+    #             f'Failed to upload vendor inventories: {e}', exc_info=True
+    #         )
+    #
+    # logging.info('Updating all_products.json on Supabase.')
+    # if all_pid_to_prod_info:
+    #     try:
+    #         with_retry(
+    #             lambda: upload_to_bucket(
+    #                 client, 'all_products_bucket', 'all_current_products.json', all_pid_to_prod_info
+    #             )
+    #         )
+    #     except Exception as e:
+    #         logging.error(f'Failed to upload all products: {e}', exc_info=True)
+    #
+    # if updated_vendors_information:
+    #     try:
+    #         with_retry(
+    #             lambda: upload_to_bucket(
+    #                 client, 'vendors_info_bucket', 'vendors_information.json', updated_vendors_information
+    #             )
+    #         )
+    #     except Exception as e:
+    #         logging.error(
+    #             f'Failed to update vendors\' information: {e}', exc_info=True
+    #         )
 
-    logging.info('Updating vendor_inventories.json on Supabase.')
-    if vendor_inventories:
-        try:
-            with_retry(
-                lambda: upload_to_bucket(
-                    client, 'inventories_bucket', 'vendors_inventories.json', vendor_inventories
-                )
-            )
-        except Exception as e:
-            logging.error(
-                f'Failed to upload vendor inventories: {e}', exc_info=True
-            )
-
-    logging.info('Updating all_products.json on Supabase.')
-    if all_pid_to_prod_info:
-        try:
-            with_retry(
-                lambda: upload_to_bucket(
-                    client, 'all_products_bucket', 'all_current_products.json', all_pid_to_prod_info
-                )
-            )
-        except Exception as e:
-            logging.error(f'Failed to upload all products: {e}', exc_info=True)
-
-    if updated_vendors_information:
-        try:
-            with_retry(
-                lambda: upload_to_bucket(
-                    client, 'vendors_info_bucket', 'vendors_information.json', updated_vendors_information
-                )
-            )
-        except Exception as e:
-            logging.error(
-                f'Failed to update vendors\' information: {e}', exc_info=True
-            )
+    logging.info(f'Terminating script')

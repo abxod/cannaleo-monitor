@@ -5,11 +5,11 @@ import logging
 import json
 import requests
 
-from constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, CONST_FLOWZZ_PRODUCT_URL
+from constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, CONST_FLOWZZ_PRODUCT_URL, CONST_EXCLUDED_VENDOR_IDS
 from vendor_types import ProductOffer
 from common.retry import with_retry
 
-EMAIL = os.environ['EMAIL_ADDRESS']
+EMAIL_ADDRESS = os.environ['EMAIL_ADDRESS']
 PASSWORD = os.environ['PASSWORD']
 
 def get_vendor_inventory(
@@ -42,7 +42,7 @@ def get_vendor_inventory(
 
         session.post(
             login_url, data={
-                'email': EMAIL,
+                'email': EMAIL_ADDRESS,
                 'password': PASSWORD,
                 'csrfToken': csrf_token
             }
@@ -163,8 +163,7 @@ def get_vendors_information() -> dict:
 
     raw_vendors_information = response.json()
     vendor_id_to_vendor_info = {str(vendor['vendor_id']): {k: v for k, v in vendor.items() if k != 'vendor_id'} for vendor in
-                                raw_vendors_information['data']['pharmacies']}
-
+                                raw_vendors_information['data']['pharmacies'] if vendor['vendor_id'] not in CONST_EXCLUDED_VENDOR_IDS}
     return vendor_id_to_vendor_info
 
 def scrape_vendor_inventory_and_products(

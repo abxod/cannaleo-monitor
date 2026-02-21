@@ -9,15 +9,11 @@ from common.retry import with_retry
 def load_vendors_information(
     client: supabase.Client,
     file_path: str = CONST_SUPABASE_VENDORS_FILE_PATH, ) -> dict:
-    try:
-        response = with_retry(
-            lambda: client.storage.from_(
-                'vendors_info_bucket'
-            ).download(file_path)
-            )
-    except Exception:
-        logging.error('Failed to fetch vendor information from DB.')
-        raise
+    response = with_retry(
+        lambda: client.storage.from_(
+            'vendors_info_bucket'
+        ).download(file_path)
+        )
 
     json_str = response.decode('utf-8')
     return json.loads(json_str)
@@ -41,10 +37,10 @@ def insert_logs_into_db(
     if table_name not in CONST_DB_TABLES:
         raise ValueError(f'Database table \'{table_name}\' does not exist.')
 
-    response = client.table(table_name).insert(events_logs).execute()
+    if not events_logs:
+        return []
 
-    if response.error:
-        raise RuntimeError(f'Supabase insert failed: {response.error.message}.')
+    response = client.table(table_name).insert(events_logs).execute()
 
     return response.data
 

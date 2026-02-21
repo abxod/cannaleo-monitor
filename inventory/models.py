@@ -19,24 +19,8 @@ class VendorDirectory:
     def from_supabase(
         cls,
         client,
-        vendor_id_to_vendor_info: dict = None, ):
+        vendor_id_to_vendor_info: dict, ):
         # TODO: Is this path necessary? We already fetch new vendor info from main.
-        if vendor_id_to_vendor_info is None:
-            try:
-                vendor_id_to_vendor_info = with_retry(
-                    lambda: load_vendors_information(
-                        client
-                    )
-                )
-                logging.info('Old vendor information successfully fetched from Supabase after failing in main')
-            except Exception as e:
-                logging.error(
-                    f'Failed to fetch vendors\' information: {e}'
-                )
-                sys.exit(
-                    1
-                )
-
         try:
             vendor_id_to_inventory = with_retry(
                 lambda: load_vendor_inventories(
