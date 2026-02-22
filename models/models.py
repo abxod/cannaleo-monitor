@@ -1,9 +1,9 @@
 import sys
 from dataclasses import dataclass
 import logging
-from supabase_io import load_vendor_inventories, load_vendors_information
+from inventory.supabase_io import load_vendor_inventories, load_vendors_information
 from common.retry import with_retry
-from vendor_types import Vendor, ProductOffer, VendorInfo
+from models.vendor_types import Vendor, ProductOffer, VendorInfo
 
 
 @dataclass

@@ -26,7 +26,7 @@ CONST_ALL_VENDOR_IDS = {
     '120', '393', '56', '252', '270', '177', '434', '153', '431', '363', '156', '274', '443', '59', '375', '145', '432',
     '282', '233'
 }
-CONST_EXCLUDED_VENDOR_IDS = {'22', '499', }
+CONST_EXCLUDED_VENDOR_IDS = {'22', }
 CONST_DELIVERY_OPTIONS = ['shipping_cost_standard', 'express_cost_standard', 'local_coure_cost_standard']
 CONST_TELEMEDICINE_OFFERS_NORMALIZATION_MAP = {
     "erstrezept": "initial",

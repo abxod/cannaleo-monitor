@@ -1,7 +1,7 @@
 import logging
-from events import log_product, log_vendor
-from models import ProductOffer
-from constants import CONST_SHIPPING_OPTIONS_KEYS
+from inventory.events import log_product, log_vendor
+from models.models import ProductOffer
+from inventory.constants import CONST_SHIPPING_OPTIONS_KEYS
 
 
 # TODO: These functions can still be refactored (past ADDED/REMOVED)

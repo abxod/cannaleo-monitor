@@ -5,13 +5,13 @@ import time
 from pathlib import Path
 
 import supabase
-from supabase_io import load_vendors_information, push_results_to_supabase
-from scraping import get_vendors_information, scrape_vendor_inventory_and_products
+from inventory.supabase_io import load_vendors_information, push_results_to_supabase
+from inventory.scraping import get_vendors_information, scrape_vendor_inventory_and_products
 from common.retry import with_retry
-from models import VendorDirectory
-from vendor_types import Vendor, VendorInfo
-from diffing import build_vendor_change_logs
-from service import process_vendor, merge_all_products, get_coordinates_of_affected_vendors
+from models.models import VendorDirectory
+from models.vendor_types import Vendor, VendorInfo
+from inventory.diffing import build_vendor_change_logs
+from inventory.service import process_vendor, merge_all_products, get_coordinates_of_affected_vendors
 
 """
     This source file is responsible for updating:
@@ -98,7 +98,7 @@ def run(
 
         # TODO: if old_vendor is not None?
         if old_vendor is None:
-            logging.info(f'Vendor is new. Skipping inventory logs to merging new products.')
+            logging.info(f'Vendor ID {vendor_id} is new. Skipping inventory logs to merging new products.')
             continue
 
         try:
@@ -108,7 +108,7 @@ def run(
             )
         except Exception as e:
             # TODO: This should use exponential backoff instead of continuing directly.
-            logging.error(f'{e}: Skipping due to failed vendor fetch for vendor ID {vendor_id}.')
+            logging.error(f'Skipping due to failed vendor fetch for vendor ID {vendor_id}: {e}')
             continue
 
         result = process_vendor(
@@ -134,7 +134,7 @@ def run(
         )
 
         # Be polite
-        time.sleep(2)
+        time.sleep(2.0)
 
     updated_vendors_information = get_coordinates_of_affected_vendors(
         vendor_logs, old_vendor_id_to_info, new_vendor_id_to_info

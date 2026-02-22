@@ -2,10 +2,10 @@ import time
 import logging
 from geopy.geocoders import Nominatim
 
-from models import ProductOffer
-from common.geo import Coordinate
-from diffing import build_inventory_change_logs
-from constants import CONST_VENDOR_EVENT_TYPES_FOR_UPDATES, CONST_EXCLUDED_VENDOR_IDS
+from models.models import ProductOffer
+from models.geo import Coordinate
+from inventory.diffing import build_inventory_change_logs
+from inventory.constants import CONST_VENDOR_EVENT_TYPES_FOR_UPDATES, CONST_EXCLUDED_VENDOR_IDS
 from common.address_to_coordinates_map import map_address_to_coordinates
 
 
@@ -101,19 +101,3 @@ def get_coordinates_of_affected_vendors(
             }
 
     return updated_vendor_id_to_info
-
-# # TODO: Should this function be temporary?
-# def intermediately_save_data(new_inventories: VendorDirectory):
-#     new_inventories_dict = new_inventories.vendors
-#
-#     dumpable_inventories = {}
-#     for vendor_id, vendor_obj in new_inventories_dict.items():
-#         dumpable_inventories[vendor_id] = vendor_obj.get_inventory_as_dict()
-#
-#     timestamp = datetime.datetime.now().strftime('%Y-%m-%d_%H-%M')
-#     file_path = f'../data/all_inventories{timestamp}'
-#
-#     with open(file_path, 'w') as f:
-#         json.dump(dumpable_inventories, f, indent=2)
-#
-#     logging.info(f'Saved inventories to {file_path}')
