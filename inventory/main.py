@@ -24,6 +24,7 @@ from inventory.service import process_vendor, merge_all_products, get_coordinate
     on Supabase.
 """
 
+# TODO: Rename everything to be neutral (product, vendor)
 # TODO: The source files are getting really coupled
 # TODO: Use 'type' instead of the convoluted 'dict[str, Any]' syntax
 
@@ -46,8 +47,8 @@ def run(
         old_vendor_id_to_info = with_retry(
             lambda: load_vendors_information(
                 client
+            ), None, f'load_vendors_information(client)'
             )
-        )
     except Exception as e:
         logging.error(
             f'Failed to fetch vendor information from Supabase: {e}.'
@@ -59,9 +60,7 @@ def run(
     # Fetch new vendor information JSON from API
     logging.info('Starting fetch of vendor information from API')
     try:
-        new_vendor_id_to_info = with_retry(
-            lambda: get_vendors_information()
-        )
+        new_vendor_id_to_info = with_retry(lambda: get_vendors_information(), None, 'get_vendors_information()')
     except Exception as e:
         logging.error(
             f'Failed to get vendor information: {e}.'

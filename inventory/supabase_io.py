@@ -14,7 +14,7 @@ def load_vendors_information(
     response = with_retry(
         lambda: client.storage.from_(
             'vendors_info_bucket'
-        ).download(file_path)
+        ).download(file_path), None, f'client.storage.from_(\'vendors_info_bucket\').download({file_path})'
         )
 
     json_str = response.decode('utf-8')
@@ -76,8 +76,8 @@ def push_results_to_supabase(client, product_logs: list[dict[str, str | int | fl
             with_retry(
                 lambda: insert_logs_into_db(
                     client, 'product_events', product_logs
+                ), None, 'insert_logs_into_db(client, \'product_events\', product_logs)'
                 )
-            )
         except Exception as e:
             logging.error(
                 f'Failed to insert product event logs: {e}.', exc_info=True
@@ -86,9 +86,7 @@ def push_results_to_supabase(client, product_logs: list[dict[str, str | int | fl
     logging.info('Pushing vendor logs to Supabase.')
     if vendor_logs:
         try:
-            with_retry(
-                lambda: insert_logs_into_db(client, 'vendor_events', vendor_logs)
-            )
+            with_retry(lambda: insert_logs_into_db(client, 'vendor_events', vendor_logs), None, 'insert_logs_into_db(client, \'vendor_events\', vendor_logs)')
         except Exception as e:
             logging.error(
                 f'Failed to insert vendor event logs: {e}.', exc_info=True
@@ -100,8 +98,8 @@ def push_results_to_supabase(client, product_logs: list[dict[str, str | int | fl
             with_retry(
                 lambda: upload_to_bucket(
                     client, 'inventories_bucket', 'vendors_inventories.json', vendor_inventories
+                ), None, 'upload_to_bucket(client, \'inventories_bucket\', \'vendors_inventories.json\', vendor_inventories)'
                 )
-            )
         except Exception as e:
             logging.error(
                 f'Failed to upload vendor inventories: {e}', exc_info=True
@@ -113,8 +111,8 @@ def push_results_to_supabase(client, product_logs: list[dict[str, str | int | fl
             with_retry(
                 lambda: upload_to_bucket(
                     client, 'all_products_bucket', 'all_current_products.json', all_pid_to_prod_info
+                ), None, 'upload_to_bucket(client, \'all_products_bucket\', \'all_current_products.json\', all_pid_to_prod_info)'
                 )
-            )
         except Exception as e:
             logging.error(f'Failed to upload all products: {e}', exc_info=True)
 
@@ -123,8 +121,8 @@ def push_results_to_supabase(client, product_logs: list[dict[str, str | int | fl
             with_retry(
                 lambda: upload_to_bucket(
                     client, 'vendors_info_bucket', 'vendors_information.json', updated_vendors_information
+                ), None, 'upload_to_bucket(client, \'vendors_info_bucket\', \'vendors_information.json, updated_vendors_information)'
                 )
-            )
         except Exception as e:
             logging.error(
                 f'Failed to update vendors\' information: {e}', exc_info=True

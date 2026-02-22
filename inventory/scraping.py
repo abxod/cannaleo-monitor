@@ -5,15 +5,15 @@ import logging
 import json
 import requests
 
-from inventory.constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, \
-    CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, CONST_FLOWZZ_PRODUCT_URL, \
-    CONST_EXCLUDED_VENDOR_IDS
+from inventory.constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, \
+    CONST_NEW_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, \
+    CONST_FLOWZZ_PRODUCT_URL, CONST_EXCLUDED_VENDOR_IDS
 from models.vendor_types import ProductOffer
 from common.retry import with_retry
 
-
 EMAIL_ADDRESS = os.environ['EMAIL_ADDRESS']
 PASSWORD = os.environ['PASSWORD']
+
 
 def get_vendor_inventory(
     vendor_id: str,
@@ -39,8 +39,7 @@ def get_vendor_inventory(
             csrf_token = with_retry(
                 lambda: session.get(
                     csrf_url
-                ).json()['csrfToken']
-                )
+                ).json()['csrfToken'], None, f'session.get(csrf_url).json()[\'csrfToken\'] for {vendor_id}')
         except Exception:
             logging.error(f'Failed to get CSRF token for {vendor_id}.')
             raise
@@ -179,7 +178,9 @@ def scrape_vendor_inventory_and_products(
     vendor_id: str,
     vendor_info: dict, ) -> tuple[dict, dict]:
     try:
-        pid_to_prod_info = with_retry(lambda: get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True))
+        pid_to_prod_info = with_retry(
+            lambda: get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True), None, f'get_vendor_inventory(vendor_id={vendor_id}, vendor_domain={vendor_info['domain']}, with_price=True)'
+        )
     except Exception:
         raise
     filtered_inventory = extract_price_availability(pid_to_prod_info)
@@ -209,7 +210,7 @@ def fetch_comments_from_strains():
             full_url = CONST_FLOWZZ_PRODUCT_URL + url_tail
 
             try:
-                response = with_retry(lambda: requests.get(full_url))
+                response = with_retry(lambda: requests.get(full_url), None, f'requests.get({full_url})')
             except Exception:
                 print(f'Failed to fetch comments of strain {pid} at {full_url}')
                 break
