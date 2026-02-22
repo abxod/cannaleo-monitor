@@ -4,7 +4,10 @@ import logging
 
 def with_retry(
     func,
-    attempts=3, ):
+    attempts=3,
+    label=None, ):
+    display_name = label or repr(func)
+
     for attempt in range(
         attempts
     ):
@@ -13,7 +16,7 @@ def with_retry(
         except Exception as e:
             # TODO: 'func' has to be replaced with vendor ID or something
             logging.error(
-                f'{e}: {func} raised an exception on attempt {attempt}.'
+                f'{e}: {display_name} raised an exception on attempt {attempt}.'
             )
             if attempt == attempts - 1:
                 raise

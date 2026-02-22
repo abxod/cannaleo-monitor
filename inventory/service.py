@@ -50,16 +50,16 @@ def get_coordinates_of_affected_vendors(
         'event_type'] in CONST_VENDOR_EVENT_TYPES_FOR_UPDATES]  # Vendor IDs whose coordinates need to be fetched
 
     vendor_ids_added_or_location = {log['vendor_id'] for log in
-                                    vendor_added_or_location_logs} - CONST_EXCLUDED_VENDOR_IDS
+                                    vendor_added_or_location_logs}  # previously: - CONST_EXCLUDED_VENDOR_IDS. Not sure if this is still needed after removing the excluded vendors during fetch
 
     spatially_unaffected_vendor_ids = new_vendor_id_to_info.keys() - vendor_ids_added_or_location - CONST_EXCLUDED_VENDOR_IDS  # Vendor IDs whose coordinates do not need to be fetched
 
-    for vendor_id in spatially_unaffected_vendor_ids:
-        vendor_info = new_vendor_id_to_info[vendor_id].copy()
-        if vendor_id in old_vendor_id_to_info:
-            vendor_info['latitude'] = old_vendor_id_to_info[vendor_id].get('latitude')
-            vendor_info['longitude'] = old_vendor_id_to_info[vendor_id].get('longitude')
-        updated_vendor_id_to_info[vendor_id] = vendor_info
+    updated_vendor_id_to_info = {vendor_id: {
+        **new_vendor_id_to_info[vendor_id], **({
+                                                   'latitude': old_vendor_id_to_info[vendor_id].get('latitude'),
+                                                   'longitude': old_vendor_id_to_info[vendor_id].get('longitude'),
+                                               } if vendor_id in old_vendor_id_to_info else {})
+    } for vendor_id in spatially_unaffected_vendor_ids}
 
     # TODO: This can be continue'd
     if len(vendor_ids_added_or_location) != 0:
@@ -82,13 +82,13 @@ def get_coordinates_of_affected_vendors(
             except Exception as e:
                 logging.error(
                     f'Failed to get coordinates of {new_vendor_id_to_info[vendor_id].get('official_name', vendor_id)}: {e}'
-                    )
+                )
                 continue
 
             if coordinates is None:
                 logging.warning(
                     f'Malformed address \'{street + ', ' + postalcode + ' ' + city}\' for vendor ID {vendor_id} could not be found.'
-                    )
+                )
                 coordinates: Coordinate = {
                     'latitude': 0,
                     'longitude': 0
