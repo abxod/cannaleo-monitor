@@ -105,25 +105,25 @@ def build_vendor_change_logs(
         # Shipping addition/removal
         # TODO: These only contain bools
         old_shipping_options = {
-            'standard': old.get(
+            'STANDARD': old.get(
                 'shipping_cost_standard'
             ),
-            'express': old.get(
+            'EXPRESS': old.get(
                 'express_cost_standard'
             ),
-            'local': old.get(
+            'LOCAL': old.get(
                 'local_coure_cost_standard'
             ),
         }
 
         new_shipping_options = {
-            'standard': new.get(
+            'STANDARD': new.get(
                 'shipping_cost_standard'
             ),
-            'express': new.get(
+            'EXPRESS': new.get(
                 'express_cost_standard'
             ),
-            'local': new.get(
+            'LOCAL': new.get(
                 'local_coure_cost_standard'
             ),
         }
