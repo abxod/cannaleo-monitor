@@ -1,7 +1,6 @@
 from dataclasses import dataclass
 from typing import TypedDict, Optional, Any
-import logging
-from common.geo import Coordinate
+from models.geo import Coordinate
 
 
 # TODO: Rename this source file

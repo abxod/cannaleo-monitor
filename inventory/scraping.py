@@ -5,10 +5,10 @@ import logging
 import json
 import requests
 
-from constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, \
+from inventory.constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, CONST_NEW_AVAILABILITY_OPTIONS, \
     CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, CONST_FLOWZZ_PRODUCT_URL, \
     CONST_EXCLUDED_VENDOR_IDS
-from vendor_types import ProductOffer
+from models.vendor_types import ProductOffer
 from common.retry import with_retry
 
 
@@ -62,7 +62,7 @@ def get_vendor_inventory(
     pid_to_prod_info = {}
     while True:
         time.sleep(
-            1.5
+            2.0
         )  # Don't disrupt service
 
         payload = {
@@ -171,7 +171,7 @@ def get_vendors_information() -> dict:
     raw_vendors_information = response.json()
     vendor_id_to_vendor_info = {str(vendor['vendor_id']): {k: v for k, v in vendor.items() if k != 'vendor_id'} for
                                 vendor in raw_vendors_information['data']['pharmacies'] if
-                                vendor['vendor_id'] not in CONST_EXCLUDED_VENDOR_IDS}
+                                str(vendor['vendor_id']) not in CONST_EXCLUDED_VENDOR_IDS}
     return vendor_id_to_vendor_info
 
 
@@ -179,8 +179,8 @@ def scrape_vendor_inventory_and_products(
     vendor_id: str,
     vendor_info: dict, ) -> tuple[dict, dict]:
     try:
-        pid_to_prod_info = get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True)
-    except Exception as e:
+        pid_to_prod_info = with_retry(lambda: get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True))
+    except Exception:
         raise
     filtered_inventory = extract_price_availability(pid_to_prod_info)
     return filtered_inventory, pid_to_prod_info
