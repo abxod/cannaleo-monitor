@@ -31,7 +31,7 @@ from inventory.service import process_vendor, merge_all_products, get_coordinate
 SUPABASE_URL = os.environ['SUPABASE_URL']
 SUPABASE_KEY = os.environ['SUPABASE_KEY']
 
-log_path = Path(__file__).parent / 'execution_logs.log'
+log_path = Path.cwd() / 'execution_logs.log'
 
 logging.basicConfig(filename=log_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
