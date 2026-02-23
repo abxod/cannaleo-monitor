@@ -4,8 +4,11 @@ import logging
 
 def with_retry(
     func,
-    attempts=3,
+    attempts: int = None,
     label=None, ):
+    if attempts is None:
+        attempts = 3
+
     display_name = label or repr(func)
 
     for attempt in range(
