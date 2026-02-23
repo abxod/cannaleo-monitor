@@ -1,3 +1,7 @@
 .venv/
 *.log
 scripts/constants.py
+scraped_data/*
+scraped_data_OLD/*
+temp/*
+script
