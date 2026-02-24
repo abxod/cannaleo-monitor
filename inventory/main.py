@@ -35,6 +35,10 @@ log_path = Path.cwd() / 'execution_logs.log'
 
 logging.basicConfig(filename=log_path, level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+console_handler = logging.StreamHandler(sys.stderr)
+console_handler.setLevel(logging.INFO)
+console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
+logging.getLogger().addHandler(console_handler)
 
 # TODO: Figure out logging
 # TODO: The function is getting ugly. Refactor it again
