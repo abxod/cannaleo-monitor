@@ -99,11 +99,6 @@ def run(
         # TODO: I think checking whether old_inventories.vendors.get(vendor_id) for nullability makes more sense and is more explicit here.
         old_vendor = old_inventories.vendors.get(vendor_id)
 
-        # TODO: if old_vendor is not None?
-        if old_vendor is None:
-            logging.info(f'Vendor ID {vendor_id} is new. Skipping inventory logs to merging new products.')
-            continue
-
         try:
             filtered_inventory, new_pid_to_info = scrape_vendor_inventory_and_products(vendor_id, vendor_info)
             new_vendor = Vendor(
@@ -113,6 +108,22 @@ def run(
             # TODO: This should use exponential backoff instead of continuing directly.
             logging.error(f'Skipping due to failed vendor fetch for vendor ID {vendor_id}: {e}')
             continue
+
+        # TODO: Make sure the dict gets unpacked correctly
+        # TODO: This shouldn't have to be done, anyway
+        vendor_inventories[vendor_id] = new_vendor.get_inventory_as_dict()
+
+        # Update all_products
+        all_pid_to_prod_info = merge_all_products(
+            all_pid_to_prod_info, new_pid_to_info
+        )
+
+
+        # TODO: if old_vendor is not None?
+        if old_vendor is None:
+            logging.info(f'Vendor ID {vendor_id} is new. Skipping inventory logs to merging new products.')
+            continue
+
 
         result = process_vendor(
             int(vendor_id), old_vendor.inventory, new_vendor.inventory
@@ -125,15 +136,6 @@ def run(
         # The assignment seems wrong
         product_logs.extend(
             result
-        )
-
-        # TODO: Make sure the dict gets unpacked correctly
-        # TODO: This shouldn't have to be done, anyway
-        vendor_inventories[vendor_id] = new_vendor.get_inventory_as_dict()
-
-        # Update all_products
-        all_pid_to_prod_info = merge_all_products(
-            all_pid_to_prod_info, new_pid_to_info
         )
 
         # Be polite
