@@ -79,9 +79,8 @@ def get_vendor_inventory(
             raise
 
         if response.status_code != 200:
-            raise Exception(
-                f'Request failed  with {response.status_code}'
-            )
+            logging.error(f'Request for {vendor_id} failed with {response.status_code}')
+            continue
 
         json_obj = response.json()
         products_data_array = json_obj['message']['data']

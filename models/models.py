@@ -33,6 +33,11 @@ class VendorDirectory:
 
         vendors: dict[str, Vendor] = {}
         for vendor_id, inventory_json in vendor_id_to_inventory.items():
+            # double check this
+            if vendor_id not in vendor_id_to_vendor_info:
+                logging.warning(f'Vendor ID {vendor_id} found in inventories but not in vendor info. Skipping.')
+                continue
+
             info = VendorInfo.from_json(
                 vendor_id_to_vendor_info[vendor_id]
             )
