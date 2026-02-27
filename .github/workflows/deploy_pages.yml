@@ -24,14 +24,15 @@ jobs:
           export const SUPABASE_URL = "${{ secrets.SUPABASE_URL }}";
           export const SUPABASE_ANON_KEY = "${{ secrets.SUPABASE_ANON_KEY }}";
           export const BUCKETS = {
-            products: "all_products_bucket",
-            vendors: "vendors_info_bucket",
-            inventories: "inventories_bucket"
+            products: "pid-to-info",
+            vendors: "vendor-id-to-info",
+            inventories: "inventories"
           };
           export const FILES = {
-            products: "all_current_products.json",
-            vendors: "vendors_information.json",
-            inventories: "vendors_inventories.json"
+            products: "pid_to_info.json",
+            vendors: "vendor_id_to_info.json",
+            inventories: "vendor_id_to_offers.json",
+            pidToVendors: "pid_to_vendor_offers.json"
           };
           EOF
 
