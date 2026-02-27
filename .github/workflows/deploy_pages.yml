@@ -1,0 +1,41 @@
+name: Deploy GitHub Pages
+
+on:
+  workflow_run:
+    workflows: ["fetch_inventories_and_update_db"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate config.js
+        run: |
+          cat > docs/config.js << EOF
+          export const SUPABASE_URL = "${{ secrets.SUPABASE_URL }}";
+          export const SUPABASE_ANON_KEY = "${{ secrets.SUPABASE_ANON_KEY }}";
+          export const BUCKETS = {
+            products: "all_products_bucket",
+            vendors: "vendors_info_bucket",
+            inventories: "inventories_bucket"
+          };
+          export const FILES = {
+            products: "all_current_products.json",
+            vendors: "vendors_information.json",
+            inventories: "vendors_inventories.json"
+          };
+          EOF
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./docs
