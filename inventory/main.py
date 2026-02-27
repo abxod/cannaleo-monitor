@@ -40,6 +40,7 @@ console_handler.setLevel(logging.INFO)
 console_handler.setFormatter(logging.Formatter('%(asctime)s - %(levelname)s - %(message)s'))
 logging.getLogger().addHandler(console_handler)
 
+
 # TODO: Figure out logging
 # TODO: The function is getting ugly. Refactor it again
 
@@ -51,8 +52,8 @@ def run(
         old_vendor_id_to_info = with_retry(
             lambda: load_vendors_information(
                 client
-            ), None, f'load_vendors_information(client)'
-            )
+            ), label=f'load_vendors_information(client)'
+        )
     except Exception as e:
         logging.error(
             f'Failed to fetch vendor information from Supabase: {e}.'
@@ -64,7 +65,7 @@ def run(
     # Fetch new vendor information JSON from API
     logging.info('Starting fetch of vendor information from API')
     try:
-        new_vendor_id_to_info = with_retry(lambda: get_vendors_information(), None, 'get_vendors_information()')
+        new_vendor_id_to_info = with_retry(lambda: get_vendors_information(), label='get_vendors_information()')
     except Exception as e:
         logging.error(
             f'Failed to get vendor information: {e}.'
@@ -73,7 +74,7 @@ def run(
             1
         )
 
-    # Excluded vendor IDs should be removed right here
+    # Generate logs for changes in vendors' shipping prices or locations
     logging.info('Starting build of vendor change logs.')
     vendor_logs = build_vendor_change_logs(
         old_vendor_id_to_info, new_vendor_id_to_info
@@ -92,7 +93,7 @@ def run(
     # TODO: You don't even need a VendorDirectory but just create it at the end of the for loop anyway.
     # TODO: Create a method in Vendor: from_scraping(vendor_info: dict) that populates the inventory
 
-    vendor_inventories = {}
+    vendor_id_to_offers = {}
     product_logs = []
     all_pid_to_prod_info = {}
     for vendor_id, vendor_info in new_vendor_id_to_info.items():
@@ -111,19 +112,17 @@ def run(
 
         # TODO: Make sure the dict gets unpacked correctly
         # TODO: This shouldn't have to be done, anyway
-        vendor_inventories[vendor_id] = new_vendor.get_inventory_as_dict()
+        vendor_id_to_offers[vendor_id] = new_vendor.get_inventory_as_dict()
 
         # Update all_products
         all_pid_to_prod_info = merge_all_products(
             all_pid_to_prod_info, new_pid_to_info
         )
 
-
         # TODO: if old_vendor is not None?
         if old_vendor is None:
             logging.info(f'Vendor ID {vendor_id} is new. Skipping inventory logs to merging new products.')
             continue
-
 
         result = process_vendor(
             int(vendor_id), old_vendor.inventory, new_vendor.inventory
@@ -141,12 +140,29 @@ def run(
         # Be polite
         time.sleep(2.0)
 
+    pid_to_vendors = {}
+    for vendor_id, offers in vendor_id_to_offers.items():
+        for pid, offer in offers.items():
+            if pid not in pid_to_vendors:
+                pid_to_vendors[pid] = []
+            pid_to_vendors[pid].append(
+                {
+                    'vendor_id': vendor_id,
+                    'price': offer['price'],
+                    'availability': offer['availability']
+                }
+            )
+
+    for pid in pid_to_vendors:
+        pid_to_vendors[pid].sort(key=lambda x: x['price'])
+
+
     updated_vendors_information = get_coordinates_of_affected_vendors(
         vendor_logs, old_vendor_id_to_info, new_vendor_id_to_info
     )
 
     push_results_to_supabase(
-        client, product_logs, vendor_logs, vendor_inventories, all_pid_to_prod_info, updated_vendors_information
+        client, product_logs, vendor_logs, vendor_id_to_offers, pid_to_vendors, all_pid_to_prod_info, updated_vendors_information
     )
     logging.info(f'Terminating script')
 

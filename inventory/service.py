@@ -72,9 +72,13 @@ def get_coordinates_of_affected_vendors(
             if vendor_id in CONST_EXCLUDED_VENDOR_IDS:
                 continue
 
-            street = new_vendor_id_to_info[vendor_id]['street']
-            postalcode = new_vendor_id_to_info[vendor_id]['plz']
-            city = new_vendor_id_to_info[vendor_id]['city']
+            street = new_vendor_id_to_info[vendor_id].get('street')
+            postalcode = new_vendor_id_to_info[vendor_id].get('plz')
+            city = new_vendor_id_to_info[vendor_id].get('city')
+
+            if not all([street, postalcode, city]):
+                logging.warning(f'Incomplete address for vendor {vendor_id}')
+                continue
 
             try:
                 time.sleep(5)
