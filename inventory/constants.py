@@ -72,9 +72,26 @@ CONST_DB_VENDOR_EVENT_TYPES = {
 }
 # CONST_DB_PRODUCT_AVAILABILITY_STATUS = {'AVAILABLE_IMMEDIATELY', 'AVAILABLE', 'LIMITED_STOCK', 'UNAVAILABLE'}
 CONST_SHIPPING_OPTIONS_KEYS = {'STANDARD', 'EXPRESS', 'LOCAL'}  # This is omitting 'pickup'
-CONST_DB_TABLES = {'product_events', 'vendor_events'}
 CONST_VENDOR_EVENT_TYPES_FOR_UPDATES = {
     'VENDOR_ADDED', 'LOCATION_CHANGED'
 }  # This is obviously not maintainable.
-CONST_SUPABASE_VENDORS_FILE_PATH = 'vendors_information.json'
-CONST_SUPABASE_VENDOR_INVENTORIES_FILE_PATH = 'vendors_inventories.json'
+
+# Supabase table names
+CONST_SUPABASE_PRODUCT_LOGS_TABLE = 'product_events'
+CONST_SUPABASE_VENDOR_LOGS_TABLE = 'vendor_events'
+
+# Supabase storage filepaths
+CONST_SUPABASE_STORAGE = {
+    'vendor_id_to_info': {
+        'bucket': 'vendor'
+    }
+}
+
+CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET = 'vendor-id-to-info'
+CONST_SUPABASE_INVENTORIES_BUCKET = 'inventories'
+CONST_SUPABASE_PID_TO_INFO_BUCKET = 'pid-to-info'
+
+CONST_SUPABASE_VENDOR_ID_TO_INFO_FP = 'vendor_id_to_info.json'
+CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP = 'vendor_id_to_offers.json'
+CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP = 'pid_to_vendor_offers.json'
+CONST_SUPABASE_PID_TO_INFO_FP = 'pid_to_info.json'
