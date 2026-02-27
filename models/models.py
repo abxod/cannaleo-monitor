@@ -25,7 +25,7 @@ class VendorDirectory:
             vendor_id_to_inventory = with_retry(
                 lambda: load_vendor_inventories(
                     client
-                ), None, 'load_vendor_inventories(client)'
+                ), label='load_vendor_inventories(client)'
                 )
             logging.info('Old vendor inventories successfully fetched from Supabase')
         except Exception:
