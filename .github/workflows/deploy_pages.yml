@@ -1,6 +1,7 @@
 name: Deploy GitHub Pages
 
 on:
+  workflow_dispatch:
   workflow_run:
     workflows: ["Fetch inventories, compare against DB, and update DB tables and buckets"]
     types:
