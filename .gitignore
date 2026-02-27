@@ -5,3 +5,4 @@ scraped_data/*
 scraped_data_OLD/*
 temp/*
 script
+/docs/config.js
