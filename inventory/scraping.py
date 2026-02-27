@@ -6,7 +6,7 @@ import json
 import requests
 
 from inventory.constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, \
-    CONST_NEW_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, \
+    CONST_ALL_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, \
     CONST_FLOWZZ_PRODUCT_URL, CONST_EXCLUDED_VENDOR_IDS
 from models.vendor_types import ProductOffer
 from common.retry import with_retry
@@ -21,7 +21,7 @@ def get_vendor_inventory(
     availability: set[str] = None,
     with_price: bool = True, ) -> dict[str, dict[str | Any, Any]] | None:
     if availability is None:
-        availability = CONST_NEW_AVAILABILITY_OPTIONS
+        availability = CONST_ALL_AVAILABILITY_OPTIONS
 
     if with_price:
         use_session = True
@@ -30,16 +30,16 @@ def get_vendor_inventory(
 
     if use_session:
         session = requests.Session()
-        vendor_domain = vendor_domain
-        base_url = f'https://{vendor_domain}/api/products'
+        base_url = f'https://{vendor_domain}/api/products' # TODO: Is this needed?
         csrf_url = f'https://{vendor_domain}/api/auth/csrf'
-        login_url = f'https://{vendor_domain}/api/auth/callback/credentials'
+        login_url = f'https://{vendor_domain}/api/auth/callback/credentials' # TODO: This URL creation may be redundant. You may be able to login via cannaleo.de
 
         try:
             csrf_token = with_retry(
                 lambda: session.get(
                     csrf_url
-                ).json()['csrfToken'], None, f'session.get(csrf_url).json()[\'csrfToken\'] for {vendor_id}')
+                ).json()['csrfToken'], label=f'session.get(csrf_url).json()[\'csrfToken\'] for {vendor_id}'
+                )
         except Exception:
             logging.error(f'Failed to get CSRF token for {vendor_id}.')
             raise
@@ -67,7 +67,7 @@ def get_vendor_inventory(
         payload = {
             'pagination[page]': page,
             'pagination[pageSize]': CONST_PAGE_SIZE_LIMIT,
-            'vend': vendor_id,  # TODO: Does this have to be an int?
+            'vend': vendor_id,
             'avail': 0 if 'unavailable' in availability else 1
         }
 
@@ -87,7 +87,7 @@ def get_vendor_inventory(
 
         if products_data_array:
             pid_to_prod_info.update(
-                {p['id']: p for p in products_data_array}
+                {p['id']: {k: v for k, v in p.items() if k!= 'id'} for p in products_data_array}
             )
 
         page_count = json_obj['message']['meta']['pagination']['pageCount']
@@ -115,7 +115,7 @@ def filter_vendor_inventory(
         attributes = CONST_ALL_ATTRIBUTES
 
     if availability is None:
-        availability = CONST_NEW_AVAILABILITY_OPTIONS
+        availability = CONST_ALL_AVAILABILITY_OPTIONS
 
     invalid_attributes = attributes - CONST_ALL_ATTRIBUTES
     valid_attributes = attributes - invalid_attributes
@@ -178,8 +178,9 @@ def scrape_vendor_inventory_and_products(
     vendor_info: dict, ) -> tuple[dict, dict]:
     try:
         pid_to_prod_info = with_retry(
-            lambda: get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True), None, f'get_vendor_inventory(vendor_id={vendor_id}, vendor_domain={vendor_info['domain']}, with_price=True)'
-        )
+            lambda: get_vendor_inventory(vendor_id, vendor_info['domain'], with_price=True),
+            label=f'get_vendor_inventory(vendor_id={vendor_id}, vendor_domain={vendor_info['domain']}, with_price=True)'
+            )
     except Exception:
         raise
     filtered_inventory = extract_price_availability(pid_to_prod_info)
@@ -209,7 +210,7 @@ def fetch_comments_from_strains():
             full_url = CONST_FLOWZZ_PRODUCT_URL + url_tail
 
             try:
-                response = with_retry(lambda: requests.get(full_url), None, f'requests.get({full_url})')
+                response = with_retry(lambda: requests.get(full_url), label=f'requests.get({full_url})')
             except Exception:
                 print(f'Failed to fetch comments of strain {pid} at {full_url}')
                 break
