@@ -1,4 +1,4 @@
-import {SUPABASE_ANON_KEY, SUPABASE_URL} from "./config";
+import {SUPABASE_ANON_KEY, SUPABASE_URL} from "./config.js";
 
 export async function fetchFile(bucket, filename) {
     const url = `${SUPABASE_URL}/storage/v1/object/${bucket}/${filename}`;
