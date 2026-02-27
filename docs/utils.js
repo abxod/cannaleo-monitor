@@ -1,3 +1,21 @@
+import {SUPABASE_ANON_KEY, SUPABASE_URL} from "./config";
+
+export async function fetchFile(bucket, filename) {
+    const url = `${SUPABASE_URL}/storage/v1/object/${bucket}/${filename}`;
+    const response = await fetch(url, {
+        headers: {
+            "Authorization": `Bearer ${SUPABASE_ANON_KEY}`
+        }
+    });
+
+    if (!response.ok) {
+        throw new Error(`Failed to fetch ${filename}: ${response.status}`);
+    }
+
+    return response.json();
+}
+
+
 export const STRAIN_TYPE_NORMALIZATION_MAP = {
   "Hybrid|null": "Hybrid",
   "Hybrid|Indica": "Indica_dominant",
