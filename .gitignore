@@ -6,3 +6,4 @@ scraped_data_OLD/*
 temp/*
 script
 /docs/config.js
+inventory/execution_logs.log
