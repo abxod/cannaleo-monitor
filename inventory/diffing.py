@@ -1,6 +1,5 @@
 import logging
-from inventory.events import log_product, log_vendor
-from models.models import ProductOffer
+from inventory.events import log_product_change, log_vendor_change, log_product
 from models import ProductOffer, VendorDirectory
 from inventory.constants import CONST_SHIPPING_OPTIONS_KEYS
 
@@ -197,7 +196,7 @@ def build_vendor_change_logs(
                 )
             except ValueError:
                 logging.error(
-                    f'Event type {event_type} is not defined. Skipping.'
+                    f'Event type {event_type} is not defined. Skipping'
                 )
                 continue
             logs.append(

@@ -47,7 +47,7 @@ logging.getLogger().addHandler(console_handler)
 def run(
     client, ):
     # Fetch old vendor information JSON from Supabase
-    logging.info('Starting fetch of vendor information from Supabase.')
+    logging.info('Starting fetch of vendor information from Supabase')
     try:
         old_vendor_id_to_info = with_retry(
             lambda: load_vendors_information(
@@ -56,7 +56,7 @@ def run(
         )
     except Exception as e:
         logging.error(
-            f'Failed to fetch vendor information from Supabase: {e}.'
+            f'Failed to fetch vendor information from Supabase: {e}'
         )
         sys.exit(
             1
@@ -68,7 +68,7 @@ def run(
         new_vendor_id_to_info = with_retry(lambda: get_vendors_information(), label='get_vendors_information()')
     except Exception as e:
         logging.error(
-            f'Failed to get vendor information: {e}.'
+            f'Failed to get vendor information: {e}'
         )
         sys.exit(
             1
@@ -81,7 +81,7 @@ def run(
     )
 
     # Diff-check inventories
-    logging.info('Starting fetch of old vendor inventories from Supabase.')
+    logging.info('Starting fetch of old vendor inventories from Supabase')
     try:
         old_inventories = VendorDirectory.from_supabase(
             client, old_vendor_id_to_info
