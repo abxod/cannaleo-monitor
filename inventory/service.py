@@ -65,7 +65,7 @@ def get_coordinates_of_affected_vendors(
     # TODO: This can be continue'd
     if len(vendor_ids_added_or_location) != 0:
         geolocator = Nominatim(
-            user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/143.0.0.0 Safari/537.36 Edg/143.0.0.0',
+            user_agent='homeless-vendor-geocoder/1.0 aboodcr@outlook.com',
             timeout=10
         )
 
