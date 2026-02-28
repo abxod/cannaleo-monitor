@@ -18,12 +18,16 @@ document.getElementById("locate-btn").addEventListener("click", async () => {
 
 
 try {
-    const products = await fetchFile(BUCKETS.products, FILES.products)
-    const vendors = await fetchFile(BUCKETS.vendors, FILES.vendors)
-    const inventories = await fetchFile(BUCKETS.inventories, FILES.inventories)
-    // const pidToVendors = await fetchFile(BUCKETS.inventories, FILES.pidToVendors)
+    products = await fetchFile(BUCKETS.products, FILES.products)
+    vendors = await fetchFile(BUCKETS.vendors, FILES.vendors)
+    inventories = await fetchFile(BUCKETS.inventories, FILES.inventories)
+    pidToVendors = await fetchFile(BUCKETS.inventories, FILES.pidToVendors)
 
-    document.getElementById("output").textContent = JSON.stringify(products, null, 2);
+    document.getElementById("output").textContent = JSON.stringify({
+        productCount: Object.keys(products).length,
+        vendorCount: Object.keys(vendors).length,
+        inventoryCount: Object.keys(inventories).length,
+    }, null, 2);
 } catch (error) {
     document.getElementById("output").textContent = `Error: ${error.message}`;
 }
