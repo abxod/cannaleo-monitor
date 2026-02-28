@@ -3,30 +3,46 @@ import logging
 from geopy.geocoders import Nominatim
 
 from models.models import ProductOffer
-from models.geo import Coordinate
+from models import Coordinate
 from inventory.diffing import build_inventory_change_logs
 from inventory.constants import CONST_VENDOR_EVENT_TYPES_FOR_UPDATES, CONST_EXCLUDED_VENDOR_IDS
 from common.address_to_coordinates_map import map_address_to_coordinates
 from models import VendorDirectory
 
+# TODO: When does it make sense to pass old, new as a tuple together?
+"""
+Build product offer logs.
+Any changes observed in the price or availability status between old and new offers are turned into logs to be pushed to Supabase.
+"""
 
-def process_vendor(
-    vendor_id: int,
-    old_inventory: dict[str, ProductOffer],
-    new_inventory: dict[str, ProductOffer], ) -> list | None:
 
-    if old_inventory is None or new_inventory is None:
-        logging.info(f'Vendor ID {vendor_id} is no. No product logs need to be created')  # What?
+# TODO: Either the name is bad or this function is just redundant as fuck. I'm thinking the former.
+def process_vendors(
+    old_vendor_directory: VendorDirectory,
+    new_vendor_directory: VendorDirectory,
+    fetched_at, ):
+    old_vendors = old_vendor_directory.vendors
+    new_vendors = new_vendor_directory.vendors
 
-    if new_inventory == old_inventory:
-        logging.info(f'No inventory changes observed for {vendor_id}.')
-        return None
+    offer_changes_logs = []
+    for vendor_id, vendor in new_vendors.items():
+        if old_vendors.get(vendor_id) is None:
+            logging.info(f'Vendor ID {vendor_id} is new. Skipping building inventory logs')
+            continue
 
-    logging.info(f'Building inventory change logs for vendor ID {vendor_id}.')
-    logs = build_inventory_change_logs(
-        vendor_id, new_inventory, old_inventory, )
+        old_vendor_inventory = old_vendors[vendor_id].inventory
+        new_vendor_inventory = new_vendors[vendor_id].inventory
 
-    return logs
+        if old_vendor_inventory == new_vendor_inventory:
+            logging.info(f'No inventory changes observed for {vendor_id}')
+            continue
+
+        logs = build_inventory_change_logs(
+            int(vendor_id), old_vendor_inventory, new_vendor_inventory, fetched_at
+        )
+        offer_changes_logs.extend(logs)
+
+    return offer_changes_logs
 
 
 def merge_all_products(

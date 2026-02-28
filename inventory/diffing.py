@@ -7,8 +7,10 @@ from inventory.constants import CONST_SHIPPING_OPTIONS_KEYS
 # TODO: These functions can still be refactored (past ADDED/REMOVED)
 def build_inventory_change_logs(
     vendor_id: int,
+    old_inventory: dict[str, ProductOffer],
     new_inventory: dict[str, ProductOffer],
-    old_inventory: dict[str, ProductOffer], ) -> list:
+    fetched_at
+    ) -> list:
     logs = []
 
     new_pids = set(
@@ -22,9 +24,7 @@ def build_inventory_change_logs(
     added = new_pids - old_pids
     added = [int(x) for x in added]
     for pid in added:
-        log = log_product(
-            vendor_id, pid, 'ADDED'
-        )
+        log = log_product_change(vendor_id, pid, 'ADDED', fetched_at)
         logs.append(
             log
         )
@@ -33,9 +33,7 @@ def build_inventory_change_logs(
     removed = old_pids - new_pids
     removed = [int(x) for x in removed]
     for pid in removed:
-        log = log_product(
-            vendor_id, pid, 'REMOVED'
-        )
+        log = log_product_change(vendor_id, pid, 'REMOVED', fetched_at)
         logs.append(
             log
         )
@@ -46,43 +44,66 @@ def build_inventory_change_logs(
         new = new_inventory[pid]
 
         if old['availability'] != new['availability']:
-            log = log_product(
+            log = log_product_change(
                 vendor_id,
                 int(pid),
                 'AVAILABILITY',
+                fetched_at,
                 old_avail=old['availability'].upper(),
                 new_avail=new['availability'].upper()
-            )
+                )
             logs.append(
                 log
             )
 
         if old['price'] != new['price']:
-            log = log_product(
-                vendor_id, int(pid), 'PRICE', old_price=old['price'], new_price=new['price']
-            )
+            log = log_product_change(
+                vendor_id,
+                int(pid),
+                'PRICE',
+                fetched_at,
+                old_price=old['price'],
+                new_price=new['price']
+                )
             logs.append(
                 log
             )
 
     return logs
 
+def build_inventory_logs(
+    new_vendor_directory: VendorDirectory,
+    fetched_at,
+):
+    inventory_logs = []
+    vendors = new_vendor_directory.vendors
+    for vendor_id, vendor in vendors.items():
+        logging.debug(f'Building snapshot logs for vendor ID {vendor_id}')
+        inventory = vendor.inventory
+        for pid, offer in inventory.items():
+            logging.debug(f'Building log for vendor ID {vendor_id} PID {pid}')
+            product_log = log_product(int(vendor_id), int(pid), offer, fetched_at) # TODO: Type conversion where?
+            inventory_logs.append(product_log)
+
+    return inventory_logs
 
 def build_vendor_change_logs(
     old_vendors: dict,
-    new_vendors: dict, ) -> list:
+    new_vendors: dict,
+    fetched_at
+    ) -> list:
     logs = []
 
     # Added vendors
     added_vendor_ids = new_vendors.keys() - old_vendors.keys()
     for vendor_id in added_vendor_ids:
-        log = log_vendor(vendor_id, 'VENDOR_ADDED')
+        log = log_vendor_change(vendor_id, 'VENDOR_ADDED', fetched_at)
         logs.append(log)
 
     # Removed vendors
     removed_vendor_ids = old_vendors.keys() - new_vendors.keys()
     for vendor_id in removed_vendor_ids:
-        log = log_vendor(vendor_id, 'VENDOR_REMOVED')
+        log = log_vendor_change(vendor_id, 'VENDOR_REMOVED', fetched_at)
         logs.append(log)
 
     for vendor_id in old_vendors.keys() & new_vendors.keys():
@@ -143,9 +164,12 @@ def build_vendor_change_logs(
             added_shipping_options
         ) != 0:
             for shipping_option in added_shipping_options:
-                log = log_vendor(
-                    vendor_id, 'SHIPPING_OPTION_ADDED', shipping_option
-                )
+                log = log_vendor_change(
+                    vendor_id,
+                    'SHIPPING_OPTION_ADDED',
+                    fetched_at,
+                    shipping_option
+                    )
                 logs.append(
                     log
                 )
@@ -154,9 +178,12 @@ def build_vendor_change_logs(
             removed_shipping_options
         ) != 0:
             for shipping_option in removed_shipping_options:
-                log = log_vendor(
-                    vendor_id, 'SHIPPING_OPTION_REMOVED', shipping_option
-                )
+                log = log_vendor_change(
+                    vendor_id,
+                    'SHIPPING_OPTION_REMOVED',
+                    fetched_at,
+                    shipping_option
+                    )
                 logs.append(
                     log
                 )
@@ -174,13 +201,14 @@ def build_vendor_change_logs(
             if old_price == new_price:
                 continue
 
-            log = log_vendor(
+            log = log_vendor_change(
                 vendor_id,
                 'SHIPPING_PRICE_CHANGED',
+                fetched_at,
                 shipping_option.upper(),
                 old_price=old_shipping_options[shipping_option],
                 new_price=new_shipping_options[shipping_option]
-            )
+                )
             logs.append(
                 log
             )
@@ -191,9 +219,13 @@ def build_vendor_change_logs(
             old_location = old['street'] + ', ' + old['plz'] + ' ' + old['city']
             new_location = new['street'] + ', ' + new['plz'] + ' ' + new['city']
             try:
-                log = log_vendor(
-                    vendor_id, event_type, old_location=old_location, new_location=new_location
-                )
+                log = log_vendor_change(
+                    vendor_id,
+                    event_type,
+                    fetched_at,
+                    old_location=old_location,
+                    new_location=new_location
+                    )
             except ValueError:
                 logging.error(
                     f'Event type {event_type} is not defined. Skipping'
