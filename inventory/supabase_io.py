@@ -137,8 +137,8 @@ def push_results_to_supabase(
         try:
             with_retry(
                 lambda: upload_to_bucket(
-                    client, CONST_SUPABASE_INVENTORIES_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP, pid_to_vendors_offers
-                ), label=f'upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP}, pid_to_vendors)'
+                    client, CONST_SUPABASE_INVENTORIES_BUCKET, CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP, pid_to_vendors_offers
+                ), label=f'upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP}, pid_to_vendors)'
             )
         except Exception as e:
             logging.error(
