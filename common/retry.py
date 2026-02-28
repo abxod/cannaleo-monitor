@@ -2,12 +2,14 @@ import time
 import logging
 
 
+# TODO: The current exception catching is prone to ValueError and AttributeError exceptions, among others.
+# TODO: That could be fixed by specifying the exception types in the function call
 def with_retry(
     func,
-    attempts: int = None,
-    label=None, ):
-    if attempts is None:
-        attempts = 3
+    exception_types=(Exception,),
+    label=None
+    ):
+    attempts = 3
 
     display_name = label or repr(func)
 
@@ -17,7 +19,6 @@ def with_retry(
         try:
             return func()
         except Exception as e:
-            # TODO: 'func' has to be replaced with vendor ID or something
             logging.error(
                 f'{e}: {display_name} raised an exception on attempt {attempt}.'
             )

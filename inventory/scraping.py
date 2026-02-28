@@ -8,7 +8,7 @@ import requests
 from inventory.constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, \
     CONST_ALL_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, \
     CONST_FLOWZZ_PRODUCT_URL, CONST_EXCLUDED_VENDOR_IDS
-from models.vendor_types import ProductOffer
+from models import ProductOffer
 from common.retry import with_retry
 
 EMAIL_ADDRESS = os.environ['EMAIL_ADDRESS']
@@ -41,7 +41,7 @@ def get_vendor_inventory(
                 ).json()['csrfToken'], label=f'session.get(csrf_url).json()[\'csrfToken\'] for {vendor_id}'
                 )
         except Exception:
-            logging.error(f'Failed to get CSRF token for {vendor_id}.')
+            logging.error(f'Failed to get CSRF token for {vendor_id}')
             raise
 
         session.post(
@@ -241,4 +241,4 @@ def fetch_comments_from_strains():
     with open('../scraped_data/all_reviews_test_2.json', 'w') as f:
         json.dump(pid_to_reviews, f, indent=2)
 
-    print('Successfully fetched and stored all reviews.')
+    print('Successfully fetched and stored all reviews')

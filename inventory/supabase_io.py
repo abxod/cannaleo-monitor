@@ -93,7 +93,7 @@ def push_results_to_supabase(
     pid_to_vendors_offers: dict[str, list[dict[str, float | str]]],
     all_pid_to_prod_info: dict[str, dict[str, Any]],
     updated_vendors_information: dict[str, Any], ):
-    logging.info('Pushing product logs to Supabase.')
+    logging.info('Pushing product logs to Supabase')
     if product_logs:
         try:
             with_retry(
@@ -103,10 +103,10 @@ def push_results_to_supabase(
             )
         except Exception as e:
             logging.error(
-                f'Failed to insert product event logs: {e}.', exc_info=True
+                f'Failed to insert product event logs: {e}', exc_info=True
             )
 
-    logging.info('Pushing vendor logs to Supabase.')
+    logging.info('Pushing vendor logs to Supabase')
     if vendor_logs:
         try:
             with_retry(
@@ -115,10 +115,10 @@ def push_results_to_supabase(
             )
         except Exception as e:
             logging.error(
-                f'Failed to insert vendor event logs: {e}.', exc_info=True
+                f'Failed to insert vendor event logs: {e}', exc_info=True
             )
 
-    logging.info('Updating vendor_id_to_offers.json on Supabase.')
+    logging.info('Updating vendor_id_to_offers.json on Supabase')
     if vendor_id_to_offers:
         try:
             with_retry(
@@ -132,20 +132,20 @@ def push_results_to_supabase(
                 f'Failed to upload vendor inventories: {e}', exc_info=True
             )
 
-    logging.info('Updating pid_to_vendors.json on Supabase.')
+    logging.info('Updating pid_to_vendors.json on Supabase')
     if pid_to_vendors_offers:
         try:
             with_retry(
                 lambda: upload_to_bucket(
-                    client, CONST_SUPABASE_INVENTORIES_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP, pid_to_vendors_offers
-                ), label=f'upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP}, pid_to_vendors)'
+                    client, CONST_SUPABASE_INVENTORIES_BUCKET, CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP, pid_to_vendors_offers
+                ), label=f'upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP}, pid_to_vendors)'
             )
         except Exception as e:
             logging.error(
                 f'Failed to upload pid_to_vendors: {e}', exc_info=True
             )
 
-    logging.info('Updating all_products.json on Supabase.')
+    logging.info('Updating all_products.json on Supabase')
     if all_pid_to_prod_info:
         try:
             with_retry(
