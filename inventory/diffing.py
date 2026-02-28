@@ -1,6 +1,7 @@
 import logging
 from inventory.events import log_product, log_vendor
 from models.models import ProductOffer
+from models import ProductOffer, VendorDirectory
 from inventory.constants import CONST_SHIPPING_OPTIONS_KEYS
 
 

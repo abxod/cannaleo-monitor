@@ -7,6 +7,7 @@ from models.geo import Coordinate
 from inventory.diffing import build_inventory_change_logs
 from inventory.constants import CONST_VENDOR_EVENT_TYPES_FOR_UPDATES, CONST_EXCLUDED_VENDOR_IDS
 from common.address_to_coordinates_map import map_address_to_coordinates
+from models import VendorDirectory
 
 
 def process_vendor(

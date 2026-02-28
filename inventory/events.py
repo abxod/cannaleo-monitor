@@ -1,5 +1,6 @@
 from datetime import datetime, timezone
 from inventory.constants import CONST_DB_PRODUCT_EVENT_TYPES, CONST_DB_VENDOR_EVENT_TYPES
+from models import ProductOffer
 
 # TODO: These two functions seems identical, differing only in the event type passed
 def log_product(vendor_id: int, pid: int, event_type: str, old_price: float =None, new_price: float =None, old_avail: str =None, new_avail=None):

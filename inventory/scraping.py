@@ -8,7 +8,7 @@ import requests
 from inventory.constants import CONST_BASE_API_PRODUCT_REQUEST_URL, CONST_ALL_ATTRIBUTES, \
     CONST_ALL_AVAILABILITY_OPTIONS, CONST_AVAILABILITY_DB_MAP, CONST_VENDORS_INFORMATION_URL, CONST_PAGE_SIZE_LIMIT, \
     CONST_FLOWZZ_PRODUCT_URL, CONST_EXCLUDED_VENDOR_IDS
-from models.vendor_types import ProductOffer
+from models import ProductOffer
 from common.retry import with_retry
 
 EMAIL_ADDRESS = os.environ['EMAIL_ADDRESS']

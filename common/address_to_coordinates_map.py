@@ -1,5 +1,5 @@
 import time
-from models.geo import Coordinate
+from models import Coordinate
 from geopy.exc import GeocoderTimedOut
 
 
