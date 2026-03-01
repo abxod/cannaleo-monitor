@@ -7,9 +7,17 @@ import logging
 from inventory.constants import CONST_SUPABASE_VENDOR_ID_TO_INFO_FP, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP
 from inventory.constants import CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET, CONST_SUPABASE_INVENTORIES_BUCKET, \
     CONST_SUPABASE_PID_TO_INFO_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_INFO_FP, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP, \
-    CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP, CONST_SUPABASE_PID_TO_INFO_FP
+    CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP, CONST_SUPABASE_PID_TO_INFO_FP, CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE
 from inventory.constants import CONST_SUPABASE_PRODUCT_LOGS_TABLE, CONST_SUPABASE_VENDOR_LOGS_TABLE
 from common.retry import with_retry
+
+
+# TODO: Should this generalized function exist?
+def fetch_rows_from_table(
+    client,
+    table_name,
+    query, ):
+    return (client.table(table_name).select(query).execute())
 
 
 def normalize_strings(
@@ -87,18 +95,19 @@ def upload_to_bucket(
 
 def push_results_to_supabase(
     client,
-    product_logs: list[dict[str, str | int | float | None]],
+    offer_changes_logs: list[dict[str, str | int | float | None]],
     vendor_logs: list[dict[str, str | int | float | None]],
+    offer_logs: list[dict[str, str | int | float]],
     vendor_id_to_offers: dict[str, dict[str, dict[str, float | str]]],
     pid_to_vendors_offers: dict[str, list[dict[str, float | str]]],
     all_pid_to_prod_info: dict[str, dict[str, Any]],
     updated_vendors_information: dict[str, Any], ):
     logging.info('Pushing product logs to Supabase')
-    if product_logs:
+    if offer_changes_logs:
         try:
             with_retry(
                 lambda: insert_logs_into_db(
-                    client, CONST_SUPABASE_PRODUCT_LOGS_TABLE, product_logs
+                    client, CONST_SUPABASE_PRODUCT_LOGS_TABLE, offer_changes_logs
                 ), label=f'insert_logs_into_db(client, {CONST_SUPABASE_PRODUCT_LOGS_TABLE}, product_logs)'
             )
         except Exception as e:
@@ -118,12 +127,26 @@ def push_results_to_supabase(
                 f'Failed to insert vendor event logs: {e}', exc_info=True
             )
 
+    if offer_logs:
+        try:
+            with_retry(
+                lambda: insert_logs_into_db(client, CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE, offer_logs),
+                label=f'insert_logs_into_db(client, {CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE}, offer_lgogs)'
+            )
+        except Exception as e:
+            logging.error(
+                f'Failed to insert inventory snapshot logs: {e}', exc_info=True
+            )
+
     logging.info('Updating vendor_id_to_offers.json on Supabase')
     if vendor_id_to_offers:
         try:
             with_retry(
                 lambda: upload_to_bucket(
-                    client, CONST_SUPABASE_INVENTORIES_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP, vendor_id_to_offers
+                    client,
+                    CONST_SUPABASE_INVENTORIES_BUCKET,
+                    CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP,
+                    vendor_id_to_offers
                 ),
                 label=f'upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP}, vendor_inventories)'
             )
@@ -137,8 +160,12 @@ def push_results_to_supabase(
         try:
             with_retry(
                 lambda: upload_to_bucket(
-                    client, CONST_SUPABASE_INVENTORIES_BUCKET, CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP, pid_to_vendors_offers
-                ), label=f'upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP}, pid_to_vendors)'
+                    client,
+                    CONST_SUPABASE_INVENTORIES_BUCKET,
+                    CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP,
+                    pid_to_vendors_offers
+                ),
+                label=f'upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP}, pid_to_vendors)'
             )
         except Exception as e:
             logging.error(
@@ -161,7 +188,10 @@ def push_results_to_supabase(
         try:
             with_retry(
                 lambda: upload_to_bucket(
-                    client, CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_INFO_FP, updated_vendors_information
+                    client,
+                    CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET,
+                    CONST_SUPABASE_VENDOR_ID_TO_INFO_FP,
+                    updated_vendors_information
                 ),
                 label=f'upload_to_bucket(client, {CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET}, {CONST_SUPABASE_VENDOR_ID_TO_INFO_FP}, updated_vendors_information)'
             )

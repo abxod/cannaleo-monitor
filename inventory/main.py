@@ -155,6 +155,7 @@ def run(
     push_results_to_supabase(
         client,
         offer_changes_logs,
+        offer_logs,
         vendor_logs,
         vendor_id_to_offers,
         pid_to_vendors,
