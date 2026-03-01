@@ -96,8 +96,8 @@ def upload_to_bucket(
 def push_results_to_supabase(
     client,
     offer_changes_logs: list[dict[str, str | int | float | None]],
-    vendor_logs: list[dict[str, str | int | float | None]],
     offer_logs: list[dict[str, str | int | float]],
+    vendor_logs: list[dict[str, str | int | float | None]],
     vendor_id_to_offers: dict[str, dict[str, dict[str, float | str]]],
     pid_to_vendors_offers: dict[str, list[dict[str, float | str]]],
     all_pid_to_prod_info: dict[str, dict[str, Any]],
@@ -127,11 +127,12 @@ def push_results_to_supabase(
                 f'Failed to insert vendor event logs: {e}', exc_info=True
             )
 
+    logging.info('Pushing inventory snapshots to Supabase')
     if offer_logs:
         try:
             with_retry(
                 lambda: insert_logs_into_db(client, CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE, offer_logs),
-                label=f'insert_logs_into_db(client, {CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE}, offer_lgogs)'
+                label=f'insert_logs_into_db(client, {CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE}, offer_logs)'
             )
         except Exception as e:
             logging.error(
