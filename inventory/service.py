@@ -37,6 +37,7 @@ def process_vendors(
             logging.info(f'No inventory changes observed for {vendor_id}')
             continue
 
+        logging.info(f'Building inventory change logs for vendor ID {vendor_id}')
         logs = build_inventory_change_logs(
             int(vendor_id), old_vendor_inventory, new_vendor_inventory, fetched_at
         )
