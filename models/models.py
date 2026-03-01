@@ -154,10 +154,10 @@ class VendorDirectory:
     def from_supabase(
         cls,
         client,
-        vendor_id_to_vendor_info: dict, ):
+        old_vendor_id_to_info: dict, ):
         # TODO: Is this path necessary? We already fetch new vendor info from main.
         try:
-            vendor_id_to_inventory = with_retry(
+            vendor_id_to_offers = with_retry(
                 lambda: load_vendor_inventories(
                     client
                 ), label='load_vendor_inventories(client)'
@@ -167,24 +167,24 @@ class VendorDirectory:
             raise
 
         vendors: dict[str, Vendor] = {}
-        for vendor_id, inventory_json in vendor_id_to_inventory.items():
+        for vendor_id, offers in vendor_id_to_offers.items():
             # double check this
-            if vendor_id not in vendor_id_to_vendor_info:
-                logging.warning(f'Vendor ID {vendor_id} found in inventories but not in vendor info. Skipping.')
+            if vendor_id not in old_vendor_id_to_info:
+                logging.warning(f'Vendor ID {vendor_id} found in inventories but not in vendor info. Skipping.') # This is the case when the script fails to fetch some vendor's inventory
                 continue
 
             info = VendorInfo.from_json(
-                vendor_id_to_vendor_info[vendor_id]
+                old_vendor_id_to_info[vendor_id]
             )
 
-            inventory: dict[str, ProductOffer] = {}
-            for pid, raw_offer in inventory_json.items():
-                inventory[pid] = ProductOffer(
+            offers: dict[str, ProductOffer] = {}
+            for pid, raw_offer in offers.items():
+                offers[pid] = ProductOffer(
                     price=raw_offer['price'], availability=raw_offer['availability']
                 )
 
             vendors[vendor_id] = Vendor(
-                vendor_id=vendor_id, info=info, inventory=inventory, )
+                vendor_id=vendor_id, info=info, inventory=offers, )
             logging.info(f'Vendor with vendor ID {vendors[vendor_id].vendor_id} instantiated.')
 
         return cls(

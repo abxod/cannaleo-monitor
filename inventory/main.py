@@ -86,6 +86,7 @@ def run(
         logging.error(f'Old inventories could not be fetched from Supabase: {e}', exc_info=True)
         sys.exit(1)
 
+    logging.info('Starting inventory fetch via API')
     vendor_id_to_offers = {}
     all_pid_to_prod_info = {}
     new_vendor_directory = VendorDirectory()
@@ -154,6 +155,7 @@ def run(
     push_results_to_supabase(
         client,
         offer_changes_logs,
+        offer_logs,
         vendor_logs,
         vendor_id_to_offers,
         pid_to_vendors,
