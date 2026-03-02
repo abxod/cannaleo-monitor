@@ -6,7 +6,7 @@ import {
     STRAIN_TYPE_NORMALIZATION_MAP,
     getVendorsWithinDistance
 } from "./utils.js";
-import {getBestThcPriceRatios} from "./functions/get_best_thc_price_ratios";
+import {getBestThcPriceRatios} from "./functions/get_best_thc_price_ratios.js";
 
 let products = null;
 let vendors = null;
