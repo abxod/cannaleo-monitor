@@ -6,12 +6,13 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 import supabase
-from inventory.supabase_io import load_vendors_information, push_results_to_supabase
+from inventory.supabase_io import load_json_from_bucket, push_results_to_supabase
 from inventory.scraping import get_vendors_information, scrape_vendor_inventory_and_products
 from common.retry import with_retry
 from models import VendorDirectory, Vendor, VendorInfo
 from inventory.diffing import build_vendor_change_logs, build_inventory_logs
 from inventory.service import process_vendors, merge_all_products, get_coordinates_of_affected_vendors
+from inventory.constants import CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_INFO_FP
 
 """
     This source file is responsible for updating:
@@ -52,8 +53,8 @@ def run(
     logging.info('Starting fetch of vendor information from Supabase')
     try:
         old_vendor_id_to_info = with_retry(
-            lambda: load_vendors_information(
-                client
+            lambda: load_json_from_bucket(
+                client, CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_INFO_FP
             ), label=f'load_vendors_information(client)'
         )
     except Exception as e:

@@ -29,35 +29,17 @@ def normalize_strings(
     return obj
 
 
-# TODO: Generalize the two bottom functions
-
-def load_vendors_information(
+def load_json_from_bucket(
     client: supabase.Client,
-    file_path: str = CONST_SUPABASE_VENDOR_ID_TO_INFO_FP, ) -> dict:
-    response = with_retry(
-        lambda: client.storage.from_(
-            CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET
-        ).download(file_path),
-        label=f'client.storage.from_(\'{CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET}\').download({file_path})'
-    )
+    bucket: str,
+    file_path: str, ) -> dict:
+    response = with_retry(lambda: client.storage.from_(
+        bucket
+    ).download(file_path), label=f'client.storage.from_({bucket}).download({file_path})')
 
     json_str = response.decode('utf-8')
     data = json.loads(json_str)
     return normalize_strings(data)
-
-
-def load_vendor_inventories(
-    client: supabase.Client,
-    file_path: str = CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP, ) -> dict:
-    response = with_retry(
-        lambda: client.storage.from_(
-            CONST_SUPABASE_INVENTORIES_BUCKET
-        ).download(file_path), label=f'client.storage.from_(\'{CONST_SUPABASE_INVENTORIES_BUCKET}\')'
-    )
-
-    json_str = response.decode('utf-8')
-    return json.loads(json_str)
-
 
 def insert_logs_into_db(
     client: supabase.Client,

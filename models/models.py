@@ -153,8 +153,8 @@ class VendorDirectory:
         # TODO: Is this path necessary? We already fetch new vendor info from main.
         try:
             vendor_id_to_offers = with_retry(
-                lambda: load_vendor_inventories(
-                    client
+                lambda: load_json_from_bucket(
+                    client, CONST_SUPABASE_INVENTORIES_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP,
                 ), label='load_vendor_inventories(client)'
             )
             logging.info('Old vendor inventories successfully fetched from Supabase')
