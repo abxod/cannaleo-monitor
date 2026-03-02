@@ -49,8 +49,8 @@ def build_inventory_change_logs(
                 int(pid),
                 'AVAILABILITY',
                 fetched_at,
-                old_avail=old['availability'].upper(),
-                new_avail=new['availability'].upper()
+                old_avail=old['availability'],
+                new_avail=new['availability']
                 )
             logs.append(
                 log
