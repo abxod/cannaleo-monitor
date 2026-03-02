@@ -52,6 +52,22 @@ export function getUserLocation() {
   });
 }
 
-export function getVendorsWithinDistance() {
+export function getVendorsWithinDistance(maxDistance, vendors, userLocation) {
+    if (maxDistance === Infinity) return new Set(Object.keys(vendors));
 
+    const vendorsWithinDistance = new Set()
+    for (const [vendorId, vendorInfo] of Object.entries(vendors)) {
+        const vendorLongitude = vendorInfo.longitude
+        const vendorLatitude = vendorInfo.latitude
+
+        // Error when attempting to geolocate vendor in data fetch workflow
+        if (vendorLongitude === 0 && vendorLatitude === 0) continue;
+
+        const greatCircleDistance = haversine(userLocation.lon, userLocation.lat, vendorLongitude, vendorLatitude)
+        if (greatCircleDistance < maxDistance) {
+            vendorsWithinDistance.add(vendorId)
+        }
+    }
+
+    return vendorsWithinDistance
 }

@@ -1,12 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Dev</title>
-</head>
 <body>
   <button id="locate-btn">Share my location</button>
+
+  <div>
+    <label for="max-distance">Max distance (km)</label>
+    <input type="number" id="max-distance" min="0" value="100">
+  </div>
+
+  <div>
+    <fieldset>
+      <legend>Availability</legend>
+      <label><input type="checkbox" value="available_immediately"> Available immediately</label>
+      <label><input type="checkbox" value="available"> Available</label>
+      <label><input type="checkbox" value="limited_stock"> Limited stock</label>
+    </fieldset>
+  </div>
+
+  <div>
+    <fieldset>
+      <legend>Strain types</legend>
+      <label><input type="checkbox" value="Indica"> Indica</label>
+      <label><input type="checkbox" value="Sativa"> Sativa</label>
+      <label><input type="checkbox" value="Hybrid"> Hybrid</label>
+      <label><input type="checkbox" value="Indica_dominant"> Indica dominant</label>
+      <label><input type="checkbox" value="Sativa_dominant"> Sativa dominant</label>
+      <label><input type="checkbox" value="Pure Indica"> Pure Indica</label>
+    </fieldset>
+  </div>
+
+  <div>
+    <label for="product-count">Product count: <span id="product-count-display">10</span></label>
+    <input type="range" id="product-count" min="1" max="50" value="10">
+  </div>
+
+  <button id="get-best-thc-price-ratios-btn">Run</button>
+
   <pre id="output"></pre>
   <script type="module" src="main.js"></script>
 </body>
-</html>
