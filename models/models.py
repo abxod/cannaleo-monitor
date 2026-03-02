@@ -3,10 +3,10 @@ from dataclasses import dataclass
 from typing import TypedDict, Optional, Any
 
 from common.retry import with_retry
-from inventory.supabase_io import load_vendor_inventories
+from inventory.supabase_io import load_json_from_bucket
+from inventory.constants import CONST_SUPABASE_INVENTORIES_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP
 
 
-# TODO: Rename this source file
 # TODO: Extract these into multiple files?
 class ProductOffer(
     TypedDict
@@ -38,12 +38,7 @@ class Coordinate(
     longitude: float
 
 
-"""
-This is not used for diffing vendors.
-"""
-
-
-# TODO: Make it.
+# TODO: Use this to diff vendors directly by overriding the == operator
 @dataclass
 class VendorInfo:
     id: str
@@ -158,8 +153,8 @@ class VendorDirectory:
         # TODO: Is this path necessary? We already fetch new vendor info from main.
         try:
             vendor_id_to_offers = with_retry(
-                lambda: load_vendor_inventories(
-                    client
+                lambda: load_json_from_bucket(
+                    client, CONST_SUPABASE_INVENTORIES_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP,
                 ), label='load_vendor_inventories(client)'
             )
             logging.info('Old vendor inventories successfully fetched from Supabase')
@@ -177,14 +172,14 @@ class VendorDirectory:
                 old_vendor_id_to_info[vendor_id]
             )
 
-            offers: dict[str, ProductOffer] = {}
+            inventory: dict[str, ProductOffer] = {}
             for pid, raw_offer in offers.items():
-                offers[pid] = ProductOffer(
+                inventory[pid] = ProductOffer(
                     price=raw_offer['price'], availability=raw_offer['availability']
                 )
 
             vendors[vendor_id] = Vendor(
-                vendor_id=vendor_id, info=info, inventory=offers, )
+                vendor_id=vendor_id, info=info, inventory=inventory, )
             logging.info(f'Vendor with vendor ID {vendors[vendor_id].vendor_id} instantiated.')
 
         return cls(
