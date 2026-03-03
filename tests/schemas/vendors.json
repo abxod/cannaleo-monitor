@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "error",
+    "message",
+    "data"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "error": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "string"
+    },
+    "data": {
+      "type": "object",
+      "required": [
+        "pharmacies",
+        "updated_at"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "pharmacies": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/vendor"
+          }
+        },
+        "updated_at": {
+          "type": "string"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "vendor": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "vendor_id",
+        "cannabis_pharmacy_name",
+        "official_name",
+        "domain",
+        "email",
+        "phone_number",
+        "street",
+        "plz",
+        "city",
+        "shipping",
+        "express",
+        "local_courier",
+        "pickup"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "vendor_id": {
+          "type": "integer"
+        },
+        "cannabis_pharmacy_name": { "type": "string" },
+        "official_name": { "type": "string" },
+        "domain": { "type": "string" },
+        "email": { "type": "string" },
+        "phone_number": { "type": "string" },
+        "street": { "type": "string" },
+        "plz": { "type": "string" },
+        "city": { "type": "string" },
+        "shipping": {"type": "boolean" },
+        "express": { "type": "boolean" },
+        "local_courier": { "type": "boolean" },
+        "pickup": { "type": "boolean" },
+        "shipping_cost_standard": { "type": "number" },
+        "express_cost_standard": { "type": "number" },
+        "local_coure_cost_standard": { "type": "number" }
+      }
+    }
+  }
+}

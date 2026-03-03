@@ -1,0 +1,209 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": [
+    "message",
+    "error"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "error": {
+      "type": "boolean"
+    },
+    "message": {
+      "type": "object",
+      "required": [
+        "data",
+        "meta"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/product"
+          }
+        },
+        "meta": {
+          "type": "object",
+          "required": [
+            "pagination"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "pagination": {
+              "type": "object",
+              "required": [
+                "page",
+                "pageSize",
+                "pageCount",
+                "total"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "page": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "pageSize": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "pageCount": {
+                  "type": "integer",
+                  "minimum": 0
+                },
+                "total": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "product": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": [
+        "id",
+        "url",
+        "producer",
+        "name",
+        "thc",
+        "cbd",
+        "genetic",
+        "irradiated",
+        "origin",
+        "created_at",
+        "updated_at",
+        "published_at",
+        "created_by_id",
+        "updated_by_id",
+        "locale",
+        "description",
+        "top_rating",
+        "dominance",
+        "strain_name",
+        "producer_name",
+        "min_price",
+        "max_price",
+        "availibility",
+        "price"
+      ],
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "url": {
+          "type": "string"
+        },
+        "producer": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "name": {
+          "type": "string"
+        },
+        "thc": {
+          "type": "number"
+        },
+        "cbd": {
+          "type": "number"
+        },
+        "genetic": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "irradiated": {
+          "type": "boolean"
+        },
+        "origin": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "created_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "updated_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "published_at": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "created_by_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "updated_by_id": {
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "locale": {
+          "type": "string"
+        },
+        "description": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "top_rating": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "dominance": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "strain_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "producer_name": {
+          "type": "string"
+        },
+        "min_price": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "max_price": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "availibility": {
+          "type": "integer"
+        },
+        "price": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
