@@ -1,7 +1,7 @@
 import logging
 from inventory.events import log_product_change, log_vendor_change, log_product
 from models import ProductOffer, VendorDirectory
-from inventory.constants import CONST_SHIPPING_OPTIONS_KEYS
+from inventory.constants import CONST_SHIPPING_OPTIONS_KEYS, CONST_PRICE_LOWER_BOUND, CONST_PRICE_UPPER_BOUND
 
 
 # TODO: These functions can still be refactored (past ADDED/REMOVED)
@@ -9,8 +9,7 @@ def build_inventory_change_logs(
     vendor_id: int,
     old_inventory: dict[str, ProductOffer],
     new_inventory: dict[str, ProductOffer],
-    fetched_at
-    ) -> list:
+    fetched_at, ) -> list:
     logs = []
 
     new_pids = set(
@@ -51,30 +50,25 @@ def build_inventory_change_logs(
                 fetched_at,
                 old_avail=old['availability'],
                 new_avail=new['availability']
-                )
+            )
             logs.append(
                 log
             )
 
         if old['price'] != new['price']:
             log = log_product_change(
-                vendor_id,
-                int(pid),
-                'PRICE',
-                fetched_at,
-                old_price=old['price'],
-                new_price=new['price']
-                )
+                vendor_id, int(pid), 'PRICE', fetched_at, old_price=old['price'], new_price=new['price']
+            )
             logs.append(
                 log
             )
 
     return logs
 
+
 def build_inventory_logs(
     new_vendor_directory: VendorDirectory,
-    fetched_at,
-):
+    fetched_at, ):
     inventory_logs = []
     vendors = new_vendor_directory.vendors
     for vendor_id, vendor in vendors.items():
@@ -82,16 +76,16 @@ def build_inventory_logs(
         inventory = vendor.inventory
         for pid, offer in inventory.items():
             logging.debug(f'Building log for vendor ID {vendor_id} PID {pid}')
-            product_log = log_product(int(vendor_id), int(pid), offer, fetched_at) # TODO: Type conversion where?
+            product_log = log_product(int(vendor_id), int(pid), offer, fetched_at)  # TODO: Type conversion where?
             inventory_logs.append(product_log)
 
     return inventory_logs
 
+
 def build_vendor_change_logs(
     old_vendors: dict,
     new_vendors: dict,
-    fetched_at
-    ) -> list:
+    fetched_at, ) -> list:
     logs = []
 
     # Added vendors
@@ -165,11 +159,8 @@ def build_vendor_change_logs(
         ) != 0:
             for shipping_option in added_shipping_options:
                 log = log_vendor_change(
-                    vendor_id,
-                    'SHIPPING_OPTION_ADDED',
-                    fetched_at,
-                    shipping_option
-                    )
+                    vendor_id, 'SHIPPING_OPTION_ADDED', fetched_at, shipping_option
+                )
                 logs.append(
                     log
                 )
@@ -179,11 +170,8 @@ def build_vendor_change_logs(
         ) != 0:
             for shipping_option in removed_shipping_options:
                 log = log_vendor_change(
-                    vendor_id,
-                    'SHIPPING_OPTION_REMOVED',
-                    fetched_at,
-                    shipping_option
-                    )
+                    vendor_id, 'SHIPPING_OPTION_REMOVED', fetched_at, shipping_option
+                )
                 logs.append(
                     log
                 )
@@ -208,7 +196,7 @@ def build_vendor_change_logs(
                 shipping_option.upper(),
                 old_price=old_shipping_options[shipping_option],
                 new_price=new_shipping_options[shipping_option]
-                )
+            )
             logs.append(
                 log
             )
@@ -220,12 +208,8 @@ def build_vendor_change_logs(
             new_location = new['street'] + ', ' + new['plz'] + ' ' + new['city']
             try:
                 log = log_vendor_change(
-                    vendor_id,
-                    event_type,
-                    fetched_at,
-                    old_location=old_location,
-                    new_location=new_location
-                    )
+                    vendor_id, event_type, fetched_at, old_location=old_location, new_location=new_location
+                )
             except ValueError:
                 logging.error(
                     f'Event type {event_type} is not defined. Skipping'
@@ -236,3 +220,53 @@ def build_vendor_change_logs(
             )
 
     return logs
+
+
+# TODO: This is prone to outliers
+def build_new_daily_product_averages(
+    pid_to_vendor_offers: dict[str, list[dict[str, str | float]]], ):
+    new_averages = {}
+    for pid, vendor_offers in pid_to_vendor_offers.items():
+        valid_prices = [offer['price'] for offer in vendor_offers if
+                        CONST_PRICE_LOWER_BOUND <= offer['price'] <= CONST_PRICE_UPPER_BOUND]
+
+        if not valid_prices:
+            continue
+
+        new_averages[pid] = {
+            'avg_price': sum(valid_prices) / len(valid_prices),
+            'sample_count': len(valid_prices)
+        }
+    return new_averages
+
+
+def build_daily_product_averages_logs(
+    old_daily_product_averages: dict[str, dict[str, int | float]],
+    new_daily_product_averages: dict[str, dict[str, int | float]],
+    date: str, ) -> list[dict]:
+    rows_to_upsert = []
+    for pid, new in new_daily_product_averages.items():
+        if pid in old_daily_product_averages:
+            old = old_daily_product_averages[pid]
+            total_count = old['sample_count'] + new['sample_count']
+            weighted_avg = ((old['avg_price'] * old['sample_count']) + (
+                new['avg_price'] * new['sample_count'])) / total_count
+            rows_to_upsert.append(
+                {
+                    'date': date,
+                    'pid': int(pid),
+                    'avg_price': weighted_avg,
+                    'sample_count': total_count,
+                }
+            )
+        else:
+            rows_to_upsert.append(
+                {
+                    'date': date,
+                    'pid': int(pid),
+                    'avg_price': new['avg_price'],
+                    'sample_count': new['sample_count'],
+                }
+            )
+
+    return rows_to_upsert

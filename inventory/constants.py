@@ -76,6 +76,7 @@ CONST_SUPABASE_PRODUCT_LOGS_TABLE = 'product_events'
 CONST_SUPABASE_VENDOR_LOGS_TABLE = 'vendor_events'
 CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE = 'inventory_snapshots'
 CONST_SUPABASE_NOTIFICATION_SUBSCRIPTIONS_TABLE = 'notifications_subscriptions'
+CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE = 'daily_product_averages'
 
 # Supabase storage filepaths
 CONST_SUPABASE_STORAGE = {
@@ -94,3 +95,7 @@ CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP = 'pid_to_vendor_offers.json'
 CONST_SUPABASE_PID_TO_INFO_FP = 'pid_to_info.json'
 
 CONST_NTFY_PLACEHOLDER_MESSAGE = 'This is a placeholder message'
+
+# Magic numbers
+CONST_PRICE_LOWER_BOUND = 1.0
+CONST_PRICE_UPPER_BOUND = 30.0

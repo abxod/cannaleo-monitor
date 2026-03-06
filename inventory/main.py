@@ -2,15 +2,16 @@ import os
 import sys
 import logging
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, date
 from pathlib import Path
 
 import supabase
-from inventory.supabase_io import load_json_from_bucket, push_results_to_supabase
+from inventory.supabase_io import load_json_from_bucket, push_results_to_supabase, get_daily_product_averages
 from inventory.scraping import get_vendors_information, scrape_vendor_inventory_and_products
 from common.retry import with_retry
 from models import VendorDirectory, Vendor, VendorInfo
-from inventory.diffing import build_vendor_change_logs, build_inventory_logs
+from inventory.diffing import build_vendor_change_logs, build_inventory_logs, build_daily_product_averages_logs, \
+    build_new_daily_product_averages
 from inventory.service import process_vendors, merge_all_products, get_coordinates_of_affected_vendors
 from inventory.constants import CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_INFO_FP
 
@@ -48,6 +49,7 @@ logging.getLogger().addHandler(console_handler)
 def run(
     client, ):
     fetched_at = datetime.now(timezone.utc).isoformat()
+    today = date.today().isoformat()
 
     # Fetch old vendor information JSON from Supabase
     logging.info('Starting fetch of vendor information from Supabase')
@@ -87,6 +89,19 @@ def run(
         logging.error(f'Old inventories could not be fetched from Supabase: {e}', exc_info=True)
         sys.exit(1)
 
+    logging.info(f'Fetching daily product averages for {today} from Supabase')
+    try:
+        old_daily_product_averages_rows = with_retry(
+            lambda: get_daily_product_averages(client, today), label=f'get_daily_product_averages{today}'
+        )
+        old_daily_product_averages_by_pid = {str(row['pid']): {
+            'avg_price': row['avg_price'],
+            'sample_count': row['sample_count']
+        } for row in old_daily_product_averages_rows}
+    except Exception as e:
+        logging.error(f'Failed to fetch daily product averages: {e}')
+        sys.exit(1)
+
     logging.info('Starting inventory fetch via API')
     vendor_id_to_offers = {}
     all_pid_to_prod_info = {}
@@ -114,8 +129,8 @@ def run(
 
         time.sleep(2.0)
 
-    if new_vendor_directory is None:
-        logging.error(f'Failed to fetch any inventory')
+    if not new_vendor_directory.vendors:
+        logging.error('Failed to fetch any inventory')
         sys.exit(1)
 
     # Generate logs for changes in vendors' shipping prices or locations
@@ -130,12 +145,12 @@ def run(
     logging.info('Starting build of offer snapshot logs')
     offer_logs = build_inventory_logs(new_vendor_directory, fetched_at)
 
-    pid_to_vendors = {}
+    pid_to_vendor_offers = {}
     for vendor_id, offers in vendor_id_to_offers.items():
         for pid, offer in offers.items():
-            if pid not in pid_to_vendors:
-                pid_to_vendors[pid] = []
-            pid_to_vendors[pid].append(
+            if pid not in pid_to_vendor_offers:
+                pid_to_vendor_offers[pid] = []
+            pid_to_vendor_offers[pid].append(
                 {
                     'vendor_id': vendor_id,
                     'price': offer['price'],
@@ -143,8 +158,8 @@ def run(
                 }
             )
 
-    for pid in pid_to_vendors:
-        pid_to_vendors[pid].sort(
+    for pid in pid_to_vendor_offers:
+        pid_to_vendor_offers[pid].sort(
             key=lambda
                 x: x['price']
         )
@@ -153,15 +168,21 @@ def run(
         vendor_logs, old_vendor_id_to_info, new_vendor_id_to_info
     )
 
+    new_daily_product_averages = build_new_daily_product_averages(pid_to_vendor_offers)
+    daily_product_averages_logs = build_daily_product_averages_logs(
+        old_daily_product_averages_by_pid, new_daily_product_averages, today
+    )
+
     push_results_to_supabase(
         client,
-        offer_changes_logs,
-        offer_logs,
-        vendor_logs,
-        vendor_id_to_offers,
-        pid_to_vendors,
-        all_pid_to_prod_info,
-        updated_vendors_information
+        offer_changes_logs=offer_changes_logs,
+        offer_logs=offer_logs,
+        daily_product_averages_logs=daily_product_averages_logs,
+        vendor_logs=vendor_logs,
+        vendor_id_to_offers=vendor_id_to_offers,
+        pid_to_vendor_offers=pid_to_vendor_offers,
+        all_pid_to_prod_info=all_pid_to_prod_info,
+        updated_vendors_information=updated_vendors_information
     )
 
     logging.info(f'Terminating script')
