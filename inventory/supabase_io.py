@@ -7,7 +7,8 @@ import logging
 from inventory.constants import CONST_SUPABASE_VENDOR_ID_TO_INFO_FP, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP
 from inventory.constants import CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET, CONST_SUPABASE_INVENTORIES_BUCKET, \
     CONST_SUPABASE_PID_TO_INFO_BUCKET, CONST_SUPABASE_VENDOR_ID_TO_INFO_FP, CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP, \
-    CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP, CONST_SUPABASE_PID_TO_INFO_FP, CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE
+    CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP, CONST_SUPABASE_PID_TO_INFO_FP, CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE, \
+    CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE
 from inventory.constants import CONST_SUPABASE_PRODUCT_LOGS_TABLE, CONST_SUPABASE_VENDOR_LOGS_TABLE
 from common.retry import with_retry
 
@@ -29,17 +30,30 @@ def normalize_strings(
     return obj
 
 
+# TODO: Callers are calling with_retry() themselves.
 def load_json_from_bucket(
     client: supabase.Client,
     bucket: str,
     file_path: str, ) -> dict:
-    response = with_retry(lambda: client.storage.from_(
-        bucket
-    ).download(file_path), label=f'client.storage.from_({bucket}).download({file_path})')
+    response = with_retry(
+        lambda: client.storage.from_(
+            bucket
+        ).download(file_path), label=f'client.storage.from_({bucket}).download({file_path})'
+    )
 
     json_str = response.decode('utf-8')
     data = json.loads(json_str)
     return normalize_strings(data)
+
+
+def get_daily_product_averages(
+    client: supabase.Client,
+    date: str, ) -> list:
+    rows = client.table(CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE).select('pid, avg_price, sample_count').eq(
+        'date', date
+    ).execute()
+
+    return rows.data
 
 def insert_logs_into_db(
     client: supabase.Client,
@@ -50,6 +64,18 @@ def insert_logs_into_db(
 
     response = client.table(table_name).insert(events_logs).execute()
 
+    return response.data
+
+
+def upsert_logs_into_db(
+    client: supabase.Client,
+    table_name: str,
+    rows: list[dict],
+    on_conflict: str, ):
+    if not rows:
+        return []
+
+    response = client.table(table_name).upsert(rows, on_conflict=on_conflict).execute()
     return response.data
 
 
@@ -79,9 +105,10 @@ def push_results_to_supabase(
     client,
     offer_changes_logs: list[dict[str, str | int | float | None]],
     offer_logs: list[dict[str, str | int | float]],
+    daily_product_averages_logs: list[dict[str, str | int | float]],
     vendor_logs: list[dict[str, str | int | float | None]],
     vendor_id_to_offers: dict[str, dict[str, dict[str, float | str]]],
-    pid_to_vendors_offers: dict[str, list[dict[str, float | str]]],
+    pid_to_vendor_offers: dict[str, list[dict[str, str | int | float]]],
     all_pid_to_prod_info: dict[str, dict[str, Any]],
     updated_vendors_information: dict[str, Any], ):
     logging.info('Pushing product logs to Supabase')
@@ -97,18 +124,6 @@ def push_results_to_supabase(
                 f'Failed to insert product event logs: {e}', exc_info=True
             )
 
-    logging.info('Pushing vendor logs to Supabase')
-    if vendor_logs:
-        try:
-            with_retry(
-                lambda: insert_logs_into_db(client, CONST_SUPABASE_VENDOR_LOGS_TABLE, vendor_logs),
-                label=f'insert_logs_into_db(client, {CONST_SUPABASE_VENDOR_LOGS_TABLE}, vendor_logs)'
-            )
-        except Exception as e:
-            logging.error(
-                f'Failed to insert vendor event logs: {e}', exc_info=True
-            )
-
     logging.info('Pushing inventory snapshots to Supabase')
     if offer_logs:
         try:
@@ -119,6 +134,30 @@ def push_results_to_supabase(
         except Exception as e:
             logging.error(
                 f'Failed to insert inventory snapshot logs: {e}', exc_info=True
+            )
+
+    logging.info('Pushing average daily price logs to Supabase')
+    if daily_product_averages_logs:
+        try:
+            with_retry(
+                lambda: upsert_logs_into_db(
+                    client, CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE, daily_product_averages_logs, 'pid,date'
+                ),
+                label=f'upsert_logs_into_db(client, {CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE}, daily_product_averages_logs)'
+            )
+        except Exception as e:
+            logging.error(f'Failed to upsert average daily price logs: {e}', exc_info=True)
+
+    logging.info('Pushing vendor logs to Supabase')
+    if vendor_logs:
+        try:
+            with_retry(
+                lambda: insert_logs_into_db(client, CONST_SUPABASE_VENDOR_LOGS_TABLE, vendor_logs),
+                label=f'insert_logs_into_db(client, {CONST_SUPABASE_VENDOR_LOGS_TABLE}, vendor_logs)'
+            )
+        except Exception as e:
+            logging.error(
+                f'Failed to insert vendor event logs: {e}', exc_info=True
             )
 
     logging.info('Updating vendor_id_to_offers.json on Supabase')
@@ -139,14 +178,14 @@ def push_results_to_supabase(
             )
 
     logging.info('Updating pid_to_vendors.json on Supabase')
-    if pid_to_vendors_offers:
+    if pid_to_vendor_offers:
         try:
             with_retry(
                 lambda: upload_to_bucket(
                     client,
                     CONST_SUPABASE_INVENTORIES_BUCKET,
                     CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP,
-                    pid_to_vendors_offers
+                    pid_to_vendor_offers
                 ),
                 label=f'upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP}, pid_to_vendors)'
             )
