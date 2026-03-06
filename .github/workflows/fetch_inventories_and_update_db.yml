@@ -20,7 +20,7 @@ jobs:
         EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
         PASSWORD: ${{ secrets.PASSWORD }}
         PYTHONPATH: ${{ github.workspace }}
-      run: pytest tests/contract_tests.py -v
+      run: pytest tests/api/contract_tests.py -v
 
   run-inventory:
     runs-on: ubuntu-latest
