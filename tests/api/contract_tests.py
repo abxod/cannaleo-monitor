@@ -48,9 +48,9 @@ class TestProductEndPointContract:
         schema = _load_schema(os.path.join(SCHEMA_DIR, 'products.json'))
 
         session = requests.Session()
-        csrf_url = f'https://cannabis-apotheke-frankfurt.de/api/auth/csrf'
-        login_url = f'https://cannabis-apotheke-frankfurt.de/api/auth/callback/credentials'
-        product_url = f'https://cannabis-apotheke-frankfurt.de/api/products'
+        csrf_url = f'https://cannabisdarmstadt.de/api/auth/csrf'
+        login_url = f'https://cannabisdarmstadt.de/api/auth/callback/credentials'
+        product_url = f'https://cannabisdarmstadt.de/api/products'
 
         csrf_response = session.get(csrf_url)
         csrf_token = csrf_response.json()['csrfToken']
