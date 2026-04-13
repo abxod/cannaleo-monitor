@@ -41,7 +41,6 @@ def construct_message(
             return 'Event type not recognized.'
 
 
-# TODO: Move this function elsewhere
 def send_ntfy_notification(
     ntfy_topic: str,
     message: str = CONST_NTFY_PLACEHOLDER_MESSAGE, ):
@@ -77,7 +76,6 @@ def run(
 
 
 if __name__ == '__main__':
-    # TODO: Better logs
     logging.info('Starting notification system')
     client = supabase.create_client(SUPABASE_URL, SUPABASE_KEY)
     run(client)

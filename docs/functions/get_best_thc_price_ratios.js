@@ -1,13 +1,13 @@
 import {STRAIN_TYPE_NORMALIZATION_MAP} from "../utils.js";
 
-export function getBestThcPriceRatios(products, pidToVendors, filteredVendorIds, availabilityFilter, strainFilter, productCount) {
+export function getBestThcPriceRatios(products, pidToVendorOffers, filteredVendorIds, availabilityFilter, strainFilter, thcRange = [1, 37], producers = 'all') {
     // TODO: Caller of this function has to sanitize the inputs of availabilityOptions, strainTypes, productCount. First two should be check-boxes, productCount and maxDistance a slider/textbox
     // TODO: maxDistance should only be calculated once the function is executed.
     // TODO: Get users' coordinates: Display error if user coordinates not available. If user presses a button that prompts him for his location after which his coordinates are calculated, then function can proceed.
     // TODO: Should we filter
     const bestRatios = []
 
-    for (const [pid, offers] of Object.entries(pidToVendors)) {
+    for (const [pid, offers] of Object.entries(pidToVendorOffers)) {
         const product = products[pid];
         if (!product) continue;
 
@@ -16,7 +16,14 @@ export function getBestThcPriceRatios(products, pidToVendors, filteredVendorIds,
         const strainType = STRAIN_TYPE_NORMALIZATION_MAP[key];
         if (!strainFilter.has(strainType)) continue;
 
-        // Discard incorrectly categorid CBD products
+        // Discard non-desired THC percent
+        const [minThc, maxThc] = thcRange;
+        if (product.thc < minThc || product.thc > maxThc) continue;
+
+        // Discard non-desired producers
+        if (!producers.has(product.producer_name)) continue;
+
+        // Discard incorrectly categorized CBD products
         if (product.thc < 10 || product.cbd > 1) continue;
 
         // Find best valid offer for this PID
@@ -39,7 +46,8 @@ export function getBestThcPriceRatios(products, pidToVendors, filteredVendorIds,
             ratio,
             pid,
             name: product.name,
-            vendorId: bestOffer.vendor_id,
+            url: product.url,
+            vendorId: String(bestOffer.vendor_id),
             price: bestOffer.price,
             thc: product.thc,
             availability: bestOffer.availability
@@ -47,5 +55,5 @@ export function getBestThcPriceRatios(products, pidToVendors, filteredVendorIds,
     }
 
     bestRatios.sort((a, b) => b.ratio - a.ratio);
-    return bestRatios.slice(0, productCount);
+    return bestRatios;
 }

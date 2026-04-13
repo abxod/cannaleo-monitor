@@ -1,39 +1,141 @@
-<body>
-  <button id="locate-btn">Share my location</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cannaleo Monitor</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<!--    <div id="lock-screen" class="fixed inset-0 bg-surface z-50 flex flex-col items-center justify-center gap-6">-->
+<!--        <span class="text-accent font-semibold tracking-wide text-sm uppercase">Cannaleo Monitor</span>-->
+<!--        <div class="flex flex-col items-center gap-3 w-72">-->
+<!--            <input-->
+<!--                type="password"-->
+<!--                id="lock-password"-->
+<!--                placeholder="Enter password"-->
+<!--                class="w-full bg-panel border border-border rounded text-sm px-4 py-2.5 focus:outline-none focus:border-accent text-gray-300 placeholder-muted text-center tracking-widest"-->
+<!--                autofocus-->
+<!--            >-->
+<!--            <p id="lock-error" class="text-xs text-red-400 hidden">Incorrect password</p>-->
+<!--        </div>-->
+<!--    </div>-->
 
-  <div>
-    <label for="max-distance">Max distance (km)</label>
-    <input type="number" id="max-distance" min="0" value="100">
-  </div>
+    <style>
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; pointer-events: none; }
+        }
+        .lock-fade-out {
+            animation: fadeOut 600ms ease-out forwards;
+        }
+    </style>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        surface: '#111827',
+                        panel: '#1f2937',
+                        border: '#374151',
+                        accent: '#818cf8',
+                        link: '#22d3ee',
+                        muted: '#6b7280',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        input[type=range] { accent-color: #818cf8; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #1f2937; }
+        ::-webkit-scrollbar-thumb { background: #374151; border-radius: 3px; }
+        @keyframes cardEntrance {
+            from { opacity: 0; transform: translateY(16px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .card-enter {
+            animation: cardEntrance 300ms cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+    </style>
+</head>
+<body class="bg-surface text-gray-100 h-screen flex flex-col overflow-hidden">
 
-  <div>
-    <fieldset>
-      <legend>Availability</legend>
-      <label><input type="checkbox" value="available_immediately"> Available immediately</label>
-      <label><input type="checkbox" value="available"> Available</label>
-      <label><input type="checkbox" value="limited_stock"> Limited stock</label>
-    </fieldset>
-  </div>
+<!-- Top bar -->
+<header class="bg-panel border-b border-border px-6 py-3 flex items-center gap-4 shrink-0">
+    <span class="text-accent font-semibold tracking-wide text-sm uppercase">Cannaleo Monitor</span>
+    <div class="flex-1"></div>
+    <button id="locate-btn" class="flex items-center gap-2 text-sm bg-surface border border-border hover:border-accent px-3 py-1.5 rounded transition duration-100 active:scale-95">
+        <span>📍</span>
+        <span id="locate-label">Share location</span>
+    </button>
+</header>
 
-  <div>
-    <fieldset>
-      <legend>Strain types</legend>
-      <label><input type="checkbox" value="Indica"> Indica</label>
-      <label><input type="checkbox" value="Sativa"> Sativa</label>
-      <label><input type="checkbox" value="Hybrid"> Hybrid</label>
-      <label><input type="checkbox" value="Indica_dominant"> Indica dominant</label>
-      <label><input type="checkbox" value="Sativa_dominant"> Sativa dominant</label>
-      <label><input type="checkbox" value="Pure Indica"> Pure Indica</label>
-    </fieldset>
-  </div>
+<!-- Main layout -->
+<div class="flex flex-1 overflow-hidden">
 
-  <div>
-    <label for="product-count">Product count: <span id="product-count-display">10</span></label>
-    <input type="range" id="product-count" min="1" max="50" value="10">
-  </div>
+    <!-- Left sidebar -->
+    <aside class="w-72 bg-panel border-r border-border flex flex-col overflow-hidden shrink-0">
 
-  <button id="get-best-thc-price-ratios-btn">Run</button>
+        <!-- Tabs -->
+        <div class="flex border-b border-border shrink-0">
+            <button id="tab-products" class="flex-1 text-xs py-2.5 font-medium border-b-2 border-accent text-accent transition duration-150">Products</button>
+            <button id="tab-vendors" class="flex-1 text-xs py-2.5 font-medium border-b-2 border-transparent text-muted hover:text-gray-300 transition duration-150">Vendors</button>
+        </div>
 
-  <pre id="output"></pre>
-  <script type="module" src="main.js"></script>
+        <!-- Products panel -->
+        <div id="products-sidebar-panel" class="flex flex-col flex-1 overflow-hidden">
+            <div class="p-4 border-b border-border shrink-0">
+                <p class="text-xs text-muted uppercase tracking-wider mb-3">Functions</p>
+                <nav id="function-list" class="flex flex-col gap-1"></nav>
+            </div>
+            <div class="flex-1 overflow-y-auto p-4">
+                <p class="text-xs text-muted uppercase tracking-wider mb-3">Filters</p>
+                <div id="filter-panel" class="flex flex-col gap-5"></div>
+            </div>
+            <div class="p-4 border-t border-border shrink-0 flex flex-col gap-2">
+                <button id="apply-filters-btn" class="w-full bg-accent hover:bg-indigo-400 active:scale-95 active:bg-indigo-600 text-gray-900 font-semibold text-sm py-2 rounded transition duration-100">
+                    Apply filters
+                </button>
+                <button id="reset-filters-btn" class="w-full bg-surface border border-border hover:border-accent text-muted hover:text-gray-300 text-sm py-2 rounded transition duration-100">
+                    Reset filters
+                </button>
+            </div>
+        </div>
+
+        <!-- Vendors panel -->
+        <div id="vendors-sidebar-panel" class="hidden flex-col flex-1 overflow-hidden p-4">
+            <p class="text-xs text-muted italic">Vendor browser coming soon.</p>
+        </div>
+
+    </aside>
+
+    <!-- Right main area -->
+    <main class="flex-1 overflow-hidden flex flex-col">
+        <div id="search-bar" class="px-6 py-3 border-b border-border shrink-0 flex gap-3 bg-panel"></div>
+        <div class="flex flex-1 overflow-hidden">
+            <div id="output" class="flex-1 overflow-y-auto p-6"></div>
+            <div id="detail-panel" class="w-96 border-l border-border bg-panel flex flex-col shrink-0">
+                <div class="w-96 h-full flex flex-col">
+                    <div class="flex justify-between items-center p-4 border-b border-border shrink-0">
+                        <span id="detail-title" class="text-sm font-semibold text-gray-100 truncate"></span>
+                        <button id="detail-close" class="text-muted hover:text-gray-100 transition duration-100 active:scale-95 text-lg leading-none">✕</button>
+                    </div>
+                    <div id="detail-image" class="w-full h-48 bg-surface flex items-center justify-center shrink-0 overflow-hidden">
+                        <img src="" alt="" class="w-full h-full object-contain" style="display:none;">
+                        <div class="img-fallback w-full h-full flex items-center justify-center bg-surface">
+                            <span class="text-muted text-xs">No image</span>
+                        </div>
+                    </div>
+                    <div id="detail-rating" class="p-4 border-b border-border shrink-0"></div>
+                    <div id="detail-scrollable" class="flex-1 overflow-y-auto flex flex-col"></div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+<script type="module" src="main.js"></script>
 </body>
+</html>

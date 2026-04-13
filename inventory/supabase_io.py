@@ -13,14 +13,6 @@ from inventory.constants import CONST_SUPABASE_PRODUCT_LOGS_TABLE, CONST_SUPABAS
 from common.retry import with_retry
 
 
-# TODO: Should this generalized function exist?
-def fetch_rows_from_table(
-    client,
-    table_name,
-    query, ):
-    return (client.table(table_name).select(query).execute())
-
-
 def normalize_strings(
     obj, ):
     if isinstance(obj, str):
@@ -54,6 +46,7 @@ def get_daily_product_averages(
     ).execute()
 
     return rows.data
+
 
 def insert_logs_into_db(
     client: supabase.Client,

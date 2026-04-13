@@ -1,8 +1,11 @@
+import logging
 import time
 from models import Coordinate
 from geopy.exc import GeocoderTimedOut
+from common.retry import with_retry
 
 
+# TODO: Why does this piece of shit return a Coordinate object instead of JUST A FUCKING TUPLE WHERE THE CALLER OF THIS FUNCTION CAN DIRECTLY INSTANTIATE A COORDINATE THEMSELVES?
 def map_address_to_coordinates(
     geolocator,
     street_name_and_house_number: str,
@@ -17,15 +20,24 @@ def map_address_to_coordinates(
         'postalcode': postalcode
     }
 
+    # TODO: Try tenacity
     try:
-        location = geolocator.geocode(structured_address)
-    except GeocoderTimedOut:
-        if attempt <= max_attempts:
-            time.sleep(2)
-            return map_address_to_coordinates(
-                geolocator, street_name_and_house_number, postalcode, city, attempt=attempt + 1
+        location = with_retry(
+            lambda: geolocator.geocode(structured_address),
+            label=f'geolocator.geocode({structured_address})'
             )
+    except Exception:
+        logging.warning(f'Unable to get the coordinates of vendor at {structured_address}')
         raise
+    # try:
+    #     location = geolocator.geocode(structured_address)
+    # except GeocoderTimedOut:
+    #     if attempt <= max_attempts:
+    #         time.sleep(2)
+    #         return map_address_to_coordinates(
+    #             geolocator, street_name_and_house_number, postalcode, city, attempt=attempt + 1
+    #         )
+    #     raise
 
     if location is not None:
         latitude = location.latitude
