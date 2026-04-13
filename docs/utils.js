@@ -53,21 +53,28 @@ export function getUserLocation() {
 }
 
 export function getVendorsWithinDistance(maxDistance, vendors, userLocation) {
-    if (maxDistance === Infinity) return new Set(Object.keys(vendors));
+    if (maxDistance === Infinity) {
+        return {
+            ids: new Set(Object.keys(vendors)),
+            distances: new Map()
+        };
+    }
 
-    const vendorsWithinDistance = new Set()
+    const ids = new Set();
+    const distances = new Map();
+
     for (const [vendorId, vendorInfo] of Object.entries(vendors)) {
-        const vendorLongitude = vendorInfo.longitude
-        const vendorLatitude = vendorInfo.latitude
+        const vendorLongitude = vendorInfo.longitude;
+        const vendorLatitude = vendorInfo.latitude;
 
-        // Error when attempting to geolocate vendor in data fetch workflow
         if (vendorLongitude === 0 && vendorLatitude === 0) continue;
 
-        const greatCircleDistance = haversine(userLocation.lon, userLocation.lat, vendorLongitude, vendorLatitude)
-        if (greatCircleDistance < maxDistance) {
-            vendorsWithinDistance.add(vendorId)
+        const distance = haversine(userLocation.lon, userLocation.lat, vendorLongitude, vendorLatitude);
+        if (distance < maxDistance) {
+            ids.add(vendorId);
+            distances.set(vendorId, distance);
         }
     }
 
-    return vendorsWithinDistance
+    return { ids, distances };
 }

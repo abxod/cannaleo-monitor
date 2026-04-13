@@ -27,8 +27,8 @@ from inventory.constants import CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET, CONST_S
 """
 
 # TODO: Rename everything to be neutral (product, vendor)
-# TODO: The source files are getting really coupled
-# TODO: Use 'type' instead of the convoluted 'dict[str, Any]' syntax
+# TODO: pid_to_info should keep a look-up table that is UPDATED not OVERWRITTEN
+# TODO: Use 'type' instead of the convoluted 'dict[str, Any]' syntax, or TypedDicts for fuck's sake
 
 SUPABASE_URL = os.environ['SUPABASE_URL']
 SUPABASE_KEY = os.environ['SUPABASE_KEY']
