@@ -12,22 +12,25 @@ def map_address_to_coordinates(
     postalcode: str,
     city: str,
     attempt=1,
-    max_attempts=5, ) -> Coordinate | None:
+    max_attempts=5,
+) -> Coordinate | None:
     structured_address = {
-        'street': street_name_and_house_number,
-        'city': city,
-        'country': 'Deutschland',
-        'postalcode': postalcode
+        "street": street_name_and_house_number,
+        "city": city,
+        "country": "Deutschland",
+        "postalcode": postalcode,
     }
 
     # TODO: Try tenacity
     try:
         location = with_retry(
             lambda: geolocator.geocode(structured_address),
-            label=f'geolocator.geocode({structured_address})'
-            )
+            label=f"geolocator.geocode({structured_address})",
+        )
     except Exception:
-        logging.warning(f'Unable to get the coordinates of vendor at {structured_address}')
+        logging.warning(
+            f"Unable to get the coordinates of vendor at {structured_address}"
+        )
         raise
     # try:
     #     location = geolocator.geocode(structured_address)
@@ -42,14 +45,12 @@ def map_address_to_coordinates(
     if location is not None:
         latitude = location.latitude
         longitude = location.longitude
-        coordinates: Coordinate = {
-            'latitude': latitude,
-            'longitude': longitude
-        }
+        coordinates: Coordinate = {"latitude": latitude, "longitude": longitude}
 
         return coordinates
     else:
         return None
+
 
 # if __name__ == '__main__':
 #     with open('../scraped_data_OLD/vendors/cannaleo_test_updated.json', 'r') as f:
