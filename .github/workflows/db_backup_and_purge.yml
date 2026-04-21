@@ -1,0 +1,28 @@
+name: Backup DB table and purge rows
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 3 */26 * *'
+
+jobs:
+  backup-and-purge:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install psycopg2-binary google-auth google-auth-httplib2 google-api-python-client
+
+      - name: Run backup and purge script
+        env:
+          SUPABASE_DB_URL: ${{ secrets.SUPABASE_DB_URL }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          GDRIVE_SERVICE_ACCOUNT_JSON: ${{ secrets.GDRIVE_SERVICE_ACCOUNT_JSON }}
+        run: python backup/db_backup_and_purge.py
