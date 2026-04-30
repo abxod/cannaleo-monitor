@@ -191,8 +191,14 @@ def run(
                 }
             )
 
-    for pid in pid_to_vendor_offers:
-        pid_to_vendor_offers[pid].sort(key=lambda x: x["price"])
+    for pid, vendor_offers in pid_to_vendor_offers.items():
+        try:
+            pid_to_vendor_offers[pid].sort(key=lambda x: x["price"])
+        except TypeError as e:
+            logging.fatal(
+                f"The following contains NULL pricing: {pid_to_vendor_offers[pid]}.\nYou have to check the prices in the DB next.: {e}"
+            )
+            continue
 
     updated_vendors_information = get_coordinates_of_affected_vendors(
         vendor_logs, old_vendor_id_to_info, new_vendor_id_to_info
