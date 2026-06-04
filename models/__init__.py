@@ -1,9 +1,9 @@
 from .models import (
+    Address,
+    Coordinate,
     ProductOffer,
     ShippingOptions,
-    Address,
-    VendorInfo,
     Vendor,
     VendorDirectory,
-    Coordinate,
+    VendorInfo,
 )

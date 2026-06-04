@@ -1,22 +1,23 @@
+import json
+import logging
 import os
 import time
 from typing import Any
-import logging
-import json
+
 import requests
 
+from common.retry import with_retry
 from inventory.constants import (
-    CONST_BASE_API_PRODUCT_REQUEST_URL,
     CONST_ALL_ATTRIBUTES,
     CONST_ALL_AVAILABILITY_OPTIONS,
     CONST_AVAILABILITY_DB_MAP,
-    CONST_VENDORS_INFORMATION_URL,
-    CONST_PAGE_SIZE_LIMIT,
-    CONST_FLOWZZ_PRODUCT_URL,
+    CONST_BASE_API_PRODUCT_REQUEST_URL,
     CONST_EXCLUDED_VENDOR_IDS,
+    CONST_FLOWZZ_PRODUCT_URL,
+    CONST_PAGE_SIZE_LIMIT,
+    CONST_VENDORS_INFORMATION_URL,
 )
 from models import ProductOffer
-from common.retry import with_retry
 
 EMAIL_ADDRESS = os.environ["EMAIL_ADDRESS"]
 PASSWORD = os.environ["PASSWORD"]

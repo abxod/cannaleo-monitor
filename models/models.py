@@ -1,13 +1,13 @@
 import logging
 from dataclasses import dataclass
-from typing import TypedDict, Optional, Any
+from typing import Any, Optional, TypedDict
 
 from common.retry import with_retry
-from inventory.supabase_io import load_json_from_bucket
 from inventory.constants import (
     CONST_SUPABASE_INVENTORIES_BUCKET,
     CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP,
 )
+from inventory.supabase_io import load_json_from_bucket
 
 
 # TODO: Extract these into multiple files?

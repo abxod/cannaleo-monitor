@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+
 from inventory.constants import (
     CONST_DB_PRODUCT_EVENT_TYPES,
     CONST_DB_VENDOR_EVENT_TYPES,

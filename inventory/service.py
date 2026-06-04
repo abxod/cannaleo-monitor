@@ -1,16 +1,16 @@
-import time
 import logging
+import time
+
 from geopy.geocoders import Nominatim
 
-from models.models import ProductOffer
-from models import Coordinate
-from inventory.diffing import build_inventory_change_logs
-from inventory.constants import (
-    CONST_VENDOR_EVENT_TYPES_FOR_UPDATES,
-    CONST_EXCLUDED_VENDOR_IDS,
-)
 from common.address_to_coordinates_map import map_address_to_coordinates
-from models import VendorDirectory
+from inventory.constants import (
+    CONST_EXCLUDED_VENDOR_IDS,
+    CONST_VENDOR_EVENT_TYPES_FOR_UPDATES,
+)
+from inventory.diffing import build_inventory_change_logs
+from models import Coordinate, VendorDirectory
+from models.models import ProductOffer
 
 # TODO: When does it make sense to pass old, new as a tuple together?
 """

@@ -1,8 +1,10 @@
 import logging
 import time
-from models import Coordinate
+
 from geopy.exc import GeocoderTimedOut
+
 from common.retry import with_retry
+from models import Coordinate
 
 
 # TODO: Why does this piece of shit return a Coordinate object instead of JUST A FUCKING TUPLE WHERE THE CALLER OF THIS FUNCTION CAN DIRECTLY INSTANTIATE A COORDINATE THEMSELVES?

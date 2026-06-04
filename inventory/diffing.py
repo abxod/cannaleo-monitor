@@ -1,11 +1,12 @@
 import logging
-from inventory.events import log_product_change, log_vendor_change, log_product
-from models import ProductOffer, VendorDirectory
+
 from inventory.constants import (
-    CONST_SHIPPING_OPTIONS_KEYS,
     CONST_PRICE_LOWER_BOUND,
     CONST_PRICE_UPPER_BOUND,
+    CONST_SHIPPING_OPTIONS_KEYS,
 )
+from inventory.events import log_product, log_product_change, log_vendor_change
+from models import ProductOffer, VendorDirectory
 
 
 # TODO: These functions can still be refactored (past ADDED/REMOVED)

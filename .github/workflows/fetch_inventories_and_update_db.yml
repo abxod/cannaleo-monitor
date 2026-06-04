@@ -33,7 +33,7 @@ jobs:
       with:
         python-version: "3.12.6"
     - name: Install dependencies
-      run: pip install -r requirements.txt
+      run: pip install -r requirements/inventory_fetching_requirements.txt
     - name: Run script
       env:
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
