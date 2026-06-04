@@ -23,7 +23,8 @@ jobs:
         env:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
-        run: python images/main.py
+          PYTHONPATH: ${{ github.workspace }}
+        run: python images/fetch_images_from_api.py
       - name: Upload execution logs
         uses: actions/upload-artifact@v4
         with:
