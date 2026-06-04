@@ -1,14 +1,14 @@
-import sys
-import os
 import logging
+import os
+import sys
 from pathlib import Path
 
-import supabase
 import requests
+import supabase
 
 from inventory.constants import (
-    CONST_SUPABASE_NOTIFICATION_SUBSCRIPTIONS_TABLE,
     CONST_NTFY_PLACEHOLDER_MESSAGE,
+    CONST_SUPABASE_NOTIFICATION_SUBSCRIPTIONS_TABLE,
 )
 
 log_path = Path.cwd() / "execution_logs.log"
@@ -66,10 +66,10 @@ def send_ntfy_notification(
 
 
 def run(
-    client,
+    conn,
 ):
     notification_subscriptions_response = (
-        client.table(CONST_SUPABASE_NOTIFICATION_SUBSCRIPTIONS_TABLE)
+        conn.table(CONST_SUPABASE_NOTIFICATION_SUBSCRIPTIONS_TABLE)
         .select("*")
         .eq("enabled", True)
         .execute()
@@ -81,7 +81,7 @@ def run(
         return
 
     # Filter for prices below 1€ in a PostgresSQL function
-    pricing_error_rows_response = client.rpc("get_latest_pricing_errors").execute()
+    pricing_error_rows_response = conn.rpc("get_latest_pricing_errors").execute()
     pricing_error_rows = pricing_error_rows_response.data
     if len(pricing_error_rows) == 0:
         logging.info("No pricing errors found.")

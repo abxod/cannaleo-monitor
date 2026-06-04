@@ -1,15 +1,15 @@
-import os
+import json
 import logging
+import os
 
 import pytest
 import requests
-import json
-from jsonschema import validate, ValidationError
+from jsonschema import ValidationError, validate
 
 from inventory.constants import (
     CONST_BASE_API_PRODUCT_REQUEST_URL,
-    CONST_VENDORS_INFORMATION_URL,
     CONST_PAGE_SIZE_LIMIT,
+    CONST_VENDORS_INFORMATION_URL,
 )
 
 # All the attributes in the original schema for Product are being retained for the sake of completeness.

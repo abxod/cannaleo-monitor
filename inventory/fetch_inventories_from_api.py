@@ -1,37 +1,38 @@
+import logging
 import os
 import sys
-import logging
 import time
-from datetime import datetime, timezone, date
+from datetime import date, datetime, timezone
 from pathlib import Path
 
 import supabase
-from inventory.supabase_io import (
-    load_json_from_bucket,
-    push_results_to_supabase,
-    get_daily_product_averages,
+
+from common.retry import with_retry
+from inventory.constants import (
+    CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET,
+    CONST_SUPABASE_VENDOR_ID_TO_INFO_FP,
+)
+from inventory.diffing import (
+    build_daily_product_averages_logs,
+    build_inventory_logs,
+    build_new_daily_product_averages,
+    build_vendor_change_logs,
 )
 from inventory.scraping import (
     get_vendors_information,
     scrape_vendor_inventory_and_products,
 )
-from common.retry import with_retry
-from models import VendorDirectory, Vendor, VendorInfo
-from inventory.diffing import (
-    build_vendor_change_logs,
-    build_inventory_logs,
-    build_daily_product_averages_logs,
-    build_new_daily_product_averages,
-)
 from inventory.service import (
-    process_vendors,
-    merge_all_products,
     get_coordinates_of_affected_vendors,
+    merge_all_products,
+    process_vendors,
 )
-from inventory.constants import (
-    CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET,
-    CONST_SUPABASE_VENDOR_ID_TO_INFO_FP,
+from inventory.supabase_io import (
+    get_daily_product_averages,
+    load_json_from_bucket,
+    push_results_to_supabase,
 )
+from models import Vendor, VendorDirectory, VendorInfo
 
 """
     This source file is responsible for updating:
@@ -59,41 +60,34 @@ logging.basicConfig(
     format="%(asctime)s - %(levelname)s - %(message)s",
 )
 
-console_handler = logging.StreamHandler(sys.stderr)
-console_handler.setLevel(logging.INFO)
-console_handler.setFormatter(
-    logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-)
-logging.getLogger().addHandler(console_handler)
-
-
 # TODO: Figure out logging
 # TODO: The function is getting ugly. Refactor it again
+# TODO: run() should reside in another module
 
 
 def run(
-    client,
+    conn,
 ):
     fetched_at = datetime.now(timezone.utc).isoformat()
     today = date.today().isoformat()
 
     # Fetch old vendor information JSON from Supabase
-    logging.info("Starting fetch of vendor information from Supabase")
+    logging.info("Fetching vendor information from Supabase")
     try:
         old_vendor_id_to_info = with_retry(
             lambda: load_json_from_bucket(
-                client,
+                conn,
                 CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET,
                 CONST_SUPABASE_VENDOR_ID_TO_INFO_FP,
             ),
-            label=f"load_vendors_information(client)",
+            label=f"load_vendors_information(conn)",
         )
     except Exception as e:
         logging.error(f"Failed to fetch vendor information from Supabase: {e}")
         sys.exit(1)
 
     # Fetch new vendor information JSON from API
-    logging.info("Starting fetch of vendor information from API")
+    logging.info("Fetching vendor information from API")
     try:
         new_vendor_id_to_info = with_retry(
             lambda: get_vendors_information(), label="get_vendors_information()"
@@ -103,10 +97,10 @@ def run(
         sys.exit(1)
 
     # Diff-check inventories
-    logging.info("Starting fetch of old vendor inventories from Supabase")
+    logging.info("Fetching old vendor inventories from Supabase")
     try:
         old_vendor_directory = VendorDirectory.from_supabase(
-            client, old_vendor_id_to_info
+            conn, old_vendor_id_to_info
         )
     except Exception as e:
         logging.error(
@@ -117,7 +111,7 @@ def run(
     logging.info(f"Fetching daily product averages for {today} from Supabase")
     try:
         old_daily_product_averages_rows = with_retry(
-            lambda: get_daily_product_averages(client, today),
+            lambda: get_daily_product_averages(conn, today),
             label=f"get_daily_product_averages{today}",
         )
         old_daily_product_averages_by_pid = {
@@ -167,15 +161,15 @@ def run(
         sys.exit(1)
 
     # Generate logs for changes in vendors' shipping prices or locations
-    logging.info("Starting build of vendor change logs")
+    logging.info("Building vendor change logs")
     vendor_logs = build_vendor_change_logs(
         old_vendor_id_to_info, new_vendor_id_to_info, fetched_at
     )
-    logging.info("Starting build of inventory changes logs")
+    logging.info("Building inventory changes logs")
     offer_changes_logs = process_vendors(
         old_vendor_directory, new_vendor_directory, fetched_at
     )
-    logging.info("Starting build of offer snapshot logs")
+    logging.info("Building offer snapshot logs")
     offer_logs = build_inventory_logs(new_vendor_directory, fetched_at)
 
     pid_to_vendor_offers = {}
@@ -210,7 +204,7 @@ def run(
     )
 
     push_results_to_supabase(
-        client,
+        conn,
         offer_changes_logs=offer_changes_logs,
         offer_logs=offer_logs,
         daily_product_averages_logs=daily_product_averages_logs,
@@ -226,7 +220,7 @@ def run(
 
 if __name__ == "__main__":
     logging.info("Starting script")
-    logging.info("Creating Supabase client")
-    client = supabase.create_client(SUPABASE_URL, SUPABASE_KEY)
-    run(client)
+    logging.info("Creating Supabase connection")
+    conn = supabase.create_client(SUPABASE_URL, SUPABASE_KEY)
+    run(conn)
     logging.info("Terminating script")

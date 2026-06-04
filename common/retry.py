@@ -1,5 +1,5 @@
-import time
 import logging
+import time
 
 
 # TODO: The current exception catching is prone to ValueError and AttributeError exceptions, among others.

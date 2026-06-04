@@ -1,34 +1,27 @@
-from typing import Any
-import supabase
-import unicodedata
 import json
 import logging
+import unicodedata
+from typing import Any
 
+import supabase
+
+from common.retry import with_retry
 from inventory.constants import (
-    CONST_SUPABASE_VENDOR_ID_TO_INFO_FP,
-    CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP,
-)
-from inventory.constants import (
-    CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET,
-    CONST_SUPABASE_INVENTORIES_BUCKET,
-    CONST_SUPABASE_PID_TO_INFO_BUCKET,
-    CONST_SUPABASE_VENDOR_ID_TO_INFO_FP,
-    CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP,
-    CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP,
-    CONST_SUPABASE_PID_TO_INFO_FP,
-    CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE,
     CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE,
-)
-from inventory.constants import (
+    CONST_SUPABASE_INVENTORIES_BUCKET,
+    CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE,
+    CONST_SUPABASE_PID_TO_INFO_BUCKET,
+    CONST_SUPABASE_PID_TO_INFO_FP,
+    CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP,
     CONST_SUPABASE_PRODUCT_LOGS_TABLE,
+    CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET,
+    CONST_SUPABASE_VENDOR_ID_TO_INFO_FP,
+    CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP,
     CONST_SUPABASE_VENDOR_LOGS_TABLE,
 )
-from common.retry import with_retry
 
 
-def normalize_strings(
-    obj,
-):
+def normalize_strings(obj):
     if isinstance(obj, str):
         return unicodedata.normalize("NFC", obj)
     if isinstance(obj, dict):
@@ -38,13 +31,13 @@ def normalize_strings(
 
 # TODO: Callers are calling with_retry() themselves.
 def load_json_from_bucket(
-    client: supabase.Client,
+    conn: supabase.Client,
     bucket: str,
     file_path: str,
 ) -> dict:
     response = with_retry(
-        lambda: client.storage.from_(bucket).download(file_path),
-        label=f"client.storage.from_({bucket}).download({file_path})",
+        lambda: conn.storage.from_(bucket).download(file_path),
+        label=f"conn.storage.from_({bucket}).download({file_path})",
     )
 
     json_str = response.decode("utf-8")
@@ -53,11 +46,11 @@ def load_json_from_bucket(
 
 
 def get_daily_product_averages(
-    client: supabase.Client,
+    conn: supabase.Client,
     date: str,
 ) -> list:
     rows = (
-        client.table(CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE)
+        conn.table(CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE)
         .select("pid, avg_price, sample_count")
         .eq("date", date)
         .execute()
@@ -67,20 +60,20 @@ def get_daily_product_averages(
 
 
 def insert_logs_into_db(
-    client: supabase.Client,
+    conn: supabase.Client,
     table_name: str,
     events_logs: list[dict],
 ):
     if not events_logs:
         return []
 
-    response = client.table(table_name).insert(events_logs).execute()
+    response = conn.table(table_name).insert(events_logs).execute()
 
     return response.data
 
 
 def upsert_logs_into_db(
-    client: supabase.Client,
+    conn: supabase.Client,
     table_name: str,
     rows: list[dict],
     on_conflict: str,
@@ -88,11 +81,13 @@ def upsert_logs_into_db(
     if not rows:
         return []
 
-    response = client.table(table_name).upsert(rows, on_conflict=on_conflict).execute()
+    response = (
+        conn.table(table_name).upsert(json=rows, on_conflict=on_conflict).execute()
+    )
     return response.data
 
 
-def upload_to_bucket(
+def upload_json_to_supabase(
     conn: supabase.Client,
     bucket_name: str,
     file_path: str,
@@ -102,16 +97,35 @@ def upload_to_bucket(
 
     try:
         response = conn.storage.from_(bucket_name).upload(
-            file_path, json_bytes, {"upsert": "true"}
+            path=file_path, file=json_bytes, file_options={"upsert": "true"}
         )
 
         return {"success": True, "path": response.full_path}
-    except Exception as e:
+    except Exception:
+        raise
+
+
+# TODO: This function does not belong here because this file does not belong in /inventory.
+def upload_strain_image_to_supabase(
+    conn: supabase.Client,
+    bucket_name: str,
+    file_path: str,
+    img_buf,
+):
+    try:
+        response = conn.storage.from_(bucket_name).upload(
+            path=file_path,
+            file=img_buf.getvalue(),
+            file_options={"content-type": "image/png"},
+        )
+
+        return {"success": True, "path": response.full_path}
+    except Exception:
         raise
 
 
 def push_results_to_supabase(
-    client,
+    conn,
     offer_changes_logs: list[dict[str, str | int | float | None]],
     offer_logs: list[dict[str, str | int | float]],
     daily_product_averages_logs: list[dict[str, str | int | float]],
@@ -126,9 +140,9 @@ def push_results_to_supabase(
         try:
             with_retry(
                 lambda: insert_logs_into_db(
-                    client, CONST_SUPABASE_PRODUCT_LOGS_TABLE, offer_changes_logs
+                    conn, CONST_SUPABASE_PRODUCT_LOGS_TABLE, offer_changes_logs
                 ),
-                label=f"insert_logs_into_db(client, {CONST_SUPABASE_PRODUCT_LOGS_TABLE}, product_logs)",
+                label=f"insert_logs_into_db(conn, {CONST_SUPABASE_PRODUCT_LOGS_TABLE}, product_logs)",
             )
         except Exception as e:
             logging.error(f"Failed to insert product event logs: {e}", exc_info=True)
@@ -138,9 +152,9 @@ def push_results_to_supabase(
         try:
             with_retry(
                 lambda: insert_logs_into_db(
-                    client, CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE, offer_logs
+                    conn, CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE, offer_logs
                 ),
-                label=f"insert_logs_into_db(client, {CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE}, offer_logs)",
+                label=f"insert_logs_into_db(conn, {CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE}, offer_logs)",
             )
         except Exception as e:
             logging.error(
@@ -152,12 +166,12 @@ def push_results_to_supabase(
         try:
             with_retry(
                 lambda: upsert_logs_into_db(
-                    client,
+                    conn,
                     CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE,
                     daily_product_averages_logs,
                     "pid,date",
                 ),
-                label=f"upsert_logs_into_db(client, {CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE}, daily_product_averages_logs)",
+                label=f"upsert_logs_into_db(conn, {CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE}, daily_product_averages_logs)",
             )
         except Exception as e:
             logging.error(
@@ -169,9 +183,9 @@ def push_results_to_supabase(
         try:
             with_retry(
                 lambda: insert_logs_into_db(
-                    client, CONST_SUPABASE_VENDOR_LOGS_TABLE, vendor_logs
+                    conn, CONST_SUPABASE_VENDOR_LOGS_TABLE, vendor_logs
                 ),
-                label=f"insert_logs_into_db(client, {CONST_SUPABASE_VENDOR_LOGS_TABLE}, vendor_logs)",
+                label=f"insert_logs_into_db(conn, {CONST_SUPABASE_VENDOR_LOGS_TABLE}, vendor_logs)",
             )
         except Exception as e:
             logging.error(f"Failed to insert vendor event logs: {e}", exc_info=True)
@@ -180,13 +194,13 @@ def push_results_to_supabase(
     if vendor_id_to_offers:
         try:
             with_retry(
-                lambda: upload_to_bucket(
-                    client,
+                lambda: upload_json_to_supabase(
+                    conn,
                     CONST_SUPABASE_INVENTORIES_BUCKET,
                     CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP,
                     vendor_id_to_offers,
                 ),
-                label=f"upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP}, vendor_inventories)",
+                label=f"upload_to_bucket(conn, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP}, vendor_inventories)",
             )
         except Exception as e:
             logging.error(f"Failed to upload vendor inventories: {e}", exc_info=True)
@@ -195,13 +209,13 @@ def push_results_to_supabase(
     if pid_to_vendor_offers:
         try:
             with_retry(
-                lambda: upload_to_bucket(
-                    client,
+                lambda: upload_json_to_supabase(
+                    conn,
                     CONST_SUPABASE_INVENTORIES_BUCKET,
                     CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP,
                     pid_to_vendor_offers,
                 ),
-                label=f"upload_to_bucket(client, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP}, pid_to_vendors)",
+                label=f"upload_to_bucket(conn, {CONST_SUPABASE_INVENTORIES_BUCKET}, {CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP}, pid_to_vendors)",
             )
         except Exception as e:
             logging.error(f"Failed to upload pid_to_vendors: {e}", exc_info=True)
@@ -210,13 +224,13 @@ def push_results_to_supabase(
     if all_pid_to_prod_info:
         try:
             with_retry(
-                lambda: upload_to_bucket(
-                    client,
+                lambda: upload_json_to_supabase(
+                    conn,
                     CONST_SUPABASE_PID_TO_INFO_BUCKET,
                     CONST_SUPABASE_PID_TO_INFO_FP,
                     all_pid_to_prod_info,
                 ),
-                label=f"upload_to_bucket(client, {CONST_SUPABASE_PID_TO_INFO_FP}, {CONST_SUPABASE_PID_TO_INFO_FP}, all_pid_to_prod_info)",
+                label=f"upload_to_bucket(conn, {CONST_SUPABASE_PID_TO_INFO_FP}, {CONST_SUPABASE_PID_TO_INFO_FP}, all_pid_to_prod_info)",
             )
         except Exception as e:
             logging.error(f"Failed to upload all products: {e}", exc_info=True)
@@ -224,13 +238,13 @@ def push_results_to_supabase(
     if updated_vendors_information:
         try:
             with_retry(
-                lambda: upload_to_bucket(
-                    client,
+                lambda: upload_json_to_supabase(
+                    conn,
                     CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET,
                     CONST_SUPABASE_VENDOR_ID_TO_INFO_FP,
                     updated_vendors_information,
                 ),
-                label=f"upload_to_bucket(client, {CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET}, {CONST_SUPABASE_VENDOR_ID_TO_INFO_FP}, updated_vendors_information)",
+                label=f"upload_to_bucket(conn, {CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET}, {CONST_SUPABASE_VENDOR_ID_TO_INFO_FP}, updated_vendors_information)",
             )
         except Exception as e:
             logging.error(f"Failed to update vendors' information: {e}", exc_info=True)

@@ -84,8 +84,7 @@ CONST_STRAIN_TYPE_NORMALIZATION_MAP = {
     ("Hybrid", "Indica"): "Indica_dominant",
     ("Hybrid", "Sativa"): "Sativa_dominant",
     ("Indica", None): "Indica",
-    ("Sativa", None): "Sativa",
-    # These don't make sense
+    ("Sativa", None): "Sativa",  # These don't make sense
     ("Indica", "Indica"): "Pure Indica",
     ("Sativa", "Indica"): "Indica_dominant",
     (None, "Sativa"): "Sativa_dominant",
@@ -93,7 +92,7 @@ CONST_STRAIN_TYPE_NORMALIZATION_MAP = {
 }
 
 """
-SUPABASE
+    SUPABASE
 """
 
 CONST_DB_PRODUCT_EVENT_TYPES = {"ADDED", "REMOVED", "PRICE", "AVAILABILITY"}
@@ -125,20 +124,26 @@ CONST_VENDOR_EVENT_TYPES_FOR_UPDATES = {
     "LOCATION_CHANGED",
 }  # This is obviously not maintainable.
 
-# Supabase table names
+# TODO: This needs to be in a list.
+"""
+    SUPABASE TABLES
+"""
 CONST_SUPABASE_PRODUCT_LOGS_TABLE = "product_events"
 CONST_SUPABASE_VENDOR_LOGS_TABLE = "vendor_events"
 CONST_SUPABASE_INVENTORY_SNAPSHOTS_TABLE = "inventory_snapshots"
 CONST_SUPABASE_NOTIFICATION_SUBSCRIPTIONS_TABLE = "notification_subscriptions"
 CONST_SUPABASE_DAILY_PRODUCT_AVERAGE_TABLE = "daily_product_averages"
 
-# Supabase storage filepaths
-CONST_SUPABASE_STORAGE = {"vendor_id_to_info": {"bucket": "vendor"}}
-
+"""
+    SUPABASE BUCKETS
+"""
 CONST_SUPABASE_VENDOR_ID_TO_INFO_BUCKET = "vendor-id-to-info"
 CONST_SUPABASE_INVENTORIES_BUCKET = "inventories"
 CONST_SUPABASE_PID_TO_INFO_BUCKET = "pid-to-info"
 
+"""
+    SUPABASE BUCKETS OVERWRITE FILEPATHS
+"""
 CONST_SUPABASE_VENDOR_ID_TO_INFO_FP = "vendor_id_to_info.json"
 CONST_SUPABASE_VENDOR_ID_TO_OFFERS_FP = "vendor_id_to_offers.json"
 CONST_SUPABASE_PID_TO_VENDOR_OFFERS_FP = "pid_to_vendor_offers.json"
@@ -146,6 +151,8 @@ CONST_SUPABASE_PID_TO_INFO_FP = "pid_to_info.json"
 
 CONST_NTFY_PLACEHOLDER_MESSAGE = "This is a placeholder message"
 
-# Magic numbers
+"""
+    MAGIC NUMBERS
+"""
 CONST_PRICE_LOWER_BOUND = 1.0
 CONST_PRICE_UPPER_BOUND = 30.0
