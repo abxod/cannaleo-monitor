@@ -71,9 +71,7 @@ def run(
         )
         if not img_url:
             logging.info(f"PID {pid} does not have an image. Updating retry count.")
-            pids_to_process[pid] = (
-                retry_count or 0
-            ) + 1  # New PIDs have retry_count=None
+            missing_img_rows.append({"pid": pid, "retry_count": (retry_count or 0) + 1})
             continue
 
         success = process_and_upload_image(pid, img_url, conn)
@@ -81,7 +79,6 @@ def run(
             persisted_img_rows.append({"pid": pid, "retry_count": None})
         else:
             missing_img_rows.append({"pid": pid, "retry_count": (retry_count or 0) + 1})
-            continue
 
         time.sleep(2)
 
