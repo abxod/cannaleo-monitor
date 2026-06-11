@@ -25,13 +25,14 @@ def fetch_image(img_url):
 
 
 def remove_background(img):
-    img_bgra = cv2.cvtColor(img, cv2.COLOR_BGR2BGRA)
+    img = cv2.cvtColor(img, cv2.COLOR_BGRA2BGR)
+    img_rgba = cv2.cvtColor(img, cv2.COLOR_BGR2RGBA)
     lower_white = np.array([200, 200, 200], dtype=np.uint8)
     upper_white = np.array([255, 255, 255], dtype=np.uint8)
     white_mask = cv2.inRange(img, lower_white, upper_white)
-    img_bgra[:, :, 3] = np.where(white_mask == 255, 0, 255).astype(np.uint8)
+    img_rgba[:, :, 3] = np.where(white_mask == 255, 0, 255).astype(np.uint8)
 
-    return img_bgra
+    return img_rgba
 
 
 def resize_image(img, resolution: tuple):
