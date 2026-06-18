@@ -5,35 +5,31 @@ on:
      - cron: '0 */6 * * *'
 jobs:
   contract-tests:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v6.1.0
-      with:
-        python-version: "3.12.6"
+    - name: Create virtual environment
+      run: python3 -m venv .venv
     - name: Install dependencies
-      run: pip install -r requirements/inventory_fetching_requirements.txt
+      run: .venv/bin/pip install -r requirements/inventory_fetching_requirements.txt
     - name: Run contract tests
       env:
         EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
         PASSWORD: ${{ secrets.PASSWORD }}
         PYTHONPATH: ${{ github.workspace }}
-      run: pytest tests/api/contract_tests.py -v
+      run: .venv/bin/pytest tests/api/contract_tests.py -v -o log_cli=true -o log_cli_level=INFO
 
   run-inventory:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: contract-tests
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
-    - name: Set up Python
-      uses: actions/setup-python@v6.1.0
-      with:
-        python-version: "3.12.6"
+    - name: Create virtual environment
+      run: python3 -m venv .venv
     - name: Install dependencies
-      run: pip install -r requirements/inventory_fetching_requirements.txt
+      run: .venv/bin/pip install -r requirements/inventory_fetching_requirements.txt
     - name: Run script
       env:
           EMAIL_ADDRESS: ${{ secrets.EMAIL_ADDRESS }}
@@ -41,7 +37,7 @@ jobs:
           SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           SUPABASE_KEY: ${{ secrets.SUPABASE_KEY }}
           PYTHONPATH: ${{ github.workspace }}
-      run: python inventory/fetch_inventories_from_api.py
+      run: .venv/bin/python inventory/fetch_inventories_from_api.py
     - name: Upload execution logs
       uses: actions/upload-artifact@v4
       with:
