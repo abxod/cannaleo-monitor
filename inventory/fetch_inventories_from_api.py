@@ -175,12 +175,19 @@ def run(
     pid_to_vendor_offers = {}
     for vendor_id, offers in vendor_id_to_offers.items():
         for pid, offer in offers.items():
+            price = offer["price"]
+            if price is None:
+                logging.error(
+                    f"Skipping offer with NULL price for vendor ID {vendor_id}, PID {pid}"
+                )
+                continue
+
             if pid not in pid_to_vendor_offers:
                 pid_to_vendor_offers[pid] = []
             pid_to_vendor_offers[pid].append(
                 {
                     "vendor_id": vendor_id,
-                    "price": offer["price"],
+                    "price": price,
                     "availability": offer["availability"],
                 }
             )
