@@ -4,7 +4,7 @@ export const DASHBOARD_PASSWORD = "Y3ye4SkVlpbY7Ixx";
 export const BUCKETS = {
   products: "pid-to-info",
   vendors: "vendor-id-to-info",
-  inventories: "inventories"
+  inventories: "inventories",
   pidToReviews: "pid-to-reviews",
   strainImages: "strain-images"
 };
@@ -12,6 +12,6 @@ export const FILES = {
   products: "pid_to_info.json",
   vendors: "vendor_id_to_info.json",
   inventories: "vendor_id_to_offers.json",
-  pidToVendors: "pid_to_vendor_offers.json"
+  pidToVendors: "pid_to_vendor_offers.json",
   pidToReviews: "pid_to_reviews.json"
 };
