@@ -2,7 +2,7 @@ name: Backup DB table and purge rows
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 3 */26 * *'
+    - cron: '0 3 */7 * *'
 
 jobs:
   backup-and-purge:
